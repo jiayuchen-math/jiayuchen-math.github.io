@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纯数笔记详情 | Jiayu Chen 知识库</title>
+    <!-- 引入KaTeX支持Latex公式渲染，学术笔记必备 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Georgia", "PingFang SC", serif;
+        }
+        /* 护眼学术背景，长时间看公式不疲劳 */
+        body {
+            background-color: #f7f7f5;
+            color: #1a1a1a;
+            line-height: 1.85;
+        }
+        /* 顶部导航栏 */
+        .navbar {
+            padding: 18px 7%;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .back-btn {
+            text-decoration: none;
+            color: #1a56db;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        .action-group button {
+            padding: 7px 14px;
+            border: none;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .edit-btn {
+            background-color: #eff6ff;
+            color: #1a56db;
+        }
+        .export-btn {
+            background-color: #1a56db;
+            color: #fff;
+        }
+        /* 笔记主体容器 */
+        .note-container {
+            max-width: 980px;
+            margin: 36px auto;
+            padding: 0 20px;
+        }
+        .note-card {
+            background: #fff;
+            padding: 50px 70px;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        /* 元信息区 */
+        .note-meta {
+            display: flex;
+            gap: 22px;
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 26px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #e5e5e5;
+            flex-wrap: wrap;
+        }
+        .note-title {
+            font-size: 34px;
+            font-weight: 700;
+            margin-bottom: 28px;
+            color: #111827;
+            border-left: 4px solid #1a56db;
+            padding-left: 16px;
+        }
+        /* 内容排版适配纯数学逻辑 */
+        .note-content p {
+            margin-bottom: 20px;
+            font-size: 17px;
+            text-align: justify;
+        }
+        .note-content h2 {
+            font-size: 23px;
+            margin: 38px 0 16px;
+            color: #1e293b;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 6px;
+        }
+        .note-content h3 {
+            font-size: 19px;
+            margin: 28px 0 14px;
+            color: #1a56db;
+        }
+        /* 定理、定义、证明专属高亮块 */
+        .definition, .theorem, .proof {
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .definition {
+            background-color: #f0f7ff;
+            border-left: 4px solid #3b82f6;
+        }
+        .theorem {
+            background-color: #f0fdf4;
+            border-left: 4px solid #22c55e;
+        }
+        .proof {
+            background-color: #fefce8;
+            border-left: 4px solid #f59e0b;
+        }
+        .note-content ul, .note-content ol {
+            padding-left: 28px;
+            margin-bottom: 20px;
+            font-size: 16.5px;
+        }
+        .note-content li {
+            margin-bottom: 10px;
+        }
+        /* 分类标签 */
+        .tag-group {
+            margin-top: 45px;
+            padding-top: 28px;
+            border-top: 1px solid #e5e7eb;
+        }
+        .subject-tag {
+            display: inline-block;
+            padding: 7px 14px;
+            background-color: #f3f4f6;
+            color: #374151;
+            border-radius: 22px;
+            margin-right: 10px;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .note-card {
+                padding: 30px 22px;
+            }
+            .note-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <nav class="navbar">
+        <a href="index.html" class="back-btn"> ← 返回笔记首页目录</a>
+        <div class="action-group">
+            <button class="edit-btn">编辑笔记</button>
+            <button class="export-btn">导出PDF</button>
+        </div>
+    </nav>
+
+    <!-- 笔记详情主体 -->
+    <div class="note-container">
+        <div class="note-card">
+            <div class="note-meta">
+                <span>更新时间：2026-08-17</span>
+                <span>难度等级：进阶</span>
+                <span>引用文献参考：[1] Hartshorne 《Algebraic Geometry》</span>
+            </div>
+            <h1 class="note-title">代数几何笔记：仿射概形的基础定义</h1>
+            <div class="note-content">
+                <p>本节整理Hartshorne第二章1.1节内容，从交换环的谱出发系统搭建仿射概形的拓扑与层结构。</p>
+
+                <h2>一、基础定义回顾</h2>
+                <div class="definition">
+                    <strong>定义（素谱）：</strong> 对交换含幺环 \( A \)，定义其素谱 \( \mathrm{Spec}(A) \) 为 \( A \) 的所有素理想构成的集合。对任意子集 \( S \subseteq A \)，定义其对应的零化子集
+                    \[ V(S) = \{ \mathfrak{p} \in \mathrm{Spec}(A) \mid S \subseteq \mathfrak{p} \} \]
+                    所有形如 \( V(S) \) 的子集构成 Zariski 闭集。
+                </div>
+
+                <div class="theorem">
+                    <strong>定理：</strong> 集合 \( \mathrm{Spec}(A) \) 的 Zariski 闭集满足拓扑空间闭集公理，因此 \( (Spec(A), \tau_{Zar}) \) 构成拓扑空间。
+                </div>
+
+                <h2>二、结构层的构造</h2>
+                <p>对主开集 \( D(f) = \mathrm{Spec}(A) \setminus V(f) \)，定义环 \( \mathcal{O}_{\mathrm{Spec}(A)}(D(f)) = A_f \)，通过 sheafification 得到定义在整个拓扑空间上的交换环层 \( \mathcal{O}_X \)。</p>
+
+                <div class="proof">
+                    <strong>证明概要：</strong> 首先验证主开集基上的预层满足唯一性公理，利用环局部化的泛性质完成粘贴，即可得到良定义的环层。
+                </div>
+
+                <h2>三、衍生概念</h2>
+                <ul>
+                    <li>仿射概形的点对应环的素理想，闭点对应环的极大理想</li>
+                    <li>概形上的拓扑空间通常不是 Hausdorff 的，比如 \( \mathrm{Spec}(\mathbb{Z}) \) 中任意两个非空开集都相交</li>
+                    <li>结构层在点 \( \mathfrak{p} \) 处的茎就是局部环 \( A_{\mathfrak{p}} \)</li>
+                </ul>
+            </div>
+            <!-- 覆盖你所有纯数方向的学科标签 -->
+            <div class="tag-group">
+                <span class="subject-tag">数学分析</span>
+                <span class="subject-tag">高等代数</span>
+                <span class="subject-tag">点集拓扑</span>
+                <span class="subject-tag">抽象代数</span>
+                <span class="subject-tag">实分析</span>
+                <span class="subject-tag">复分析</span>
+                <span class="subject-tag">微分几何</span>
+                <span class="subject-tag">交换代数</span>
+                <span class="subject-tag">代数数论</span>
+                <span class="subject-tag">代数拓扑</span>
+                <span class="subject-tag">代数几何</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自动渲染Latex公式 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$', right: '$', display: false},
+                    {left: '\\[', right: '\\]', display: true}
+                ],
+                throwOnError: false
+            });
+        });
+    </script>
+</body>
+</html>
