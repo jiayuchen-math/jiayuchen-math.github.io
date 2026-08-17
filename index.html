@@ -95,11 +95,61 @@
                 font-size: 26px;
             }
         }
+                /* 黑夜模式主题切换样式 */
+        .dark-mode {
+            background-color: #121212;
+            color: #e5e5e5;
+        }
+        .dark-mode .navbar, .dark-mode .note-card, .dark-mode footer, .dark-mode .sidebar-toc {
+            background-color: #1e1e1e;
+            border-color: #333333;
+        }
+        .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode p, .dark-mode li, .dark-mode .note-meta {
+            color: #e5e5e5;
+        }
+        .dark-mode .definition {
+            background-color: #1a273a;
+            border-left-color: #3b82f6;
+        }
+        .dark-mode .theorem {
+            background-color: #182a1f;
+            border-left-color: #22c55e;
+        }
+        .dark-mode .proof {
+            background-color: #2b2716;
+            border-left-color: #f59e0b;
+        }
+        .dark-mode .corollary {
+            background-color: #2b1f3a;
+            border-left-color: #a855f7;
+        }
+        .dark-mode .example {
+            background-color: #302218;
+            border-left-color: #f97316;
+        }
+        .dark-mode .nav-links a, .dark-mode .back-btn, .dark-mode .sidebar-toc a {
+            color: #93c5fd;
+        }
+        .theme-btn {
+            background: none;
+            border: 2px solid #d4d4d4;
+            border-radius: 6px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .dark-mode .theme-btn {
+            border-color: #444444;
+            color: #e5e5e5;
+        }
+
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">Jiayu Chen</div>
+        <button class="theme-btn" id="themeToggle">🌙 黑夜模式</button>
         <div class="nav-links">
             <a href="catalog.html">笔记目录</a>
             <a href="views.html">思考日志</a>
@@ -122,5 +172,8 @@
     <footer>
         © 2026 Jiayu Chen
     </footer>
+    
+<script src="dark-theme.js"></script>
+
 </body>
 </html>
