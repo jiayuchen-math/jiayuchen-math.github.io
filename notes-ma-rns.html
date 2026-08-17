@@ -189,6 +189,7 @@
 <body>
     <nav class="navbar">
         <a href="catalog.html" class="back-btn"> ← 返回笔记目录</a>
+        <button class="theme-btn" id="themeToggle">🌙 黑夜模式</button>
     </nav>
 
     <div class="main-wrap">
@@ -212,11 +213,11 @@
             <div class="note-card">
                 <div class="note-meta">
                     <span>更新时间：2026-08-17</span>
-                    <span>分类：数学分析 · 上册</span>
+                    <span>分类：数学分析 基础</span>
                     <span>参考教材：华东师大《数学分析》、Rudin《数学分析原理》</span>
                     <span>本章篇幅：约1.2万字</span>
                 </div>
-                <h1 class="note-title">第三章 实数的完备性</h1>
+                <h1 class="note-title">第零章 实数的完备性</h1>
                 <div class="note-content">
                     <p>本章是数学分析整个理论体系的核心基石。在有理数域上，所有微积分的基本运算都无法保证运算结果的封闭性，比如序列 \( (1+1/n)^n \) 在有理数域中没有极限，这直接导致极限运算、微分、积分的基础定义无法自洽。实数完备性七大定理就是从不同角度刻画了实数域相对于有理数域的本质属性，所有后续的连续函数性质、微分中值定理、黎曼积分的可积性证明，都完全依赖实数完备性。</p>
 
@@ -399,5 +400,6 @@
             });
         });
     </script>
+    <script src="dark-theme.js"></script>
 </body>
 </html>
