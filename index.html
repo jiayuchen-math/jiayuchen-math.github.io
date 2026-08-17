@@ -39,21 +39,26 @@
         }
         .container {
             max-width: 900px;
-            margin: 80px auto;
+            margin: 60px auto;
             padding: 0 25px;
         }
-        .hero-card {
+        /* 自我介绍卡片 */
+        .about-card {
             background: #fff;
-            padding: 50px 30px;
+            padding: 45px 35px;
             border: 2px solid #d4d4d4;
             border-radius: 8px;
-            text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 45px;
         }
-        .hero-card h1 {
-            font-size: 40px;
+        .about-card h1 {
+            font-size: 32px;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 16px;
+        }
+        .about-card p {
+            font-size: 17px;
+            color: #374151;
+            line-height: 1.85;
         }
         .entry-grid {
             display: grid;
@@ -86,8 +91,8 @@
             background-color: #fff;
         }
         @media (max-width: 768px) {
-            .hero-card h1 {
-                font-size: 28px;
+            .about-card h1 {
+                font-size: 26px;
             }
         }
     </style>
@@ -102,8 +107,10 @@
     </nav>
 
     <div class="container">
-        <div class="hero-card">
-            <h1>纯数学笔记库</h1>
+        <!-- 个人自我介绍卡片 -->
+        <div class="about-card">
+            <h1>你好，我是陈嘉宇</h1>
+            <p>香港中文大学（深圳）本科生，纯数学方向学习者，感兴趣的方向是数论和代数几何，会在这里分享数学笔记与个人思考记录。</p>
         </div>
 
         <div class="entry-grid">
