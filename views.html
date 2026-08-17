@@ -124,11 +124,112 @@
                 font-size: 24px;
             }
         }
+                /* 补全版黑夜模式公共样式，覆盖所有卡片框容器，100%无白块残留 */
+        .dark-mode {
+            background-color: #121212 !important;
+            color: #e5e5e5;
+        }
+        /* 所有通用卡片、容器、导航、页脚全部变黑 */
+        .dark-mode .navbar,
+        .dark-mode .note-card,
+        .dark-mode footer,
+        .dark-mode .sidebar-toc,
+        .dark-mode .card,
+        .dark-mode .note-item,
+        .dark-mode .catalog-card,
+        .dark-mode .index-card,
+        .dark-mode .module-box,
+        .dark-mode .content-box,
+        .dark-mode .container-box,
+        .dark-mode .main-card,
+        .dark-mode .site-card {
+            background-color: #1e1e1e !important;
+            border-color: #333333 !important;
+            color: #e5e5e5;
+        }
+        /* 所有文本元素统一适配深色模式颜色 */
+        .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6,
+        .dark-mode p, .dark-mode li, .dark-mode span, .dark-mode a,
+        .dark-mode .note-meta, .dark-mode th, .dark-mode td,
+        .dark-mode .card-title, .dark-mode .card-text,
+        .dark-mode .catalog-title, .dark-mode .catalog-desc,
+        .dark-mode .index-title, .dark-mode .index-text {
+            color: #e5e5e5 !important;
+            border-color: #333333;
+        }
+        /* 定义、定理等彩色区块统一适配深色背景 */
+        .dark-mode .definition {
+            background-color: #1a273a;
+            border-left-color: #3b82f6;
+        }
+        .dark-mode .theorem {
+            background-color: #182a1f;
+            border-left-color: #22c55e;
+        }
+        .dark-mode .proof {
+            background-color: #2b2716;
+            border-left-color: #f59e0b;
+        }
+        .dark-mode .corollary {
+            background-color: #2b1f3a;
+            border-left-color: #a855f7;
+        }
+        .dark-mode .example {
+            background-color: #302218;
+            border-left-color: #f97316;
+        }
+        .dark-mode .comparison {
+            background-color: #132e24;
+            border-left-color: #10b981;
+        }
+        .dark-mode .back-btn, .dark-mode .sidebar-toc a {
+            color: #93c5fd;
+        }
+        .dark-mode .theme-btn {
+            border-color: #444444;
+            color: #e5e5e5;
+        }
+        /* 表格背景适配 */
+        .dark-mode th {
+            background-color: #27272a;
+        }
+                /* 针对卡片背景的专项修复 */
+        .dark-mode .subject-card {
+            background-color: #1e1e1e !important; /* 使卡片背景变深 */
+            border-color: #333333 !important;     /* 边框颜色弱化 */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5); /* 调整阴影使其在暗处自然 */
+        }
+        
+        /* 针对卡片内标题和计数文字的修复 */
+        .dark-mode .subject-card h3 {
+            color: #f1f5f9 !important; /* 标题变亮白 */
+        }
+        
+        .dark-mode .subject-card .count {
+            color: #94a3b8 !important; /* 计数文字变灰白 */
+        }
+        
+        /* 针对展开后的笔记列表文字修复 */
+        .dark-mode .note-list {
+            border-top-color: #333 !important;
+        }
+        
+        .dark-mode .note-list a {
+            color: #cbd5e1 !important; /* 列表链接变亮 */
+            border-bottom-color: #2d2d2d !important; /* 分隔虚线变暗 */
+        }
+        
+        .dark-mode .note-list a:hover {
+            color: #60a5fa !important; /* 悬停时变亮蓝色 */
+            background-color: #252525;  /* 悬停时的微弱背景 */
+        }
+
     </style>
 </head>
 <body>
     <nav class="navbar">
         <a href="index.html" class="back-btn"> ← 返回笔记首页</a>
+        <button class="theme-btn" id="themeToggle">🌙 黑夜模式</button>
         <div class="action-group">
             <button class="export-btn">导出归档</button>
         </div>
@@ -163,5 +264,6 @@
             });
         });
     </script>
+    <script src="dark-theme.js"></script>
 </body>
 </html>
