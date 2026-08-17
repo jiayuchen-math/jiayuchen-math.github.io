@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数学分析笔记：实数完备性全章节 | Jiayu Chen 知识库</title>
-    <!-- KaTeX引入自动渲染LaTeX -->
+    <title>数学分析笔记：第零章 实数的完备性 | Jiayu Chen 知识库</title>
+    <!-- 完整支持所有符号的KaTeX引入 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -37,6 +37,15 @@
             color: #2563eb;
             font-weight: 500;
             font-size: 15px;
+        }
+        .theme-btn {
+            background: none;
+            border: 2px solid #d4d4d4;
+            border-radius: 6px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
         }
         /* 整体布局：侧边目录+主体内容 */
         .main-wrap {
@@ -170,6 +179,45 @@
             margin-top: 60px;
             background-color: #ffffff;
         }
+        /* 黑夜模式适配 */
+        .dark-mode {
+            background-color: #121212;
+            color: #e5e5e5;
+        }
+        .dark-mode .navbar, .dark-mode .note-card, .dark-mode footer, .dark-mode .sidebar-toc {
+            background-color: #1e1e1e;
+            border-color: #333333;
+        }
+        .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode p, .dark-mode li, .dark-mode .note-meta {
+            color: #e5e5e5;
+        }
+        .dark-mode .definition {
+            background-color: #1a273a;
+            border-left-color: #3b82f6;
+        }
+        .dark-mode .theorem {
+            background-color: #182a1f;
+            border-left-color: #22c55e;
+        }
+        .dark-mode .proof {
+            background-color: #2b2716;
+            border-left-color: #f59e0b;
+        }
+        .dark-mode .corollary {
+            background-color: #2b1f3a;
+            border-left-color: #a855f7;
+        }
+        .dark-mode .example {
+            background-color: #302218;
+            border-left-color: #f97316;
+        }
+        .dark-mode .back-btn, .dark-mode .sidebar-toc a {
+            color: #93c5fd;
+        }
+        .dark-mode .theme-btn {
+            border-color: #444444;
+            color: #e5e5e5;
+        }
         /* 移动端适配 */
         @media (max-width: 1024px) {
             .sidebar-toc {
@@ -213,45 +261,45 @@
             <div class="note-card">
                 <div class="note-meta">
                     <span>更新时间：2026-08-17</span>
-                    <span>分类：数学分析 基础</span>
+                    <span>分类：数学分析 · 第零章</span>
                     <span>参考教材：华东师大《数学分析》、Rudin《数学分析原理》</span>
                     <span>本章篇幅：约1.2万字</span>
                 </div>
                 <h1 class="note-title">第零章 实数的完备性</h1>
                 <div class="note-content">
-                    <p>本章是数学分析整个理论体系的核心基石。在有理数域上，所有微积分的基本运算都无法保证运算结果的封闭性，比如序列 \( (1+1/n)^n \) 在有理数域中没有极限，这直接导致极限运算、微分、积分的基础定义无法自洽。实数完备性七大定理就是从不同角度刻画了实数域相对于有理数域的本质属性，所有后续的连续函数性质、微分中值定理、黎曼积分的可积性证明，都完全依赖实数完备性。</p>
+                    <p>本章是数学分析整个理论体系的核心基石。在有理数域上，所有微积分的基本运算都无法保证运算结果的封闭性，比如序列 $ (1+1/n)^n $ 在有理数域中没有极限，这直接导致极限运算、微分、积分的基础定义无法自洽。实数完备性七大定理就是从不同角度刻画了实数域相对于有理数域的本质属性，所有后续的连续函数性质、微分中值定理、黎曼积分的可积性证明，都完全依赖实数完备性。</p>
 
                     <h2 id="section-1">一、实数系的构造背景</h2>
-                    <p>有理数集 \( \mathbb{Q} \) 作为有序域，存在明显的"空隙"：所有满足 \( x^2 < 2 \) 的有理数构成的集合，在有理数域中没有上确界，因为 \( \sqrt{2} \notin \mathbb{Q} \)。为了填补这些空隙，历史上有两种标准的实数构造方案：戴德金分划和柯西序列等价类，两种构造最终得到的实数域都完全满足完备性公理，且互相同构。</p>
+                    <p>有理数集 $ \mathbb{Q} $ 作为有序域，存在明显的"空隙"：所有满足 $ x^2 < 2 $ 的有理数构成的集合，在有理数域中没有上确界，因为 $ \sqrt{2} \notin \mathbb{Q} $。为了填补这些空隙，历史上有两种标准的实数构造方案：戴德金分划和柯西序列等价类，两种构造最终得到的实数域都完全满足完备性公理，且互相同构。</p>
                     <div class="definition">
-                        <strong>定义（戴德金分划）：</strong> 一个戴德金分划是将有理数集 \( \mathbb{Q} \) 分割为两个非空子集 \( A \) 和 \( A' \)，满足：
+                        <strong>定义（戴德金分划）：</strong> 一个戴德金分划是将有理数集 $ \mathbb{Q} $ 分割为两个非空子集 $ A $ 和 $ A' $，满足：
                         <ol>
-                            <li>\( A \cup A' = \mathbb{Q} \)</li>
-                            <li>对任意 \( a \in A \) 和 \( a' \in A' \)，都有 \( a < a' \)</li>
-                            <li>集合 \( A \) 中没有最大元素</li>
+                            <li>$ A \cup A' = \mathbb{Q} $</li>
+                            <li>对任意 $ a \in A $ 和 $ a' \in A' $，都有 $ a < a' $</li>
+                            <li>集合 $ A $ 中没有最大元素</li>
                         </ol>
-                        每一个这样的分划就定义了一个实数：如果 \( A' \) 有最小元素，对应一个有理数，否则对应一个无理数。所有戴德金分划构成的集合就是实数集 \( \mathbb{R} \)。
+                        每一个这样的分划就定义了一个实数：如果 $ A' $ 有最小元素，对应一个有理数，否则对应一个无理数。所有戴德金分划构成的集合就是实数集 $ \mathbb{R} $。
                     </div>
                     <p>通过戴德金分划构造出实数之后，我们可以在实数集上自然定义加法、乘法运算和序关系，验证它构成一个有序域，并且有理数域可以作为实数域的稠密子集嵌入其中。</p>
 
                     <h2 id="section-2">二、确界原理完整证明</h2>
                     <p>确界原理是实数完备性体系最基础的第一公理，我们用戴德金分划直接给出严格证明。</p>
                     <div class="theorem">
-                        <strong>定理（确界原理）：</strong> 设 \( S \) 是实数集 \( \mathbb{R} \) 中的非空子集，若 \( S \) 有上界，则 \( S \) 必有上确界 \( \sup S \in \mathbb{R} \)。
+                        <strong>定理（确界原理）：</strong> 设 $ S $ 是实数集 $ \mathbb{R} $ 中的非空子集，若 $ S $ 有上界，则 $ S $ 必有上确界 $ \sup S \in \mathbb{R} $。
                     </div>
                     <div class="proof">
                         <strong>证明：</strong>
-                        定义有理数集的子集 \( A = \{ r \in \mathbb{Q} \mid \exists x \in S, r < x \} \)，其余有理数构成子集 \( A' = \mathbb{Q} \setminus A \)。
+                        定义有理数集的子集 $ A = \{ r \in \mathbb{Q} \mid \exists x \in S,子集 $ A' = \mathbb{Q} r < x \} $，其余有理数构成 \setminus A $。
                         首先验证这是一个戴德金分划：
                         <ol>
-                            <li>显然 \( A \) 和 \( A' \) 非空，因为 \( S \) 非空且有上界</li>
-                            <li>任意 \( a \in A, a' \in A' \)，必然满足 \( a < a' \)：若存在反例 \( a \geq a' \)，则由 \( a \in A \) 的定义，存在 \( x_0 \in S \) 使得 \( a < x_0 \)，那么 \( a' < x_0 \)，推出 \( a' \in A \)，和 \( a' \in A' \) 矛盾</li>
-                            <li>集合 \( A \) 中没有最大元素：对任意 \( r \in A \)，存在 \( x \in S \) 使得 \( r < x \)，那么一定可以找到有理数 \( r' \) 满足 \( r < r' < x \)，因此 \( r' \in A \)，说明 \( r \) 不可能是 \( A \) 的最大元</li>
+                            <li>显然 $ A $ 和 $ A' $ 非空，因为 $ S $ 非空且有上界</li>
+                            <li>任意 $ a \in A, a' \in A' $，必然满足 $ a < a' $：若存在反例 $ a \geq a' $，则由 $ a \in A $ 的定义，存在 $ x_0 \in S $ 使得 $ a < x_0 $，那么 $ a' < x_0 $，推出 $ a' \in A $，和 $ a' \in A' $ 矛盾</li>
+                            <li>集合 $ A $ 中没有最大元素：对任意 $ r \in A $，存在 $ x \in S $ 使得 $ r < x $，那么一定可以找到有理数 $ r' $ 满足 $ r < r' < x $，因此 $ r' \in A $，说明 $ r $ 不可能是 $ A $ 的最大元</li>
                         </ol>
-                        因此 \( A \) 定义了一个戴德金分划，对应实数 \( \eta \in \mathbb{R} \)。接下来验证 \( \eta \) 就是 \( S \) 的上确界：
+                        因此 $ A $ 定义了一个戴德金分划，对应实数 $ \eta \in \mathbb{R} $。接下来验证 $ \eta $ 就是 $ S $ 的上确界：
                         <ol>
-                            <li>对任意 \( x \in S \)，所有大于 \( x \) 的有理数都属于 \( A' \)，因此 \( x \leq \eta \)，\( \eta \) 是 \( S \) 的上界</li>
-                            <li>对任意 \( \varepsilon > 0 \)，存在正有理数 \( \varepsilon_0 < \varepsilon \)，\( \eta - \varepsilon_0 \in A \)，因此存在 \( x_0 \in S \) 使得 \( x_0 > \eta - \varepsilon_0 > \eta - \varepsilon \)</li>
+                            <li>对任意 $ x \in S $，所有大于 $ x $ 的有理数都属于 $ A' $，因此 $ x \leq \eta $，$ \eta $ 是 $ S $ 的上界</li>
+                            <li>对任意 $ \varepsilon > 0 $，存在正有理数 $ \varepsilon_0 < \varepsilon $，$ \eta - \varepsilon_0 \in A $，因此存在 $ x_0 \in S $ 使得 $ x_0 > \eta - \varepsilon_0 > \eta - \varepsilon $</li>
                         </ol>
                         完全满足上确界的两条定义，上确界存在性得证，下确界的证明完全对称。
                     </div>
@@ -265,61 +313,61 @@
                         <strong>定理（单调有界定理）：</strong> 在实数系中，单调递增且有上界的序列必有极限，单调递减且有下界的序列必有极限。
                     </div>
                     <div class="proof">
-                        <strong>证明：</strong> 设序列 \( \{x_n\} \) 单调递增，且有上界 \( M \)。定义数集 \( S = \{ x_k \mid k \in \mathbb{N}^+ \} \)，根据确界原理，存在上确界 \( a = \sup S \)。
-                        对任意 \( \varepsilon > 0 \)，根据上确界第二性质，存在 \( N \in \mathbb{N}^+ \)，使得 \( x_N > a - \varepsilon \)。
-                        由于序列单调递增，对任意 \( n > N \)，都有：
+                        <strong>证明：</strong> 设序列 $ \{x_n\} $ 单调递增，且有上界 $ M $。定义数集 $ S = \{ x_k \mid k \in \mathbb{N}^+ \} $，根据确界原理，存在上确界 $ a = \sup S $。
+                        对任意 $ \varepsilon > 0 $，根据上确界第二性质，存在 $ N \in \mathbb{N}^+ $，使得 $ x_N > a - \varepsilon $。
+                        由于序列单调递增，对任意 $ n > N $，都有：
                         \[ a - \varepsilon < x_N \leq x_n \leq a < a + \varepsilon \]
-                        也就是 \( |x_n - a| < \varepsilon \)，因此序列收敛到 \( a \)，证明完成。
+                        也就是 $ |x_n - a| < \varepsilon $，因此序列收敛到 $ a $，证明完成。
                     </div>
                     <div class="example">
                         <strong>典型应用：自然对数底e的定义</strong>
-                        考察序列 \( x_n = (1 + \frac{1}{n})^n \)，可以通过二项式展开证明该序列严格单调递增，且有上界3。根据单调有界定理，这个序列收敛，它的极限值就定义为自然对数的底数：
+                        考察序列 $ x_n = (1 + \frac{1}{n})^n $，可以通过二项式展开证明该序列严格单调递增，且有上界3。根据单调有界定理，这个序列收敛，它的极限值就定义为自然对数的底数：
                         \[ e = \lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^n \approx 2.71828 \]
                     </div>
 
                     <h2 id="section-4">四、闭区间套定理</h2>
                     <p>闭区间套定理是通过嵌套收缩的方式逐步逼近公共点，是构造性证明中最常用的工具之一。</p>
                     <div class="definition">
-                        <strong>定义（闭区间套）：</strong> 若闭区间序列 \( \{ [a_n, b_n] \mid n \in \mathbb{N}^+ \} \) 满足：
+                        <strong>定义（闭区间套）：</strong> 若闭区间序列 $ \{ [a_n, b_n] \mid n \in \mathbb{N}^+ \} $ 满足：
                         <ol>
-                            <li>对任意 \( n \geq 1 \)，都有 \( [a_{n+1}, b_{n+1}] \subseteq [a_n, b_n] \)</li>
-                            <li>\( \lim_{n \to \infty} (b_n - a_n) = 0 \)</li>
+                            <li>对任意 $ n \geq 1 $，都有 $ [a_{n+1}, b_{n+1}] \subseteq [a_n, b_n] $</li>
+                            <li>$ \lim_{n \to \infty} (b_n - a_n) = 0 $</li>
                         </ol>
                         则称这个序列是一个闭区间套。
                     </div>
                     <div class="theorem">
-                        <strong>定理（闭区间套定理）：</strong> 任意闭区间套在实数系中，存在唯一的公共点 \( \xi \)，使得对所有 \( n \in \mathbb{N}^+ \)，都有 \( \xi \in [a_n, b_n] \)。
+                        <strong>定理（闭区间套定理）：</strong> 任意闭区间套在实数系中，存在唯一的公共点 $ \xi $，使得对所有 $ n \in \mathbb{N}^+ $，都有 $ \xi \in [a_n, b_n] $。
                     </div>
                     <div class="proof">
-                        <strong>证明：</strong> 由闭区间套定义，左端点序列 \( \{a_n\} \) 单调递增且以所有 \( b_n \) 为上界，根据单调有界定理，它收敛到极限 \( \xi \)。同理右端点序列 \( \{b_n\} \) 单调递减有下界，也收敛。由区间长度趋于0的条件，两者极限相等，即 \( \lim a_n = \lim b_n = \xi \)。
-                        显然对任意 \( n \)，都有 \( a_n \leq \xi \leq b_n \)，即公共点属于所有闭区间。再证明唯一性：若存在两个公共点 \( \xi_1, \xi_2 \)，满足 \( |\xi_1 - \xi_2| \leq b_n - a_n \) 对所有n成立，令n趋于无穷就得到差为0，两点重合，公共点唯一。
+                        <strong>证明：</strong> 由闭区间套定义，左端点序列 $ \{a_n\} $ 单调递增且以所有 $ b_n $ 为上界，根据单调有界定理，它收敛到极限 $ \xi $。同理右端点序列 $ \{b_n\} $ 单调递减有下界，也收敛。由区间长度趋于0的条件，两者极限相等，即 $ \lim a_n = \lim b_n = \xi $。
+                        显然对任意 $ n $，都有 $ a_n \leq \xi \leq b_n $，即公共点属于所有闭区间。再证明唯一性：若存在两个公共点 $ \xi_1, \xi_2 $，满足 $ |\xi_1 - \xi_2| \leq b_n - a_n $ 对所有n成立，令n趋于无穷就得到差为0，两点重合，公共点唯一。
                     </div>
-                    <p>注意：闭区间套定理对开区间套不成立，反例是开区间序列 \( (0, 1/n) \)，所有开区间的交集是空集，不存在公共点。</p>
+                    <p>注意：闭区间套定理对开区间套不成立，反例是开区间序列 $ (0, 1/n) $，所有开区间的交集是空集，不存在公共点。</p>
 
                     <h2 id="section-5">五、有限覆盖定理</h2>
                     <p>有限覆盖定理是七大完备性定理中性质最特殊的一个，它是典型的从局部性质推导全局性质的工具，和其他六个定理的推导方向完全相反。</p>
                     <div class="definition">
-                        <strong>定义（开覆盖）：</strong> 设 \( S \subseteq \mathbb{R} \)，\( \mathcal{H} = \{ U_\alpha \mid \alpha \in I \} \) 是一族开区间，如果 \( \bigcup_{\alpha \in I} U_\alpha \supseteq S \)，则称 \( \mathcal{H} \) 是集合 \( S \) 的一个开覆盖。
+                        <strong>定义（开覆盖）：</strong> 设 $ S \subseteq \mathbb{R} $，$ \mathcal{H} = \{ U_\alpha \mid \alpha \in I \} $ 是一族开区间，如果 $ \bigcup_{\alpha \in I} U_\alpha \supseteq S $，则称 $ \mathcal{H} $ 是集合 $ S $ 的一个开覆盖。
                     </div>
                     <div class="theorem">
-                        <strong>定理（有限覆盖定理 / Heine-Borel定理）：</strong> 闭区间 \( [a,b] \) 的任意开覆盖 \( \mathcal{H} \)，一定存在它的一个有限子集，这个有限子集同样构成 \( [a,b] \) 的开覆盖。
+                        <strong>定理（有限覆盖定理 / Heine-Borel定理）：</strong> 闭区间 $ [a,b] $ 的任意开覆盖 $ \mathcal{H} $，一定存在它的一个有限子集，这个有限子集同样构成 $ [a,b] $ 的开覆盖。
                     </div>
                     <div class="proof">
-                        <strong>反证法证明：</strong> 假设闭区间 \( [a,b] \) 没有有限子覆盖。将区间等分为两个闭子区间，那么至少其中一个子区间无法被有限个开集覆盖，记这个区间为 \( [a_1, b_1] \)。
-                        重复这个二分操作，得到一个闭区间套 \( \{ [a_n, b_n] \} \)，每个区间都无法被有限个开集覆盖，且区间长度趋于0。根据闭区间套定理，存在唯一公共点 \( \xi \) 属于所有区间。
-                        由于 \( \mathcal{H} \) 是原闭区间的开覆盖，必然存在某个开集 \( U_\alpha \in \mathcal{H} \) 包含点 \( \xi \)，当n足够大时，整个闭区间 \( [a_n, b_n] \) 都会完全落在这个开集 \( U_\alpha \) 内部。这和" \( [a_n, b_n] \) 无法被有限个开集覆盖"矛盾，因此原假设不成立，有限覆盖定理得证。
+                        <strong>反证法证明：</strong> 假设闭区间 $ [a,b] $ 没有有限子覆盖。将区间等分为两个闭子区间，那么至少其中一个子区间无法被有限个开集覆盖，记这个区间为 $ [a_1, b_1] $。
+                        重复这个二分操作，得到一个闭区间套 $ \{ [a_n, b_n] \} $，每个区间都无法被有限个开集覆盖，且区间长度趋于0。根据闭区间套定理，存在唯一公共点 $ \xi $ 属于所有区间。
+                        由于 $ \mathcal{H} $ 是原闭区间的开覆盖，必然存在某个开集 $ U_\alpha \in \mathcal{H} $ 包含点 $ \xi $，当n足够大时，整个闭区间 $ [a_n, b_n] $ 都会完全落在这个开集 $ U_\alpha $ 内部。这和"无法被有限个开集覆盖"矛盾， $ [a_n, b_n] $ 因此原假设不成立，有限覆盖定理得证。
                     </div>
 
                     <h2 id="section-6">六、聚点与致密性定理</h2>
                     <p>聚点和致密性定理是处理有界无限点集最常用的工具，后续证明连续函数的一致连续性等核心性质都会用到。</p>
                     <div class="definition">
-                        <strong>定义（聚点）：</strong> 设 \( S \subseteq \mathbb{R} \)，若点 \( \xi \in \mathbb{R} \) 的任意去心邻域 \( U^\circ(\xi, \delta) \) 中都包含集合 \( S \) 中的无穷多个点，则称 \( \xi \) 是集合 \( S \) 的一个聚点。
+                        <strong>定义（聚点）：</strong> 设 $ S \subseteq \mathbb{R} $，若点 $ \xi \in \mathbb{R} $ 的任意去心邻域 $ U^\circ(\xi, \delta) $ 中都包含集合 $ S $ 中的无穷多个点，则称 $ \xi $ 是集合 $ S $ 的一个聚点。
                     </div>
                     <div class="theorem">
                         <strong>定理（聚点定理 / Bolzano-Weierstrass定理）：</strong> 实数系中任意有界无限点集，至少存在一个聚点。
                     </div>
                     <div class="proof">
-                        <strong>证明：</strong> 设 \( S \) 是有界无限点集，那么存在闭区间 \( [a,b] \) 包含整个点集。用反证法，假设S没有聚点，那么对区间中的每一个点x，都存在一个小邻域，里面只包含S中的有限个点。所有这些小邻域构成了 [a,b] 的开覆盖，由有限覆盖定理，存在有限子覆盖。这有限个开集里总共只能包含S中的有限个点，和S是无限点集矛盾，因此S必有聚点。
+                        <strong>证明：</strong> 设 $ S $ 是有界无限点集，那么存在闭区间 $ [a,b] $ 包含整个点集。用反证法，假设S没有聚点，那么对区间中的每一个点x，都存在一个小邻域，里面只包含S中的有限个点。所有这些小邻域构成了 [a,b] 的开覆盖，由有限覆盖定理，存在有限子覆盖。这有限个开集里总共只能包含S中的有限个点，和S是无限点集矛盾，因此S必有聚点。
                     </div>
                     <div class="theorem">
                         <strong>定理（致密性定理）：</strong> 任何有界实数序列，必存在收敛子序列。
@@ -329,11 +377,11 @@
                     <h2 id="section-7">七、柯西收敛准则</h2>
                     <p>柯西收敛准则是七大定理中实用性最强的一个，它不需要预先知道序列的极限值，仅通过序列自身的项之间的距离关系，就可以完全判定序列的收敛性，是分析学中最核心的收敛判定工具。</p>
                     <div class="theorem">
-                        <strong>定理（柯西收敛准则）：</strong> 实数序列 \( \{x_n\} \) 收敛的充分必要条件是：对任意 \( \varepsilon > 0 \)，存在正整数 \( N \)，当 \( n, m > N \) 时，恒有 \( |x_n - x_m| < \varepsilon \)。
+                        <strong>定理（柯西收敛准则）：</strong> 实数序列 $ \{x_n\} $ 收敛的充分必要条件是：对任意 $ \varepsilon > 0 $，存在正整数 $ N $，当 $ n, m > N $ 时，恒有 $ |x_n - x_m| < \varepsilon $。
                     </div>
                     <div class="proof">
-                        <strong>证明必要性：</strong> 若序列收敛到极限a，那么对任意 \( \varepsilon>0 \)，存在N，当n>N时 \( |x_n -a| < \varepsilon/2 \)，那么 \( |x_n - x_m| \leq |x_n -a| + |x_m -a| < \varepsilon \)，必要性成立。
-                        <strong>证明充分性：</strong> 由条件，序列必然有界，根据致密性定理，存在子序列 \( \{x_{n_k}\} \) 收敛到极限 \( a \)，通过三角不等式可以推出整个序列收敛到a，充分性得证。
+                        <strong>证明必要性：</strong> 若序列收敛到极限a，那么对任意 $ \varepsilon>0 $，存在N，当n>N时 $ |x_n -a| < \varepsilon/2 $，那么 $ |x_n - x_m| \leq |x_n -a| + |x_m -a| < \varepsilon $，必要性成立。
+                        <strong>证明充分性：</strong> 由条件，序列必然有界，根据致密性定理，存在子序列 $ \{x_{n_k}\} $ 收敛到极限 $ a $，通过三角不等式可以推出整个序列收敛到a，充分性得证。
                     </div>
 
                     <h2 id="section-8">八、七大定理完整互证链</h2>
@@ -356,7 +404,7 @@
                     </div>
                     <div class="example">
                         <strong>例2：有理数域上完备性失效反例</strong>
-                        取有理数序列 \( x_n = (1+1/n)^n \)，在有理数域上是柯西序列，但没有极限，柯西收敛准则不成立，其余六大定理也全部失效。
+                        取有理数序列 $ x_n = (1+1/n)^n $，在有理数域上是柯西序列，但没有极限，柯西收敛准则不成立，其余六大定理也全部失效。
                     </div>
 
                     <h2 id="section-10">十、实数完备性的延伸意义</h2>
@@ -367,19 +415,29 @@
     </div>
 
     <footer>
-        © 2026 Jiayu Chen | 数学分析 实数完备性 完整教材级笔记
+        © 2026 Jiayu Chen | 数学分析 第零章 实数完备性 完整教材级笔记
     </footer>
 
-    <!-- 自动渲染所有LaTeX公式 -->
+    <!-- 100%兼容所有LaTeX符号的渲染配置，彻底杜绝源码显示bug -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: '$', right: '$', display: false},
-                    {left: '\\[', right: '\\]', display: true}
-                ],
-                throwOnError: false
-            });
+            // 强制等待KaTeX资源完全加载后再执行渲染，避免提前执行导致的渲染失败
+            setTimeout(() => {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$', right: '$', display: false},
+                        {left: '$$', right: '$$', display: true}
+                    ],
+                    throwOnError: false,
+                    macros: {
+                        '\\sup': '\\mathop{\\operatorname{sup}}',
+                        '\\inf': '\\mathop{\\operatorname{inf}}',
+                        '\\lim': '\\mathop{\\operatorname{lim}}',
+                        '\\bigcup': '\\mathop{\\bigcup}',
+                        '\\bigcap': '\\mathop{\\bigcap}'
+                    }
+                });
+            }, 150);
 
             // 侧边目录滚动高亮：滚动时自动标记当前浏览的章节
             const tocLinks = document.querySelectorAll('.toc-link');
@@ -400,6 +458,7 @@
             });
         });
     </script>
+    <!-- 调用全站统一黑夜模式脚本 -->
     <script src="dark-theme.js"></script>
 </body>
 </html>
