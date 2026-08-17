@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>纯数笔记详情 | Jiayu Chen 知识库</title>
-    <!-- 引入KaTeX支持Latex公式渲染，学术笔记必备 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <title>纯数笔记目录 | Jiayu Chen 知识库</title>
     <style>
         * {
             margin: 0;
@@ -15,13 +11,12 @@
             box-sizing: border-box;
             font-family: "Georgia", "PingFang SC", serif;
         }
-        /* 护眼学术背景，长时间看公式不疲劳 */
         body {
             background-color: #f7f7f5;
             color: #1a1a1a;
             line-height: 1.85;
         }
-        /* 顶部导航栏 */
+        /* 顶部导航 */
         .navbar {
             padding: 18px 7%;
             background: #ffffff;
@@ -39,199 +34,250 @@
             font-weight: 500;
             font-size: 15px;
         }
-        .action-group button {
+        .action-group a {
             padding: 7px 14px;
             border: none;
             border-radius: 4px;
             margin-left: 10px;
             cursor: pointer;
             font-size: 14px;
+            text-decoration: none;
+            background-color: #fef3c7;
+            color: #b45309;
         }
-        .edit-btn {
-            background-color: #eff6ff;
-            color: #1a56db;
-        }
-        .export-btn {
-            background-color: #1a56db;
-            color: #fff;
-        }
-        /* 笔记主体容器 */
-        .note-container {
-            max-width: 980px;
-            margin: 36px auto;
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
             padding: 0 20px;
         }
-        .note-card {
-            background: #fff;
-            padding: 50px 70px;
-            border-radius: 6px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
         }
-        /* 元信息区 */
-        .note-meta {
-            display: flex;
-            gap: 22px;
-            color: #6b7280;
-            font-size: 14px;
-            margin-bottom: 26px;
-            padding-bottom: 18px;
-            border-bottom: 1px solid #e5e5e5;
-            flex-wrap: wrap;
-        }
-        .note-title {
-            font-size: 34px;
-            font-weight: 700;
-            margin-bottom: 28px;
+        .page-header h1 {
+            font-size: 36px;
             color: #111827;
+            margin-bottom: 12px;
+        }
+        .page-header p {
+            color: #6b7280;
+            font-size: 16px;
+        }
+        /* 学科目录卡片网格 */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        .subject-card {
+            background: #fff;
+            padding: 28px 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
             border-left: 4px solid #1a56db;
-            padding-left: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
-        /* 内容排版适配纯数学逻辑 */
-        .note-content p {
-            margin-bottom: 20px;
-            font-size: 17px;
-            text-align: justify;
+        .subject-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
         }
-        .note-content h2 {
-            font-size: 23px;
-            margin: 38px 0 16px;
+        .subject-card h3 {
+            font-size: 20px;
             color: #1e293b;
-            border-bottom: 1px solid #e5e7eb;
-            padding-bottom: 6px;
-        }
-        .note-content h3 {
-            font-size: 19px;
-            margin: 28px 0 14px;
-            color: #1a56db;
-        }
-        /* 定理、定义、证明专属高亮块 */
-        .definition, .theorem, .proof {
-            padding: 16px 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-        .definition {
-            background-color: #f0f7ff;
-            border-left: 4px solid #3b82f6;
-        }
-        .theorem {
-            background-color: #f0fdf4;
-            border-left: 4px solid #22c55e;
-        }
-        .proof {
-            background-color: #fefce8;
-            border-left: 4px solid #f59e0b;
-        }
-        .note-content ul, .note-content ol {
-            padding-left: 28px;
-            margin-bottom: 20px;
-            font-size: 16.5px;
-        }
-        .note-content li {
             margin-bottom: 10px;
         }
-        /* 分类标签 */
-        .tag-group {
-            margin-top: 45px;
-            padding-top: 28px;
+        .subject-card .count {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        /* 课程下的笔记子列表，默认折叠 */
+        .note-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
             border-top: 1px solid #e5e7eb;
+            margin-top: 12px;
+            padding-top: 0;
         }
-        .subject-tag {
-            display: inline-block;
-            padding: 7px 14px;
-            background-color: #f3f4f6;
+        .note-list.active {
+            max-height: 600px;
+            padding-top: 12px;
+        }
+        .note-list a {
+            display: block;
+            padding: 8px 0;
             color: #374151;
-            border-radius: 22px;
-            margin-right: 10px;
-            margin-bottom: 8px;
-            font-size: 13px;
+            text-decoration: none;
+            font-size: 15px;
+            border-bottom: 1px dashed #f3f4f6;
         }
-        /* 移动端适配 */
+        .note-list a:hover {
+            color: #1a56db;
+        }
+        /* 给不同学科分配专属侧边色，方便快速区分 */
+        .math-analysis { border-left-color: #3b82f6; }
+        .linear-algebra { border-left-color: #8b5cf6; }
+        .point-topology { border-left-color: #ec4899; }
+        .abstract-algebra { border-left-color: #f59e0b; }
+        .real-analysis { border-left-color: #10b981; }
+        .complex-analysis { border-left-color: #06b6d4; }
+        .diff-geometry { border-left-color: #ef4444; }
+        .commutative-algebra { border-left-color: #84cc16; }
+        .algebraic-number { border-left-color: #f97316; }
+        .algebraic-topology { border-left-color: #a855f7; }
+        .algebraic-geometry { border-left-color: #dc2626; }
         @media (max-width: 768px) {
-            .note-card {
-                padding: 30px 22px;
+            .subject-grid {
+                grid-template-columns: 1fr;
             }
-            .note-title {
-                font-size: 24px;
+            .page-header h1 {
+                font-size: 26px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 顶部导航 -->
     <nav class="navbar">
-        <a href="index.html" class="back-btn"> ← 返回笔记首页目录</a>
+        <a href="index.html" class="back-btn"> ← 返回首页</a>
         <div class="action-group">
-            <button class="edit-btn">编辑笔记</button>
-            <button class="export-btn">导出PDF</button>
+            <a href="views.html">个人思考日志</a>
         </div>
     </nav>
 
-    <!-- 笔记详情主体 -->
-    <div class="note-container">
-        <div class="note-card">
-            <div class="note-meta">
-                <span>更新时间：2026-08-17</span>
-                <span>难度等级：进阶</span>
-                <span>引用文献参考：[1] Hartshorne 《Algebraic Geometry》</span>
+    <div class="container">
+        <div class="page-header">
+            <h1>纯数学笔记总目录</h1>
+            <p>11门核心数学分支笔记统一归档，点击卡片展开对应课程下的所有笔记</p>
+        </div>
+
+        <div class="subject-grid">
+            <!-- 1. 数学分析 -->
+            <div class="subject-card math-analysis">
+                <h3>数学分析</h3>
+                <div class="count">已整理笔记：0 篇</div>
+                <div class="note-list">
+                    <a href="#">实数完备性定理互证</a>
+                    <a href="#">黎曼积分与勒贝格积分的边界</a>
+                    <a href="#">函数项级数一致收敛判定</a>
+                </div>
             </div>
-            <h1 class="note-title">代数几何笔记：仿射概形的基础定义</h1>
-            <div class="note-content">
-                <p>本节整理Hartshorne第二章1.1节内容，从交换环的谱出发系统搭建仿射概形的拓扑与层结构。</p>
 
-                <h2>一、基础定义回顾</h2>
-                <div class="definition">
-                    <strong>定义（素谱）：</strong> 对交换含幺环 \( A \)，定义其素谱 \( \mathrm{Spec}(A) \) 为 \( A \) 的所有素理想构成的集合。对任意子集 \( S \subseteq A \)，定义其对应的零化子集
-                    \[ V(S) = \{ \mathfrak{p} \in \mathrm{Spec}(A) \mid S \subseteq \mathfrak{p} \} \]
-                    所有形如 \( V(S) \) 的子集构成 Zariski 闭集。
+            <!-- 2. 高等代数 -->
+            <div class="subject-card linear-algebra">
+                <h3>高等代数</h3>
+                <div class="count">已整理笔记：0 篇</div>
+                <div class="note-list">
+                    <a href="#">线性变换的Jordan标准型构造</a>
+                    <a href="#">二次型与内积空间的对偶性质</a>
                 </div>
-
-                <div class="theorem">
-                    <strong>定理：</strong> 集合 \( \mathrm{Spec}(A) \) 的 Zariski 闭集满足拓扑空间闭集公理，因此 \( (Spec(A), \tau_{Zar}) \) 构成拓扑空间。
-                </div>
-
-                <h2>二、结构层的构造</h2>
-                <p>对主开集 \( D(f) = \mathrm{Spec}(A) \setminus V(f) \)，定义环 \( \mathcal{O}_{\mathrm{Spec}(A)}(D(f)) = A_f \)，通过 sheafification 得到定义在整个拓扑空间上的交换环层 \( \mathcal{O}_X \)。</p>
-
-                <div class="proof">
-                    <strong>证明概要：</strong> 首先验证主开集基上的预层满足唯一性公理，利用环局部化的泛性质完成粘贴，即可得到良定义的环层。
-                </div>
-
-                <h2>三、衍生概念</h2>
-                <ul>
-                    <li>仿射概形的点对应环的素理想，闭点对应环的极大理想</li>
-                    <li>概形上的拓扑空间通常不是 Hausdorff 的，比如 \( \mathrm{Spec}(\mathbb{Z}) \) 中任意两个非空开集都相交</li>
-                    <li>结构层在点 \( \mathfrak{p} \) 处的茎就是局部环 \( A_{\mathfrak{p}} \)</li>
-                </ul>
             </div>
-            <!-- 覆盖你所有纯数方向的学科标签 -->
-            <div class="tag-group">
-                <span class="subject-tag">数学分析</span>
-                <span class="subject-tag">高等代数</span>
-                <span class="subject-tag">点集拓扑</span>
-                <span class="subject-tag">抽象代数</span>
-                <span class="subject-tag">实分析</span>
-                <span class="subject-tag">复分析</span>
-                <span class="subject-tag">微分几何</span>
-                <span class="subject-tag">交换代数</span>
-                <span class="subject-tag">代数数论</span>
-                <span class="subject-tag">代数拓扑</span>
-                <span class="subject-tag">代数几何</span>
+
+            <!-- 3. 点集拓扑 -->
+            <div class="subject-card point-topology">
+                <h3>点集拓扑</h3>
+                <div class="count">已整理笔记：0 篇</div>
+                <div class="note-list">
+                    <a href="#">拓扑空间的分离公理链</a>
+                    <a href="#">紧性与完备度量空间</a>
+                </div>
+            </div>
+
+            <!-- 4. 抽象代数 -->
+            <div class="subject-card abstract-algebra">
+                <h3>抽象代数</h3>
+                <div class="count">已整理笔记：0 篇</div>
+                <div class="note-list">
+                    <a href="#">群作用与Sylow定理</a>
+                    <a href="#">环的理想与同构定理</a>
+                </div>
+            </div>
+
+            <!-- 5. 实分析 -->
+            <div class="subject-card real-analysis">
+                <h3>实分析</h3>
+                <div class="count">已整理笔记：0 篇</div>
+                <div class="note-list">
+                    <a href="#">Lebesgue测度的构造</a>
+                    <a href="#">Lp空间的完备性证明</a>
+                </div>
+            </div>
+
+            <!-- 6. 复分析 -->
+            <div class="subject-card complex-analysis">
+                <h3>复分析</h3>
+                <div class="count">已整理笔记：0 篇</div>
+                <div class="note-list">
+                    <a href="#">Cauchy积分定理的推广</a>
+                    <a href="#">Riemann映射定理</a>
+                </div>
+            </div>
+
+            <!-- 7. 微分几何 -->
+            <div class="subject-card diff-geometry">
+                <h3>微分几何</h3>
+                <div class="count">已整理笔记：0 篇</div>
+                <div class="note-list">
+                    <a href="#">微分流形的切空间构造</a>
+                    <a href="#">黎曼曲率张量定义</a>
+                </div>
+            </div>
+
+            <!-- 8. 交换代数 -->
+            <div class="subject-card commutative-algebra">
+                <h3>交换代数</h3>
+                <div class="count">已整理笔记：0 篇</div>
+                <div class="note-list">
+                    <a href="#">诺特环的性质链</a>
+                    <a href="#">局部化与准素分解</a>
+                </div>
+            </div>
+
+            <!-- 9. 代数数论 -->
+            <div class="subject-card algebraic-number">
+                <h3>代数数论</h3>
+                <div class="count">已整理笔记：0 篇</div>
+                <div class="note-list">
+                    <a href="#">代数数域的整数环</a>
+                    <a href="#">Dedekind整环的特征</a>
+                </div>
+            </div>
+
+            <!-- 10. 代数拓扑 -->
+            <div class="subject-card algebraic-topology">
+                <h3>代数拓扑</h3>
+                <div class="count">已整理笔记：0 篇</div>
+                <div class="note-list">
+                    <a href="#">基本群与覆叠空间</a>
+                    <a href="#">奇异同调的定义</a>
+                </div>
+            </div>
+
+            <!-- 11. 代数几何 -->
+            <div class="subject-card algebraic-geometry">
+                <h3>代数几何</h3>
+                <div class="count">已整理笔记：1 篇</div>
+                <div class="note-list active">
+                    <a href="pure-math-note.html">仿射概形的基础定义</a>
+                    <a href="#">射影代数簇的Hilbert多项式</a>
+                    <a href="#">层上同调的Čech构造</a>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 自动渲染Latex公式 -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: '$', right: '$', display: false},
-                    {left: '\\[', right: '\\]', display: true}
-                ],
-                throwOnError: false
-            });
-        });
+        // 点击卡片自动展开/收起对应课程的笔记列表
+        document.querySelectorAll('.subject-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const noteList = this.querySelector('.note-list');
+                noteList.classList.toggle('active');
+                // 自动更新笔记计数，后续新增笔记条目会自动统计数量
+                const noteCount = noteList.querySelectorAll('a').length;
+                this.querySelector('.count').innerText = `已整理笔记：${noteCount} 篇`;
+            })
+        })
     </script>
 </body>
 </html>
