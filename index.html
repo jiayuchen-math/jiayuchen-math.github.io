@@ -128,72 +128,108 @@
             color: #e5e5e5 !important;
             border-color: #333333;
         }
-        /* 定义、定理等彩色区块统一适配深色背景 */
-        .dark-mode .definition {
-            background-color: #1a273a;
-            border-left-color: #3b82f6;
-        }
-        .dark-mode .theorem {
-            background-color: #182a1f;
-            border-left-color: #22c55e;
-        }
-        .dark-mode .proof {
-            background-color: #2b2716;
-            border-left-color: #f59e0b;
-        }
-        .dark-mode .corollary {
-            background-color: #2b1f3a;
-            border-left-color: #a855f7;
-        }
-        .dark-mode .example {
-            background-color: #302218;
-            border-left-color: #f97316;
-        }
-        .dark-mode .comparison {
-            background-color: #132e24;
-            border-left-color: #10b981;
-        }
-        .dark-mode .back-btn, .dark-mode .sidebar-toc a {
-            color: #93c5fd;
-        }
-        .dark-mode .theme-btn {
-            border-color: #444444;
-            color: #e5e5e5;
-        }
-        /* 表格背景适配 */
-        .dark-mode th {
-            background-color: #27272a;
-        }
-                /* 针对卡片背景的专项修复 */
-        .dark-mode .subject-card {
-            background-color: #1e1e1e !important; /* 使卡片背景变深 */
-            border-color: #333333 !important;     /* 边框颜色弱化 */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5); /* 调整阴影使其在暗处自然 */
+               /* ============================================================
+           黑夜模式核心适配 (Dark Mode Styles)
+           ============================================================ */
+        
+        /* 1. 基础背景与全局文字 */
+        .dark-mode {
+            background-color: #121212 !important;
+            color: #e2e8f0 !important;
         }
         
-        /* 针对卡片内标题和计数文字的修复 */
+        /* 2. 导航栏适配 */
+        .dark-mode .navbar {
+            background-color: #1a1a1a !important;
+            border-bottom: 1px solid #2d2d2d !important;
+        }
+        
+        .dark-mode .back-btn {
+            color: #60a5fa !important;
+        }
+        
+        /* 3. 页面标题与描述 */
+        .dark-mode .page-header h1 {
+            color: #f8fafc !important;
+        }
+        
+        .dark-mode .page-header p {
+            color: #94a3b8 !important;
+        }
+        
+        /* 4. 重灾区：学科卡片 (subject-card) 适配 */
+        .dark-mode .subject-card {
+            background-color: #1e1e1e !important; /* 统一卡片深色背景 */
+            border-color: #2d2d2d !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+        }
+        
         .dark-mode .subject-card h3 {
-            color: #f1f5f9 !important; /* 标题变亮白 */
+            color: #f1f5f9 !important;
+            border-bottom-color: #2d2d2d !important;
         }
         
         .dark-mode .subject-card .count {
-            color: #94a3b8 !important; /* 计数文字变灰白 */
+            color: #94a3b8 !important;
         }
         
-        /* 针对展开后的笔记列表文字修复 */
+        /* 5. 笔记列表 (note-list) 及链接适配 */
         .dark-mode .note-list {
-            border-top-color: #333 !important;
+            border-top: 1px solid #2d2d2d !important;
+            background-color: #1e1e1e !important;
         }
         
         .dark-mode .note-list a {
-            color: #cbd5e1 !important; /* 列表链接变亮 */
-            border-bottom-color: #2d2d2d !important; /* 分隔虚线变暗 */
+            color: #cbd5e1 !important;
+            border-bottom: 1px dashed #2d2d2d !important;
         }
         
         .dark-mode .note-list a:hover {
-            color: #60a5fa !important; /* 悬停时变亮蓝色 */
-            background-color: #252525;  /* 悬停时的微弱背景 */
+            color: #60a5fa !important;
+            background-color: #252525 !important;
         }
+        
+        /* 6. 特殊区块（定义、定理等，如果页面中有） */
+        .dark-mode .definition { background-color: #1a273a; border-left-color: #3b82f6; }
+        .dark-mode .theorem { background-color: #182a1f; border-left-color: #22c55e; }
+        .dark-mode .proof { background-color: #2b2716; border-left-color: #f59e0b; }
+        
+        /* 7. 交互按钮适配 */
+        .dark-mode .theme-btn {
+            background-color: #2d2d2d !important;
+            color: #f1f5f9 !important;
+            border: 1px solid #444 !important;
+        }
+        
+        .dark-mode .action-group a {
+            background-color: #2d2a1e !important; /* 暗金色背景 */
+            color: #fbbf24 !important; /* 亮金色文字 */
+        }
+        
+        /* 8. 书单页特有样式适配 (如果是booklist.html) */
+        .dark-mode .book-item {
+            border-bottom-color: #2d2d2d !important;
+        }
+        .dark-mode .book-title {
+            color: #60a5fa !important;
+        }
+        .dark-mode .book-author {
+            color: #94a3b8 !important;
+        }
+        .dark-mode .book-comment {
+            color: #888 !important;
+            border-left-color: #333 !important;
+        }
+        
+        /* 强制保留左侧彩色边条（这是你设计的灵魂，在暗色下更好看） */
+        .dark-mode .math-analysis { border-left-color: #3b82f6 !important; }
+        .dark-mode .linear-algebra { border-left-color: #8b5cf6 !important; }
+        .dark-mode .point-topology { border-left-color: #ec4899 !important; }
+        /* ... 其他颜色条会自动保留原生设置，无需全部重写 */
+        
+        /* ============================================================
+           适配结束
+           ============================================================ */
 
     </style>
 </head>
