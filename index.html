@@ -1,10 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>我的个人网站</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈嘉宇 | 个人主页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+        }
+        h1 {
+            color: #2d3748;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #718096;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .intro {
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        .links {
+            display: grid;
+            gap: 15px;
+        }
+        .link-item {
+            display: block;
+            padding: 14px 20px;
+            background: #f7fafc;
+            border-radius: 12px;
+            color: #2d3748;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .link-item:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body>
-    <h1>欢迎来到我的主页</h1>
-    <p>这是我用 GitHub Pages 搭建的免费个人网站</p>
+    <div class="card">
+        <div class="avatar">陈</div>
+        <h1>陈嘉宇</h1>
+        <p class="subtitle">香港中文大学（深圳）本科生</p>
+        <div class="intro">
+            <p>👋 你好，欢迎来到我的个人主页</p>
+            <p style="margin-top: 12px;">这里会分享我的学习笔记和日常思考，我感兴趣的方向是数论和代数几何。</p>
+        </div>
+        <div class="links">
+            <a href="126090038@link.cuhk.edu.cn" class="link-item">📧 联系我</a>
+        </div>
+    </div>
 </body>
 </html>
+
