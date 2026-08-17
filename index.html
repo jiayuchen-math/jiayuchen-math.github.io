@@ -3,94 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>陈嘉宇 | 个人主页</title>
+    <title>Jiayu Chen | 个人主页</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: "Inter", "Georgia", "PingFang SC", sans-serif;
         }
+        /* 深灰学术高级底色，搭配网格粒子动效背景 */
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-color: #0f172a;
+            color: #f1f5f9;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            overflow-x: hidden;
         }
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 60px 40px;
-            max-width: 550px;
+        /* 动态网格背景，不抢主体注意力 */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(30, 64, 175, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(30, 64, 175, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: -2;
+            animation: gridMove 20s linear infinite;
         }
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            margin: 0 auto 25px;
+        @keyframes gridMove {
+            0% { transform: 100% { transform: translate( translate(0, 0); }
+           60px, 60px); }
+        }
+        /* 顶部固定导航 */
+        .navbar {
+            padding: 22px 8%;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 48px;
-            font-weight: bold;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(15, 23, 42, 0.7);
         }
-        h1 {
-            color: #2d3748;
-            font-size: 32px;
-            margin-bottom: 10px;
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #38bdf8, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .subtitle {
-            color: #718096;
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-        .intro {
-            color: #4a5568;
-            line-height: 1.8;
-            margin-bottom: 40px;
-            text-align: left;
-        }
-        .links {
-            display: grid;
-            gap: 15px;
-        }
-        .link-item {
-            display: block;
-            padding: 14px 20px;
-            background: #f7fafc;
-            border-radius: 12px;
-            color: #2d3748;
+        .nav-links a {
+            color: #cbd5e1;
             text-decoration: none;
+            margin-left: 30px;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+        /* 首屏hero区域 */
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+            text-align: center;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin-bottom: 18px;
+            background: linear-gradient(90deg, #38bdf8, #8b5cf6, #ec4899);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientMove 6s ease infinite;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .hero p {
+            font-size: 20px;
+            color: #94a3b8;
+            max-width: 700px;
+            margin-bottom: 50px;
+        }
+        /* 核心入口按钮组 */
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .main-btn {
+            padding: 14px 36px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
-        .link-item:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-2px);
+        .primary-btn {
+            background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+        .secondary-btn {
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            color: #e2e8f0;
+            background-color: transparent;
+        }
+        .secondary-btn:hover {
+            border-color: #38bdf8;
+            color: #38bdf8;
+        }
+        /* 卡片区域 */
+        .cards-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            color: #e2e8f0;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .home-card {
+            background-color: rgba(30, 41, 59, 0.6);
+            padding: 30px 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            text-decoration: none;
+            color: #f1f5f9;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+        .home-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
+        }
+        .home-card h3 {
+            font-size: 21px;
+            margin-bottom: 10px;
+            color: #e2e8f0;
+        }
+        .home-card p {
+            color: #94a3b8;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #64748b;
+            font-size: 14px;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            .nav-links a {
+                margin-left: 15px;
+                font-size: 14px;
+            }
+            .logo {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="avatar">陈</div>
-        <h1>陈嘉宇</h1>
-        <p class="subtitle">香港中文大学（深圳）本科生</p>
-        <div class="intro">
-            <p>👋 你好，欢迎来到我的个人主页</p>
-            <p style="margin-top: 12px;">这里会分享我的学习笔记和日常思考，我感兴趣的方向是数论和代数几何。</p>
+    <!-- 动态网格背景 -->
+    <div class="grid-bg"></div>
+
+    <nav class="navbar">
+        <div class="logo">Jiayu Chen</div>
+        <div class="nav-links">
+            <a href="catalog.html">笔记目录</a>
+            <a href="views.html">思考日志</a>
+            <a href="#">关于</a>
         </div>
-        <div class="links">
-            <a href="notes.html" class="link-item">📧 查看我的笔记</a>
-            <a href="views.html" class="link-item">📧 一些思考</a>
+    </nav>
+
+    <section class="hero">
+        <h1>纯数学知识库</h1>
+        <p>Mathematics Notes & Thoughts for Algebraic Geometry</p>
+        <div class="hero-actions">
+            <a href="catalog.html" class="main-btn primary-btn">进入笔记总目录</a>
+            <a href="views.html" class="main-btn secondary-btn">个人思考日志</a>
         </div>
-    </div>
+    </section>
+
+    <section class="cards-section">
+        <h2 class="section-title">核心学科导航</h2>
+        <div class="card-grid">
+            <a href="catalog.html" class="home-card">
+                <h3>代数几何</h3>
+                <p>概形、上同调、层理论，Hartshorne笔记整理</p>
+            </a>
+            <a href="catalog.html" class="home-card">
+                <h3>代数拓扑</h3>
+                <p>同伦、同调群、谱序列核心思路记录</p>
+            </a>
+            <a href="catalog.html" class="home-card">
+                <h3>交换代数</h3>
+                <p>诺特环、局部化、准素分解体系整理</p>
+            </a>
+            <a href="catalog.html" class="home-card">
+                <h3>实分析</h3>
+                <p>Lebesgue测度、泛函分析基础笔记</p>
+            </a>
+            <a href="catalog.html" class="home-card">
+                <h3>点集拓扑</h3>
+                <p>拓扑空间公理体系、紧性与连通性梳理</p>
+            </a>
+            <a href="catalog.html" class="home-card">
+                <h3>抽象代数</h3>
+                <p>群环模核心定理、Sylow定理与Galois理论</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>2026 Jiayu Chen | 纯数学个人知识库</p>
+    </footer>
 </body>
 </html>
-
