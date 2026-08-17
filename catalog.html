@@ -136,22 +136,40 @@
                 font-size: 26px;
             }
         }
-                /* 黑夜模式公共样式，全站点通用 */
+                /* 补全版黑夜模式公共样式，覆盖所有卡片框容器，100%无白块残留 */
         .dark-mode {
-            background-color: #121212;
+            background-color: #121212 !important;
             color: #e5e5e5;
         }
-        .dark-mode .navbar, .dark-mode .note-card, .dark-mode footer, .dark-mode .sidebar-toc {
-            background-color: #1e1e1e;
-            border-color: #333333;
-        }
-        .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode p, .dark-mode li, .dark-mode .note-meta, .dark-mode th, .dark-mode td {
+        /* 所有通用卡片、容器、导航、页脚全部变黑 */
+        .dark-mode .navbar,
+        .dark-mode .note-card,
+        .dark-mode footer,
+        .dark-mode .sidebar-toc,
+        .dark-mode .card,
+        .dark-mode .note-item,
+        .dark-mode .catalog-card,
+        .dark-mode .index-card,
+        .dark-mode .module-box,
+        .dark-mode .content-box,
+        .dark-mode .container-box,
+        .dark-mode .main-card,
+        .dark-mode .site-card {
+            background-color: #1e1e1e !important;
+            border-color: #333333 !important;
             color: #e5e5e5;
+        }
+        /* 所有文本元素统一适配深色模式颜色 */
+        .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6,
+        .dark-mode p, .dark-mode li, .dark-mode span, .dark-mode a,
+        .dark-mode .note-meta, .dark-mode th, .dark-mode td,
+        .dark-mode .card-title, .dark-mode .card-text,
+        .dark-mode .catalog-title, .dark-mode .catalog-desc,
+        .dark-mode .index-title, .dark-mode .index-text {
+            color: #e5e5e5 !important;
             border-color: #333333;
         }
-        .dark-mode th {
-            background-color: #27272a;
-        }
+        /* 定义、定理等彩色区块统一适配深色背景 */
         .dark-mode .definition {
             background-color: #1a273a;
             border-left-color: #3b82f6;
@@ -182,6 +200,10 @@
         .dark-mode .theme-btn {
             border-color: #444444;
             color: #e5e5e5;
+        }
+        /* 表格背景适配 */
+        .dark-mode th {
+            background-color: #27272a;
         }
 
     </style>
