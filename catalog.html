@@ -141,6 +141,7 @@
 <body>
     <nav class="navbar">
         <a href="index.html" class="back-btn"> ← 返回首页</a>
+        <button class="theme-btn" id="themeToggle">🌙 黑夜模式</button>
         <div class="action-group">
             <a href="views.html">个人思考日志</a>
         </div>
@@ -149,7 +150,7 @@
     <div class="container">
         <div class="page-header">
             <h1>纯数学笔记总目录</h1>
-            <p>11门核心数学分支笔记统一归档，点击卡片展开对应课程下的所有笔记，预计更新的内容会提前展示标题</p>
+            <p>12门核心数学分支笔记统一归档，点击卡片展开对应课程下的所有笔记，预计更新的内容会提前展示标题</p>
         </div>
          <div class="subject-grid">
             <!-- 1. 数学分析 -->
@@ -218,12 +219,23 @@
                 <h3>微分几何</h3>
                 <div class="count">已整理笔记：2 篇</div>
                 <div class="note-list">
-                    <a href="#">微分流形的切空间</a>
+                    <a href="#">微分流形与切空间</a>
                     <a href="#">黎曼曲率张量</a>
                 </div>
             </div>
 
-            <!-- 8. 交换代数 -->
+              <!-- 8. 泛函分析 -->
+            <div class="subject-card functional analysis">
+                <h3>泛函分析</h3>
+                <div class="count">已整理笔记：2 篇</div>
+                <div class="note-list">
+                    <a href="#">赋范空间到巴拿赫空间</a>
+                    <a href="#">算子与谱理论</a>    
+                </div>
+            </div>
+
+
+            <!-- 9. 交换代数 -->
             <div class="subject-card commutative-algebra">
                 <h3>交换代数</h3>
                 <div class="count">已整理笔记：2 篇</div>
@@ -233,7 +245,7 @@
                 </div>
             </div>
 
-            <!-- 9. 代数数论 -->
+            <!-- 10. 代数数论 -->
             <div class="subject-card algebraic-number">
                 <h3>代数数论</h3>
                 <div class="count">已整理笔记：2 篇</div>
@@ -243,7 +255,7 @@
                 </div>
             </div>
 
-            <!-- 10. 代数拓扑 -->
+            <!-- 11. 代数拓扑 -->
             <div class="subject-card algebraic-topology">
                 <h3>代数拓扑</h3>
                 <div class="count">已整理笔记：2 篇</div>
@@ -253,7 +265,7 @@
                 </div>
             </div>
 
-            <!-- 11. 代数几何 -->
+            <!-- 12. 代数几何 -->
             <div class="subject-card algebraic-geometry">
                 <h3>代数几何</h3>
                 <div class="count">已整理笔记：3 篇</div>
@@ -278,5 +290,6 @@
             })
         })
     </script>
+    <script src="dark-theme.js"></script>
 </body>
 </html>
