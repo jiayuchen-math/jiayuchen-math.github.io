@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>数学分析笔记：第零章 实数的完备性 | Jiayu Chen 知识库</title>
-    <!-- 完整支持所有符号的KaTeX引入 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <!-- 引入 KaTeX 核心资源 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.css">
+    <script defer src="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.js"></script>
+    <script defer src="https://cdn.staticfile.org/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -19,6 +19,7 @@
             background-color: #f7f7f5;
             color: #1a1a1a;
             line-height: 1.85;
+            transition: background-color 0.3s;
         }
         /* 顶部导航 */
         .navbar {
@@ -47,7 +48,7 @@
             font-size: 15px;
             font-weight: 500;
         }
-        /* 整体布局：侧边目录+主体内容 */
+        /* 整体布局 */
         .main-wrap {
             display: flex;
             max-width: 1400px;
@@ -55,7 +56,7 @@
             gap: 40px;
             padding: 0 25px;
         }
-        /* 左侧固定悬浮侧边目录 */
+        /* 左侧固定侧边悬浮目录 */
         .sidebar-toc {
             width: 260px;
             flex-shrink: 0;
@@ -85,15 +86,10 @@
         .sidebar-toc a.active {
             color: #2563eb;
             border-left-color: #2563eb;
+            font-weight: 600;
         }
-        .sidebar-toc a:hover {
-            color: #2563eb;
-        }
-        /* 主体笔记内容 */
-        .note-container {
-            flex-grow: 1;
-            max-width: 980px;
-        }
+        /* 主体内容 */
+        .note-container { flex-grow: 1; max-width: 980px; }
         .note-card {
             background: #fff;
             padding: 50px 60px;
@@ -117,121 +113,43 @@
             padding-left: 16px;
             border-left: 4px solid #2563eb;
         }
-        .note-content p {
-            margin-bottom: 20px;
-            font-size: 17px;
-            text-align: justify;
-        }
+        .note-content p { margin-bottom: 20px; font-size: 17px; text-align: justify; }
         .note-content h2 {
-            font-size: 22px;
-            margin: 38px 0 16px;
-            color: #1e293b;
-            padding-bottom: 6px;
-            border-bottom: 1px solid #e5e7eb;
+            font-size: 22px; margin: 38px 0 16px; color: #1e293b;
+            padding-bottom: 6px; border-bottom: 1px solid #e5e7eb;
             scroll-margin-top: 100px;
         }
-        .note-content h3 {
-            font-size: 19px;
-            margin: 28px 0 14px;
-            color: #2563eb;
-            scroll-margin-top: 100px;
-        }
-        /* 定义、定理、证明专属区块 */
-        .definition, .theorem, .proof, .corollary, .example {
-            padding: 16px 20px;
-            margin: 20px 0;
-            border-radius: 6px;
-        }
-        .definition {
-            background-color: #f0f7ff;
-            border-left: 4px solid #3b82f6;
-        }
-        .theorem {
-            background-color: #f0fdf4;
-            border-left: 4px solid #22c55e;
-        }
-        .proof {
-            background-color: #fefce8;
-            border-left: 4px solid #f59e0b;
-        }
-        .corollary {
-            background-color: #fdf4ff;
-            border-left: 4px solid #a855f7;
-        }
-        .example {
-            background-color: #fff7ed;
-            border-left: 4px solid #f97316;
-        }
-        .note-content ul, .note-content ol {
-            padding-left: 28px;
-            margin-bottom: 20px;
-            font-size: 16.5px;
-        }
-        .note-content li {
-            margin-bottom: 10px;
-        }
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: #737373;
-            font-size: 13px;
-            border-top: 2px solid #d4d4d4;
-            margin-top: 60px;
-            background-color: #ffffff;
-        }
-        /* 黑夜模式适配 */
-        .dark-mode {
-            background-color: #121212;
-            color: #e5e5e5;
-        }
+        .note-content h3 { font-size: 19px; margin: 28px 0 14px; color: #2563eb; }
+
+        /* 定义定理区块 */
+        .definition, .theorem, .proof, .corollary, .example { padding: 16px 20px; margin: 20px 0; border-radius: 6px; }
+        .definition { background-color: #f0f7ff; border-left: 4px solid #3b82f6; }
+        .theorem { background-color: #f0fdf4; border-left: 4px solid #22c55e; }
+        .proof { background-color: #fefce8; border-left: 4px solid #f59e0b; }
+        .corollary { background-color: #fdf4ff; border-left: 4px solid #a855f7; }
+        .example { background-color: #fff7ed; border-left: 4px solid #f97316; }
+
+        footer { text-align: center; padding: 30px 20px; color: #737373; font-size: 13px; border-top: 2px solid #d4d4d4; margin-top: 60px; background-color: #ffffff; }
+
+        /* ================= 黑夜模式白块与公式修复 ================= */
+        .dark-mode { background-color: #121212 !important; color: #e5e5e5 !important; }
         .dark-mode .navbar, .dark-mode .note-card, .dark-mode footer, .dark-mode .sidebar-toc {
-            background-color: #1e1e1e;
-            border-color: #333333;
+            background-color: #1e1e1e !important;
+            border-color: #333333 !important;
+            color: #e5e5e5 !important;
         }
-        .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode p, .dark-mode li, .dark-mode .note-meta {
-            color: #e5e5e5;
-        }
-        .dark-mode .definition {
-            background-color: #1a273a;
-            border-left-color: #3b82f6;
-        }
-        .dark-mode .theorem {
-            background-color: #182a1f;
-            border-left-color: #22c55e;
-        }
-        .dark-mode .proof {
-            background-color: #2b2716;
-            border-left-color: #f59e0b;
-        }
-        .dark-mode .corollary {
-            background-color: #2b1f3a;
-            border-left-color: #a855f7;
-        }
-        .dark-mode .example {
-            background-color: #302218;
-            border-left-color: #f97316;
-        }
-        .dark-mode .back-btn, .dark-mode .sidebar-toc a {
-            color: #93c5fd;
-        }
-        .dark-mode .theme-btn {
-            border-color: #444444;
-            color: #e5e5e5;
-        }
-        /* 移动端适配 */
-        @media (max-width: 1024px) {
-            .sidebar-toc {
-                display: none;
-            }
-        }
-        @media (max-width: 768px) {
-            .note-card {
-                padding: 30px 22px;
-            }
-            .note-title {
-                font-size: 24px;
-            }
-        }
+        .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode p, .dark-mode li, .dark-mode .note-meta { color: #e5e5e5 !important; }
+        .dark-mode .definition { background-color: #1a273a; }
+        .dark-mode .theorem { background-color: #182a1f; }
+        .dark-mode .proof { background-color: #2b2716; }
+        .dark-mode .corollary { background-color: #2b1f3a; }
+        .dark-mode .example { background-color: #302218; }
+        .dark-mode .back-btn, .dark-mode .sidebar-toc a { color: #93c5fd !important; }
+        .dark-mode .theme-btn { border-color: #444444; color: #e5e5e5; }
+        .dark-mode .katex { color: #f1f5f9 !important; }
+
+        @media (max-width: 1024px) { .sidebar-toc { display: none; } }
+        @media (max-width: 768px) { .note-card { padding: 30px 22px; } .note-title { font-size: 24px; } }
     </style>
 </head>
 <body>
@@ -241,7 +159,6 @@
     </nav>
 
     <div class="main-wrap">
-        <!-- 左侧固定侧边悬浮目录，点击直接跳转到对应章节 -->
         <aside class="sidebar-toc">
             <h3>本章目录</h3>
             <a href="#section-1" class="toc-link">1. 实数系的构造背景</a>
@@ -256,7 +173,6 @@
             <a href="#section-10" class="toc-link">10. 实数完备性的延伸意义</a>
         </aside>
 
-        <!-- 主体教材级完整内容 -->
         <div class="note-container">
             <div class="note-card">
                 <div class="note-meta">
@@ -283,13 +199,12 @@
                     <p>通过戴德金分划构造出实数之后，我们可以在实数集上自然定义加法、乘法运算和序关系，验证它构成一个有序域，并且有理数域可以作为实数域的稠密子集嵌入其中。</p>
 
                     <h2 id="section-2">二、确界原理完整证明</h2>
-                    <p>确界原理是实数完备性体系最基础的第一公理，我们用戴德金分划直接给出严格证明。</p>
                     <div class="theorem">
                         <strong>定理（确界原理）：</strong> 设 $ S $ 是实数集 $ \mathbb{R} $ 中的非空子集，若 $ S $ 有上界，则 $ S $ 必有上确界 $ \sup S \in \mathbb{R} $。
                     </div>
                     <div class="proof">
                         <strong>证明：</strong>
-                        定义有理数集的子集 $ A = \{ r \in \mathbb{Q} \mid \exists x \in S,子集 $ A' = \mathbb{Q} r < x \} $，其余有理数构成 \setminus A $。
+                        定义有理数集的子集 $ A = \{ r \in \mathbb{Q} \mid \exists x \in S, r < x \} $，其余有理数构成 $ A' = \mathbb{Q} \setminus A $。
                         首先验证这是一个戴德金分划：
                         <ol>
                             <li>显然 $ A $ 和 $ A' $ 非空，因为 $ S $ 非空且有上界</li>
@@ -303,9 +218,6 @@
                         </ol>
                         完全满足上确界的两条定义，上确界存在性得证，下确界的证明完全对称。
                     </div>
-                    <div class="corollary">
-                        <strong>推论：</strong> 实数集的任意非空有界子集的上确界和下确界都是唯一确定的。
-                    </div>
 
                     <h2 id="section-3">三、单调有界定理</h2>
                     <p>作为确界原理的第一个直接推论，单调有界定理给出了序列收敛性的第一个可操作判定方法，不需要预先知道极限值。</p>
@@ -316,13 +228,13 @@
                         <strong>证明：</strong> 设序列 $ \{x_n\} $ 单调递增，且有上界 $ M $。定义数集 $ S = \{ x_k \mid k \in \mathbb{N}^+ \} $，根据确界原理，存在上确界 $ a = \sup S $。
                         对任意 $ \varepsilon > 0 $，根据上确界第二性质，存在 $ N \in \mathbb{N}^+ $，使得 $ x_N > a - \varepsilon $。
                         由于序列单调递增，对任意 $ n > N $，都有：
-                        \[ a - \varepsilon < x_N \leq x_n \leq a < a + \varepsilon \]
+                        $$ a - \varepsilon < x_N \leq x_n \leq a < a + \varepsilon $$
                         也就是 $ |x_n - a| < \varepsilon $，因此序列收敛到 $ a $，证明完成。
                     </div>
                     <div class="example">
                         <strong>典型应用：自然对数底e的定义</strong>
                         考察序列 $ x_n = (1 + \frac{1}{n})^n $，可以通过二项式展开证明该序列严格单调递增，且有上界3。根据单调有界定理，这个序列收敛，它的极限值就定义为自然对数的底数：
-                        \[ e = \lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^n \approx 2.71828 \]
+                        $$ e = \lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^n \approx 2.71828 $$
                     </div>
 
                     <h2 id="section-4">四、闭区间套定理</h2>
@@ -355,13 +267,13 @@
                     <div class="proof">
                         <strong>反证法证明：</strong> 假设闭区间 $ [a,b] $ 没有有限子覆盖。将区间等分为两个闭子区间，那么至少其中一个子区间无法被有限个开集覆盖，记这个区间为 $ [a_1, b_1] $。
                         重复这个二分操作，得到一个闭区间套 $ \{ [a_n, b_n] \} $，每个区间都无法被有限个开集覆盖，且区间长度趋于0。根据闭区间套定理，存在唯一公共点 $ \xi $ 属于所有区间。
-                        由于 $ \mathcal{H} $ 是原闭区间的开覆盖，必然存在某个开集 $ U_\alpha \in \mathcal{H} $ 包含点 $ \xi $，当n足够大时，整个闭区间 $ [a_n, b_n] $ 都会完全落在这个开集 $ U_\alpha $ 内部。这和"无法被有限个开集覆盖"矛盾， $ [a_n, b_n] $ 因此原假设不成立，有限覆盖定理得证。
+                        由于 $ \mathcal{H} $ 是原闭区间的开覆盖，必然存在某个开集 $ U_\alpha \in \mathcal{H} $ 包含点 $ \xi $，当n足够大时，整个闭区间 $ [a_n, b_n] $ 都会完全落在这个开集 $ U_\alpha $ 内部。这和"无法被有限个开集覆盖"矛盾，原假设不成立，有限覆盖定理得证。
                     </div>
 
                     <h2 id="section-6">六、聚点与致密性定理</h2>
                     <p>聚点和致密性定理是处理有界无限点集最常用的工具，后续证明连续函数的一致连续性等核心性质都会用到。</p>
                     <div class="definition">
-                        <strong>定义（聚点）：</strong> 设 $ S \subseteq \mathbb{R} $，若点 $ \xi \in \mathbb{R} $ 的任意去心邻域 $ U^\circ(\xi, \delta) $ 中都包含集合 $ S $ 中的无穷多个点，则称 $ \xi $ 是集合 $ S $ 的一个聚点。
+                        <strong>定义（聚点）：</strong> 设 $ S \subseteq \mathbb{R} $，$ \xi \in \mathbb{R} $ 的任意去心邻域 $ U^\circ(\xi, \delta) $ 中都包含 $ S $ 中的无穷多个点，则称 $ \xi $ 是 $ S $ 的一个聚点。
                     </div>
                     <div class="theorem">
                         <strong>定理（聚点定理 / Bolzano-Weierstrass定理）：</strong> 实数系中任意有界无限点集，至少存在一个聚点。
@@ -375,7 +287,6 @@
                     <p>致密性定理可以直接由聚点定理直接推出：序列的所有点构成有界点集，取它的一个聚点，沿着邻域不断缩小就可以提取出一个收敛到这个聚点的子序列。</p>
 
                     <h2 id="section-7">七、柯西收敛准则</h2>
-                    <p>柯西收敛准则是七大定理中实用性最强的一个，它不需要预先知道序列的极限值，仅通过序列自身的项之间的距离关系，就可以完全判定序列的收敛性，是分析学中最核心的收敛判定工具。</p>
                     <div class="theorem">
                         <strong>定理（柯西收敛准则）：</strong> 实数序列 $ \{x_n\} $ 收敛的充分必要条件是：对任意 $ \varepsilon > 0 $，存在正整数 $ N $，当 $ n, m > N $ 时，恒有 $ |x_n - x_m| < \varepsilon $。
                     </div>
@@ -414,51 +325,46 @@
         </div>
     </div>
 
-    <footer>
-        © 2026 Jiayu Chen | 数学分析 第零章 实数完备性
-    </footer>
+    <footer> © 2026 Jiayu Chen | 数学分析 </footer>
 
-    <!-- 100%兼容所有LaTeX符号的渲染配置，彻底杜绝源码显示bug -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 强制等待KaTeX资源完全加载后再执行渲染，避免提前执行导致的渲染失败
-            setTimeout(() => {
-                renderMathInElement(document.body, {
-                    delimiters: [
-                        {left: '$', right: '$', display: false},
-                        {left: '$$', right: '$$', display: true}
-                    ],
-                    throwOnError: false,
-                    macros: {
-                        '\\sup': '\\mathop{\\operatorname{sup}}',
-                        '\\inf': '\\mathop{\\operatorname{inf}}',
-                        '\\lim': '\\mathop{\\operatorname{lim}}',
-                        '\\bigcup': '\\mathop{\\bigcup}',
-                        '\\bigcap': '\\mathop{\\bigcap}'
-                    }
-                });
-            }, 150);
+        // KaTeX 自动渲染
+        function startKaTeX() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
+        }
+        
+        // 黑夜模式
+        const themeToggle = document.getElementById('themeToggle');
+        const applyTheme = (isDark) => {
+            document.body.classList.toggle('dark-mode', isDark);
+            themeToggle.textContent = isDark ? '☀️ 日间模式' : '🌙 黑夜模式';
+            localStorage.setItem('darkMode', isDark);
+        };
+        themeToggle.addEventListener('click', () => applyTheme(!document.body.classList.contains('dark-mode')));
 
-            // 侧边目录滚动高亮：滚动时自动标记当前浏览的章节
-            const tocLinks = document.querySelectorAll('.toc-link');
-            const sections = document.querySelectorAll('h2[id]');
-            window.addEventListener('scroll', function() {
-                let currentId = '';
-                sections.forEach(section => {
-                    if (window.scrollY >= section.offsetTop - 120) {
-                        currentId = section.getAttribute('id');
-                    }
-                });
-                tocLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentId}`) {
-                        link.classList.add('active');
-                    }
-                });
+        // 侧边目录
+        window.addEventListener('scroll', () => {
+            let currentId = "";
+            document.querySelectorAll('h2[id]').forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 120) currentId = sec.getAttribute('id');
+            });
+            document.querySelectorAll('.toc-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentId}`) link.classList.add('active');
             });
         });
+
+        // 加载初始化
+        window.onload = () => {
+            if (localStorage.getItem('darkMode') === 'true') applyTheme(true);
+            if (typeof renderMathInElement !== 'undefined') startKaTeX();
+        };
     </script>
-    <!-- 调用全站统一黑夜模式脚本 -->
-    <script src="dark-theme.js"></script>
 </body>
 </html>
