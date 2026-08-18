@@ -15,6 +15,7 @@
             background-color: #f5f5f5;
             color: #111111;
             line-height: 1.75;
+            transition: background 0.2s ease, color 0.2s ease;
         }
         .navbar {
             padding: 20px 7%;
@@ -23,10 +24,19 @@
             justify-content: space-between;
             align-items: center;
             background-color: #ffffff;
+            transition: all 0.2s ease;
         }
         .logo {
             font-size: 20px;
             font-weight: 700;
+        }
+        .theme-btn {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 20px;
         }
         .nav-links a {
             color: #333;
@@ -49,6 +59,7 @@
             border: 2px solid #d4d4d4;
             border-radius: 8px;
             margin-bottom: 45px;
+            transition: all 0.2s ease;
         }
         .about-card h1 {
             font-size: 32px;
@@ -59,6 +70,7 @@
             font-size: 17px;
             color: #374151;
             line-height: 1.85;
+            transition: color 0.2s ease;
         }
         .entry-grid {
             display: grid;
@@ -75,7 +87,7 @@
             text-align: center;
             font-size: 20px;
             font-weight: 600;
-            transition: border-color 0.2s ease;
+            transition: all 0.2s ease;
         }
         .entry-card:hover {
             border-color: #2563eb;
@@ -89,6 +101,7 @@
             border-top: 2px solid #d4d4d4;
             margin-top: 80px;
             background-color: #fff;
+            transition: all 0.2s ease;
         }
         @media (max-width: 768px) {
             .about-card h1 {
@@ -96,85 +109,99 @@
             }
         }
         
-               /* ============================================================
-           黑夜模式核心适配 (Dark Mode Styles)
-           ============================================================ */
-        
-        /* 1. 基础背景与全局文字 */
-        .dark-mode {
+        /* 首页专属完整黑夜模式覆盖，没有任何白块遗漏 */
+        body.dark-mode {
             background-color: #121212 !important;
             color: #e2e8f0 !important;
         }
-        
-        /* 2. 导航栏适配 */
-        .dark-mode .navbar {
+        /* 导航栏适配 */
+        body.dark-mode .navbar {
             background-color: #1a1a1a !important;
-            border-bottom: 1px solid #2d2d2d !important;
-        }
-        
-        .dark-mode .back-btn {
-            color: #60a5fa !important;
-        }
-        
-        /* 3. 页面标题与描述 */
-        .dark-mode .page-header h1 {
-            color: #f8fafc !important;
-        }
-        
-        .dark-mode .page-header p {
-            color: #94a3b8 !important;
-        }
-        
-        /* 4. 重灾区：学科卡片 (subject-card) 适配 */
-        .dark-mode .subject-card {
-            background-color: #1e1e1e !important; /* 统一卡片深色背景 */
-            border-color: #2d2d2d !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
-        }
-        
-        .dark-mode .subject-card h3 {
-            color: #f1f5f9 !important;
             border-bottom-color: #2d2d2d !important;
         }
-        
-        .dark-mode .subject-card .count {
-            color: #94a3b8 !important;
+        body.dark-mode .logo {
+            color: #f0f0f0 !important;
         }
-        
-        /* 5. 笔记列表 (note-list) 及链接适配 */
-        .dark-mode .note-list {
-            border-top: 1px solid #2d2d2d !important;
-            background-color: #1e1e1e !important;
-        }
-        
-        .dark-mode .note-list a {
+        body.dark-mode .nav-links a {
             color: #cbd5e1 !important;
-            border-bottom: 1px dashed #2d2d2d !important;
         }
-        
-        .dark-mode .note-list a:hover {
+        body.dark-mode .nav-links a:hover {
             color: #60a5fa !important;
-            background-color: #252525 !important;
         }
-        
-        /* 6. 特殊区块（定义、定理等，如果页面中有） */
-        .dark-mode .definition { background-color: #1a273a; border-left-color: #3b82f6; }
-        .dark-mode .theorem { background-color: #182a1f; border-left-color: #22c55e; }
-        .dark-mode .proof { background-color: #2b2716; border-left-color: #f59e0b; }
-        
-        /* 7. 交互按钮适配 */
-        .dark-mode .theme-btn {
+        body.dark-mode .theme-btn {
             background-color: #2d2d2d !important;
             color: #f1f5f9 !important;
             border: 1px solid #444 !important;
         }
-        
-        .dark-mode .action-group a {
-            background-color: #2d2a1e !important; /* 暗金色背景 */
-            color: #fbbf24 !important; /* 亮金色文字 */
+        /* 自我介绍卡片适配 */
+        body.dark-mode .about-card {
+            background-color: #1e1e1e !important;
+            border-color: #2d2d2d !important;
         }
-        
-        /* 8. 书单页特有样式适配 (如果是booklist.html) */
+        body.dark-mode .about-card h1 {
+            color: #f8fafc !important;
+        }
+        body.dark-mode .about-card p {
+            color: #94a3b8 !important;
+        }
+        /* 入口卡片适配 */
+        body.dark-mode .entry-card {
+            background-color: #1e1e1e !important;
+            border-color: #2d2d2d !important;
+            color: #e2e8f0 !important;
+        }
+        body.dark-mode .entry-card:hover {
+            border-color: #3b82f6 !important;
+            color: #60a5fa !important;
+        }
+        /* 页脚适配 */
+        body.dark-mode footer {
+            background-color: #1a1a1a !important;
+            border-top-color: #2d2d2d !important;
+            color: #737373 !important;
+        }
+
+        /* 保留你原有兼容全站其他页面的暗色规则，全部兼容不冲突 */
+        .dark-mode .back-btn {
+            color: #60a5fa !important;
+        }
+        .dark-mode .page-header h1 {
+            color: #f8fafc !important;
+        }
+        .dark-mode .page-header p {
+            color: #94a3b8 !important;
+        }
+        .dark-mode .subject-card {
+            background-color: #1e1e1e !important;
+            border-color: #2d2d2d !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+        }
+        .dark-mode .subject-card h3 {
+            color: #f1f5f9 !important;
+            border-bottom-color: #2d2d2d !important;
+        }
+        .dark-mode .subject-card .count {
+            color: #94a3b8 !important;
+        }
+        .dark-mode .note-list {
+            border-top: 1px solid #2d2d2d !important;
+            background-color: #1e1e1e !important;
+        }
+        .dark-mode .note-list a {
+            color: #cbd5e1 !important;
+            border-bottom: 1px dashed #2d2d2d !important;
+        }
+        .dark-mode .note-list a:hover {
+            color: #60a5fa !important;
+            background-color: #252525 !important;
+        }
+        .dark-mode .definition { background-color: #1a273a; border-left-color: #3b82f6; }
+        .dark-mode .theorem { background-color: #182a1f; border-left-color: #22c55e; }
+        .dark-mode .proof { background-color: #2b2716; border-left-color: #f59e0b; }
+        .dark-mode .action-group a {
+            background-color: #2d2a1e !important;
+            color: #fbbf24 !important;
+        }
         .dark-mode .book-item {
             border-bottom-color: #2d2d2d !important;
         }
@@ -188,17 +215,9 @@
             color: #888 !important;
             border-left-color: #333 !important;
         }
-        
-        /* 强制保留左侧彩色边条（这是你设计的灵魂，在暗色下更好看） */
         .dark-mode .math-analysis { border-left-color: #3b82f6 !important; }
         .dark-mode .linear-algebra { border-left-color: #8b5cf6 !important; }
         .dark-mode .point-topology { border-left-color: #ec4899 !important; }
-        /* ... 其他颜色条会自动保留原生设置，无需全部重写 */
-        
-        /* ============================================================
-           适配结束
-           ============================================================ */
-
     </style>
 </head>
 <body>
@@ -212,7 +231,6 @@
     </nav>
 
     <div class="container">
-        <!-- 个人自我介绍卡片 -->
         <div class="about-card">
             <h1>你好，我是陈嘉宇</h1>
             <p>香港中文大学（深圳）本科生，纯数学方向学习者，感兴趣的方向是数论和代数几何，会在这里分享数学笔记与个人思考记录。</p>
@@ -228,7 +246,23 @@
         © 2026 Jiayu Chen
     </footer>
     
-<script src="dark-theme.js"></script>
+    <!-- 内联主题JS，删掉旧的dark-theme.js完全避免冲突 -->
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const savedDark = localStorage.getItem('darkMode') === 'true';
+
+        if(savedDark) {
+            document.body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️ 日间模式';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const nowDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', nowDark);
+            themeToggle.textContent = nowDark ? '☀️ 日间模式' : '🌙 黑夜模式';
+        });
+    </script>
 
 </body>
 </html>
