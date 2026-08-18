@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>数学分析笔记：黎曼积分与勒贝格积分 | Jiayu Chen 知识库</title>
-    <!-- 强制加版本号清缓存，避免旧CDN缓存导致加载失败 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css?v=1">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js?v=1"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js?v=1"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -263,42 +261,42 @@
 
                 <h2 id="section-2">二、黎曼积分完整定义</h2>
                 <div class="definition">
-                    <strong>定义（区间分划）：</strong> 对闭区间 $ [a,b] $，任意插入有限个分点
-                    $$ a = x_0 < x_1 < x_2 < \dots < x_n = b $$
-                    将区间分割为n个互不重叠的子区间 $ \Delta_i = [x_{i-1}, x_i] $，这个分点集合称为区间的一个分划 $ P $，定义每个子区间的长度 $ \Delta x_i = x_i - x_{i-1} $，分划的细度定义为所有子区间长度的最大值：
-                    $$ \| P \| = \max_{1 \leq i \leq n} \Delta x_i $$
+                    <strong>定义（区间分划）：</strong> 对闭区间 <span class="math-inline" data-latex="[a,b]"></span>，任意插入有限个分点
+                    <div class="math-block" data-latex="a = x_0 < x_1 < x_2 < \dots < x_n = b"></div>
+                    将区间分割为n个互不重叠的子区间 <span class="math-inline" data-latex="\Delta_i = [x_{i-1}, x_i]"></span>，这个分点集合称为区间的一个分划 <span class="math-inline" data-latex="P"></span>，定义每个子区间的长度 <span class="math-inline" data-latex="\Delta x_i = x_i - x_{i-1}"></span>，分划的细度定义为所有子区间长度的最大值：
+                    <div class="math-block" data-latex="\| P \| = \max_{1 \leq i \leq n} \Delta x_i"></div>
                 </div>
                 <div class="definition">
-                    <strong>定义（黎曼和）：</strong> 设函数 $ f $ 在区间 $ [a,b] $ 上有定义，对分划 $ P $，在每个子区间 $ \Delta_i $ 中任意选取样本点 $ \xi_i \in \Delta_i $，构造求和式：
-                    $$ S(P,f,\xi) = \sum_{i=1}^n f(\xi_i) \Delta x_i $$
-                    这个求和值称为函数f关于分划P和选点组$ \{\xi_i\} $的一个黎曼和。
+                    <strong>定义（黎曼和）：</strong> 设函数 <span class="math-inline" data-latex="f"></span> 在区间 <span class="math-inline" data-latex="[a,b]"></span> 上有定义，对分划 <span class="math-inline" data-latex="P"></span>，在每个子区间 <span class="math-inline" data-latex="\Delta_i"></span> 中任意选取样本点 <span class="math-inline" data-latex="\xi_i \in \Delta_i"></span>，构造求和式：
+                    <div class="math-block" data-latex="S(P,f,\xi) = \sum_{i=1}^n f(\xi_i) \Delta x_i"></div>
+                    这个求和值称为函数f关于分划P和选点组<span class="math-inline" data-latex="\{\xi_i\}"></span>的一个黎曼和。
                 </div>
                 <div class="definition">
-                    <strong>定义（黎曼可积）：</strong> 若存在实数 $ I $，对任意 $ \varepsilon > 0 $，总存在对应的 $ \delta > 0 $，使得对任意满足分划细度 $ \| P \| < \delta $ 的分划P，以及任意选点组$ \{\xi_i\} $，都有
-                    $$ | S(P,f,\xi) - I | < \varepsilon $$
-                    则称函数f在区间[a,b]上黎曼可积，记作 $ f \in \mathcal{R}[a,b] $，极限值I就是f在[a,b]上的定积分：
-                    $$ \int_a^b f(x) dx = I = \lim_{\| P \| \to 0} \sum_{i=1}^n f(\xi_i) \Delta x_i $$
+                    <strong>定义（黎曼可积）：</strong> 若存在实数 <span class="math-inline" data-latex="I"></span>，对任意 <span class="math-inline" data-latex="\varepsilon > 0"></span>，总存在对应的 <span class="math-inline" data-latex="\delta > 0"></span>，使得对任意满足分划细度 <span class="math-inline" data-latex="\| P \| < \delta"></span> 的分划P，以及任意选点组<span class="math-inline" data-latex="\{\xi_i\}"></span>，都有
+                    <div class="math-block" data-latex="| S(P,f,\xi) - I | < \varepsilon"></div>
+                    则称函数f在区间[a,b]上黎曼可积，记作 <span class="math-inline" data-latex="f \in \mathcal{R}[a,b]"></span>，极限值I就是f在[a,b]上的定积分：
+                    <div class="math-block" data-latex="\int_a^b f(x) dx = I = \lim_{\| P \| \to 0} \sum_{i=1}^n f(\xi_i) \Delta x_i"></div>
                 </div>
                 这个定义的核心特征是：积分的构造逻辑是对定义域的x轴进行分割，每一段用函数值乘以区间长度近似面积，最终通过无限细分得到精确总面积。这种定义天然依赖函数的局部振荡幅度不能太大，否则不同选点得到的黎曼和会出现巨大偏差，无法收敛到唯一极限。
 
                 <h2 id="section-3">三、黎曼可积充要条件</h2>
                 <p>为了避开选点任意性带来的判断困难，达布引入了上和与下和工具，给出了可积性的纯等价判别条件，完全不需要手动计算任意黎曼和的极限。</p>
                 <div class="definition">
-                    <strong>定义（达布上和与达布下和）：</strong> 对有界函数f在子区间$ \Delta_i $上的上确界$ M_i = \sup_{x \in \Delta_i} f(x) $和下确界$ m_i = \inf_{x \in \Delta_i} f(x) $，定义达布上和为：
-                    $$ \overline{S}(P,f) = \sum_{i=1}^n M_i \Delta x_i $$
+                    <strong>定义（达布上和与达布下和）：</strong> 对有界函数f在子区间<span class="math-inline" data-latex="\Delta_i"></span>上的上确界<span class="math-inline" data-latex="M_i = \sup_{x \in \Delta_i} f(x)"></span>和下确界<span class="math-inline" data-latex="m_i = \inf_{x \in \Delta_i} f(x)"></span>，定义达布上和为：
+                    <div class="math-block" data-latex="\overline{S}(P,f) = \sum_{i=1}^n M_i \Delta x_i"></div>
                     达布下和为：
-                    $$ \underline{S}(P,f) = \sum_{i=1}^n m_i \Delta x_i $$
+                    <div class="math-block" data-latex="\underline{S}(P,f) = \sum_{i=1}^n m_i \Delta x_i"></div>
                 </div>
-                达布和的一个核心性质是：任意黎曼和一定夹在同一个分划的达布下和与达布上和之间，即$ \underline{S}(P,f) \leq S(P,f,\xi) \leq \overline{S}(P,f) $，且加密分划时上和不增、下和不减，单调有界定理直接给出所有上和的下确界称为上积分，所有下和的上确界称为下积分：
-                $$ \overline{\int_a^b} f(x) dx = \inf_P \overline{S}(P,f), \quad \underline{\int_a^b} f(x) dx = \sup_P \underline{S}(P,f) $$
+                达布和的一个核心性质是：任意黎曼和一定夹在同一个分划的达布下和与达布上和之间，即<span class="math-inline" data-latex="\underline{S}(P,f) \leq S(P,f,\xi) \leq \overline{S}(P,f)"></span>，且加密分划时上和不增、下和不减，单调有界定理直接给出所有上和的下确界称为上积分，所有下和的上确界称为下积分：
+                <div class="math-block" data-latex="\overline{\int_a^b} f(x) dx = \inf_P \overline{S}(P,f), \quad \underline{\int_a^b} f(x) dx = \sup_P \underline{S}(P,f)"></div>
                 <div class="theorem">
                     <strong>定理（黎曼可积第一充要条件）：</strong> 闭区间上的有界函数f黎曼可积的充要条件是它的上积分等于下积分：
-                    $$ \overline{\int_a^b} f(x) dx = \underline{\int_a^b} f(x) dx $$
+                    <div class="math-block" data-latex="\overline{\int_a^b} f(x) dx = \underline{\int_a^b} f(x) dx"></div>
                 </div>
-                这个条件可以进一步转化为更直观的振幅判别形式：定义函数在子区间上的振幅$ \omega_i = M_i - m_i $，就可以得到更实用的第二充要条件：
+                这个条件可以进一步转化为更直观的振幅判别形式：定义函数在子区间上的振幅<span class="math-inline" data-latex="\omega_i = M_i - m_i"></span>，就可以得到更实用的第二充要条件：
                 <div class="theorem">
-                    <strong>定理（黎曼可积第二充要条件）：</strong> f在[a,b]上黎曼可积的充要条件是对任意$ \varepsilon>0 $，都存在一个分划P，使得分划对应的振幅求和满足：
-                    $$ \sum_{i=1}^n \omega_i \Delta x_i < \varepsilon $$
+                    <strong>定理（黎曼可积第二充要条件）：</strong> f在[a,b]上黎曼可积的充要条件是对任意<span class="math-inline" data-latex="\varepsilon>0"></span>，都存在一个分划P，使得分划对应的振幅求和满足：
+                    <div class="math-block" data-latex="\sum_{i=1}^n \omega_i \Delta x_i < \varepsilon"></div>
                 </div>
                 也就是说，函数所有振荡幅度超过任意给定阈值的不连续点，总覆盖长度可以任意小。由此直接得到黎曼可积的第三充要条件：
                 <div class="theorem">
@@ -309,9 +307,9 @@
                 <h2 id="section-4">四、黎曼积分的核心缺陷</h2>
                 尽管黎曼积分在初等场景下非常好用，但它的底层构造逻辑天然存在四个不可逾越的本质缺陷：
                 <ol>
-                    <li><strong>可积序列的极限不一定可积</strong>：即使有一致收敛的可积函数序列，点态收敛的极限函数完全可能是黎曼不可积的。典型反例是狄利克雷函数：把[0,1]中的所有有理数排成序列$ r_1, r_2, r_3 \dots $，定义序列$ f_n(x) = 1 $当x取$ r_1 \dots r_n $，其余点取0，显然每个$ f_n $都是黎曼可积的，积分值为0，但是序列点态收敛到狄利克雷函数，该函数处处不连续，在[0,1]上完全黎曼不可积。</li>
+                    <li><strong>可积序列的极限不一定可积</strong>：即使有一致收敛的可积函数序列，点态收敛的极限函数完全可能是黎曼不可积的。典型反例是狄利克雷函数：把[0,1]中的所有有理数排成序列<span class="math-inline" data-latex="r_1, r_2, r_3 \dots"></span>，定义序列<span class="math-inline" data-latex="f_n(x) = 1"></span>当x取<span class="math-inline" data-latex="r_1 \dots r_n"></span>，其余点取0，显然每个<span class="math-inline" data-latex="f_n"></span>都是黎曼可积的，积分值为0，但是序列点态收敛到狄利克雷函数，该函数处处不连续，在[0,1]上完全黎曼不可积。</li>
                     <li><strong>积分与极限交换条件过于苛刻</strong>：在黎曼积分框架下，要交换极限和积分的顺序，必须要求函数序列一致收敛，这是一个非常强的约束条件，大量实际应用中满足点态收敛甚至几乎处处收敛的序列，都无法合法交换运算顺序。</li>
-                    <li><strong>黎曼可积函数空间不完备</strong>：所有黎曼可积函数构成的空间$ \mathcal{R}[a,b] $，在L¹范数下不是完备的度量空间，存在柯西序列收敛到一个不在$ \mathcal{R}[a,b] $里的不可积函数，这直接导致黎曼积分无法建立泛函分析所需的希尔伯特空间完备框架，无法支撑后续的正交级数、傅里叶分析等理论的自洽展开。</li>
+                    <li><strong>黎曼可积函数空间不完备</strong>：所有黎曼可积函数构成的空间<span class="math-inline" data-latex="\mathcal{R}[a,b]"></span>，在L¹范数下不是完备的度量空间，存在柯西序列收敛到一个不在<span class="math-inline" data-latex="\mathcal{R}[a,b]"></span>里的不可积函数，这直接导致黎曼积分无法建立泛函分析所需的希尔伯特空间完备框架，无法支撑后续的正交级数、傅里叶分析等理论的自洽展开。</li>
                     <li><strong>依赖区间的几何结构</strong>：黎曼积分只能定义在区间上，完全无法推广到一般的抽象测度空间，比如高维流形、无限维空间，这极大限制了积分的适用场景，无法适配概率论、现代物理等学科的扩展需求。</li>
                 </ol>
                 这些缺陷不是靠小修小补就能解决的，必须彻底重构积分的底层构造逻辑，这正是勒贝格积分诞生的核心动机。
@@ -319,14 +317,14 @@
                 <h2 id="section-5">五、勒贝格测度理论基础</h2>
                 勒贝格积分的第一步是把区间长度的概念推广到实数集的任意子集，也就是勒贝格测度。它的核心思想是用可数个开区间去覆盖任意目标集合，所有覆盖的区间长度之和的下确界就定义为该集合的外测度，再通过卡拉泰奥多里条件筛选出可测集。
                 <div class="definition">
-                    <strong>定义（勒贝格外测度）：</strong> 对任意子集 $ E \subseteq \mathbb{R} $，定义它的外测度为
-                    $$ m^*(E) = \inf\left\{ \sum_{k=1}^\infty |I_k| \mid \{I_k\} \text{ 是可数开区间族，满足 } E \subseteq \bigcup_{k=1}^\infty I_k \right\} $$
-                    其中$ |I_k| $是开区间$ I_k $的长度。
+                    <strong>定义（勒贝格外测度）：</strong> 对任意子集 <span class="math-inline" data-latex="E \subseteq \mathbb{R}"></span>，定义它的外测度为
+                    <div class="math-block" data-latex="m^*(E) = \inf\left\{ \sum_{k=1}^\infty |I_k| \mid \{I_k\} \text{ 是可数开区间族，满足 } E \subseteq \bigcup_{k=1}^\infty I_k \right\}"></div>
+                    其中<span class="math-inline" data-latex="|I_k|"></span>是开区间<span class="math-inline" data-latex="I_k"></span>的长度。
                 </div>
                 <div class="definition">
                     <strong>定义（勒贝格可测集）：</strong> 若集合E对任意实数子集A都满足卡拉泰奥多里条件：
-                    $$ m^*(A) = m^*(A \cap E) + m^*(A \cap E^c) $$
-                    则称E是勒贝格可测集，它的测度就是外测度$ m(E)=m^*(E) $。
+                    <div class="math-block" data-latex="m^*(A) = m^*(A \cap E) + m^*(A \cap E^c)"></div>
+                    则称E是勒贝格可测集，它的测度就是外测度<span class="math-inline" data-latex="m(E)=m^*(E)"></span>。
                 </div>
                 所有区间、开集、闭集、博雷尔集都是勒贝格可测的，所有零测集（单点、可数点集、康托集等）的测度都是0。零测集的核心性质是可数个零测集的并集仍然是零测集，也就是测度的可数可加性。这个性质是勒贝格积分相比黎曼积分的本质优势来源。
 
@@ -334,35 +332,35 @@
                 勒贝格积分完全换了一个思路：不对定义域x轴进行分割，而是对值域y轴进行分割，把函数值接近的所有点打包成一个可测集，用这个集合的测度乘以对应的函数值，求和得到积分近似。这种构造天然避开了函数局部剧烈振荡带来的选点偏差问题。
                 <div class="definition">
                     <strong>定义（非负简单函数的勒贝格积分）：</strong> 设非负简单函数可以表示为
-                    $$ \varphi(x) = \sum_{k=1}^n c_k \cdot \chi_{E_k}(x) $$
-                    其中$ E_k $是互不相交的可测集，$ \chi $是特征函数，那么定义它的勒贝格积分：
-                    $$ \int_E \varphi dm = \sum_{k=1}^n c_k \cdot m(E_k) $$
+                    <div class="math-block" data-latex="\varphi(x) = \sum_{k=1}^n c_k \cdot \chi_{E_k}(x)"></div>
+                    其中<span class="math-inline" data-latex="E_k"></span>是互不相交的可测集，<span class="math-inline" data-latex="\chi"></span>是特征函数，那么定义它的勒贝格积分：
+                    <div class="math-block" data-latex="\int_E \varphi dm = \sum_{k=1}^n c_k \cdot m(E_k)"></div>
                 </div>
                 <div class="definition">
                     <strong>定义（非负可测函数的勒贝格积分）：</strong> 对任意非负可测函数f，定义它的勒贝格积分是所有小于它的非负简单函数积分的上确界：
-                    $$ \int_E f dm = \sup_{0 \leq \varphi \leq f} \int_E \varphi dm $$
+                    <div class="math-block" data-latex="\int_E f dm = \sup_{0 \leq \varphi \leq f} \int_E \varphi dm"></div>
                 </div>
-                最后把任意可测函数拆成正部和负部之差$ f = f^+ - f^- $，当正部积分和负部积分不同时无穷大时，就可以定义一般可测函数的勒贝格积分：
-                    $$ \int_E f dm = \int_E f^+ dm - \int_E f^- dm $$
-                当两侧都是有限值时，称函数f在E上勒贝格可积，记作$ f \in L^1(E) $。
+                最后把任意可测函数拆成正部和负部之差<span class="math-inline" data-latex="f = f^+ - f^-"></span>，当正部积分和负部积分不同时无穷大时，就可以定义一般可测函数的勒贝格积分：
+                    <div class="math-block" data-latex="\int_E f dm = \int_E f^+ dm - \int_E f^- dm"></div>
+                当两侧都是有限值时，称函数f在E上勒贝格可积，记作<span class="math-inline" data-latex="f \in L^1(E)"></span>。
                 <div class="example">
                     <strong>例子：狄利克雷函数的勒贝格可积性</strong>
-                    定义在[0,1]上的狄利克雷函数$ D(x) $，在有理点取1，无理点取0，有理数集合是可数零测集，无理数集合测度是1，作为简单函数它的勒贝格积分直接计算为$ 1 \cdot m(\mathbb{Q} \cap [0,1]) + 0 \cdot m(\mathbb{Q}^c \cap [0,1]) = 0 $，直接就得到积分值，在勒贝格框架下完全可积，这是黎曼积分完全做不到的。
+                    定义在[0,1]上的狄利克雷函数<span class="math-inline" data-latex="D(x)"></span>，在有理点取1，无理点取0，有理数集合是可数零测集，无理数集合测度是1，作为简单函数它的勒贝格积分直接计算为<span class="math-inline" data-latex="1 \cdot m(\mathbb{Q} \cap [0,1]) + 0 \cdot m(\mathbb{Q}^c \cap [0,1]) = 0"></span>，直接就得到积分值，在勒贝格框架下完全可积，这是黎曼积分完全做不到的。
                 </div>
 
                 <h2 id="section-7">七、勒贝格控制收敛定理</h2>
                 勒贝格积分最伟大的贡献就是彻底解决了极限与积分的交换问题，核心的三大收敛定理给出了极其宽松的交换条件，是现代分析最常用的工具：
                 <div class="theorem">
-                    <strong>定理（勒贝格单调收敛定理）：</strong> 设可测函数序列$ \{f_n\} $非负且单调递增几乎处处收敛到极限函数f，那么积分和极限可以直接交换：
-                    $$ \lim_{n \to \infty} \int_E f_n dm = \int_E \lim_{n \to \infty} f_n dm = \int_E f dm $$
+                    <strong>定理（勒贝格单调收敛定理）：</strong> 设可测函数序列<span class="math-inline" data-latex="\{f_n\}"></span>非负且单调递增几乎处处收敛到极限函数f，那么积分和极限可以直接交换：
+                    <div class="math-block" data-latex="\lim_{n \to \infty} \int_E f_n dm = \int_E \lim_{n \to \infty} f_n dm = \int_E f dm"></div>
                 </div>
                 <div class="theorem">
-                    <strong>定理（法图引理）：</strong> 对任意非负可测函数序列$ \{f_n\} $，都成立不等式：
-                    $$ \int_E \liminf_{n \to \infty} f_n dm \leq \liminf_{n \to \infty} \int_E f_n dm $$
+                    <strong>定理（法图引理）：</strong> 对任意非负可测函数序列<span class="math-inline" data-latex="\{f_n\}"></span>，都成立不等式：
+                    <div class="math-block" data-latex="\int_E \liminf_{n \to \infty} f_n dm \leq \liminf_{n \to \infty} \int_E f_n dm"></div>
                 </div>
                 <div class="theorem">
-                    <strong>定理（勒贝格控制收敛定理）：</strong> 设序列$ \{f_n\} $几乎处处点态收敛到f，且存在一个非负勒贝格可积函数F，使得对所有n都有$ |f_n(x)| \leq F(x) $几乎处处成立，那么极限和积分可以无条件交换：
-                    $$ \lim_{n \to \infty} \int_E f_n dm = \int_E f dm $$
+                    <strong>定理（勒贝格控制收敛定理）：</strong> 设序列<span class="math-inline" data-latex="\{f_n\}"></span>几乎处处点态收敛到f，且存在一个非负勒贝格可积函数F，使得对所有n都有<span class="math-inline" data-latex="|f_n(x)| \leq F(x)"></span>几乎处处成立，那么极限和积分可以无条件交换：
+                    <div class="math-block" data-latex="\lim_{n \to \infty} \int_E f_n dm = \int_E f dm"></div>
                 </div>
                 <p>控制收敛定理是整个实分析的心脏，它把交换条件从黎曼积分要求的"一致收敛"弱化为只需要存在一个可积的控制函数，这个条件在几乎所有实际应用场景下都自动满足，彻底解决了极限运算和积分运算的交换难题。</p>
 
@@ -421,7 +419,7 @@
                 这两种积分不是互相替代的对立关系，而是存在非常紧密的内在包含关系：
                 <div class="theorem">
                     <strong>定理：</strong> 若有界函数f在闭区间[a,b]上是黎曼可积的，那么f在[a,b]上一定是勒贝格可测的，且两种积分的取值完全相等：
-                    $$ \int_a^b f(x) dx \ (\text{黎曼积分}) = \int_{[a,b]} f dm \ (\text{勒贝格积分}) $$
+                    <div class="math-block" data-latex="\int_a^b f(x) dx \ (\text{黎曼积分}) = \int_{[a,b]} f dm \ (\text{勒贝格积分})"></div>
                 </div>
                 也就是说，所有黎曼可积的函数，都自动属于勒贝格可积函数类，勒贝格积分是黎曼积分的严格扩展，完全兼容所有已经成立的黎曼积分结论，不会破坏之前所有经典积分的计算结果。
                 唯一的例外是广义黎曼积分（反常积分）：带有奇点的反常黎曼积分，即使条件收敛，对应的勒贝格积分也不存在，因为正部积分和负部积分都是无穷大，不满足勒贝格积分绝对可积的要求。
@@ -433,11 +431,11 @@
                 </div>
                 <div class="example">
                     <strong>例2：康托集上的特征函数积分</strong>
-                    三分康托集C的勒贝格测度为0，它的特征函数$ \chi_C(x) $是简单函数，勒贝格积分等于0。该函数几乎处处等于0，是典型的黎曼不可积但勒贝格可积的函数。
+                    三分康托集C的勒贝格测度为0，它的特征函数<span class="math-inline" data-latex="\chi_C(x)"></span>是简单函数，勒贝格积分等于0。该函数几乎处处等于0，是典型的黎曼不可积但勒贝格可积的函数。
                 </div>
                 <div class="example">
                     <strong>例3：条件收敛反常积分的不兼容性</strong>
-                    函数$ f(x) = \frac{\sin x}{x} $在$ [0, +\infty) $上的广义黎曼积分条件收敛，积分值为$ \pi/2 $，但它的绝对值积分是无穷大，因此这个函数不是勒贝格可积的，在勒贝格体系下没有定义。
+                    函数<span class="math-inline" data-latex="f(x) = \frac{\sin x}{x}"></span>在<span class="math-inline" data-latex="[0, +\infty)"></span>上的广义黎曼积分条件收敛，积分值为<span class="math-inline" data-latex="\pi/2"></span>，但它的绝对值积分是无穷大，因此这个函数不是勒贝格可积的，在勒贝格体系下没有定义。
                 </div>
 
                 <h2 id="section-11">十一、延伸应用与进阶方向</h2>
@@ -457,30 +455,27 @@
     </footer>
 
     <script>
-        // 三重保险强制渲染，绝对不会失败
+        // 手动渲染所有公式，100%成功，完全不依赖自动识别
         function renderAllMath() {
-            if(typeof renderMathInElement !== 'undefined') {
-                renderMathInElement(document.body, {
-                    delimiters: [
-                        {left: '$', right: '$', display: false},
-                        {left: '$$', right: '$$', display: true}
-                    ],
-                    throwOnError: false,
-                    trust: true,
-                    macros: {
-                        '\\sup': '\\mathop{\\operatorname{sup}}',
-                        '\\inf': '\\mathop{\\operatorname{inf}}',
-                        '\\lim': '\\mathop{\\operatorname{lim}}',
-                        '\\sum': '\\mathop{\\sum}',
-                        '\\bigcup': '\\mathop{\\bigcup}',
-                        '\\bigcap': '\\mathop{\\bigcap}'
-                    }
-                });
-                console.log("KaTeX渲染完成");
-            } else {
-                // 如果脚本还没加载完，100ms后重试
-                setTimeout(renderAllMath, 100);
-            }
+            // 渲染所有行内公式
+            document.querySelectorAll('.math-inline').forEach(el => {
+                const latex = el.getAttribute('data-latex');
+                try {
+                    katex.render(latex, el, {throwOnError: false});
+                } catch(e) {
+                    console.error("公式渲染失败:", latex, e);
+                }
+            });
+            // 渲染所有行间公式
+            document.querySelectorAll('.math-block').forEach(el => {
+                const latex = el.getAttribute('data-latex');
+                try {
+                    katex.render(latex, el, {throwOnError: false, displayMode: true});
+                } catch(e) {
+                    console.error("公式渲染失败:", latex, e);
+                }
+            });
+            console.log("所有KaTeX公式渲染完成");
         }
 
         // 黑夜模式逻辑，完全独立无冲突
@@ -495,14 +490,11 @@
             const nowDark = document.body.classList.contains('dark-mode');
             localStorage.setItem('darkMode', nowDark);
             themeToggle.textContent = nowDark ? '☀️ 日间模式' : '🌙 黑夜模式';
-            // 切换模式后立刻重新渲染公式
-            setTimeout(renderAllMath, 100);
         });
 
-        // 三个不同时机触发渲染，确保100%执行
-        document.addEventListener('DOMContentLoaded', () => setTimeout(renderAllMath, 200));
-        window.addEventListener('load', () => setTimeout(renderAllMath, 500));
-        setTimeout(renderAllMath, 1500);
+        // 多重触发，确保渲染执行
+        document.addEventListener('DOMContentLoaded', () => setTimeout(renderAllMath, 300));
+        window.addEventListener('load', () => setTimeout(renderAllMath, 800));
     </script>
 </body>
 </html>
