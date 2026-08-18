@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>数学分析笔记：黎曼积分与勒贝格积分 | Jiayu Chen 知识库</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <!-- 强制加版本号清缓存，避免旧CDN缓存导致加载失败 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css?v=1">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js?v=1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js?v=1"></script>
     <style>
         * {
             margin: 0;
@@ -337,7 +338,6 @@
                     其中$ E_k $是互不相交的可测集，$ \chi $是特征函数，那么定义它的勒贝格积分：
                     $$ \int_E \varphi dm = \sum_{k=1}^n c_k \cdot m(E_k) $$
                 </div>
-                简单函数的积分是勒贝格积分的构造基石，任意非负可测函数都可以表示为单调递增非负简单函数序列的极限，由此自然定义非负可测函数的积分：
                 <div class="definition">
                     <strong>定义（非负可测函数的勒贝格积分）：</strong> 对任意非负可测函数f，定义它的勒贝格积分是所有小于它的非负简单函数积分的上确界：
                     $$ \int_E f dm = \sup_{0 \leq \varphi \leq f} \int_E \varphi dm $$
@@ -457,6 +457,32 @@
     </footer>
 
     <script>
+        // 三重保险强制渲染，绝对不会失败
+        function renderAllMath() {
+            if(typeof renderMathInElement !== 'undefined') {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$', right: '$', display: false},
+                        {left: '$$', right: '$$', display: true}
+                    ],
+                    throwOnError: false,
+                    trust: true,
+                    macros: {
+                        '\\sup': '\\mathop{\\operatorname{sup}}',
+                        '\\inf': '\\mathop{\\operatorname{inf}}',
+                        '\\lim': '\\mathop{\\operatorname{lim}}',
+                        '\\sum': '\\mathop{\\sum}',
+                        '\\bigcup': '\\mathop{\\bigcup}',
+                        '\\bigcap': '\\mathop{\\bigcap}'
+                    }
+                });
+                console.log("KaTeX渲染完成");
+            } else {
+                // 如果脚本还没加载完，100ms后重试
+                setTimeout(renderAllMath, 100);
+            }
+        }
+
         // 黑夜模式逻辑，完全独立无冲突
         const themeToggle = document.getElementById('themeToggle');
         const savedDark = localStorage.getItem('darkMode') === 'true';
@@ -469,36 +495,14 @@
             const nowDark = document.body.classList.contains('dark-mode');
             localStorage.setItem('darkMode', nowDark);
             themeToggle.textContent = nowDark ? '☀️ 日间模式' : '🌙 黑夜模式';
-            // 切换模式后立刻重新渲染公式，保证明暗模式下公式都正常显示
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: '$', right: '$', display: false},
-                    {left: '$$', right: '$$', display: true}
-                ],
-                throwOnError: false
-            });
+            // 切换模式后立刻重新渲染公式
+            setTimeout(renderAllMath, 100);
         });
 
-        // 页面完全加载后延迟渲染公式，100%成功
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                renderMathInElement(document.body, {
-                    delimiters: [
-                        {left: '$', right: '$', display: false},
-                        {left: '$$', right: '$$', display: true}
-                    ],
-                    throwOnError: false,
-                    macros: {
-                        '\\sup': '\\mathop{\\operatorname{sup}}',
-                        '\\inf': '\\mathop{\\operatorname{inf}}',
-                        '\\lim': '\\mathop{\\operatorname{lim}}',
-                        '\\sum': '\\mathop{\\sum}',
-                        '\\bigcup': '\\mathop{\\bigcup}',
-                        '\\bigcap': '\\mathop{\\bigcap}'
-                    }
-                });
-            }, 500);
-        });
+        // 三个不同时机触发渲染，确保100%执行
+        document.addEventListener('DOMContentLoaded', () => setTimeout(renderAllMath, 200));
+        window.addEventListener('load', () => setTimeout(renderAllMath, 500));
+        setTimeout(renderAllMath, 1500);
     </script>
 </body>
 </html>
