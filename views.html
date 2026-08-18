@@ -124,13 +124,45 @@
                 font-size: 24px;
             }
         }
-                /* 补全版黑夜模式公共样式，覆盖所有卡片框容器，100%无白块残留 */
+
+        /* ========== 修复后的黑夜模式 100%覆盖所有当前页面元素 ========== */
         .dark-mode {
             background-color: #121212 !important;
             color: #e5e5e5;
         }
-        /* 所有通用卡片、容器、导航、页脚全部变黑 */
-        .dark-mode .navbar,
+        /* 专项修复当前页面缺失的核心容器 */
+        .dark-mode .navbar {
+            background-color: #1e1e1e !important;
+            border-bottom-color: #333333 !important;
+        }
+        .dark-mode .views-card {
+            background-color: #1e1e1e !important;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
+        .dark-mode .views-meta {
+            color: #9ca3af !important;
+            border-bottom-color: #333333 !important;
+        }
+        .dark-mode .views-title {
+            color: #f0f0f0 !important;
+            border-left-color: #f59e0b !important;
+        }
+        .dark-mode .views-content h2 {
+            color: #e5e5e5 !important;
+            border-bottom-color: #333333 !important;
+        }
+        .dark-mode .views-content h3 {
+            color: #f59e0b !important;
+        }
+        .dark-mode .empty-thinking-block {
+            border-color: #444444 !important;
+            background-color: #27272a !important;
+            color: #9ca3af !important;
+        }
+        .dark-mode .empty-thinking-block a {
+            color: #93c5fd !important;
+        }
+        /* 原有通用深色规则保留，兼容你其他页面的类名 */
         .dark-mode .note-card,
         .dark-mode footer,
         .dark-mode .sidebar-toc,
@@ -186,44 +218,47 @@
             color: #93c5fd;
         }
         .dark-mode .theme-btn {
+            background-color: #27272a;
             border-color: #444444;
             color: #e5e5e5;
+        }
+        .dark-mode .edit-btn {
+            background-color: #273b55;
+            color: #93c5fd;
+        }
+        .dark-mode .export-btn {
+            background-color: #1e40af;
+            color: #fff;
         }
         /* 表格背景适配 */
         .dark-mode th {
             background-color: #27272a;
         }
-                /* 针对卡片背景的专项修复 */
+        /* 针对卡片背景的专项修复 */
         .dark-mode .subject-card {
-            background-color: #1e1e1e !important; /* 使卡片背景变深 */
-            border-color: #333333 !important;     /* 边框颜色弱化 */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5); /* 调整阴影使其在暗处自然 */
+            background-color: #1e1e1e !important;
+            border-color: #333333 !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
-        
         /* 针对卡片内标题和计数文字的修复 */
         .dark-mode .subject-card h3 {
-            color: #f1f5f9 !important; /* 标题变亮白 */
+            color: #f1f5f9 !important;
         }
-        
         .dark-mode .subject-card .count {
-            color: #94a3b8 !important; /* 计数文字变灰白 */
+            color: #94a3b8 !important;
         }
-        
         /* 针对展开后的笔记列表文字修复 */
         .dark-mode .note-list {
             border-top-color: #333 !important;
         }
-        
         .dark-mode .note-list a {
-            color: #cbd5e1 !important; /* 列表链接变亮 */
-            border-bottom-color: #2d2d2d !important; /* 分隔虚线变暗 */
+            color: #cbd5e1 !important;
+            border-bottom-color: #2d2d2d !important;
         }
-        
         .dark-mode .note-list a:hover {
-            color: #60a5fa !important; /* 悬停时变亮蓝色 */
-            background-color: #252525;  /* 悬停时的微弱背景 */
+            color: #60a5fa !important;
+            background-color: #252525;
         }
-
     </style>
 </head>
 <body>
@@ -264,6 +299,26 @@
             });
         });
     </script>
-    <script src="dark-theme.js"></script>
+    <!-- 我顺便把dark-theme.js的完整正确代码给你，直接替换掉旧的文件，不用再单独改JS -->
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+        // 初始化状态，读取本地存储的主题偏好
+        if (isDarkMode) {
+            document.body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️ 日间模式';
+        } else {
+            themeToggle.textContent = '🌙 黑夜模式';
+        }
+
+        // 切换逻辑
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const darkModeOn = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', darkModeOn);
+            themeToggle.textContent = darkModeOn ? '☀️ 日间模式' : '🌙 黑夜模式';
+        });
+    </script>
 </body>
 </html>
