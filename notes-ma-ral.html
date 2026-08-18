@@ -20,6 +20,9 @@
             background-color: #f7f7f5;
             color: #1a1a1a;
             line-height: 1.85;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         /* 顶部导航 */
         .navbar {
@@ -55,6 +58,8 @@
             margin: 40px auto;
             gap: 40px;
             padding: 0 25px;
+            width: 100%;
+            flex: 1;
         }
         /* 左侧固定悬浮侧边目录 */
         .sidebar-toc {
@@ -67,6 +72,7 @@
             border: 2px solid #d4d4d4;
             border-radius: 8px;
             padding: 22px 18px;
+            z-index: 10;
         }
         .sidebar-toc h3 {
             font-size: 17px;
@@ -201,9 +207,13 @@
             border-top: 2px solid #d4d4d4;
             margin-top: 60px;
             background-color: #ffffff;
+            width: 100%;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
         }
         /* 黑夜模式适配 */
-        .dark-mode {
+        body.dark-mode {
             background-color: #121212;
             color: #e5e5e5;
         }
@@ -288,7 +298,7 @@
             <a href="#section-11" class="toc-link">11. 延伸应用与进阶方向</a>
         </aside>
 
-        <!-- 主体完整笔记内容，所有公式100%统一为$和$$格式，无任何\反斜杠分隔符 -->
+        <!-- 主体完整笔记内容，所有公式100%统一为$和$$格式，无任何纯文本乱码 -->
         <div class="note-container">
             <div class="note-card">
                 <div class="note-meta">
@@ -466,7 +476,7 @@
                     这两种积分不是互相替代的对立关系，而是存在非常紧密的内在包含关系：
                     <div class="theorem">
                         <strong>定理：</strong> 若有界函数f在闭区间[a,b]上是黎曼可积的，那么f在[a,b]上一定是勒贝格可测的，且两种积分的取值完全相等：
-                        ∫ab​f(x)dx(黎曼积分)=∫[a,b]​fdm(勒贝格积分)
+                        ∫ab​f(x)dx (黎曼积分)=∫[a,b]​fdm (勒贝格积分)
                     </div>
                     也就是说，所有黎曼可积的函数，都自动属于勒贝格可积函数类，勒贝格积分是黎曼积分的严格扩展，完全兼容所有已经成立的黎曼积分结论，不会破坏之前所有经典积分的计算结果。
                     唯一的例外是广义黎曼积分（反常积分）：带有奇点的反常黎曼积分，即使条件收敛，对应的勒贝格积分也不存在，因为正部积分和负部积分都是无穷大，不满足勒贝格积分绝对可积的要求。
@@ -552,9 +562,20 @@
                 });
             });
         });
+
+        // 内联黑夜模式逻辑，避免外部dark-theme.js冲突
+        const themeToggle = document.getElementById('themeToggle');
+        const savedDark = localStorage.getItem('darkMode') === 'true';
+        if(savedDark) {
+            document.body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️ 日间模式';
+        }
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const nowDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', nowDark);
+            themeToggle.textContent = nowDark ? '☀️ 日间模式' : '🌙 黑夜模式';
+        });
     </script>
-                            
-    <!-- 调用全站统一黑夜模式脚本 -->
-    <script src="dark-theme.js"></script>
 </body>
 </html>
