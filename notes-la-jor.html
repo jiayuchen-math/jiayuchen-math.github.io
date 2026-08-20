@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高等代数深度专题：线性算子结构与 Jordan 标准型 | Jiayu Chen 知识库</title>
+    <title>高等代数专题：线性算子结构与 Jordan 标准型 | Jiayu Chen 知识库</title>
     <!-- KaTeX 核心资源 -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.css">
     <script defer src="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.js"></script>
@@ -136,15 +136,15 @@
         <aside class="sidebar-toc">
             <h3>本专题目录</h3>
             <a href="#sec-1" class="toc-link">1. 线代的本质：动作与视角</a>
-            <a href="#sec-2" class="toc-link">2. 向量空间：数学表演的舞台</a>
-            <a href="#sec-3" class="toc-link">3. 特征值：寻找算子的性格</a>
-            <a href="#sec-4" class="toc-link">4. 理想的幻灭：当特征向量短缺</a>
-            <a href="#sec-5" class="toc-link">5. Jordan 块：结构的最小原子</a>
-            <a href="#sec-6" class="toc-link">6. 根子空间：分而治之的策略</a>
-            <a href="#sec-7" class="toc-link">7. 幂零算子：JNF 的动力核心</a>
-            <a href="#sec-8" class="toc-link">8. 高观点：PID 上的模理论</a>
-            <a href="#sec-9" class="toc-link">9. 相似判定：不变因子与分类</a>
-            <a href="#sec-10" class="toc-link">10. 结语：从计算走向分类</a>
+            <a href="#sec-2" class="toc-link">2. 向量空间</a>
+            <a href="#sec-3" class="toc-link">3. 特征值</a>
+            <a href="#sec-4" class="toc-link">4. 当特征向量短缺</a>
+            <a href="#sec-5" class="toc-link">5. Jordan 块</a>
+            <a href="#sec-6" class="toc-link">6. 根子空间</a>
+            <a href="#sec-7" class="toc-link">7. 幂零算子</a>
+            <a href="#sec-8" class="toc-link">8. PID 上的模理论</a>
+            <a href="#sec-9" class="toc-link">9. 不变因子与分类</a>
+            <a href="#sec-10" class="toc-link">10. 从计算走向分类</a>
             <a href="#appendix" class="toc-link">附录：基础数学概念速查</a>
         </aside>
 
@@ -152,13 +152,13 @@
             <div class="note-card">
                 <div class="note-meta">
                     <span>最后更新：2026-08-19</span>
-                    <span>分类：高等代数 · 结构分解</span>
-                    <span>字数：约 1.8 万字（逻辑厚度）</span>
+                    <span>分类：高等代数</span>
+                    <span>字数：约 1.8 万字</span>
                 </div>
-                <h1 class="note-title">Jordan 标准型：线性算子的结构分解与纯数视角</h1>
+                <h1 class="note-title">Jordan 标准型：线性算子的结构分解</h1>
                 
                 <div class="note-content">
-                    <p>线性代数在大一新生的眼中往往是一堆繁琐的矩阵运算（Determinant, Gaussian Elimination），但在纯数学的视野里，它本质上是研究<strong>线性空间的结构学</strong>。Jordan 标准型（JNF）是有限维线性算子分类理论的终点。本章将带你完成从“算矩阵”到“看结构”的思维跃迁。</p>
+                    <p>线性代数在不少人的眼中往往是一堆繁琐的矩阵运算（Determinant, Gaussian Elimination），但它本质上是研究<strong>线性空间的结构学</strong>。Jordan 标准型（JNF）是有限维线性算子分类理论的终点。</p>
 
                     <h2 id="sec-1">一、线代的本质：动作与视角</h2>
                     <div class="bridge">
@@ -173,9 +173,9 @@
                     </div>
                     <p>寻找 Jordan 标准型，本质上就是在寻找一个“最完美的视角”，使得在这个视角下，算子的动作看起来最清晰、最简单。</p>
 
-                    <h2 id="sec-2">二、向量空间：数学表演的舞台</h2>
+                    <h2 id="sec-2">二、向量空间</h2>
                     <div class="bridge">
-                        <strong>直觉：</strong> 向量空间不只是 $\mathbb{R}^n$。只要对象可以互相叠加，且缩放后仍在该集合内，它就是向量空间。
+                        <strong>直观：</strong> 向量空间不只是 $\mathbb{R}^n$。只要对象可以互相叠加，且缩放后仍在该集合内，它就是向量空间。
                     </div>
                     <div class="definition">
                         <strong>定义（向量空间）：</strong> 设 $\mathbb{F}$ 是一个域。集合 $V$ 称为 $\mathbb{F}$ 上的向量空间，如果它满足加法交换群的 4 条公理和数乘的 4 条公理（分配律、结合律等）。
@@ -186,9 +186,9 @@
                         思考：$D(1)=0, D(z)=1, D(z^2)=2z$。这个动作对应的矩阵是什么？它能对角化吗？
                     </div>
 
-                    <h2 id="sec-3">三、特征值：寻找算子的性格</h2>
+                    <h2 id="sec-3">三、特征值</h2>
                     <div class="bridge">
-                        <strong>直觉：</strong> 算子作用于大多数向量时会改变它们的方向。但总有一些特殊的“轴方向”，向量在上面只被伸缩，方向不变。这些轴就是特征向量，伸缩倍数就是特征值。
+                        <strong>直观：</strong> 算子作用于大多数向量时会改变它们的方向。但总有一些特殊的“轴方向”，向量在上面只被伸缩，方向不变。这些轴就是特征向量，伸缩倍数就是特征值。
                     </div>
                     <div class="definition">
                         <strong>定义（特征值与对角化）：</strong> 若 $\mathcal{A}v = \lambda v$ ($v \neq 0$)，称 $\lambda$ 为特征值。如果 $V$ 有一组由特征向量构成的基，称 $\mathcal{A}$ <strong>可对角化</strong>。
@@ -198,12 +198,12 @@
                     </div>
                     <div class="example">
                         <strong>反例（域的重要性）：</strong> 旋转矩阵 $R = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$。在实数域 $\mathbb{R}$ 上，它没有特征向量（平面上没有旋转后方向不变的直线）。但在复数域 $\mathbb{C}$ 上，它有两个特征值 $i$ 和 $-i$。
-                        <strong>结论：</strong> 纯数学研究往往默认在复数域（代数闭域）下讨论，因为只有这样，特征值才一定存在。
+                        <strong>结论：</strong> 研究往往默认在复数域（代数闭域）下讨论，因为只有这样，特征值才一定存在。
                     </div>
 
-                    <h2 id="sec-4">四、理想的幻灭：当特征向量短缺</h2>
+                    <h2 id="sec-4">四、当特征向量短缺</h2>
                     <div class="bridge">
-                        <strong>直觉：</strong> 有些算子非常狡猾。即使在复数域下，它们的特征向量也不够多，无法铺满整个空间。这种现象叫“粘滞性”。
+                        <strong>直观：</strong> 有些算子非常狡猾。即使在复数域下，它们的特征向量也不够多，无法铺满整个空间。这种现象叫“粘滞性”。
                     </div>
                     <div class="example">
                         <strong>反例（粘滞算子）：</strong> 考虑矩阵 $A = \begin{pmatrix} 2 & 1 \\ 0 & 2 \end{pmatrix}$。
@@ -212,9 +212,9 @@
                     </div>
                     <p>这种“缺失”的维度孕育了<strong>广义特征向量</strong>的概念。JNF 就是为了处理这种不能彻底解耦的“粘滞”结构。</p>
 
-                    <h2 id="sec-5">五、Jordan 块：结构的最小原子</h2>
+                    <h2 id="sec-5">五、Jordan 块</h2>
                     <div class="bridge">
-                        <strong>物理隐喻：</strong> 既然不能化成纯对角（相互独立的原子），我们就化成“链条”。Jordan 块就是一条向量链：$v_k \to v_{k-1} \to \dots \to v_1 \to 0$。
+                        <strong>直观：</strong> 既然不能化成纯对角（相互独立的原子），我们就化成“链条”。Jordan 块就是一条向量链：$v_k \to v_{k-1} \to \dots \to v_1 \to 0$。
                     </div>
                     <div class="definition">
                         <strong>定义（Jordan 块）：</strong> 形式如下的 $k$ 阶方阵称为 Jordan 块 $J_k(\lambda)$：
@@ -224,7 +224,7 @@
 
                     <h2 id="sec-6">六、根子空间与初等分解</h2>
                     <div class="bridge">
-                        <strong>直觉：</strong> 处理复杂系统的第一步是“分而治之”。把空间按照不同的特征值拆开。每个特征值占据的领地叫<strong>根子空间</strong>。
+                        <strong>直观：</strong> 处理复杂系统的第一步是“分而治之”。把空间按照不同的特征值拆开。每个特征值占据的领地叫<strong>根子空间</strong>。
                     </div>
                     <div class="definition">
                         <strong>定义（根子空间）：</strong> 对应 $\lambda$ 的根子空间为 $\mathcal{W}_\lambda = \{ v \in V \mid (\mathcal{A} - \lambda \mathcal{I})^n v = 0 \}$。
@@ -235,9 +235,9 @@
                     </div>
                     <p>这说明：任何线性算子的研究都可以化归为对“单特征值算子”的研究。</p>
 
-                    <h2 id="sec-7">七、幂零算子：JNF 的动力核心</h2>
+                    <h2 id="sec-7">七、幂零算子</h2>
                     <div class="bridge">
-                        <strong>物理意义：</strong> 在根子空间内部，算子可以看作“对角阵 + 幂零阵”。幂零算子 $\mathcal{N}$ 就像是一个黑洞，向量经过有限次作用后必然归于零。
+                        <strong>直观：</strong> 在根子空间内部，算子可以看作“对角阵 + 幂零阵”。幂零算子 $\mathcal{N}$ 就像是一个黑洞，向量经过有限次作用后必然归于零。
                     </div>
                     <div class="example">
                         <strong>例子：</strong> 设 $\mathcal{N}^3 = 0, \mathcal{N}^2 \neq 0$。取一个向量 $v$ 使得 $\mathcal{N}^2 v \neq 0$。
@@ -246,9 +246,9 @@
                     </div>
                     <p><strong>JNF 定理本质：</strong> 任何幂零算子所在的空间，都可以拆成若干条这样互相独立的“循环链”。</p>
 
-                    <h2 id="sec-8">八、高观点：PID 上的模理论</h2>
+                    <h2 id="sec-8">八、PID 上的模理论</h2>
                     <div class="bridge">
-                        <strong>纯数引导：</strong> 这是本笔记最“纯数”的部分。如果你觉得线性代数只是在研究空间，那你就小看它了。它其实是<strong>代数环论</strong>的一个特例。
+                        <strong>引导：</strong> 如果你觉得线性代数只是在研究空间，那你就小看它了。它其实是<strong>代数环论</strong>的一个特例。
                     </div>
                     <p>我们将向量空间 $V$ 升级为一个<strong>模 (Module)</strong>。模就是把标量从“域”放宽到“环”（如多项式环 $\mathbb{F}[x]$）。定义 $x$ 对向量的作用就是线性算子 $\mathcal{A}$ 的作用。</p>
                     <div class="theorem">
@@ -257,10 +257,10 @@
                         在代数闭域下，$f_i(x)$ 必然是线性项的幂 $(x-\lambda)^k$。而每一个这样的循环模 $(x-\lambda)^k$ <strong>在矩阵形式上完美对应一个 Jordan 块</strong>。
                     </div>
                     <div class="insight">
-                        <strong>深刻衔接：</strong> Jordan 标准型的存在性不是巧合，它是 PID 模理论在有限维空间的必然反映。同样的理论也可以解释为什么“每个整数都能唯一分解为质数乘积”。
+                        <strong>因此：</strong> Jordan 标准型的存在性不是巧合，它是 PID 模理论在有限维空间的必然反映。同样的理论也可以解释为什么“每个整数都能唯一分解为质数乘积”。
                     </div>
 
-                    <h2 id="sec-9">九、相似分类：不变因子与初等因子</h2>
+                    <h2 id="sec-9">九、不变因子与初等因子</h2>
                     <div class="bridge">
                         <strong>分类学：</strong> 我们如何通过数学语言描述两个矩阵“本质相同”？
                     </div>
@@ -276,7 +276,7 @@
                         结论：它们不相似。初等因子是算子的“唯一指纹”。
                     </div>
 
-                    <h2 id="sec-10">十、结语：从计算走向分类</h2>
+                    <h2 id="sec-10">十、从计算走向分类</h2>
                     <p>掌握 JNF 的意义不在于考试时如何求出那个 $P$，而在于理解<strong>分类思想（Classification）</strong>。JNF 告诉我们，在相似变换下，线性算子的本质结构由其特征值和初等因子阶数唯一确定。这套寻找“完备不变数”的范式，是通往近代代数学（李代数、交换代数）的必经之路。</p>
 
                     <h2 id="appendix">附录：基础数学概念速查</h2>
@@ -296,7 +296,7 @@
     </div>
 
     <footer>
-        © 2026 Jiayu Chen | 保持好奇，结构即美
+        © 2026 Jiayu Chen | 线性代数
     </footer>
 
     <script>
