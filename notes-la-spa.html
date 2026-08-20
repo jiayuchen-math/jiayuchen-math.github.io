@@ -93,14 +93,14 @@
         .definition, .theorem, .proof, .insight, .bridge, .example { padding: 25px 35px; margin: 35px 0; border-radius: 10px; font-size: 18.5px; }
         .definition { background-color: #f0f7ff; border-left: 6px solid #3b82f6; }
         .theorem { background-color: #f0fdf4; border-left: 6px solid #22c55e; }
-        .proof { background-color: #fefce8; border-left: 6px solid #f59e0b; }
+        .proof { background-color: #fffbeb; border-left: 6px solid #f59e0b; }
         .bridge { background-color: #fdf4ff; border-left: 6px solid #a855f7; border-style: dashed; }
         .insight { background-color: #f8fafc; border-left: 6px solid #64748b; font-style: italic; }
         .example { background-color: #fff7ed; border-left: 6px solid #f97316; }
 
         footer { text-align: center; padding: 60px; color: #9ca3af; border-top: 2px solid #eee; margin-top: 100px; background: #fff; }
 
-        /* ================= 核心修复：黑夜模式适配 (含彩色块专项修复) ================= */
+        /* ================= 核心修复：黑夜模式适配 (包含彩色块专项修复) ================= */
         .dark-mode { background-color: #121212 !important; color: #e5e7eb !important; }
         .dark-mode .navbar, .dark-mode .note-card, .dark-mode footer, .dark-mode .sidebar-toc {
             background-color: #1e1e1e !important;
@@ -109,28 +109,26 @@
         }
         .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode p, .dark-mode .note-meta, .dark-mode li { color: #e5e7eb !important; }
         
-        /* 定义与定理区块 */
+        /* 定义与定理 */
         .dark-mode .definition { background-color: #1a273a; border-left-color: #3b82f6; }
         .dark-mode .theorem { background-color: #182a1f; border-left-color: #22c55e; }
         .dark-mode .proof { background-color: #2b2716; border-left-color: #f59e0b; }
         
         /* 专项修复：紫色块 (Bridge) */
         .dark-mode .bridge { 
-            background-color: #2b1f3a !important; 
+            background-color: #231935 !important; 
             border-left-color: #a855f7 !important; 
             color: #e5e7eb !important;
         }
-        
         /* 专项修复：灰色块 (Insight) */
         .dark-mode .insight { 
             background-color: #262626 !important; 
             border-left-color: #64748b !important; 
             color: #cbd5e1 !important;
         }
-        
         /* 专项修复：橙色块 (Example) */
         .dark-mode .example { 
-            background-color: #302218 !important; 
+            background-color: #2d1d14 !important; 
             border-left-color: #f97316 !important; 
             color: #e5e7eb !important;
         }
@@ -182,6 +180,7 @@
                         <strong>直观引入：</strong> 中学解析几何教我们通过方程 $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ 刻画椭圆。但如果我们将椭圆旋转 45°，方程会涌现出交叉项 $xy$，例如：$5x^2 + 4xy + 2y^2 = 1$。
                     </div>
                     <p>面对交叉项，我们失去了对长短轴的直接观测能力。二次型理论本质上是研究如何通过**合同变换**（代数上的坐标轴旋转与拉伸）将这些交叉项消去，回归到本质的标准型。这不仅是几何需求，更是处理多变量动力系统稳定性（Lyapunov 稳定性）的核心工具。</p>
+                    <p>从纯数学的角度看，这种变换本质上是寻找一组基，使得线性空间在该基下的“几何形状”最为规范。对称矩阵在这里扮演了至关重要的角色，因为每一个实二次型都唯一对应一个实对称矩阵。这一对应关系将多项式的分析问题转化为了线性代数的矩阵分解问题。</p>
 
                     <h2 id="section-1">一、理论源头：双线性映射 (Bilinear Forms)</h2>
                     <div class="definition">
@@ -192,6 +191,7 @@
                     <div class="insight">
                         <strong>引导：</strong> 注意，线性空间本身只有“平行”关系，而没有“角度”。双线性型是人为赋予空间的额外结构。
                     </div>
+                    <p>双线性型是内积概念的推广。在没有内积的空间中，双线性型提供了一种测量“向量对”之间相互关系的方法。当我们讨论对偶空间时，双线性型实际上建立了一个从空间 $V$ 到其对偶空间 $V^*$ 的映射。这种对偶性是现代几何学（如张量计算）的底层逻辑。</p>
 
                     <h2 id="section-2">二、二次型：齐次多项式的矩阵表达</h2>
                     <div class="definition">
@@ -200,9 +200,11 @@
                     <div class="example">
                         <strong>例子：</strong> 设 $q = x_1^2 + 4x_1x_2 + x_2^2$。其矩阵 $A = \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}$。特征值为 $3, -1$，这预示了它在几何上是一个双曲型结构。
                     </div>
+                    <p>二次型的表达并不唯一，但当我们限制矩阵 $A$ 对称时，这种对应关系就变得唯一且优美。在研究物理系统时，二次型往往代表了能量泛函。例如，一个弹性系统的总势能通常可以写成位移向量的二次型形式。通过分析矩阵 $A$ 的性质，我们可以预判系统是否会坍塌或震荡。</p>
 
                     <h2 id="section-3">三、坐标变换：合同关系 $P^T AP$</h2>
                     <p>由于 $X = PY$，$q(PY) = Y^T (P^T AP) Y$。因此二次型的等价分类由**合同关系**决定。相似变换保持算子的特征值，而合同变换保持二次型的特征性质（如正负号分布）。</p>
+                    <p>合同关系比相似关系要宽泛得多。两个矩阵合同并不意味着它们相似，反之亦然。然而，合同变换最美妙的地方在于它保留了矩阵的“惯性”。无论我们如何通过非奇异变换来拉伸或压缩坐标轴，二次型所代表的几何本质——是凸的、凹的还是马鞍形的——都不会改变。这构成了代数分类学中的重要章节。</p>
 
                     <h2 id="section-4">四、标准化：拉格朗日配方法及其拓扑陷阱</h2>
                     <div class="bridge">
@@ -213,12 +215,13 @@
                         此时对角线全为 0。**技巧：** 令 $x_1 = y_1 - y_2, x_2 = y_1 + y_2$。
                         代入产生 $y_1^2 - y_2^2$，从而“无中生有”制造出平方项，后续方可配方。
                     </div>
+                    <p>标准化过程揭示了算子的秩。如果在化简后，某些变量彻底消失了，说明原始的二次型是退化的。这种退化在几何上对应于降维：例如在三维空间中，原本以为是一个球，结果化简后发现其实是一个圆柱面。拉格朗日配方法提供了一种不依赖特征值计算的机械化路径，这在手算大矩阵时极其有效。</p>
 
                     <h2 id="section-5">五、西尔维斯特惯性定律：代数基因的稳定性</h2>
                     <div class="theorem">
                         <strong>西尔维斯特 (Sylvester) 惯性定律：</strong> 在实域上，二次型合同对角化后的正系数个数 $p$ 和负系数个数 $q$ 是合同不变量。
                     </div>
-                    <p>这意味着无论你旋转坐标轴的方式多么奇特，曲面的本质类型（椭圆 vs 双曲）是绝对稳固的。</p>
+                    <p>这意味着无论你旋转坐标轴的方式多么奇特，曲面的本质类型（椭圆 vs 双曲）是绝对稳固的。这组数字 $(p, q)$ 就像是二次型的“指纹”。在拓扑学中，这与 Morse 理论中的临界点指数有着深刻的内在联系。在物理学中，$p$ 和 $q$ 决定了时空的因果结构，例如闵可夫斯基时空的度量惯性指数正是 $(3, 1)$。</p>
 
                     <h2 id="sec-6">六、正定性深度剖析：稳定性、瑞利商与优化</h2>
                     <div class="bridge">
@@ -235,6 +238,7 @@
                         <strong>反例（半正定的欺骗性）：</strong> $\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}$。
                         虽然 $\det(A_1)=1, \det(A_2)=0$，且元素均为非负，但由于极小特征值为 0，它不是正定的。它代表了一个在某些方向（如 $x=-y$）上没有约束力的物理系统。
                     </div>
+                    <p>正定矩阵在数值计算和机器学习中无处不在（如协方差矩阵、Hessian 矩阵）。瑞利商的概念将离散的特征值与连续的优化问题联系起来。当你试图通过梯度下降法寻找函数的最小值时，你本质上是在探索该处正定二次型的局部地形。</p>
 
                     <h2 id="sec-7">七、内积空间：欧几里得几何的抽象升华</h2>
                     <div class="bridge">
@@ -247,6 +251,7 @@
                         <strong>$L^2[0, 2\pi]$ 空间实例：</strong> 定义 $\langle f, g \rangle = \int_0^{2\pi} f(x)g(x) dx$。
                         你会发现 $\sin(nx)$ 与 $\cos(mx)$ 在此内积下全是“互相垂直”的。这意味着傅里叶展开本质上是将函数向一组互相垂直的坐标轴做投影。
                     </div>
+                    <p>内积的引入使得我们能够定义“模长”（Norm）和“距离”（Metric）。从这一刻起，线性代数就不再仅仅是关于直线的科学，而演变成了关于圆、球和投影的几何学。Cauchy-Schwarz 不等式作为内积空间的核心定理，保证了余弦概念在任意维度的合法性。</p>
 
                     <h2 id="sec-8">八、正交性理论：Gram-Schmidt 与投影定理</h2>
                     <div class="proof">
@@ -257,6 +262,7 @@
                         <strong>正交分解定理：</strong> 设 $U$ 为 $V$ 的子空间，则 $V = U \oplus U^\perp$。
                         这不仅是代数直和，更是几何上的“垂直切割”。任何向量 $v$ 都有唯一的最优近似 $P_U(v)$，满足 $\|v - P_U(v)\|$ 最小。
                     </div>
+                    <p>正交投影是解决最小二乘问题的代数核心。在数据拟合中，当我们无法找到满足所有观测点的完美直线时，我们寻找的是那个在该模型子空间上的投影，因为它在内积定义的距离下误差最小。这种思想在信号处理和量子力学测量理论中同样至关重要。</p>
 
                     <h2 id="sec-9">九、算子伴随：内积驱动的对偶性</h2>
                     <div class="bridge">
@@ -266,7 +272,7 @@
                         <strong>伴随算子 (Adjoint)：</strong> 满足 $\langle \mathcal{A}u, v \rangle = \langle u, \mathcal{A}^* v \rangle$ 的唯一算子。
                         在矩阵层面上，它对应共轭转置。若 $\mathcal{A} = \mathcal{A}^*$，称其为<strong>自伴随算子</strong>。
                     </div>
-                    <p>自伴随算子在数学中极具地位，因为它们保证了“谱”的纯粹性：特征值必为实数。</p>
+                    <p>伴随算子的存在取决于内积。如果你更换了内积，伴随算子也会随之改变。自伴随算子之所以特殊，是因为它们的特征值永远是实数。在量子力学中，物理可观察量（如能量、动量）必须由自伴随算子表示，因为物理测量结果必须是实数，这正是线性代数对现实世界的强力约束。</p>
 
                     <h2 id="sec-10">十、谱定理：实对称阵的结构</h2>
                     <div class="bridge">
@@ -276,12 +282,14 @@
                         <strong>谱定理：</strong> 实对称矩阵必可被正交矩阵对角化。其几何意义是：每一个对称动作都可以分解为在若干互相垂直的方向上的纯粹拉伸。
                         $$ A = \sum_{i=1}^n \lambda_i \mathbf{q}_i \mathbf{q}_i^T $$
                     </div>
+                    <p>谱定理是线性代数的皇冠。它告诉我们，对称性不仅是美学上的追求，更是结构上的保证。通过谱定理，我们可以轻松定义矩阵函数（如 $\sin(A)$ 或 $e^A$）。对于纯数学深造，谱定理在无限维空间中的推广（谱算子理论）是泛函分析的核心内容。</p>
 
                     <h2 id="sec-11">十一、高观点：黎曼度量与辛几何引导</h2>
                     <p>在微分几何中，我们不定义全局内积，而是在流形的每一点切空间定义一个随位置变化的二次型 $g_{ij}(x)$，这就是<strong>黎曼度量</strong>。</p>
                     <div class="insight">
                         <strong>引导：</strong> 既然有对称双线性型（内积），就必然存在反对称双线性型（辛形式）。反对称型 $B(u,v) = -B(v,u)$ 诱导了<strong>辛几何</strong>，这是经典力学哈密顿体系的数学母语。掌握了二次型，你就推开了通往近代物理几何化的大门。
                     </div>
+                    <p>从线性空间到流形，从常系数二次型到变系数度量张量，数学的广度在这里延伸。辛形式与内积形式的对立统一，构成了现代物理中费米子与玻色子统计特性的代数基础。当你深入研究时，你会发现这不仅是算数字，而是在编织宇宙的逻辑之网。</p>
 
                     <h2 id="appendix">附录：基础数学概念速查</h2>
                     <ul>
