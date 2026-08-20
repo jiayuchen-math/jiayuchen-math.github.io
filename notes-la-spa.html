@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高等代数专题：二次型、内积空间与算子谱理论 | Jiayu Chen 知识库</title>
+    <!-- KaTeX 核心资源 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.css">
+    <script defer src="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.js"></script>
+    <script defer src="https://cdn.staticfile.org/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Charter", "Georgia", "PingFang SC", serif;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #f7f7f5;
+            color: #1a1a1a;
+            line-height: 1.85;
+            transition: background-color 0.3s ease;
+        }
+        /* 顶部导航 */
+        .navbar {
+            padding: 18px 7%;
+            background: #ffffff;
+            border-bottom: 2px solid #d4d4d4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .back-btn { text-decoration: none; color: #2563eb; font-weight: 500; font-size: 15px; }
+        .theme-btn { border: 2px solid #d4d4d4; border-radius: 6px; padding: 6px 12px; cursor: pointer; background: none; font-size: 14px; font-weight: 500; }
+
+        /* 布局容器 */
+        .main-wrap {
+            display: flex;
+            max-width: 1550px;
+            margin: 40px auto;
+            gap: 40px;
+            padding: 0 30px;
+        }
+        /* 左侧固定目录 */
+        .sidebar-toc {
+            width: 320px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+            background: #fff;
+            border: 2px solid #d4d4d4;
+            border-radius: 12px;
+            padding: 25px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+        .sidebar-toc h3 { font-size: 18px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 2px solid #f3f4f6; color: #1e293b; }
+        .sidebar-toc a {
+            display: block;
+            padding: 10px 0 10px 15px;
+            color: #4b5563;
+            text-decoration: none;
+            font-size: 14.5px;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+            line-height: 1.5;
+        }
+        .sidebar-toc a:hover { color: #2563eb; background: #f9fafb; }
+        .sidebar-toc a.active { color: #2563eb; border-left-color: #2563eb; font-weight: 600; background: #f0f7ff; }
+
+        /* 主体内容卡片 */
+        .note-container { flex-grow: 1; max-width: 1100px; min-width: 0; }
+        .note-card {
+            background: #fff;
+            padding: 70px 90px;
+            border-radius: 12px;
+            border: 2px solid #d4d4d4;
+        }
+        .note-meta { display: flex; gap: 30px; color: #6b7280; font-size: 14px; margin-bottom: 35px; border-bottom: 1px solid #eee; padding-bottom: 25px; }
+        .note-title { font-size: 42px; font-weight: 800; margin-bottom: 40px; color: #111827; border-left: 8px solid #2563eb; padding-left: 30px; line-height: 1.1; }
+        
+        .note-content p { margin-bottom: 25px; font-size: 19px; text-align: justify; color: #374151; }
+        .note-content h2 { font-size: 30px; margin: 60px 0 25px; color: #1e293b; border-bottom: 2px solid #e5e7eb; padding-bottom: 12px; scroll-margin-top: 100px; }
+        .note-content h3 { font-size: 23px; margin: 45px 0 18px; color: #2563eb; font-weight: 600; border-left: 4px solid #2563eb; padding-left: 15px; }
+
+        /* 专业区块样式 */
+        .definition, .theorem, .proof, .insight, .bridge, .example { padding: 25px 35px; margin: 35px 0; border-radius: 10px; font-size: 18.5px; }
+        .definition { background-color: #f0f7ff; border-left: 6px solid #3b82f6; }
+        .theorem { background-color: #f0fdf4; border-left: 6px solid #22c55e; }
+        .proof { background-color: #fffbeb; border-left: 6px solid #f59e0b; }
+        .bridge { background-color: #fdf4ff; border-left: 6px solid #a855f7; border-style: dashed; }
+        .insight { background-color: #f8fafc; border-left: 6px solid #64748b; font-style: italic; }
+        .example { background-color: #fff7ed; border-left: 6px solid #f97316; }
+
+        footer { text-align: center; padding: 60px; color: #9ca3af; border-top: 2px solid #eee; margin-top: 100px; background: #fff; }
+
+        /* 黑夜模式适配 - 彻底解决卡片白块 */
+        .dark-mode { background-color: #121212 !important; color: #e5e7eb !important; }
+        .dark-mode .navbar, .dark-mode .note-card, .dark-mode footer, .dark-mode .sidebar-toc {
+            background-color: #1e1e1e !important;
+            border-color: #333333 !important;
+            color: #e5e7eb !important;
+        }
+        .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode p, .dark-mode .note-meta, .dark-mode li { color: #e5e7eb !important; }
+        .dark-mode .definition { background-color: #1a273a; }
+        .dark-mode .theorem { background-color: #182a1f; }
+        .dark-mode .proof { background-color: #2b2716; }
+        .dark-mode .back-btn, .dark-mode .sidebar-toc a { color: #60a5fa !important; }
+        .dark-mode .sidebar-toc a.active { background: #252525; }
+        .dark-mode .theme-btn { border-color: #444; color: #e5e7eb; }
+        .dark-mode .katex { color: #f1f5f9 !important; }
+
+        @media (max-width: 1250px) { .sidebar-toc { display: none; } .note-card { padding: 40px 30px; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="catalog.html" class="back-btn"> ← 返回笔记目录</a>
+        <button class="theme-btn" id="themeToggle">🌙 黑夜模式</button>
+    </nav>
+
+    <div class="main-wrap">
+        <aside class="sidebar-toc">
+            <h3>二次型与内积空间</h3>
+            <a href="#sec-0" class="toc-link">0. 动机：圆锥曲线的解耦</a>
+            <a href="#sec-1" class="toc-link">1. 理论源头：双线性映射</a>
+            <a href="#sec-2" class="toc-link">2. 二次型：齐次代数系统</a>
+            <a href="#sec-3" class="toc-link">3. 合同变换：结构不变性</a>
+            <a href="#sec-4" class="toc-link">4. 标准化：配方法与陷阱</a>
+            <a href="#sec-5" class="toc-link">5. 惯性定律：代数基因</a>
+            <a href="#sec-6" class="toc-link">6. 正定性：稳定性与瑞利商</a>
+            <a href="#sec-7" class="toc-link">7. 内积空间：公理化几何</a>
+            <a href="#sec-8" class="toc-link">8. 正交性：GS过程与投影定理</a>
+            <a href="#sec-9" class="toc-link">9. 算子伴随：内积的深层结构</a>
+            <a href="#sec-10" class="toc-link">10. 谱定理：实对称阵的结构</a>
+            <a href="#sec-11" class="toc-link">11. 高观点：黎曼度量与辛几何引导</a>
+            <a href="#appendix" class="toc-link">附录：术语表</a>
+        </aside>
+
+        <div class="note-container">
+            <div class="note-card">
+                <div class="note-meta">
+                    <span>版本：v3.0 (Ultimate Archive)</span>
+                    <span>阅读：约 45 分钟</span>
+                    <span>核心：双线性型、谱理论、自伴随算子</span>
+                </div>
+                <h1 class="note-title">二次型与内积空间：线性空间的度量结构与谱分析</h1>
+                
+                <div class="note-content">
+                    <h2 id="sec-0">0. 几何动机：消失的对称轴与坐标旋转</h2>
+                    <div class="bridge">
+                        <strong>直观引入：</strong> 中学解析几何教我们通过方程 $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ 刻画椭圆。但如果我们将椭圆旋转 45°，方程会涌现出交叉项 $xy$，例如：$5x^2 + 4xy + 2y^2 = 1$。
+                    </div>
+                    <p>面对交叉项，我们失去了对长短轴的直接观测能力。二次型理论本质上是研究如何通过**合同变换**（代数上的坐标轴旋转与拉伸）将这些交叉项消去，回归到本质的标准型。这不仅是几何需求，更是处理多变量动力系统稳定性（Lyapunov 稳定性）的核心工具。</p>
+
+                    <h2 id="section-1">一、理论源头：双线性映射 (Bilinear Forms)</h2>
+                    <div class="definition">
+                        <strong>定义（双线性型）：</strong> 映射 $B: V \times V \to \mathbb{F}$ 称为双线性型，若对每个分量均满足线性：
+                        $$ \forall u, v, w \in V, k \in \mathbb{F}: B(u+v, w) = B(u, w) + B(v, w), \quad B(ku, v) = kB(u, v) $$
+                        若满足 $B(u, v) = B(v, u)$，则称为<strong>对称双线性型</strong>。
+                    </div>
+                    <div class="insight">
+                        <strong>引导：</strong> 注意，线性空间本身只有“平行”关系，而没有“角度”。双线性型是人为赋予空间的额外结构。
+                    </div>
+
+                    <h2 id="section-2">二、二次型：齐次多项式的矩阵表达</h2>
+                    <div class="definition">
+                        <strong>定义：</strong> 映射 $q: V \to \mathbb{F}$ 满足 $q(v) = B(v, v)$ 称为二次型。在基下其矩阵表示为 $q(X) = X^T A X$，其中 $A$ 必须是对称阵。
+                    </div>
+                    <div class="example">
+                        <strong>例子：</strong> 设 $q = x_1^2 + 4x_1x_2 + x_2^2$。其矩阵 $A = \begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}$。特征值为 $3, -1$，这预示了它在几何上是一个双曲型结构。
+                    </div>
+
+                    <h2 id="section-3">三、坐标变换：合同关系 $P^T AP$</h2>
+                    <p>由于 $X = PY$，$q(PY) = Y^T (P^T AP) Y$。因此二次型的等价分类由**合同关系**决定。相似变换保持算子的特征值，而合同变换保持二次型的特征性质（如正负号分布）。</p>
+
+                    <h2 id="section-4">四、标准化：拉格朗日配方法及其拓扑陷阱</h2>
+                    <div class="bridge">
+                        <strong>直观：</strong> 标准化就是通过配方消去所有的 $x_ix_j$。
+                    </div>
+                    <div class="example">
+                        <strong>陷阱实例（无平方项）：</strong> 考虑 $q = x_1x_2 + x_2x_3$。
+                        此时对角线全为 0。**技巧：** 令 $x_1 = y_1 - y_2, x_2 = y_1 + y_2$。
+                        代入产生 $y_1^2 - y_2^2$，从而“无中生有”制造出平方项，后续方可配方。
+                    </div>
+
+                    <h2 id="section-5">五、西尔维斯特惯性定律：代数基因的稳定性</h2>
+                    <div class="theorem">
+                        <strong>西尔维斯特 (Sylvester) 惯性定律：</strong> 在实域上，二次型合同对角化后的正系数个数 $p$ 和负系数个数 $q$ 是合同不变量。
+                    </div>
+                    <p>这意味着无论你旋转坐标轴的方式多么奇特，曲面的本质类型（椭圆 vs 双曲）是绝对稳固的。</p>
+
+                    <h2 id="sec-6">六、正定性深度剖析：稳定性、瑞利商与优化</h2>
+                    <div class="bridge">
+                        <strong>直观：</strong> 如果一个系统的“能量二次型”是正定的，意味着系统在偏离原点时能量总是增加，这保证了物理系统的稳定性。
+                    </div>
+                    <div class="definition">
+                        <strong>瑞利商 (Rayleigh Quotient)：</strong> 对对称阵 $A$，定义 $R(x) = \frac{x^T Ax}{x^T x}$。
+                        这是一个极其强大的优化视角：$A$ 的最大特征值 $\lambda_{\max}$ 正是 $R(x)$ 在整个空间上的最大值。
+                    </div>
+                    <div class="theorem">
+                        <strong>判定准则：</strong> $A$ 正定 $\iff$ 所有特征值 $\lambda_i > 0$ $\iff$ 顺序主子式 $\det(A_k) > 0$。
+                    </div>
+                    <div class="example">
+                        <strong>反例（半正定的欺骗性）：</strong> $\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}$。
+                        虽然 $\det(A_1)=1, \det(A_2)=0$，且元素均为非负，但由于极小特征值为 0，它不是正定的。它代表了一个在某些方向（如 $x=-y$）上没有约束力的物理系统。
+                    </div>
+
+                    <h2 id="sec-7">七、内积空间：欧几里得几何的抽象升华</h2>
+                    <div class="bridge">
+                        <strong>动机：</strong> 在一般的向量空间（例如无限维的函数空间）中，如何定义“夹角”？我们利用内积这一公理化的“几何尺子”。
+                    </div>
+                    <div class="definition">
+                        <strong>内积定义：</strong> 满足线性性、共轭对称性（复数域）和正定性的映射 $\langle \cdot, \cdot \rangle$。
+                    </div>
+                    <div class="example">
+                        <strong>$L^2[0, 2\pi]$ 空间实例：</strong> 定义 $\langle f, g \rangle = \int_0^{2\pi} f(x)g(x) dx$。
+                        你会发现 $\sin(nx)$ 与 $\cos(mx)$ 在此内积下全是“互相垂直”的。这意味着傅里叶展开本质上是将函数向一组互相垂直的坐标轴做投影。
+                    </div>
+
+                    <h2 id="sec-8">八、正交性理论：Gram-Schmidt 与投影定理</h2>
+                    <div class="proof">
+                        <strong>施密特 (Gram-Schmidt) 正交化：</strong> 
+                        核心在于“逐层剥离”。新基向量 $e_k$ 等于原向量 $v_k$ 减去其在已知正交空间 $\text{span}\{e_1, \dots, e_{k-1}\}$ 上的所有投影分量。
+                    </div>
+                    <div class="theorem">
+                        <strong>正交分解定理：</strong> 设 $U$ 为 $V$ 的子空间，则 $V = U \oplus U^\perp$。
+                        这不仅是代数直和，更是几何上的“垂直切割”。任何向量 $v$ 都有唯一的最优近似 $P_U(v)$，满足 $\|v - P_U(v)\|$ 最小。
+                    </div>
+
+                    <h2 id="sec-9">九、算子伴随：内积驱动的对偶性</h2>
+                    <div class="bridge">
+                        <strong>直观：</strong> 当算子 $\mathcal{A}$ 作用在内积空间时，它会诱导出一个“伴随算子” $\mathcal{A}^*$。
+                    </div>
+                    <div class="definition">
+                        <strong>伴随算子 (Adjoint)：</strong> 满足 $\langle \mathcal{A}u, v \rangle = \langle u, \mathcal{A}^* v \rangle$ 的唯一算子。
+                        在矩阵层面上，它对应共轭转置。若 $\mathcal{A} = \mathcal{A}^*$，称其为<strong>自伴随算子</strong>。
+                    </div>
+                    <p>自伴随算子在数学中极具地位，因为它们保证了“谱”的纯粹性：特征值必为实数。</p>
+
+                    <h2 id="sec-10">十、谱定理：实对称阵的结构</h2>
+                    <div class="bridge">
+                        <strong>衔接：</strong> Jordan 标准型告诉我们有些矩阵不能对角化。但谱定理（Spectral Theorem）宣布：只要你是对称的（自伴随），你就一定能对角化，而且是用最完美的方式——正交对角化。
+                    </div>
+                    <div class="theorem">
+                        <strong>谱定理：</strong> 实对称矩阵必可被正交矩阵对角化。其几何意义是：每一个对称动作都可以分解为在若干互相垂直的方向上的纯粹拉伸。
+                        $$ A = \sum_{i=1}^n \lambda_i \mathbf{q}_i \mathbf{q}_i^T $$
+                    </div>
+
+                    <h2 id="sec-11">十一、高观点：黎曼度量与辛几何引导</h2>
+                    <p>在微分几何中，我们不定义全局内积，而是在流形的每一点切空间定义一个随位置变化的二次型 $g_{ij}(x)$，这就是<strong>黎曼度量</strong>。</p>
+                    <div class="insight">
+                        <strong>引导：</strong> 既然有对称双线性型（内积），就必然存在反对称双线性型（辛形式）。反对称型 $B(u,v) = -B(v,u)$ 诱导了<strong>辛几何</strong>，这是经典力学哈密顿体系的数学母语。掌握了二次型，你就推开了通往近代物理几何化的大门。
+                    </div>
+
+                    <h2 id="appendix">附录：基础数学概念速查</h2>
+                    <ul>
+                        <li><strong>$\text{rank}(q)$：</strong> 二次型对应对称阵的秩，代表曲面的非退化程度。</li>
+                        <li><strong>正交矩阵 $Q$：</strong> 满足 $Q^T Q = I$，代表保长度、保角度的刚体旋转。</li>
+                        <li><strong>Cauchy-Schwarz 不等式：</strong> $|\langle u, v \rangle|^2 \leq \langle u, u \rangle \langle v, v \rangle$，几何直观是“余弦值绝对值不超过 1”。</li>
+                        <li><strong>Bessel 不等式：</strong> 向量投影到正交系后，投影长度平方和不超过原长度平方。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Jiayu Chen | 线性代数
+    </footer>
+
+    <script>
+        // 渲染 KaTeX
+        function startMath() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
+        }
+        
+        // 黑夜模式逻辑
+        const themeToggle = document.getElementById('themeToggle');
+        const applyTheme = (isDark) => {
+            document.body.classList.toggle('dark-mode', isDark);
+            themeToggle.textContent = isDark ? '☀️ 日间模式' : '🌙 黑夜模式';
+            localStorage.setItem('darkMode', isDark);
+        };
+        themeToggle.addEventListener('click', () => applyTheme(!document.body.classList.contains('dark-mode')));
+
+        // 侧边栏实时追踪
+        window.addEventListener('scroll', () => {
+            let curr = "";
+            const sections = document.querySelectorAll('h2[id], h1[id]');
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 130) curr = sec.getAttribute('id');
+            });
+            document.querySelectorAll('.toc-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${curr}`) link.classList.add('active');
+            });
+        });
+
+        window.onload = () => {
+            if (localStorage.getItem('darkMode') === 'true') applyTheme(true);
+            if (typeof renderMathInElement !== 'undefined') startMath();
+        };
+    </script>
+</body>
+</html>
