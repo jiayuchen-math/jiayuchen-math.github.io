@@ -4,93 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>点集拓扑专题：分离公理链的深度重构 | Jiayu Chen 知识库</title>
-    <!-- KaTeX 核心资源 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.js"></script>
     <script defer src="https://cdn.staticfile.org/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Charter", "Georgia", "PingFang SC", serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Charter", "Georgia", "PingFang SC", serif; }
         html { scroll-behavior: smooth; }
-        body {
-            background-color: #f7f7f5;
-            color: #1a1a1a;
-            line-height: 1.85;
-            transition: background-color 0.3s ease;
-        }
-        /* 顶部导航 */
-        .navbar {
-            padding: 18px 7%;
-            background: #ffffff;
-            border-bottom: 2px solid #d4d4d4;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+        body { background-color: #f7f7f5; color: #1a1a1a; line-height: 1.9; transition: background-color 0.3s ease; }
+        
+        .navbar { padding: 18px 7%; background: #ffffff; border-bottom: 2px solid #d4d4d4; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
         .back-btn { text-decoration: none; color: #2563eb; font-weight: 500; font-size: 15px; }
         .theme-btn { border: 2px solid #d4d4d4; border-radius: 6px; padding: 6px 12px; cursor: pointer; background: none; font-size: 14px; font-weight: 500; }
 
-        /* 布局容器 */
-        .main-wrap {
-            display: flex;
-            max-width: 1600px;
-            margin: 40px auto;
-            gap: 50px;
-            padding: 0 40px;
-        }
-        /* 左侧固定目录 */
+        .main-wrap { display: flex; max-width: 1600px; margin: 40px auto; gap: 50px; padding: 0 40px; align-items: flex-start; }
+        
         .sidebar-toc {
-            width: 350px;
-            flex-shrink: 0;
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-            max-height: calc(100vh - 150px);
-            overflow-y: auto;
-            background: #fff;
-            border: 2px solid #d4d4d4;
-            border-radius: 12px;
-            padding: 30px 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            width: 350px; flex-shrink: 0; position: sticky; top: 100px; height: fit-content; 
+            max-height: calc(100vh - 150px); overflow-y: auto; background: #fff; 
+            border: 2px solid #d4d4d4; border-radius: 12px; padding: 30px 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.02);
         }
-        .sidebar-toc h3 { font-size: 19px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #f3f4f6; color: #1e293b; letter-spacing: 1px; }
+        .sidebar-toc h3 { font-size: 19px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #f3f4f6; color: #1e293b; }
         .sidebar-toc a {
-            display: block;
-            padding: 12px 0 12px 18px;
-            color: #4b5563;
-            text-decoration: none;
-            font-size: 15px;
-            border-left: 3px solid transparent;
-            transition: all 0.25s ease;
-            line-height: 1.4;
+            display: block; padding: 12px 0 12px 18px; color: #4b5563; text-decoration: none; font-size: 15px; 
+            border-left: 3px solid transparent; transition: all 0.25s ease; line-height: 1.4;
         }
         .sidebar-toc a:hover { color: #2563eb; background: #f9fafb; }
         .sidebar-toc a.active { color: #2563eb; border-left-color: #2563eb; font-weight: 700; background: #f0f7ff; }
 
-        /* 主体内容卡片 */
         .note-container { flex-grow: 1; max-width: 1100px; min-width: 0; }
-        .note-card {
-            background: #fff;
-            padding: 80px 100px;
-            border-radius: 15px;
-            border: 2px solid #d4d4d4;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.03);
-        }
+        .note-card { background: #fff; padding: 80px 100px; border-radius: 15px; border: 2px solid #d4d4d4; box-shadow: 0 20px 50px rgba(0,0,0,0.03); }
         .note-meta { display: flex; gap: 30px; color: #6b7280; font-size: 14.5px; margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 30px; }
         .note-title { font-size: 45px; font-weight: 900; margin-bottom: 45px; color: #111827; border-left: 10px solid #2563eb; padding-left: 35px; line-height: 1.1; }
         
         .note-content p { margin-bottom: 28px; font-size: 19.5px; text-align: justify; color: #374151; }
-        .note-content h2 { font-size: 32px; margin: 70px 0 30px; color: #1e293b; border-bottom: 2px solid #e5e7eb; padding-bottom: 15px; scroll-margin-top: 110px; }
-        .note-content h3 { font-size: 25px; margin: 45px 0 20px; color: #2563eb; font-weight: 700; position: relative; }
+        
+        /* 深度讲解样式 */
+        .deep-dive { 
+            font-size: 18px; 
+            color: #4b5563; 
+            margin: 30px 0; 
+            line-height: 1.8; 
+            border-left: 4px solid #e5e7eb; 
+            padding-left: 25px; 
+        }
+        .logic-step { 
+            margin: 20px 0; 
+            padding: 15px 0; 
+            font-weight: 500; 
+            color: #1e293b; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px;
+        }
+        .logic-step::before { content: "→"; color: #2563eb; font-weight: 900; }
 
-        /* 区块样式体系 */
+        .note-content h2 { font-size: 32px; margin: 80px 0 30px; color: #1e293b; border-bottom: 2px solid #e5e7eb; padding-bottom: 15px; scroll-margin-top: 110px; }
+        .note-content h3 { font-size: 25px; margin: 50px 0 20px; color: #2563eb; font-weight: 700; }
+
         .definition, .theorem, .proof, .insight, .bridge, .example { padding: 30px 35px; margin: 40px 0; border-radius: 12px; font-size: 18.5px; line-height: 1.75; }
         .definition { background-color: #f0f7ff; border-left: 6px solid #3b82f6; }
         .theorem { background-color: #f0fdf4; border-left: 6px solid #22c55e; }
@@ -99,19 +69,12 @@
         .insight { background-color: #f8fafc; border-left: 6px solid #64748b; font-style: italic; }
         .example { background-color: #fff7ed; border-left: 6px solid #f97316; }
 
-        .note-content ul, .note-content ol { padding-left: 45px; margin-bottom: 30px; font-size: 18.5px; }
-        .note-content li { margin-bottom: 15px; }
-
         footer { text-align: center; padding: 70px; color: #9ca3af; border-top: 2px solid #eee; margin-top: 100px; background: #fff; }
 
-        /* ================= 核心：黑夜模式 100% 视觉覆盖 ================= */
         .dark-mode { background-color: #121212 !important; color: #e5e7eb !important; }
-        .dark-mode .navbar, .dark-mode .note-card, .dark-mode footer, .dark-mode .sidebar-toc {
-            background-color: #1e1e1e !important;
-            border-color: #333333 !important;
-            color: #e5e7eb !important;
-        }
+        .dark-mode .navbar, .dark-mode .note-card, .dark-mode footer, .dark-mode .sidebar-toc { background-color: #1e1e1e !important; border-color: #333333 !important; color: #e5e7eb !important; }
         .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode p, .dark-mode .note-meta, .dark-mode li { color: #e5e7eb !important; }
+        .dark-mode .deep-dive { color: #9ca3af !important; border-left-color: #444 !important; }
         .dark-mode .definition { background-color: #1a273a; color: #93c5fd; }
         .dark-mode .theorem { background-color: #182a1f; color: #86efac; }
         .dark-mode .proof { background-color: #2b2716; color: #fcd34d; }
@@ -123,7 +86,7 @@
         .dark-mode .theme-btn { border-color: #444; color: #e5e7eb; }
         .dark-mode .katex { color: #f1f5f9 !important; }
 
-        @media (max-width: 1300px) { .sidebar-toc { display: none; } .note-card { padding: 50px 40px; } }
+        @media (max-width: 1100px) { .sidebar-toc { display: none; } .note-card { padding: 50px 40px; } }
     </style>
 </head>
 <body>
@@ -135,17 +98,18 @@
     <div class="main-wrap">
         <aside class="sidebar-toc">
             <h3>专题：分离公理之链</h3>
-            <a href="#sec-0" class="toc-link">0. 导言：拓扑世界的“清晰度”</a>
-            <a href="#sec-1" class="toc-link">1. $T_0$：可辨识性的起点</a>
-            <a href="#sec-2" class="toc-link">2. $T_1$：点即闭集与单点隐私</a>
-            <a href="#sec-3" class="toc-link">3. $T_2$：Hausdorff 空间——分析学的温床</a>
-            <a href="#sec-4" class="toc-link">4. $T_3$：正则性与点集的局部隔离</a>
-            <a href="#sec-5" class="toc-link">5. $T_{3.5}$：函数分离与吉洪诺夫空间</a>
-            <a href="#sec-6" class="toc-link">6. $T_4$：正规性与闭集间的万丈深渊</a>
-            <a href="#sec-7" class="toc-link">7. 乌雷松引理：构造性证明的奇迹</a>
-            <a href="#sec-8" class="toc-link">8. 泰茨扩张定理：局部连续性的全球化</a>
-            <a href="#sec-9" class="toc-link">9. 遗传性探讨：为什么 $T_4$ 很脆弱？</a>
-            <a href="#sec-10" class="toc-link">10. 谱系总结：分离、紧性与度量</a>
+            <a href="#pre-know" class="toc-link">0. 预备：拓扑语言基础</a>
+            <a href="#sec-0" class="toc-link">1. 导言：拓扑分辨率</a>
+            <a href="#sec-1" class="toc-link">2. $T_0$：可辨识性的起点</a>
+            <a href="#sec-2" class="toc-link">3. $T_1$：点即闭集与隐私</a>
+            <a href="#sec-3" class="toc-link">4. $T_2$：Hausdorff 空间</a>
+            <a href="#sec-4" class="toc-link">5. $T_3$：正则性与隔离</a>
+            <a href="#sec-5" class="toc-link">6. $T_{3.5}$：吉洪诺夫空间</a>
+            <a href="#sec-6" class="toc-link">7. $T_4$：正规性与深渊</a>
+            <a href="#sec-7" class="toc-link">8. 乌雷松引理</a>
+            <a href="#sec-8" class="toc-link">9. 泰茨扩张定理</a>
+            <a href="#sec-9" class="toc-link">10. 遗传性探讨</a>
+            <a href="#sec-10" class="toc-link">11. 谱系总结</a>
             <a href="#appendix" class="toc-link">附录：反例全书</a>
         </aside>
 
@@ -159,131 +123,223 @@
                 <h1 class="note-title">拓扑空间的分离公理：从辨识、隔离到连续函数的存在性</h1>
                 
                 <div class="note-content">
-                    <h2 id="sec-0">0. 导言：拓扑世界的“清晰度”与分辨率</h2>
-                    <div class="bridge">
-                        <strong>哲学思考：</strong> 在数学中，如果我们不能区分两个对象，它们在逻辑上就是同一个。拓扑学去掉了“距离”这一硬性指标，转而使用“开集”这一柔性工具。分离公理链（$T$ 系列公理）本质上是规定了一个拓扑空间内开集的“丰盈程度”。开集越多，我们区分点与集合的能力就越强，空间的“分辨率”就越高。
+                    <h2 id="pre-know">0. 预备：拓扑语言基础 (The Foundation)</h2>
+                    <p>在进入分离公理之前，必须意识到：我们正在经历一次从“量化”到“定性”的范式转移。在大一、大二的数学分析中，我们依赖 $d(x,y) < \epsilon$ 来定义靠近；而在拓扑学中，这种“距离”被抛弃了。</p>
+                    
+                    <h3>0.1 重新定义“靠近”：开集与邻域</h3>
+                    <p>在拓扑学中，我们不再问“这两个点距离多少”，而问“是否存在一个开集包含了其中一个而排除了另一个”。</p>
+                    <div class="deep-dive">
+                        <strong>逻辑拆解：</strong><br>
+                        想象一个空间 $X$。如果我们定义一个集合 $\tau$ 满足拓扑公理，那么 $\tau$ 中的每个元素就被称为<strong>开集</strong>。开集在物理意义上可以理解为“一个探测区域”。如果点 $x$ 在开集 $U$ 中，意味着 $x$ 处于这个探测区域内。
                     </div>
-                    <p>如果没有分离公理，拓扑空间会表现出极其“病态”的行为：序列可能收敛到多个不同的点，每一个函数可能都是常数，甚至整个空间在拓扑意义下缩并为一个点。本章的目标是系统梳理从 $T_0$ 到 $T_4$ 的演化逻辑，揭示它们如何一步步为“极限唯一性”和“连续函数存在性”提供保障。</p>
+                    <p>由此，我们定义<strong>邻域 (Neighborhood)</strong>：包含点 $x$ 的任何一个开集 $U$ 都称为 $x$ 的邻域。如果两个点 $x$ 和 $y$ 在任何一个开集中总是同时出现或同时不出现，那么在拓扑学看来，这两个点是“不可分辨”的。</p>
 
-                    <h2 id="sec-1">一、$T_0$ 公理：柯尔莫哥洛夫空间 (Kolmogorov)</h2>
-                    <div class="bridge">
-                        <strong>直觉：</strong> 最原始的生存要求。如果空间里有两个点，至少要有一个开集能发现它们长得不一样（包含其中一个但不包含另一个）。
+                    <h3>0.2 补集逻辑：闭集与极限点</h3>
+                    <p>开集定义了“内部”，而<strong>闭集 (Closed Set)</strong> 定义了“边界及其内部”。</p>
+                    <div class="deep-dive">
+                        <strong>严谨定义：</strong> 集合 $F$ 是闭集 $\iff$ 其补集 $X \setminus F$ 是开集。<br>
+                        <strong>直观理解：</strong> 闭集是一个“包含所有极限点”的集合。如果一个点 $p$ 能够被集合 $F$ 中的点无限逼近（即 $p$ 的每一个邻域都与 $F$ 相交），那么在闭集 $F$ 中，这个 $p$ 必须被包含在内。
                     </div>
+
+                    <h3>0.3 子空间拓扑：局部视角</h3>
+                    <p>当我们讨论一个子集 $S \subseteq X$ 时，它如何继承拓扑？定义为：$S$ 中的开集是 $X$ 中的开集与 $S$ 的交集。这一点在后续讨论 $T_4$ 的遗传性时至关重要。</p>
+
+                    <h2 id="sec-0">1. 导言：拓扑世界的“清晰度”与分辨率</h2>
+                    <div class="bridge">
+                        <strong>哲学思考：</strong> 在数学中，如果我们不能区分两个对象，它们在逻辑上就是同一个。拓扑学去掉了“距离”这一硬性指标，转而使用“开集”这一柔性工具。分离公理链（$T$ 系列公理）本质上是规定了一个拓扑空间内开集的“丰盈程度”。
+                    </div>
+                    <p>如果一个空间缺乏开集（例如只有 $\emptyset$ 和 $X$），那么这个空间就像一张极低分辨率的照片，所有点都糊在一起。而随着我们逐级增加分离公理（从 $T_0$ 到 $T_4$），我们实际上是在给空间增加“像素”，提高其分辨率。</p>
+                    <div class="deep-dive">
+                        <strong>为什么需要分离公理？</strong><br>
+                        在没有分离公理的空间中，会出现违反直觉的现象：<br>
+                        1. <strong>极限不唯一：</strong> 一个序列 $x_n$ 可能同时收敛到 $L_1$ 和 $L_2$，且 $L_1 \neq L_2$。<br>
+                        2. <strong>函数匮乏：</strong> 空间上可能不存在任何非常数的连续函数。<br>
+                        3. <strong>点集模糊：</strong> 两个不同的点可能在所有拓扑性质上完全相同。
+                    </div>
+
+                    <h2 id="sec-1">2. $T_0$ 公理：可辨识性的起点 (Kolmogorov)</h2>
+                    <p>这是分离公理链的最低门槛。它不要求点之间能被“隔开”，只要求点之间能被“辨识”。</p>
+                    
                     <div class="definition">
                         <strong>定义（$T_0$ 空间）：</strong> 称拓扑空间 $(X, \tau)$ 满足 $T_0$ 公理，若对于任意一对相异的点 $x, y \in X$，存在一个开集 $U \in \tau$，使得 $(x \in U \text{ 且 } y \notin U)$ 或 $(y \in U \text{ 且 } x \notin U)$。
                     </div>
-                    <p>如果一个空间不满足 $T_0$，那么在拓扑层面上，$x$ 和 $y$ 是完全等价的，这通常意味着我们的拓扑划分得太粗糙了。</p>
+
+                    <div class="deep-dive">
+                        <strong>深度解析：</strong><br>
+                        请注意定义的措辞：“或”。这意味着分离是<strong>单向的</strong>。可能存在这样的情况：$x$ 有一个邻域不包含 $y$，但 $y$ 的所有邻域都必须包含 $x$。在这种情况下，$x$ 和 $y$ 依然是可辨识的。
+                    </div>
+                    
+                    <div class="logic-step">逻辑推演：如果空间不满足 $T_0$ $\to$ 存在 $x \neq y$，使得所有包含 $x$ 的开集都包含 $y$，且所有包含 $y$ 的开集都包含 $x$ $\to$ $x$ 和 $y$ 在拓扑上是等价的。</div>
+
                     <div class="example">
-                        <strong>经典例子：Sierpiński 空间</strong>。设 $X=\{0, 1\}$，拓扑为 $\{\emptyset, \{1\}, \{0, 1\}\}$。点 1 拥有一个专属邻域 $\{1\}$，而点 0 没有。这是一个 $T_0$ 但非 $T_1$ 的极简模型。
+                        <strong>经典例子：Sierpiński 空间</strong>。设 $X=\{0, 1\}$，拓扑为 $\{\emptyset, \{1\}, \{0, 1\}\}$。
+                        <br>分析：点 1 的邻域有 $\{1\}$，它不包含 0。所以满足 $T_0$。但点 0 的唯一邻域是 $\{0, 1\}$，它必然包含 1。因此，分离是单向的。
                     </div>
 
-                    <h2 id="sec-2">二、$T_1$ 公理：Fréchet 空间与点即闭集</h2>
-                    <div class="bridge">
-                        <strong>直觉：</strong> $T_0$ 的分离是单向的，而 $T_1$ 要求双向隐私。每一个点都必须能被某个开集“排除在外”。
-                    </div>
+                    <h2 id="sec-2">3. $T_1$ 公理：点即闭集与单点隐私</h2>
+                    <p>如果 $T_0$ 是“能分辨”，那么 $T_1$ 就是“互不干扰”。它要求分离必须是双向的。</p>
+                    
                     <div class="definition">
                         <strong>定义（$T_1$ 空间）：</strong> 若对任意 $x \neq y$，存在开集 $U \ni x$ 满足 $y \notin U$，**且**存在开集 $V \ni y$ 满足 $x \notin V$。
                     </div>
+
+                    <div class="deep-dive">
+                        <strong>从定义到性质的推演：</strong><br>
+                        为什么 $T_1$ 等价于“单点集是闭集”？<br>
+                        1. 假设 $X$ 是 $T_1$ 的。要证明 $\{x\}$ 是闭集，只需证明 $X \setminus \{x\}$ 是开集。<br>
+                        2. 对于 $X \setminus \{x\}$ 中的任意一点 $y$，由 $T_1$ 定义，存在开集 $V \ni y$ 且 $x \notin V$。<br>
+                        3. 这意味着 $V \subseteq X \setminus \{x\}$。因此 $X \setminus \{x\}$ 是开集。
+                    </div>
+
                     <div class="theorem">
                         <strong>核心判定：</strong> 空间 $X$ 满足 $T_1$ $\iff$ 对 $\forall x \in X$，单点集 $\{x\}$ 是闭集。
                     </div>
+
+                    <p>在 $T_1$ 空间中，我们终于可以谈论“点”作为独立实体的概念。但在 $T_1$ 空间中，两个点虽然能被各自的邻域包含，但这些邻域可能依然会相交。这为 $T_2$ 的引入留下了伏笔。</p>
+
                     <div class="example">
-                        <strong>代数反例：扎里斯基拓扑 (Zariski Topology)</strong>。在代数闭域 $\mathbb{k}$ 上（如 $\mathbb{C}$），仿射线 $\mathbb{A}^1$ 的闭集定义为多项式的零点集（即有限个点）。任何两个非空开集（补集为有限个点）都必定相交！因此这个空间是 $T_1$ 的，但绝不是 $T_2$ 的。这告诉我们，在代数几何中，我们必须习惯于无法用互不相交邻域隔离点的世界。
+                        <strong>代数反例：扎里斯基拓扑 (Zariski Topology)</strong>。<br>
+                        在复数平面 $\mathbb{C}$ 上，如果定义闭集为有限个点的集合。那么任何两个非空开集（补集是有限集）都必定相交。这个空间满足 $T_1$（单点是有限集 $\to$ 闭），但不满足 $T_2$。
                     </div>
 
-                    <h2 id="sec-3">三、$T_2$ 公理：豪斯多夫空间 (Hausdorff)</h2>
-                    <div class="bridge">
-                        <strong>分析学动机：</strong> 为什么我们要 Hausdorff？因为如果没有它，极限就不唯一。设序列 $x_n \to L_1$ 且 $x_n \to L_2$，如果 $L_1$ 和 $L_2$ 的邻域总是打架（相交），我们就无法把它们择清。
-                    </div>
+                    <h2 id="sec-3">4. $T_2$ 公理：Hausdorff 空间 (分析学的温床)</h2>
+                    <p>在数学分析中，我们习惯于“极限唯一性”。然而，极限唯一性并非拓扑空间的通用属性，它恰恰是 $T_2$ 空间的特征。</p>
+                    
                     <div class="definition">
                         <strong>定义（$T_2$ 空间）：</strong> 若对任意 $x \neq y$，存在不相交的开集 $U, V$ 使得 $x \in U$ 且 $y \in V$。
                     </div>
+
+                    <div class="deep-dive">
+                        <strong>逻辑对比：$T_1$ vs $T_2$</strong><br>
+                        - $T_1$：$x$ 有个邻域不含 $y$， $y$ 有个邻域不含 $x$。但这两个邻域可能像两个重叠的圆圈。<br>
+                        - $T_2$：这两个邻域必须完全分开，中间没有重叠部分。
+                    </div>
+
+                    <div class="logic-step">证明极限唯一性的路径：若 $x_n \to L_1$ 且 $x_n \to L_2$ 且 $L_1 \neq L_2 \to$ 由 $T_2$ 存在不相交邻域 $U_1, U_2 \to$ 序列 $x_n$ 最终必须同时落在两个不相交的集合中 $\to$ 矛盾。</div>
+
                     <div class="theorem">
                         <strong>豪斯多夫性的威力：</strong>
                         1. 序列极限唯一性。<br>
-                        2. 紧子集必为闭集（这是处理 Compactness 的基石）。<br>
-                        3. 连续映射的图象 $\Gamma(f)$ 是乘积空间中的闭集。
-                    </div>
-                    <div class="example">
-                        <strong>反例：双原点直线 (Line with Two Origins)</strong>。将两条实数轴在 $x \neq 0$ 处粘合，但在 0 处保留两个点 $0_a$ 和 $0_b$。任何包含 $0_a$ 的邻域都必然包含原点附近的“尾巴”，这部分必定与 $0_b$ 的邻域重叠。这是一个局部像欧氏空间、全局非豪斯多夫的流形反例。
+                        2. 紧子集必为闭集。<br>
+                        3. 连续映射的图象 $\Gamma(f)$ 是闭集。
                     </div>
 
-                    <h2 id="sec-4">四、$T_3$ 与正则空间 (Regularity)</h2>
-                    <div class="bridge">
-                        <strong>从点到集合的跨越：</strong> 点是有理性的，但闭集是沉重的。正则性要求我们将“一个点”与“一堵墙（不含该点的闭集）”彻底隔离开。
+                    <div class="example">
+                        <strong>反例：双原点直线 (Line with Two Origins)</strong>。<br>
+                        构造：取两个实数轴 $\mathbb{R}_a$ 和 $\mathbb{R}_b$，将所有 $x \neq 0$ 的点一一粘合。此时空间有两个原点 $0_a$ 和 $0_b$。任何包含 $0_a$ 的开集都包含 $(-\epsilon, 0) \cup (0, \epsilon)$，这部分必然与任何包含 $0_b$ 的开集相交。因此，它不是 $T_2$ 的。
                     </div>
+
+                    <h2 id="sec-4">5. $T_3$ 公理：正则性与点集的局部隔离</h2>
+                    <p>当我们研究空间结构时，单点往往太小。我们需要分离的是一个点 $x$ 与一个闭集 $F$。闭集代表了一个具有“实体感”的区域。</p>
+                    
                     <div class="definition">
                         <strong>定义（正则性）：</strong> 若对任意闭集 $F$ 和 $x \notin F$，存在不相交开集 $U, V$ 使得 $x \in U$ 且 $F \subseteq V$。满足 $T_1$ 的正则空间称为 **$T_3$ 空间**。
                     </div>
-                    <div class="insight">
-                        <strong>正则性的代数意义：</strong> 在正则空间中，每一个点的邻域基可以全由闭邻域构成。这保证了空间的“局部紧致化”具有良好的基础。
+
+                    <div class="deep-dive">
+                        <strong>深度解析：正则性的物理意义</strong><br>
+                        正则性实际上在要求：每一个点 $x$ 的每一个邻域 $U$ 中，都存在一个更小的邻域 $V$，使得 $V$ 的闭包 $\overline{V}$ 依然包含在 $U$ 之内。
+                        <br>$\text{逻辑链：} x \in V \subseteq \overline{V} \subseteq U$。
+                        这意味着空间在局部上非常“顺滑”，没有突兀的边界，允许我们进行局部的紧致化处理。
                     </div>
 
-                    <h2 id="sec-5">五、$T_{3.5}$ 公理：完全正则与吉洪诺夫空间</h2>
+                    <div class="insight">
+                        <strong>正则性的代数意义：</strong> 在正则空间中，每一个点的邻域基可以全由闭邻域构成。
+                    </div>
+
+                    <h2 id="sec-5">6. $T_{3.5}$ 公理：完全正则与吉洪诺夫空间</h2>
+                    <p>到这里，我们进入了本章最关键的转折点：从“开集分离”转向“函数分离”。</p>
+                    
                     <div class="bridge">
-                        <strong>转向函数论：</strong> 开集虽然好用，但函数更强大。如果我们能用连续函数 $f: X \to [0,1]$ 把点和闭集分开（让点取 0，闭集全取 1），这个空间的解析结构就非常完美了。
+                        <strong>转向函数论：</strong> 开集虽然好用，但函数更强大。如果我们能用连续函数 $f: X \to [0,1]$ 把点和闭集分开，空间的解析结构就非常完美了。
                     </div>
                     <div class="definition">
                         <strong>定义（完全正则）：</strong> 对 $\forall$ 闭集 $F$ 及 $x \notin F$，存在连续函数 $f: X \to [0, 1]$ 满足 $f(x)=0, f(F)=\{1\}$。
                         满足 $T_1$ 的完全正则空间称为 **$T_{3.5}$ 或吉洪诺夫 (Tychonoff) 空间**。
                     </div>
-                    <div class="theorem">
-                        <strong>嵌入定理：</strong> 吉洪诺夫空间是唯一能够嵌入到超立方体（吉洪诺夫立方体）中的拓扑空间。这证明了 $T_{3.5}$ 是研究空间紧致化（如 Stone-Čech 紧致化）的自然限界。
+
+                    <div class="deep-dive">
+                        <strong>为什么需要 $T_{3.5}$？</strong><br>
+                        在 $T_3$ 中，我们只能找到不相交的开集。但在分析学中，我们需要“光滑地”从一个区域过渡到另一个区域。连续函数 $f: X \to [0,1]$ 正是这种过渡的量化描述。
+                        <br>如果一个空间是 $T_{3.5}$ 的，意味着它拥有足够多的连续函数，可以用函数来刻画空间的拓扑结构。
                     </div>
 
-                    <h2 id="sec-6">六、$T_4$ 公理：正规空间 (Normal Spaces)</h2>
-                    <div class="bridge">
-                        <strong>终极隔离：</strong> 把“两堵墙（两个不相交闭集）”彻底推开。这是分离公理链中最强大、也最不稳定的成员。
+                    <div class="theorem">
+                        <strong>嵌入定理：</strong> 吉洪诺夫空间是唯一能够嵌入到超立方体（吉洪诺夫立方体）中的拓扑空间。
                     </div>
+
+                    <h2 id="sec-6">7. $T_4$ 公理：正规性与闭集间的万丈深渊</h2>
+                    <p>这是分离公理的顶峰：将两个互不相交的闭集 $A$ 和 $B$ 彻底隔开。这在逻辑上比 $T_3$ 难得多，因为 $A$ 和 $B$ 都是“沉重”的实体。</p>
+                    
                     <div class="definition">
                         <strong>定义（正规）：</strong> 若对任意不相交闭集 $A, B$，存在不相交开集 $U, V$ 使得 $A \subseteq U, B \subseteq V$。满足 $T_1$ 的正规空间称为 **$T_4$ 空间**。
                     </div>
+
+                    <div class="deep-dive">
+                        <strong>$T_4$ 的苛刻性分析：</strong><br>
+                        在度量空间中，我们可以定义 $d(x, A) = \inf \{d(x, a) : a \in A\}$。通过定义 $U = \{x : d(x, A) < d(x, B)\}$，我们可以轻松地在两个闭集之间划出一道分界线。
+                        <br>但在一般的拓扑空间中，没有距离函数。我们必须依赖开集的嵌套构造来强行制造出这种分离。
+                    </div>
+
                     <div class="example">
                         <strong>重要事实：</strong> 所有的度量空间都是 $T_4$ 的。紧致豪斯多夫空间也是 $T_4$ 的。
                     </div>
 
-                    <h2 id="sec-7">七、乌雷松引理：拓扑逻辑向分析分析的坍缩</h2>
-                    <div class="bridge">
-                        <strong>证明的艺术：</strong> 为什么正规性重要？因为它保证了空间上有“足够多”的非平庸连续函数。
-                    </div>
+                    <h2 id="sec-7">8. 乌雷松引理：构造性证明的奇迹</h2>
+                    <p>乌雷松引理是拓扑学中最重要的定理之一。它将“纯拓扑的分离”转化为了“分析函数的存在性”。</p>
+                    
                     <div class="theorem">
                         <strong>乌雷松引理 (Urysohn's Lemma)：</strong> 空间 $X$ 是正规的 $\iff$ 对任意不相交闭集 $A, B$，存在连续函数 $f: X \to [0, 1]$ 使得 $f(A)=\{0\}, f(B)=\{1\}$。
                     </div>
-                    <div class="proof">
-                        <strong>二分构造思想：</strong> 
-                        证明的核心在于利用正规性在 $A, B$ 之间通过有理数集 $\mathbb{Q} \cap [0,1]$ 插入无穷多层嵌套的开集 $U_r$。
-                        1. 初始：$A \subseteq U_1 \subseteq \overline{U}_1 \subseteq X \setminus B$。<br>
-                        2. 迭代：在任何 $U_r$ 和 $U_s$ (r < s) 之间再塞入一个 $U_{(r+s)/2}$。<br>
-                        3. 定义：$f(x) = \inf\{r \mid x \in U_r\}$。通过这种方式，拓扑的开集包含关系被转化成了实数的有序性，实现了从几何到分析的跃迁。
+
+                    <div class="deep-dive">
+                        <strong>证明逻辑深度拆解：</strong><br>
+                        该证明采用了极其精妙的<strong>“二分构造法”</strong>：<br>
+                        1. <strong>初始层：</strong> 利用正规性，在 $A$ 和 $B$ 之间找一个开集 $U_1$ 使得 $A \subseteq U_1 \subseteq \overline{U}_1 \subseteq X \setminus B$。<br>
+                        2. <strong>有理数索引：</strong> 为 $[0,1]$ 之间的所有有理数 $r$ 构造一个开集 $U_r$，满足当 $r < s$ 时，$\overline{U}_r \subseteq U_s$。<br>
+                        3. <strong>函数定义：</strong> 定义 $f(x) = \inf \{r \in \mathbb{Q} \cap [0,1] : x \in U_r\}$。<br>
+                        4. <strong>连续性验证：</strong> 证明对于任何 $\epsilon$，我们都能找到一个邻域使得函数值波动小于 $\epsilon$。
+                        <br>这个过程实际上是用一个拓扑空间的“开集链”模拟了实数轴的“连续性”。
                     </div>
 
-                    <h2 id="sec-8">八、泰茨扩张定理：连续性的无损延展</h2>
-                    <div class="bridge">
-                        <strong>全局观：</strong> 如果你只在一个局部（闭集 $F$）上定义了函数，你能否在不破坏连续性的前提下，把它外推到整个空间？
-                    </div>
+                    <h2 id="sec-8">9. 泰茨扩张定理：连续性的无损延展</h2>
+                    <p>在分析学中，我们经常在边界上定义函数，然后希望将其延展到内部。泰茨扩张定理给出了正规空间的保证。</p>
+                    
                     <div class="theorem">
                         <strong>Tietze Extension Theorem：</strong> 设 $X$ 是正规空间，$F \subseteq X$ 为闭子空间。对任何连续函数 $f: F \to [a, b]$，存在连续函数 $g: X \to [a, b]$ 满足 $g|_F = f$。
                     </div>
-                    <p>这个定理是泛函分析中哈恩-巴拿赫定理（Hahn-Banach）在拓扑范畴内的完美对映。它确立了正规空间作为研究连续映射的最佳舞台。</p>
 
-                    <h2 id="sec-9">九、遗传性探讨：为什么 $T_4$ 极其“娇贵”？</h2>
+                    <div class="deep-dive">
+                        <strong>逻辑意义：</strong><br>
+                        这个定理告诉我们，正规空间具有极强的“兼容性”。如果你能在一个闭集上定义一个连续的性质，这个性质就可以在不产生冲突的情况下，被平滑地推广到全空间。这在泛函分析中是至关重要的。
+                    </div>
+
+                    <h2 id="sec-9">10. 遗传性探讨：为什么 $T_4$ 很脆弱？</h2>
+                    <p>在学习拓扑性质时，我们要时刻区分“性质”和“遗传性质”。</p>
+                    
                     <div class="bridge">
-                        <strong>纯数陷阱：</strong> 所有的 $T_0, T_1, T_2, T_3$ 都是<strong>遗传性质</strong>（子空间自动继承）。但 **$T_4$ 不是遗传的**！一个正规空间的子空间可能完全不正规。
-                    </div>
-                    <div class="example">
-                        <strong>反例：Tychonoff Plank (吉洪诺夫板)</strong>。这是一个极其精巧的构造，展示了两个正规空间的乘积空间未必正规。这引导数学家提出了更强的公理，如 $T_5$（遗传正规空间）。
+                        <strong>纯数陷阱：</strong> 所有的 $T_0, T_1, T_2, T_3$ 都是<strong>遗传性质</strong>。但 **$T_4$ 不是遗传的**！
                     </div>
 
-                    <h2 id="sec-10">十、总结：分离、紧性与度量的交织</h2>
-                    <p>分离公理链不仅仅是分类，它揭示了空间的结构演化：</p>
-                    <ul>
-                        <li><strong>$T_0, T_1$：</strong> 提供基本的个体独立性。</li>
-                        <li><strong>$T_2$：</strong> 提供分析的基础（收敛性）。</li>
-                        <li><strong>$T_3, T_{3.5}$：</strong> 提供空间的局部一致性，允许嵌入超立方体。</li>
-                        <li><strong>$T_4$：</strong> 提供强大的函数构造与扩张能力。</li>
+                    <div class="deep-dive">
+                        <strong>深度分析：为什么 $T_4$ 不遗传？</strong><br>
+                        假设 $X$ 是 $T_4$ 的，且 $S \subseteq X$ 是其子空间。若 $A, B$ 是 $S$ 中的不相交闭集，它们在 $S$ 中是闭的，但不一定在 $X$ 中是闭的（它们只是 $X$ 中某个闭集与 $S$ 的交集）。<br>
+                        因为 $A, B$ 在 $X$ 中可能不是闭集，我们无法直接调用 $X$ 的正规性来分离它们。
+                        <br><strong>结论：</strong> 正规性依赖于闭集的定义，而闭集的定义在子空间中会发生改变，因此正规性无法自动遗传。
+                    </div>
+
+                    <h2 id="sec-10">11. 谱系总结：分离、紧性与度量</h2>
+                    <p>我们将整个分离公理链浓缩为以下逻辑演化图：</p>
+                    <div class="deep-dive">
+                        $\text{可辨识 } (T_0) \to \text{个体独立 } (T_1) \to \text{极限唯一 } (T_2) \to \text{局部平滑 } (T_3) \to \text{函数丰富 } (T_{3.5}) \to \text{全局延展 } (T_4)$
+                    </div>
+                    <ul style="margin-bottom: 40px;">
+                        <li><strong>分析学底线：</strong> 必须达到 $T_2$，否则无法定义唯一的极限。</li>
+                        <li><strong>解析学底线：</strong> 必须达到 $T_{3.5}$，否则空间上可能缺乏足够的连续函数。</li>
+                        <li><strong>度量空间之桥：</strong> 所有的度量空间都满足 $T_4$。反过来，满足 $T_4$ 且第二可数的空间必定可度量化。</li>
                     </ul>
                     <div class="insight">
-                        <strong>终极展望：</strong> 当一个空间同时满足 $T_4$ 且具备第二可数性时，根据 **Urysohn 度量化定理**，它就一定是一个度量空间。分离公理就是我们通往真实距离世界的层层阶梯。
+                        <strong>终极展望：</strong> 分离公理实际上是在测量一个拓扑空间距离“度量空间”有多远。
                     </div>
 
                     <h2 id="appendix">附录：反例全书 (Counterexamples Archive)</h2>
@@ -291,9 +347,9 @@
                         为了深化理解，必须掌握这些破坏直觉的特殊空间。
                     </div>
                     <ol>
-                        <li><strong>有限补拓扑 ($\mathbb{R}, \tau_{fc}$)：</strong> 闭集是有限集。它是 $T_1$ 的，但任何两个开集都相交（非 $T_2$）。</li>
+                        <li><strong>有限补拓扑 ($\mathbb{R}, \tau_{fc}$)：</strong> 闭集是有限集。它是 $T_1$ 的，但任何两个非空开集都相交 $\to$ 非 $T_2$。</li>
                         <li><strong>除点拓扑 (Excluded Point Topology)：</strong> 选取 $p \in X$，开集是不包含 $p$ 的集合。它是 $T_0$ 但非 $T_1$。</li>
-                        <li><strong>Moore 平面 (Niemytzki Plane)：</strong> 在上半平面上定义的特殊拓扑。它是 $T_{3.5}$ 的，但由于边界点的特殊性，它不是 $T_4$ 的。这是区分正则与正规的著名“战场”。</li>
+                        <li><strong>Moore 平面 (Niemytzki Plane)：</strong> 在上半平面上定义的特殊拓扑。它是 $T_{3.5}$ 的，但由于边界点的特殊性，它不是 $T_4$ 的。</li>
                     </ol>
                 </div>
             </div>
@@ -301,11 +357,10 @@
     </div>
 
     <footer>
-        © 2026 Jiayu Chen | 点集拓扑
+        © 2026 Jiayu Chen | 
     </footer>
 
     <script>
-        // 初始化 KaTeX 自动渲染
         function startMath() {
             renderMathInElement(document.body, {
                 delimiters: [
@@ -315,8 +370,6 @@
                 throwOnError: false
             });
         }
-        
-        // 黑夜模式逻辑
         const themeToggle = document.getElementById('themeToggle');
         const applyTheme = (isDark) => {
             document.body.classList.toggle('dark-mode', isDark);
@@ -325,7 +378,6 @@
         };
         themeToggle.addEventListener('click', () => applyTheme(!document.body.classList.contains('dark-mode')));
 
-        // 侧边目录实时追踪与高亮
         window.addEventListener('scroll', () => {
             let curr = "";
             const sections = document.querySelectorAll('h2[id], h1[id]');
@@ -337,7 +389,6 @@
                 if (link.getAttribute('href') === `#${curr}`) link.classList.add('active');
             });
         });
-
         window.onload = () => {
             if (localStorage.getItem('darkMode') === 'true') applyTheme(true);
             if (typeof renderMathInElement !== 'undefined') startMath();
