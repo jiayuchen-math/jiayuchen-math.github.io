@@ -204,6 +204,7 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  const goalPages=goalPathPages({topics:merged.topics,nodes:pathNodes,root});
  const chineseGoalPages=goalPathPages({topics:merged.topics,nodes:pathNodes,root,locale:'zh'});
  const editorialPages=editorialGuidePages(root,learningEdition,merged.topics);
+ const chineseEditorialPages=new Map(editorialGuidePages(root,learningEdition,merged.topics,'zh').map(p=>[p.file,p]));
  const managedLearning=new Set([...editorialPages.map(p=>p.file),'resources/bookshelf/index.html','resources/study-careers/compare/index.html']);
  const passthrough=walk('resources').filter(f=>f.endsWith('.html')&&!managedLearning.has(f)&&!directoryFiles.has(f)&&!goalPages.has(f)&&!f.includes('/catalogue-data/')&&!/-(?:all-)?page-\d+\.html$/.test(f)&&!/^resources\/(?:encyclopedia|terminology)\/[^/]+\/index\.html$/.test(f)&&f!=='resources/index.html'&&f!=='resources/search/index.html'&&!f.startsWith('resources/data/'));
  passthrough.push(...walk('notes/reading-notes').filter(f=>f.endsWith('.html')&&!directoryFiles.has(f)&&!f.endsWith('open-reading.html')&&!/-(?:all-)?page-\d+\.html$/.test(f)),'notes/mathematical-notes/page.html','disclaimer.html');
@@ -252,9 +253,12 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
   guideRows.push({id:'guide-'+digest(file).slice(0,12),title:page.title,url:href(file),summary:brief(text(page.body.replace(/<!-- chinese-subject-index:start -->[\s\S]*?<!-- chinese-subject-index:end -->/g,''))),...(chinese?{chinese:chinese.title,aliases:[chinese.title,...routeTranslations[routeId]?[routeTranslations[routeId].goal]:[]]}:{}),area:(routeAreas[routeId]||[]).map(id=>areas[id].title).join('|'),type:'guides'});
  }
  for(const page of editorialPages){
-  const toc='<nav class="contents" aria-label="Article contents"><ul>'+page.contents.map(h=>'<li>'+link('#'+h.id,h.label)+'</li>').join('')+'</ul></nav>';
-  addPage(page.file,page.title,page.body,'article',{toc,head:'<link rel="stylesheet" href="/en/resources/assets/study-guides.css"><link rel="stylesheet" href="/en/resources/assets/katex/katex.min.css">'});
-  guideRows.push({id:'guide-'+digest(page.file).slice(0,12),title:page.title,url:href(page.file),summary:page.guide.summary,area:areas[page.guide.area]?.title||page.guide.area,type:'guides'});
+  const chinese=chineseEditorialPages.get(page.file);
+  const contents=p=>'<ul>'+p.contents.map(h=>'<li>'+link('#'+h.id,h.label)+'</li>').join('')+'</ul>';
+  const toc='<nav class="contents" id="translated-page-toc" aria-label="Article contents">'+contents(page)+'</nav>';
+  const body='<div id="guide-copy">'+page.body+'</div>'+translationPayload({'guide-copy':chinese.body,'translated-page-title':E(chinese.title),'translated-breadcrumb-title':E(chinese.title),'translated-document-title':E(chinese.title+' · Jiayu Chen'),'translated-page-toc':contents(chinese)});
+  addPage(page.file,page.title,body,'article',{translatedTitle:chinese.title,toc,head:'<link rel="stylesheet" href="/en/resources/assets/study-guides.css"><link rel="stylesheet" href="/en/resources/assets/katex/katex.min.css">'});
+  guideRows.push({id:'guide-'+digest(page.file).slice(0,12),title:page.title,chinese:chinese.title,aliases:[chinese.title,chinese.guide.summary],url:href(page.file),summary:page.guide.summary,area:areas[page.guide.area]?.title||page.guide.area,type:'guides'});
  }
  // The weekly entrance retains every real file and future-week slot, without its old duplicate theme script.
  const weeklyFile='notes/mathematical-notes/weekly.html',weeklyOld=read(weeklyFile);const weeklyScript=weeklyOld.match(/const courses=[\s\S]*?(?=const root=document.documentElement)/)?.[0]||(fs.existsSync(path.join(root,'resources/assets/weekly-entrance.js'))?read('resources/assets/weekly-entrance.js'):'');

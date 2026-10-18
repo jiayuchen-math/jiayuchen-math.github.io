@@ -13,7 +13,7 @@ const introductions=loadDirectionIntroductions(root),fixture=JSON.parse(read('re
 const original=JSON.stringify([goalPaths,nodes,topics,introductions]);
 const english=goalPathPages({topics,nodes,root}),chinese=goalPathPages({topics,nodes,root,locale:'zh'});
 const matches=(html,pattern)=>[...html.matchAll(pattern)].map(m=>m[1]);
-assert.equal(chinese.size,13);
+assert.equal(chinese.size,14);
 assert.equal(JSON.stringify([goalPaths,nodes,topics,introductions]),original,'English inputs unchanged');
 for(const route of goalPaths){
  const digest=createHash('sha256').update(JSON.stringify([route,introductions[route.id],route.stages.map(s=>s.subjects.map(id=>[id,nodes[id]]))])).digest('hex');

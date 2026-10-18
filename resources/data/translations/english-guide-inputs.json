@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "note": "Frozen English guide metadata and complete Markdown; source changes require review of the corresponding translation.",
+  "guides": {
+    "reading-a-text": "55d28d09dd64c642c3f92e12c9f6a4eb9fbe11473a5e06918de678d91131e8a1",
+    "calculations-to-proofs": "5acd40a70cbe534993dec68d6ab2a8efb097c4e450e56bfc615afa623d19c085",
+    "making-examples": "43b8bd7d4001d9c7626895d2d6baabcfd5517e002517fadacfc776957d1570fc",
+    "finding-prerequisite-gaps": "1fbee7119c9bc2936cf75983993ae7a631049d466f6dd639c1fb74f15f2eceb9",
+    "algebra-and-geometry-together": "a457b886587bfaccacae157e009ac213527a04df5ae5db0ef9d72e03f32e031f",
+    "first-research-paper": "3a28f650f3e5a1618e2295de1df7f8f108c3b65035e529694019a61a06414943",
+    "coverings-and-galois": "146a2d2e63d9f84559740a2b44f050240bc94777ad7d9a9aabf64233777e560a",
+    "duality-linear-functional": "b72a8159a2593b8ec4e78b4c3f8457134d96329bc1f95f0388854662d6270c8c"
+  }
+}

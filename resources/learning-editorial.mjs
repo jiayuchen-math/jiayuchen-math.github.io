@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {escape as E,markdown,renderArticle} from './knowledge-markdown.mjs';
 import {chineseCompanion} from './localization.mjs';
+import {translatedGuide,renderTranslatedGuide,translateGuideLabels,guideSubjectTitle} from './guide-translations.mjs';
 
 const external=(url,label)=>`<a href="${E(url)}" target="_blank" rel="noopener noreferrer">${E(label)}</a>`;
 const safeURL=url=>{const value=new URL(url);if(value.protocol!=='https:'||value.username||value.password)throw Error('Unsafe learning reference');return url};
@@ -50,13 +51,16 @@ export function renderComparisons(entry){
 export function renderContinuations(entry,topics){
  return `<section id="continue-learning"><h3>Where this can lead</h3><ul>${entry.continueWith.map(r=>`<li><a href="${E(subjectURL(r.subjectId,topics))}">${E(topics.find(t=>t.id===r.subjectId).title)}</a> — ${E(r.reason)}</li>`).join('')}</ul></section>`;
 }
-export function editorialGuidePages(root,edition,topics){
- return edition.guides.map(guide=>{
-  const rendered=renderArticle(fs.readFileSync(path.join(root,guide.file),'utf8').replace(/^# [^\n]+\n+/,''));
+export function editorialGuidePages(root,edition,topics,locale='en'){
+ return edition.guides.map(original=>{
+  const chinese=locale==='zh',guide=chinese?translatedGuide(original):original;
+  const source=fs.readFileSync(path.join(root,guide.file),'utf8');
+  const rendered=chinese?renderTranslatedGuide(root,guide.id,source):renderArticle(source.replace(/^# [^\n]+\n+/,''));
   const sourceList=`<section id="reading-sources"><h2>Sources and further reading</h2><ul class="source-list">${guide.references.map(r=>`<li>${external(r.url,r.title)} — ${E(r.author)}.<span class="source-locator">${E(r.locator)} · Checked ${E(r.checked)}</span></li>`).join('')}</ul></section>`;
-  const connections=`<p class="concept-links">${guide.subjectIds.map(id=>`<a href="${E(subjectURL(id,topics))}">${E(topics.find(t=>t.id===id).title)}</a>`).join(' · ')}</p>`;
+  const connections=`<p class="concept-links">${guide.subjectIds.map(id=>`<a href="${E(subjectURL(id,topics))}">${E(chinese?guideSubjectTitle(id,topics.find(t=>t.id===id).title):topics.find(t=>t.id===id).title)}</a>`).join(' · ')}</p>`;
   const contributions=`<p class="knowledge-meta">Editorial guide · Revised ${E(guide.reviewed)} · ${external('https://github.com/jiayuchen-math/jiayuchen-math.github.io/edit/main/'+guide.file,'Suggest an edit')} · ${external('https://github.com/jiayuchen-math/jiayuchen-math.github.io/issues/new?template=math-correction.yml','Report a correction')}</p><details><summary>Writing and reuse</summary><p>This guide was prepared with AI-assisted drafting and source review. It does not describe Jiayu Chen’s personal experience. Original editorial text: ${external('https://creativecommons.org/licenses/by-sa/4.0/','CC BY-SA 4.0')}; cited works retain their own terms.</p></details>`;
-  return {file:`resources/library-paths/guides/${guide.id}.html`,title:guide.title,body:`<div lang="en"><p class="knowledge-meta">${E(guide.kind)}</p><p>${E(guide.summary)}</p><div class="direction-introduction">${rendered.html}</div></div>${connections}${sourceList}${contributions}`,contents:[...rendered.contents,{id:'reading-sources',label:'Sources and further reading'}],guide};
+  const body=`<div lang="${chinese?'zh-Hans':'en'}"><p class="knowledge-meta">${E(guide.kind)}</p><p>${E(guide.summary)}</p><div class="direction-introduction">${rendered.html}</div></div>${connections}${sourceList}${contributions}`;
+  return {file:`resources/library-paths/guides/${guide.id}.html`,title:guide.title,body:chinese?translateGuideLabels(body):body,contents:[...rendered.contents,{id:'reading-sources',label:chinese?'参考资料与延伸阅读':'Sources and further reading'}],guide};
  });
 }
 export function renderRevisionList(entries){

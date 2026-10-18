@@ -5,6 +5,7 @@ import {subjectFigure,nilpotentFigure} from './study-figures.mjs';
 import {sectionDirectionBody} from './direction-sections.mjs';
 import {combinedChecks,renderComparisons,renderContinuations,subjectURL} from './learning-editorial.mjs';
 import {learningIllustrations} from './learning-illustrations.mjs';
+import {renderTranslatedGuide,translateGuideLabels,guideTranslations} from './guide-translations.mjs';
 
 const readJSON=(root,file)=>JSON.parse(fs.readFileSync(path.join(root,'resources',file),'utf8'));
 export function checkedHTTPS(value){
@@ -26,10 +27,11 @@ export function loadDirectionIntroductions(root){
 }
 export const loadCourseStudies=root=>readJSON(root,'data/course-study-guides.json');
 export const loadStudyChecks=root=>readJSON(root,'content/study-checks.json');
-export function readingPracticePage(root){
- const rendered=renderArticle(fs.readFileSync(path.join(root,'resources/content/reading-a-mathematics-text.md'),'utf8'));
- return {title:'Reading a mathematics text',kind:'article',standalone:true,contents:rendered.contents,
-  body:'<div class="direction-introduction">'+rendered.html+contribution('resources/content/reading-a-mathematics-text.md','reading-a-text')+'<p class="knowledge-meta" data-content-license>Original guide: '+external('https://creativecommons.org/licenses/by-sa/4.0/','CC BY-SA 4.0')+'.</p></div>'};
+export function readingPracticePage(root,locale='en'){
+ const chinese=locale==='zh',source=fs.readFileSync(path.join(root,'resources/content/reading-a-mathematics-text.md'),'utf8');
+ const rendered=chinese?renderTranslatedGuide(root,'reading-a-text',source):renderArticle(source);
+ const body='<div class="direction-introduction">'+rendered.html+contribution('resources/content/reading-a-mathematics-text.md','reading-a-text')+'<p class="knowledge-meta" data-content-license>Original guide: '+external('https://creativecommons.org/licenses/by-sa/4.0/','CC BY-SA 4.0')+'.</p></div>';
+ return {title:chinese?guideTranslations['reading-a-text'].title:'Reading a mathematics text',kind:'article',standalone:true,contents:rendered.contents,body:chinese?translateGuideLabels(body):body};
 }
 export function validateStudyChecks(checks,courses){
  const ids=new Set();

@@ -1,0 +1,41 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {fileURLToPath} from 'node:url';
+import {loadLearningEdition,editorialGuidePages} from './learning-editorial.mjs';
+import {readingPracticePage} from './study-content.mjs';
+import {guideTranslations,translatedGuide} from './guide-translations.mjs';
+import {escape as E} from './knowledge-markdown.mjs';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const read=file=>fs.readFileSync(path.join(root,file),'utf8').replaceAll('\r\n','\n');
+const fixture=JSON.parse(read('resources/data/translations/english-guide-inputs.json'));
+const topics=JSON.parse(read('notes/reading-notes/library/catalogue.json')).topics,edition=loadLearningEdition(root);
+const input=JSON.stringify([topics,edition]),english=editorialGuidePages(root,edition,topics),chinese=editorialGuidePages(root,edition,topics,'zh');
+const readingFile='resources/library-paths/reading-a-text.html';
+english.push({file:readingFile,...readingPracticePage(root)});chinese.push({file:readingFile,...readingPracticePage(root,'zh')});
+const matches=(html,re)=>[...html.matchAll(re)].map(m=>m[1]);
+let paragraphs=0,formulas=0;
+assert.equal(english.length,8);assert.equal(chinese.length,8);assert.equal(Object.keys(guideTranslations).length,8);
+for(const [i,en]of english.entries()){
+ const zh=chinese[i],id=en.guide?.id||'reading-a-text',source=en.guide?read(en.guide.file):read('resources/content/reading-a-mathematics-text.md');
+ const digest=createHash('sha256').update(JSON.stringify(en.guide?[en.guide,source]:['Reading a mathematics text',source])).digest('hex');
+ assert.equal(digest,fixture.guides[id],id+' source changed: review the translation instead of silently updating the fixture');
+ assert(!/[：:？！?]/.test(zh.title),id+' concise title');
+ assert.deepEqual(matches(zh.body,/href="([^"]+)"/g).sort(),matches(en.body,/href="([^"]+)"/g).sort(),id+' preserve all references and navigation URLs');
+ assert.deepEqual(matches(zh.body,/<annotation encoding="application\/x-tex">([\s\S]*?)<\/annotation>/g).sort(),matches(en.body,/<annotation encoding="application\/x-tex">([\s\S]*?)<\/annotation>/g).sort(),id+' preserve all mathematical expressions');
+ assert.equal(matches(zh.body,/(<p\b)/g).length,matches(en.body,/(<p\b)/g).length,id+' no missing paragraphs');
+ assert.deepEqual(matches(zh.body,/\bid="([^"]+)"/g),matches(en.body,/\bid="([^"]+)"/g),id+' canonical heading IDs');
+ assert.deepEqual(zh.contents.map(h=>h.id),en.contents.map(h=>h.id));assert(!zh.body.includes('katex-error'));
+ paragraphs+=matches(zh.body,/(<p\b)/g).length;formulas+=matches(zh.body,/(<annotation )/g).length;
+ const built=read(en.file),data=JSON.parse(built.match(/<script type="application\/json" id="page-translations">([\s\S]*?)<\/script>/)[1]);
+ const block=id==='reading-a-text'?'route-copy':'guide-copy';assert.equal(data.blocks[block],zh.body,id+' built payload');
+ assert.equal(data.blocks['translated-page-title'],E(zh.title));assert.equal(matches(built,new RegExp('id="('+block+')"','g')).length,1,'One live body');
+ assert.deepEqual(matches(data.blocks['translated-page-toc'],/href="([^"]+)"/g),en.contents.map(h=>'#'+h.id));
+ for(const ref of en.guide?.references||[])for(const fact of ['title','author','checked'])assert(zh.body.includes(E(ref[fact])),id+' keep '+fact);
+ if(en.guide){assert(zh.body.includes('AI 辅助起草和来源检查'),'Retain authorship disclosure, do not impersonate a human author');assert.equal(zh.guide.reviewed,en.guide.reviewed)}
+ for(const label of zh.contents.map(h=>h.label))assert(/[\u4e00-\u9fff]/.test(label),id+' Chinese contents');
+}
+assert.equal(JSON.stringify([topics,edition]),input,'Do not mutate English or catalogue data');
+assert.throws(()=>translatedGuide({id:'unknown',references:[]}),/Missing guide metadata translation/);
+console.log(JSON.stringify({guideTranslations:8,paragraphs,mathematicalExpressions:formulas,sourceFactsRetained:true,stableURLsAndAnchors:true}));

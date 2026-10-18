@@ -11,6 +11,7 @@ import {subjectTranslations,translatedSubjectInputs,subjectTranslationHTML,trans
 import {renderCourseStudy} from './study-content.mjs';
 import {combinedChecks} from './learning-editorial.mjs';
 import './test-route-translations.mjs';
+import './test-guide-translations.mjs';
 const root=new URL('../',import.meta.url),read=file=>fs.readFileSync(new URL(file,root),'utf8');
 assert.equal(translateUI('Search'),'搜索');assert.equal(translateUI('Search','en'),'Search');
 assert.equal(translateUI('The Rising Sea: Foundations of Algebraic Geometry'),'The Rising Sea: Foundations of Algebraic Geometry');
