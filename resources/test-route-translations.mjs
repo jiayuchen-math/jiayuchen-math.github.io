@@ -28,10 +28,12 @@ for(const route of goalPaths){
  assert.deepEqual(zh.contents.map(h=>h.id),en.contents.map(h=>h.id));
  assert.equal(matches(zh.body,/<summary>(先修要求与跳过建议)<\/summary>/g).length,route.stages.reduce((n,s)=>n+s.subjects.length,0));
  const payload=JSON.parse(built.match(/<script type="application\/json" id="page-translations">([\s\S]*?)<\/script>/)[1]);
- assert.equal(payload.blocks['route-copy'],zh.body,route.id+' complete built translation');
+ const pilot=['algebraic-geometry','analysis-pde','probability'].includes(route.id);
+ const originalCopy=payload.blocks['route-copy'].replace(/<!-- pilot-route:start -->[\s\S]*?<!-- pilot-route:end -->/g,'');
+ assert.equal(originalCopy,zh.body,route.id+' complete original translation preserved alongside additive pilot');
  assert.equal(payload.blocks['translated-page-title'],zh.title);
  assert(built.includes('<h1 id="translated-page-title">'));assert(built.includes('<title id="translated-document-title">'));assert(built.includes('id="translated-breadcrumb-title"'));
- assert.deepEqual(matches(payload.blocks['translated-page-toc'],/href="([^"]+)"/g),['#introduction',...en.contents.map(h=>'#'+h.id),...route.stages.map((_,i)=>'#stage-'+(i+1))]);
+ assert.deepEqual(matches(payload.blocks['translated-page-toc'],/href="([^"]+)"/g),['#introduction',...en.contents.map(h=>'#'+h.id),...(pilot?['#pilot-route']:[]),...route.stages.map((_,i)=>'#stage-'+(i+1))]);
  assert(!zh.body.includes('katex-error'));assert(!/Foundation:|Bridge:|Preparation &amp; skip|Original introduction:|Checked \d/.test(zh.body));
  for(const ref of introductions[route.id].references){assert(zh.body.includes(ref.author));assert(zh.body.includes(ref.checked))}
 }

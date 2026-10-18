@@ -1,0 +1,71 @@
+name: Translation correction / 翻译纠错
+description: Compare an English passage with a proposed Chinese correction and supporting evidence.
+title: "[Translation correction] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for a mistranslation, omission or unclear Chinese wording. For a mathematical error in the English original, use Mathematical correction; for a distinct term or sense, use Terminology suggestion.
+        请把英文原文和建议的中文放在一起。原文的数学错误用“数学纠错”，新增术语或义项用“术语建议”。
+        Reading needs no account; this public submission uses GitHub sign-in, not a site account. Leave out private correspondence, account tokens and sensitive student data. Changes are reviewed before publication.
+  - type: input
+    id: page-url
+    attributes:
+      label: Affected page URL / 页面网址
+      description: Include the section fragment and language query if relevant. Remove private query tokens; replace the guide URL with the affected page.
+    validations:
+      required: true
+  - type: textarea
+    id: location
+    attributes:
+      label: Heading or passage location / 具体位置
+      description: Give the section, entry ID, list item or sentence. If the English page differs from the URL above, include its URL here too.
+    validations:
+      required: true
+  - type: textarea
+    id: english-passage
+    attributes:
+      label: English passage / 英文原文
+      description: Quote only the short passage needed to identify the problem, with its assumptions and qualifications. For an omission, identify where the missing passage belongs.
+    validations:
+      required: true
+  - type: textarea
+    id: current-chinese
+    attributes:
+      label: Current Chinese, if present / 现有中文（如有）
+      description: Include the affected sentence, or state that it is untranslated or missing.
+  - type: textarea
+    id: proposed-chinese
+    attributes:
+      label: Proposed Chinese / 建议译文
+      description: Preserve the original mathematics, notation, scope and uncertainty. Plain, natural wording is welcome; do not add examples, claims or experiences absent from the original.
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for the change / 修改理由
+      description: Explain whether this fixes meaning, an omission, a convention or readability. Mention any mathematical ambiguity rather than silently resolving it.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and exact locators / 依据及具体位置
+      description: For meaning, cite the mathematical source and section, definition, theorem or page. For a Chinese term, separately cite a terminology standard, Chinese textbook or author notes that use it. For wording only, say so and explain using the quoted English; no invented citation is needed. Distinguish checked sources, with actual inspection dates, from sources still to verify.
+    validations:
+      required: true
+  - type: textarea
+    id: assistance
+    attributes:
+      label: Assistance or unresolved questions / 辅助工具与待确认问题
+      description: Disclose AI-assisted translation or drafting if used. Note anything needing mathematical review; do not imply that source inspection is external peer review.
+  - type: checkboxes
+    id: public-content
+    attributes:
+      label: Before submitting / 提交前确认
+      options:
+        - label: I have excluded private or sensitive material and have the right to contribute the proposed wording.
+          required: true
+        - label: I understand new original encyclopedia and terminology contributions use CC BY-SA 4.0; this does not relicense existing notes or external works. Other sections retain their existing terms.
+          required: true

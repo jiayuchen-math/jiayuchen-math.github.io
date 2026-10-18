@@ -4,7 +4,7 @@ export function createPageTranslator(doc){
  const source=doc.getElementById('page-translations');if(!source)return null;
  const data=JSON.parse(source.textContent),saved=new Map();
  if(data.version!==1||!data.blocks||typeof data.blocks!=='object')throw Error('Invalid page translation data');
- return language=>{
+ const translate=language=>{
   for(const [id,html]of Object.entries(data.blocks)){
    const target=doc.getElementById(id);if(!target)continue;
    let state=saved.get(id);
@@ -17,4 +17,6 @@ export function createPageTranslator(doc){
    state.language=language;
   }
  };
+ translate.coverage=data.coverage||{status:data.blocks['study-guide']?'partly-translated':'body-translated',scope:data.blocks['study-guide']?'learning-sections':'page'};
+ return translate;
 }

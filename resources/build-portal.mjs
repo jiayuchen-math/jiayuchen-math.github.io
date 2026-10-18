@@ -18,6 +18,12 @@ import {chineseCompanion,chineseSubjectMetadata} from './localization.mjs';
 import {subjectTranslationHTML,translationPayload} from './subject-translations.mjs';
 import {translateRouteLabels,routeTranslations} from './route-translations.mjs';
 import {homeTranslationBlocks} from './home-translations.mjs';
+import {translationCoverage,readTranslationApprovals,focusedPages,coverageTable,compilationRecord} from './editorial-support.mjs';
+import {translateEntranceHTML,simplifyLibraryEntrance} from './entrance-translations.mjs';
+import {pilotSubjectSection,pilotRouteSection} from './learning-pilots.mjs';
+import {algebraicGeometryTopic} from './algebraic-geometry-topic.mjs';
+import {contributionHub} from './contribution-hub.mjs';
+import {staticRouteContext} from './assets/learning-context.js';
 
 const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const text=html=>decodeHTML(String(html||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim());
@@ -44,6 +50,10 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  const read=file=>fs.readFileSync(path.join(root,file),'utf8');
  const save=(file,value)=>{fs.mkdirSync(path.dirname(path.join(root,file)),{recursive:true});fs.writeFileSync(path.join(root,file),value)};
  const json=file=>JSON.parse(read(file));
+ const approvals=readTranslationApprovals(root),coverageRecords=new Map();
+ const pilotSubjects=new Set(['algebraic-geometry','differential-equations','probability']);
+ const pilotRoutes=new Set(['algebraic-geometry','analysis-pde','probability']);
+ const editionStyle='<link rel="stylesheet" href="/en/resources/assets/learning-edition.css?v='+createHash('sha256').update(read('resources/assets/learning-edition.css')).digest('hex').slice(0,12)+'">';
  const digest=value=>createHash('sha256').update(value).digest('hex');
  const registryFile='resources/data/stable-ui-ids.json';
  const registry=fs.existsSync(path.join(root,registryFile))?json(registryFile):{library:{},links:{}};
@@ -64,7 +74,10 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  report.learningEdition=learningCounts;
  const collections=[];
  function bodyOf(html){
-  const marked=html.match(/<!-- portal-content:start -->([\s\S]*?)<!-- portal-content:end -->/);if(marked)return marked[1].replace(/<!-- learning-control:start -->[\s\S]*?<!-- learning-control:end -->/g,'');
+  // Unwrapped legacy entrances retain the inert translation script. Remove it
+  // before either extraction branch, not only from already wrapped pages.
+  html=html.replace(/<script type="application\/json" id="page-translations">[\s\S]*?<\/script>/g,'');
+  const marked=html.match(/<!-- portal-content:start -->([\s\S]*?)<!-- portal-content:end -->/);if(marked)return marked[1].replace(/<!-- learning-control:start -->[\s\S]*?<!-- learning-control:end -->/g,'').replace(/<script type="application\/json" id="page-translations">[\s\S]*?<\/script>/g,'').replace(/^<div id="entrance-copy">([\s\S]*)<\/div>\s*$/,'$1');
   let body=html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1]||html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1]||html;
   return body.replace(/<header\b[^>]*>[\s\S]*?<\/header>/i,'').replace(/^\s*<nav\b[^>]*>[\s\S]*?<\/nav>/i,'').replace(/<footer\b[^>]*>[\s\S]*?<\/footer>/i,'');
  }
@@ -79,10 +92,24 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
    body=body.replace(/<!-- chinese-companion:start -->[\s\S]*?<!-- chinese-companion:end -->/g,'').replace(/<script type="application\/json" id="page-translations">[\s\S]*?<\/script>/g,'');
    const topic=merged.topics.find(t=>t.id===subjectId);
    const html=subjectTranslationHTML({topic,entry:courseStudies[subjectId],editorial:learningEdition.subjects[subjectId],checks:loadStudyChecks(root)[subjectId]||[],additionalChecks:learningEdition.checks[subjectId]||[],topics:merged.topics},renderCourseStudy);
-   body+=translationPayload({'study-guide':html});
+   const blocks={'study-guide':html};let coverage;
+   if(pilotSubjects.has(subjectId)){
+    const english=pilotSubjectSection(subjectId,{topics:merged.topics}),chinese=pilotSubjectSection(subjectId,{topics:merged.topics,locale:'zh'});
+    body=body.replace(/<!-- pilot-edition:start -->[\s\S]*?<!-- pilot-edition:end -->/g,'');
+    body=body.replace('<!-- subject-guide:end -->','<!-- subject-guide:end --><!-- pilot-edition:start --><div id="pilot-copy">'+english+'</div><!-- pilot-edition:end -->');
+    const prep=body.match(/<!-- learning-path:start -->([\s\S]*?)<!-- learning-path:end -->/)?.[1]||'';
+    if(prep){body=body.replace('<!-- learning-path:start -->'+prep+'<!-- learning-path:end -->','<!-- learning-path:start --><div id="pilot-preparation-links">'+prep+'</div><!-- learning-path:end -->');blocks['pilot-preparation-links']=translateEntranceHTML(prep).html}
+    blocks['pilot-copy']=chinese;
+    const note='The study guide above is translated; catalogue annotations below retain their original language.';
+    body=body.replace(/<p\b[^>]*\bid="pilot-catalogue-note"[^>]*>[\s\S]*?<\/p>/g,'');
+    body=body.replace('<!-- pilot-edition:end -->','<!-- pilot-edition:end --><p class="knowledge-meta" id="pilot-catalogue-note">'+note+'</p>');blocks['pilot-catalogue-note']=translateEntranceHTML('<p>'+note+'</p>').html.slice(3,-4);
+    coverage=translationCoverage(file,{title:topic.title,body:renderCourseStudy(topic,courseStudies[subjectId],loadStudyChecks(root)[subjectId]||[],{editorial:learningEdition.subjects[subjectId],additionalChecks:learningEdition.checks[subjectId]||[],topics:merged.topics}),pilot:english,preparation:prep},approvals,'learning-sections');
+    extra.head=(extra.head||'')+editionStyle;
+   }
+   body+=translationPayload(blocks,coverage);
   }
   if(/^resources\/encyclopedia\/[^/]+\/index\.html$/.test(file))body=`<!-- learning-control:start --><div class="entry-actions">${saveControl(file.split('/').at(-2),'encyclopedia')}</div><!-- learning-control:end -->`+body;
-  if(file.startsWith('resources/library-paths/')&&kind==='article')body=`<!-- learning-control:start --><div class="entry-actions">${saveControl('guide-'+digest(file).slice(0,12),'guides')}</div><!-- learning-control:end -->`+body;
+  if((file.startsWith('resources/library-paths/')||file.startsWith('resources/topics/'))&&kind==='article')body=`<!-- learning-control:start --><div class="entry-actions">${saveControl('guide-'+digest(file).slice(0,12),'guides')}</div><!-- learning-control:end -->`+body;
   if(/class="(?:subject-guide|direction-introduction)"/.test(body))extra.head=(extra.head||'')+'<link rel="stylesheet" href="/en/resources/assets/study-guides.css?v='+digest(read('resources/assets/study-guides.css')).slice(0,12)+'">';
   if(body.includes('class="katex"')&&!extra.head?.includes('katex.min.css'))extra.head=(extra.head||'')+'<link rel="stylesheet" href="/en/resources/assets/katex/katex.min.css">';
   if(['resources/index.html','notes/reading-notes/reading-notes.html'].includes(file))extra.head=(extra.head||'')+'<link rel="stylesheet" href="/en/resources/assets/entrances.css?v='+digest(read('resources/assets/entrances.css')).slice(0,12)+'">';
@@ -97,6 +124,16 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
   let output=shell({title,body,url:href(file.replace(/index\.html$/,'')),kind,...extra});
   if(extra.translatedTitle)output=output.replace('<title>','<title id="translated-document-title">').replace('<h1>','<h1 id="translated-page-title">').replace('<span aria-current="page">','<span id="translated-breadcrumb-title" aria-current="page">');
   save(file,output);
+  const payload=body.match(/<script type="application\/json" id="page-translations">([\s\S]*?)<\/script>/)?.[1];
+  const data=payload?JSON.parse(payload):null;
+  coverageRecords.set(file,data?.coverage||{status:data?(data.blocks['study-guide']?'partly-translated':'body-translated'):'interface-only',scope:data?.blocks['study-guide']?'learning-sections':data?'page':'interface'});
+ }
+ function bilingualPage(file,english,chinese,kind='directory',extra={}){
+  const coverage=translationCoverage(file,{title:english.title,body:english.body},approvals,extra.scope||'page',extra.untranslated||0);
+  const contents=p=>'<ul>'+(p.contents||[]).map(h=>'<li>'+link('#'+h.id,h.label)+'</li>').join('')+'</ul>';
+  const toc=english.contents?.length?'<nav class="contents" id="translated-page-toc" aria-label="Article contents">'+contents(english)+'</nav>':'';
+  const blocks={'entrance-copy':chinese.body,'translated-page-title':E(chinese.title),'translated-breadcrumb-title':E(chinese.title),'translated-document-title':E(chinese.title+' · Jiayu Chen'),...(toc?{'translated-page-toc':contents(chinese)}:{})};
+  addPage(file,english.title,'<div id="entrance-copy">'+english.body+'</div>'+translationPayload(blocks,coverage),kind,{...extra,translatedTitle:chinese.title,toc,head:(extra.head||'')+editionStyle});
  }
  function saveControl(id,type){return `<button type="button" data-save-learning data-learning-id="${E(id)}" data-learning-type="${E(type)}" hidden>Save to bookshelf</button>`}
  function compareControl(id){return `<button type="button" data-compare-program data-program-id="${E(id)}" hidden>Compare program</button>`}
@@ -206,7 +243,7 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  const chineseGoalPages=goalPathPages({topics:merged.topics,nodes:pathNodes,root,locale:'zh'});
  const editorialPages=editorialGuidePages(root,learningEdition,merged.topics);
  const chineseEditorialPages=new Map(editorialGuidePages(root,learningEdition,merged.topics,'zh').map(p=>[p.file,p]));
- const managedLearning=new Set([...editorialPages.map(p=>p.file),'resources/bookshelf/index.html','resources/study-careers/compare/index.html']);
+ const managedLearning=new Set([...editorialPages.map(p=>p.file),'resources/bookshelf/index.html','resources/study-careers/compare/index.html','resources/encyclopedia/contributing.html','resources/topics/algebraic-geometry/index.html']);
  const passthrough=walk('resources').filter(f=>f.endsWith('.html')&&!managedLearning.has(f)&&!directoryFiles.has(f)&&!goalPages.has(f)&&!f.includes('/catalogue-data/')&&!/-(?:all-)?page-\d+\.html$/.test(f)&&!/^resources\/(?:encyclopedia|terminology)\/[^/]+\/index\.html$/.test(f)&&f!=='resources/index.html'&&f!=='resources/search/index.html'&&!f.startsWith('resources/data/'));
  passthrough.push(...walk('notes/reading-notes').filter(f=>f.endsWith('.html')&&!directoryFiles.has(f)&&!f.endsWith('open-reading.html')&&!/-(?:all-)?page-\d+\.html$/.test(f)),'notes/mathematical-notes/page.html','disclaimer.html');
  const guideRows=[];
@@ -214,6 +251,13 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
   const old=read(file);if(!old.includes('<main'))continue;
   const title=text(old.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1]||old.match(/<title>([\s\S]*?) · Jiayu Chen<\/title>/)?.[1]||'Mathematics');
   let body=bodyOf(old).replace(/<!-- subject-landing:start -->[\s\S]*?<!-- subject-landing:end -->/g,'');
+  if(file==='notes/reading-notes/library.html'){
+   body=simplifyLibraryEntrance(body);
+   const translated=translateEntranceHTML(body);
+   const note={en:'Use cards to find a subject when you do not yet know a title. Use the catalogue when you have a book, author or access requirement in mind. The subject guides explain a smaller starting selection; this page keeps the wider collection visible.',zh:'还不知道具体书名时，先按学科卡片找；已经有书名、作者或获取要求时，用书库检索。学科学习页会解释少量起步读物，这里保留更完整的资料范围。'};
+   bilingualPage(file,{title,body:body+compilationRecord({...note})},{title:'按学科浏览书库',body:translated.html+compilationRecord({...note,locale:'zh'})},'directory',{untranslated:translated.untranslated.length});
+   continue;
+  }
   const category=file.match(/^notes\/reading-notes\/library\/([^/]+)\.html$/)?.[1];
   const courses=merged.topics.filter(t=>t.group===category);
   if(courses.length){
@@ -235,6 +279,11 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  // Goal routes sit above the smaller prerequisite reviews, which keep their URLs.
  for(const [file,page] of goalPages){
   const chinese=chineseGoalPages.get(file);
+  const routeId=file.match(/\/routes\/([^/]+)\.html$/)?.[1];
+  if(pilotRoutes.has(routeId)){
+   page.body=page.body.replace('<nav class="route-spine"','<!-- pilot-route:start -->'+staticRouteContext(pilotRouteSection(routeId,{topics:merged.topics}),routeId)+'<!-- pilot-route:end --><nav class="route-spine"');
+   chinese.body=chinese.body.replace('<nav class="route-spine"','<!-- pilot-route:start -->'+staticRouteContext(pilotRouteSection(routeId,{topics:merged.topics,locale:'zh'}),routeId)+'<!-- pilot-route:end --><nav class="route-spine"');
+  }
   // Preserve the old bookmark, without a second Chinese-only directory.
   if(file==='resources/library-paths/index.html'){
    const anchor='<span id="chinese-subject-guides" class="section-anchor" aria-hidden="true"></span>';
@@ -244,12 +293,13 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
   }
   const routeContents=p=>{
    const introductionLinks=(p.contents||[]).map(h=>'<li>'+link('#'+h.id,h.label)+'</li>').join('');
-   return p.kind==='article'?'<strong>Route stages</strong><ul>'+(p.standalone?introductionLinks:'<li>'+link('#introduction','Introduction')+(introductionLinks?'<ul>'+introductionLinks+'</ul>':'')+'</li>'+[...p.body.matchAll(/<section class="route-stage" id="([^"]+)"><h2>([\s\S]*?)<\/h2>/g)].map(m=>`<li>${link('#'+m[1],text(m[2]))}</li>`).join(''))+'</ul>':'';
+   const pilot=p.body.match(/<section[^>]*id="pilot-route"[^>]*>\s*<h2>([\s\S]*?)<\/h2>/);
+   return p.kind==='article'?'<strong>Route stages</strong><ul>'+(p.standalone?introductionLinks:'<li>'+link('#introduction','Introduction')+(introductionLinks?'<ul>'+introductionLinks+'</ul>':'')+'</li>'+(pilot?'<li>'+link('#pilot-route',text(pilot[1]))+'</li>':'')+[...p.body.matchAll(/<section class="route-stage" id="([^"]+)"><h2>([\s\S]*?)<\/h2>/g)].map(m=>`<li>${link('#'+m[1],text(m[2]))}</li>`).join(''))+'</ul>':'';
   };
   const contents=routeContents(page),toc=contents?'<nav class="contents"'+(chinese?' id="translated-page-toc"':'')+' aria-label="Article contents">'+contents+'</nav>':'';
-  const body=chinese?'<div id="route-copy">'+page.body+'</div>'+translationPayload({'route-copy':chinese.body,'translated-page-title':E(chinese.title),'translated-breadcrumb-title':E(chinese.title),'translated-document-title':E(chinese.title+' · Jiayu Chen'),...(contents?{'translated-page-toc':translateRouteLabels(routeContents(chinese))}:{})}):page.body;
-  addPage(file,page.title,body,page.kind,{toc,...(chinese?{translatedTitle:chinese.title}:{}),head:page.kind==='article'?'<link rel="stylesheet" href="/en/resources/assets/katex/katex.min.css">':''});
-  const routeId=file.match(/\/routes\/([^/]+)\.html$/)?.[1];
+  const coverage=pilotRoutes.has(routeId)?translationCoverage(file,{title:page.title,body:page.body},approvals):undefined;
+  const body=chinese?'<div id="route-copy">'+page.body+'</div>'+translationPayload({'route-copy':chinese.body,'translated-page-title':E(chinese.title),'translated-breadcrumb-title':E(chinese.title),'translated-document-title':E(chinese.title+' · Jiayu Chen'),...(contents?{'translated-page-toc':translateRouteLabels(routeContents(chinese))}:{})},coverage):page.body;
+  addPage(file,page.title,body,page.kind,{toc,...(chinese?{translatedTitle:chinese.title}:{}),head:(page.kind==='article'?'<link rel="stylesheet" href="/en/resources/assets/katex/katex.min.css">':'')+(pilotRoutes.has(routeId)?editionStyle:'')});
   const routeAreas={'algebraic-geometry':['algebra'],'representation-theory':['algebra'],'analysis-pde':['analysis'],'complex-harmonic-analysis':['analysis'],geometry:['geometry-topology'],topology:['geometry-topology'],'number-theory':['number-theory'],logic:['foundations'],probability:['probability'],dynamics:['dynamics'],combinatorics:['combinatorics'],'higher-categories':['category-theory','geometry-topology']};
   guideRows.push({id:'guide-'+digest(file).slice(0,12),title:page.title,url:href(file),summary:brief(text(page.body.replace(/<!-- chinese-subject-index:start -->[\s\S]*?<!-- chinese-subject-index:end -->/g,''))),...(chinese?{chinese:chinese.title,aliases:[chinese.title,...routeTranslations[routeId]?[routeTranslations[routeId].goal]:[]]}:{}),area:(routeAreas[routeId]||[]).map(id=>areas[id].title).join('|'),type:'guides'});
  }
@@ -274,12 +324,14 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
   ['learn','Learn Mathematics',[
    ['Learning paths','/en/resources/library-paths/','Follow a direction from its first questions to more advanced reading.'],
    ['Study advice','/en/resources/links/study-advice.html','Reading books, working through proofs, writing and beginning research.'],
+   ['Algebraic geometry topics','/en/resources/topics/algebraic-geometry/','From a first scheme course to later branches, with readings and the background each one needs.'],
   ]],
   ['reference','Reference & Reading',[
    ['Library','/en/notes/reading-notes/library/catalogue.html',`${books.length} books, lecture notes and papers. Free-to-read material is selected by default.`],
    ['Encyclopedia','/en/resources/encyclopedia/','Concept explanations and guides to open references.'],
    ['Terminology & Translations','/en/resources/terminology/','English–Chinese terms, their meanings and distinctions.'],
    ['Web resources','/en/resources/links/','Courses, archives, tools and mathematical communities.'],
+   ['Contribute or report an issue','/en/resources/encyclopedia/contributing.html','Suggest a correction, recommend a resource, or propose a short article.'],
   ]],
   ['careers','Study & Careers',[
    ['Programs','/en/resources/study-careers/','Search degree and research routes by destination, level and application time.'],
@@ -289,7 +341,20 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  ];
  const searchForm=`<form action="/en/resources/search/" class="hub-search"><label for="hub-q">Search across the collection</label><div><input id="hub-q" name="q" type="search" placeholder="A concept, author, research topic or university"><button>Search</button></div></form>`;
  const subjectLandings={foundations:'foundations.html',algebra:'algebra.html',analysis:'analysis.html','geometry-topology':'geometry-topology.html','number-theory':'number-theory.html',combinatorics:'discrete-mathematics.html',probability:'probability-dynamics/probability.html',dynamics:'probability-dynamics/dynamics.html','category-theory':'algebra/category-theory.html'};
- addPage('resources/index.html','Mathematics Resources',`<p>Texts, ideas and pathways for learning mathematics.</p>${searchForm}<section id="subjects" class="hub-subjects"><h2>Explore by subject</h2><ul class="subject-links">${Object.entries(areas).map(([id,a])=>'<li>'+link('/en/notes/reading-notes/library/'+subjectLandings[id],a.title)+'</li>').join('\n')}</ul></section>${hubGroups.map(([id,label,cards])=>`<section class="resource-group" id="${id}"><h2>${E(label)}</h2><div class="cards">${cards.map(([title,url,description])=>`<section class="card"><h3>${link(url,title)}</h3><p>${E(description)}</p></section>`).join('')}</div></section>`).join('')}${renderRevisionList(learningEdition.revisions)}<p class="personal-notes-link">Looking for my own work? ${link('/en/notes/','Personal notes')}.</p>`);
+ const tasks='<nav aria-label="Start here"><ul class="task-links">'+[['/en/notes/reading-notes/library.html','Find course materials'],['/en/resources/library-paths/','Understand a subject'],['/en/resources/search/?type=encyclopedia','Look up a concept'],['/en/resources/study-careers/','Prepare for further study']].map(([url,label])=>'<li>'+link(url,label)+'</li>').join('')+'</ul></nav>';
+ const hubBody=`<p>Texts, ideas and pathways for learning mathematics.</p>${searchForm}${tasks}<section id="subjects" class="hub-subjects"><h2>Explore by subject</h2><ul class="subject-links">${Object.entries(areas).map(([id,a])=>'<li>'+link('/en/notes/reading-notes/library/'+subjectLandings[id],a.title)+'</li>').join('\n')}</ul></section>${hubGroups.map(([id,label,cards])=>`<section class="resource-group" id="${id}"><h2>${E(label)}</h2><div class="cards">${cards.map(([title,url,description])=>`<section class="card"><h3>${link(url,title)}</h3><p>${E(description)}</p></section>`).join('')}</div></section>`).join('')}${renderRevisionList(learningEdition.revisions)}<p class="personal-notes-link">Looking for my own work? ${link('/en/notes/','Personal notes')}.</p>`;
+ const hubChinese=translateEntranceHTML(hubBody),hubNote={en:'Begin with a course guide when you want to study, and a concept entry when a particular word is blocking the reading. The topic page is a selected route through existing material, not another copy of the library.',zh:'想系统学一门课，可以先看学科学习说明；只是读到一个不熟悉的词，就先查概念。专题页从已有资料中做选择，不再复制一份书库。'};
+ bilingualPage('resources/index.html',{title:'Mathematics Resources',body:hubBody+compilationRecord(hubNote)},{title:'数学资源',body:hubChinese.html+compilationRecord({...hubNote,locale:'zh'})},'directory',{untranslated:hubChinese.untranslated.length});
+ const workIds=Object.fromEntries(books.map(book=>[stable('library',book.url.replace(/\/$/,'')),book]));
+ const topicArgs={books,workIds,knowledge,readings:conceptReadings};
+ const agTopic=algebraicGeometryTopic(topicArgs),agChinese=algebraicGeometryTopic({...topicArgs,locale:'zh'}),agFile='resources/topics/algebraic-geometry/index.html';
+ bilingualPage(agFile,agTopic,agChinese,'article',{head:'<link rel="stylesheet" href="/en/resources/assets/katex/katex.min.css">'});
+ guideRows.push({id:'guide-'+digest(agFile).slice(0,12),title:agTopic.title,chinese:agChinese.title,aliases:agTopic.aliases,url:href(agFile.replace(/index\.html$/,'')),summary:agTopic.summary,area:areas.algebra.title,type:'guides'});
+ const contributionFile='resources/encyclopedia/contributing.html',contribution=contributionHub({}),contributionChinese=contributionHub({locale:'zh'});
+ coverageRecords.set(contributionFile,translationCoverage(contributionFile,{title:contribution.title,body:contribution.body},approvals));
+ contribution.body+=coverageTable(coverageRecords);contributionChinese.body+=coverageTable(coverageRecords,'zh');
+ contribution.contents.push({id:'translation-coverage',label:'Translation coverage'});contributionChinese.contents.push({id:'translation-coverage',label:'本轮翻译范围'});
+ bilingualPage(contributionFile,contribution,contributionChinese,'article');
  addPage('notes/index.html','Personal Notes',`<p>My notes from coursework and mathematical reading.</p><div class="cards"><section class="card"><h2>${link('/en/notes/mathematical-notes/page.html','Course notes')}</h2><p>Calculus and linear algebra, organized by week.</p></section><section class="card"><h2>${link('/en/notes/reading-notes/reading-notes.html','Reading notes')}</h2><p>Notes written alongside my reading. This section has no published notes yet.</p></section></div>`);
  const notes=[];for(const file of walk('notes/mathematical-notes').filter(f=>/\/(?:MAweek\d+|LAweek\d+)\.html$/.test(f))){const html=read(file);notes.push({id:'note-'+digest(file).slice(0,12),type:'notes',title:text(html.match(/<title>([\s\S]*?)<\/title>/)?.[1]||path.basename(file)),url:href(file),summary:brief(text(html.match(/<body[^>]*>([\s\S]*)<\/body>/)?.[1]||''),180),area:file.includes('calculus')?areas.analysis.title:areas.algebra.title})}
  const notesBody=bodyOf(read('notes/index.html'))+'<section><h2>Published notes</h2><ul>'+notes.map(note=>'<li>'+link(note.url,note.title)+' '+saveControl(note.id,'notes')+'</li>').join('')+'</ul></section>';
@@ -310,7 +375,7 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
   }
  }
  searchCollections.push({id:'notes',label:'Personal Notes',url:'/en/notes/mathematical-notes/page.html',rows:notes},{id:'guides',label:'Guides & Reading Paths',url:'/en/resources/library-paths/',rows:guideRows});
- const learningEntries=searchCollections.filter(c=>['library','encyclopedia','notes','guides'].includes(c.id)).flatMap(c=>c.rows.filter(r=>c.id!=='guides'||r.url.startsWith('/en/resources/library-paths/')).map(r=>({...r,...(c.id==='library'?{readingUrl:libraryRows.find(b=>b.id===r.id).readingUrl}:{})})));
+ const learningEntries=searchCollections.filter(c=>['library','encyclopedia','notes','guides'].includes(c.id)).flatMap(c=>c.rows.filter(r=>c.id!=='guides'||r.url.startsWith('/en/resources/library-paths/')||r.url.startsWith('/en/resources/topics/')).map(r=>({...r,...(c.id==='library'?{readingUrl:libraryRows.find(b=>b.id===r.id).readingUrl}:{})})));
  const tools=createLearningTools({learningEntries,programs});
  for(const file of tools.files)if(!file.file.startsWith('resources/assets/'))save(file.file,file.content);
  for(const page of tools.pages){
@@ -336,6 +401,9 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  report.indexBytes=indexBytes;report.searchCollections=searchCollections.map(c=>({id:c.id,records:c.rows.length}));
  report.directoryIndexBytes=report.directories.reduce((n,c)=>n+Buffer.byteLength(read(`resources/catalogue-data/${c.id}/index.json`)),0);
  report.limits={firstPageHTML:350*1024,searchIndex:2*1024*1024};
+ const translationPages=[...coverageRecords].sort(([a],[b])=>a.localeCompare(b)).map(([file,coverage])=>({file,...coverage}));
+ save('resources/data/translation-coverage.json',JSON.stringify({version:1,note:'Build inventory, not a claim of human review. Partial translations identify their scope; source revisions are explicitly approved, never refreshed by the build.',pages:translationPages},null,2)+'\n');
+ report.translationCoverage=Object.fromEntries(['body-translated','partly-translated','interface-only','needs-review'].map(status=>[status,translationPages.filter(p=>p.status===status).length]));
  for(const [file,hash] of protectedFiles)if(digest(protectedBytes(fs.readFileSync(path.join(root,file)),file))!==hash)throw Error('Protected note changed: '+file);
  for(const d of report.directories)if(d.firstPageBytes>report.limits.firstPageHTML)throw Error(`${d.id} first page exceeds 350KB: ${d.firstPageBytes}`);
  if(indexBytes>report.limits.searchIndex)throw Error(`Search index exceeds 2MB: ${indexBytes}`);

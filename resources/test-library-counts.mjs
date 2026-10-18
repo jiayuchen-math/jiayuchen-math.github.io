@@ -1,7 +1,8 @@
 import fs from 'node:fs';import assert from 'node:assert/strict';
 import {libraryCounts,countLabel,updateLibraryCards} from './data/library-counts.mjs';
 import {relatedSubjects} from './data/learning-paths.mjs';
-const read=p=>fs.readFileSync(p,'utf8'),catalogue=JSON.parse(read('notes/reading-notes/library/catalogue.json'));
+// Count rendered cards, not the inert Chinese HTML stored in a JSON script.
+const read=p=>fs.readFileSync(p,'utf8').replace(/<script type="application\/json" id="page-translations">[\s\S]*?<\/script>/g,''),catalogue=JSON.parse(read('notes/reading-notes/library/catalogue.json'));
 const key=work=>work.url.replace(/\/$/,'');
 // Independent expected sets use actual catalogue assignments and explicit cross-references.
 const expected=new Map(catalogue.topics.map(t=>[t.id,new Set(t.books.map(key))]));

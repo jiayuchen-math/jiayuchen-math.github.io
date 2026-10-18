@@ -1,0 +1,5011 @@
+{
+  "version": 1,
+  "note": "Build inventory, not a claim of human review. Partial translations identify their scope; source revisions are explicitly approved, never refreshed by the build.",
+  "pages": [
+    {
+      "file": "disclaimer.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "index.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "notes/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/mathematical-notes/page.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/mathematical-notes/weekly.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library.html",
+      "status": "body-translated",
+      "scope": "page",
+      "sourceHash": "5cbdff9f61f0c1f48602af331f09a2c2ef66c27062b5a10cab8bba180f3219dd",
+      "approvedSourceHash": "5cbdff9f61f0c1f48602af331f09a2c2ef66c27062b5a10cab8bba180f3219dd",
+      "reviewed": "2026-10-19"
+    },
+    {
+      "file": "notes/reading-notes/library/algebra.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/algebra/abstract-algebra.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/algebra/algebraic-geometry.html",
+      "status": "partly-translated",
+      "scope": "learning-sections",
+      "sourceHash": "d4587106d3a6a0d1e0412b57edea594848a943ee34aef8df68dfe41e95d69ba6",
+      "approvedSourceHash": "d4587106d3a6a0d1e0412b57edea594848a943ee34aef8df68dfe41e95d69ba6",
+      "reviewed": "2026-10-19"
+    },
+    {
+      "file": "notes/reading-notes/library/algebra/category-theory.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/algebra/commutative-algebra.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/algebra/homological-algebra.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/algebra/linear-algebra.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/algebra/representation-theory.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/analysis.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/analysis/calculus.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/analysis/complex-analysis.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/analysis/differential-equations.html",
+      "status": "partly-translated",
+      "scope": "learning-sections",
+      "sourceHash": "a558797e76987e995553680589193ead87246a9dc0e8f2dcb1f7afe1875b71df",
+      "approvedSourceHash": "a558797e76987e995553680589193ead87246a9dc0e8f2dcb1f7afe1875b71df",
+      "reviewed": "2026-10-19"
+    },
+    {
+      "file": "notes/reading-notes/library/analysis/functional-analysis.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/analysis/harmonic-analysis.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/analysis/measure-theory.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/analysis/real-analysis.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-1.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-10.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-11.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-12.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-13.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-14.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-15.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-16.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-17.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-18.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-19.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-2.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-20.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-21.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-22.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-23.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-24.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-3.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-4.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-5.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-6.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-7.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-8.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-all-page-9.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-10.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-11.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-12.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-13.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-14.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-15.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-16.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-2.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-3.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-4.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-5.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-6.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-7.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-8.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-9.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/discrete-mathematics.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/discrete-mathematics/combinatorics.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/exposition.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/foundations.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/foundations/logic.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/foundations/model-theory.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/foundations/proofs.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/foundations/set-theory.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/geometry-topology.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/geometry-topology/algebraic-topology.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/geometry-topology/differential-geometry.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/geometry-topology/point-set-topology.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/geometry-topology/symplectic-geometry.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/number-theory.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/number-theory/algebraic-number-theory.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/number-theory/analytic-number-theory.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/number-theory/elementary-number-theory.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/number-theory/modular-forms.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/probability-dynamics.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/probability-dynamics/dynamics.html",
+      "status": "partly-translated",
+      "scope": "learning-sections"
+    },
+    {
+      "file": "notes/reading-notes/library/probability-dynamics/probability.html",
+      "status": "partly-translated",
+      "scope": "learning-sections",
+      "sourceHash": "adf9be41287d07c39ee0aff425cef91573449b52d1590437676371fb3766dda3",
+      "approvedSourceHash": "adf9be41287d07c39ee0aff425cef91573449b52d1590437676371fb3766dda3",
+      "reviewed": "2026-10-19"
+    },
+    {
+      "file": "notes/reading-notes/reading-notes.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/bookshelf/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/additive-combinatorics/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/adjunction/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/algebraic-prime-spectrum/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/algebraic-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/algebraic-stack/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/almost-sure-convergence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/analysis-distribution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/arzela-ascoli-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/banach-alaoglu-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/banach-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/binomial-random-graph/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/borel-cantelli-lemmas/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/brownian-motion/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/categorical-limit/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/categorical-product/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/categorical-pullback/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/category/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/cellular-homology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/central-limit-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/chain-complex-modules/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/characteristic-function-probability/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/chebotarev-density-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/chinese-remainder-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/chow-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/commutative-ring/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/compact-linear-operator/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/complex-residue/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/conditional-expectation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/conditional-probability/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/connected-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/continuous-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/continuum-hypothesis/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/contributing.html",
+      "status": "body-translated",
+      "scope": "page",
+      "sourceHash": "0aef305d11ebfe556e17d826584050e04cce288075ff62edc9707f69acbe561d",
+      "approvedSourceHash": "0aef305d11ebfe556e17d826584050e04cce288075ff62edc9707f69acbe561d",
+      "reviewed": "2026-10-19"
+    },
+    {
+      "file": "resources/encyclopedia/convergence-in-distribution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/cotangent-complex/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/countable-set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/covering-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/crystalline-cohomology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/cup-product/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/cw-complex/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/de-rham-cohomology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/dedekind-zeta-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/deligne-mumford-stack/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/derived-scheme/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/devaney-chaos/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/diagonalizable-linear-map/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/differential-form/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/differential-graded-category/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/direct-proof/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/dirichlet-character/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/dirichlet-l-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/dirichlet-unit-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/dominated-convergence-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/donsker-invariance-principle/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/dynamical-flow/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/dynamical-orbit/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/equivalence-of-categories/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/equivalence-relation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/ergodic-transformation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/etale-cohomology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/etale-fundamental-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/euler-totient/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/extremal-graph-theory/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/fermats-little-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/finite-correspondence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/finite-group-linear-representation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/finite-simple-graph/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/first-order-compactness/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/first-order-completeness/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/formal-completion/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/fourier-series/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/fourier-transform/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/fpqc-descent-quasi-coherent-sheaves/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/fractional-ideal-of-number-field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/fubini-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/functor/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/fundamental-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/fundamental-theorem-calculus/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/fundamental-theorem-of-arithmetic/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/galois-extension/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/godel-first-incompleteness-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/graph-chromatic-number/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/graph-tree/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/graphon/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/grothendieck-duality/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/grothendieck-site/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/grothendieck-topos/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/group-action/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/hahn-banach-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/halls-marriage-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/halting-problem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/hamiltonian-floer-homology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/hensels-lemma/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/higher-category/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/hilbert-class-field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/hilbert-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/holomorphic-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/homotopy-of-maps/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/ideal-class-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/inclusion-exclusion-principle/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/independent-events/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/index-page-2.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/index-page-3.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/index-page-4.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/index-page-5.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/index-page-6.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/index-page-7.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/index-page-8.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/index-page-9.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/inertia-stack/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/infinity-topos/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/inner-fibration/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/integer-congruence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/integer-divisibility/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/integer-euclidean-algorithm/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/integer-greatest-common-divisor/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/integral-domain/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/intersection-product/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/invariant-measure/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/ito-formula/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/kan-complex/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/lagrangian-submanifold/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/law-of-large-numbers/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/lax-milgram-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/lebesgue-integral/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/lebesgue-measure/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/left-module/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/levi-civita-connection/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/lie-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/linear-map/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/littlewood-paley-decomposition/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/localization-commutative-ring/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/lowenheim-skolem-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/lp-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/markov-chain/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/martingale/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/mathematical-induction/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/model-category/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/modular-curve/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/modular-form/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/module-ext-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/morse-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/motivic-cohomology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/natural-transformation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/noetherian-ring/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/number-field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/ordinary-generating-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/p-adic-number-field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/partial-order/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/paths.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/perfectoid-field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/perfectoid-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/poincare-duality/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/poincare-recurrence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/poisson-process/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/prism-p-adic-geometry/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/prismatic-cohomology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/probabilistic-method/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/probability-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/proof-by-contradiction/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/pseudodifferential-operator/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/quadratic-reciprocity-law/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/quotient-stack/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/quotient-topology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/radon-nikodym-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/ramsey-number/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/random-variable/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/real-derivative/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/rellich-kondrachov-compactness/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/representable-functor/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/riemann-curvature-tensor/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/riemann-surface/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/riemann-zeta-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/riemannian-geodesic/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/riemannian-metric/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/ring-ideal/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/scheme/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/serre-fibration/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/set-cardinality/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/sheaf/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/short-exact-sequence-modules/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/simplicial-set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/singular-homology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/smooth-manifold/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/smooth-vector-bundle/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/sobolev-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/sobolev-trace/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/spectral-sequence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/spectral-theorem-compact-self-adjoint/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/stable-homotopy-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/stable-infinity-category/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/stiefel-whitney-classes/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/stochastic-differential-equation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/stokes-theorem-manifolds/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/stopping-time/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/strong-mixing/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/symplectic-manifold/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/szemeredi-regularity-lemma/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/tangent-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/tensor-product-modules/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/thom-isomorphism/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/tilting-perfectoid-spaces/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/topological-compactness/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/topological-conjugacy/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/topological-entropy/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/topological-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/topological-transitivity/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/uniform-continuity/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/uniform-convergence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/uniform-integrability/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/unique-ergodicity/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/universal-property/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/universal-quantifier/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/vector-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/wavefront-set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/weak-derivative/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/weak-pde-solution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/encyclopedia/yoneda-lemma/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/index.html",
+      "status": "body-translated",
+      "scope": "page",
+      "sourceHash": "8e5f64652535d879a3662e338a8551bffb9e88e759206def0fcade83df18f611",
+      "approvedSourceHash": "8e5f64652535d879a3662e338a8551bffb9e88e759206def0fcade83df18f611",
+      "reviewed": "2026-10-19"
+    },
+    {
+      "file": "resources/library-paths/abstract-algebra.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/algebraic-geometry.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/algebraic-number-theory.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/algebraic-topology.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/analytic-number-theory.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/calculus.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/category-theory.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/combinatorics.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/commutative-algebra.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/complex-analysis.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/differential-equations.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/differential-geometry.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/dynamics.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/elementary-number-theory.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/functional-analysis.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/guides/algebra-and-geometry-together.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/guides/calculations-to-proofs.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/guides/coverings-and-galois.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/guides/duality-linear-functional.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/guides/finding-prerequisite-gaps.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/guides/first-research-paper.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/guides/making-examples.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/harmonic-analysis.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/homological-algebra.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/index.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/linear-algebra.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/logic.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/measure-theory.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/model-theory.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/modular-forms.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/point-set-topology.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/probability.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/proofs.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/reading-a-text.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/real-analysis.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/representation-theory.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/routes/algebraic-geometry.html",
+      "status": "body-translated",
+      "scope": "page",
+      "sourceHash": "c06e73d676e33c16c81e550aaded76a63a7c9a9fbfadc95bac34c3315976541f",
+      "approvedSourceHash": "c06e73d676e33c16c81e550aaded76a63a7c9a9fbfadc95bac34c3315976541f",
+      "reviewed": "2026-10-19"
+    },
+    {
+      "file": "resources/library-paths/routes/analysis-pde.html",
+      "status": "body-translated",
+      "scope": "page",
+      "sourceHash": "20a7ba3659bbde6f99d006a4a92492ffc803115e5b80cf56425ae631efe8cf9c",
+      "approvedSourceHash": "20a7ba3659bbde6f99d006a4a92492ffc803115e5b80cf56425ae631efe8cf9c",
+      "reviewed": "2026-10-19"
+    },
+    {
+      "file": "resources/library-paths/routes/combinatorics.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/routes/complex-harmonic-analysis.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/routes/dynamics.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/routes/geometry.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/routes/higher-categories.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/routes/logic.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/routes/number-theory.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/routes/probability.html",
+      "status": "body-translated",
+      "scope": "page",
+      "sourceHash": "871f18f6e2e26c1df8ce181c2395a8d7931a470f69192e3e09ab0e361494abff",
+      "approvedSourceHash": "871f18f6e2e26c1df8ce181c2395a8d7931a470f69192e3e09ab0e361494abff",
+      "reviewed": "2026-10-19"
+    },
+    {
+      "file": "resources/library-paths/routes/representation-theory.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/routes/topology.html",
+      "status": "body-translated",
+      "scope": "page"
+    },
+    {
+      "file": "resources/library-paths/set-theory.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/library-paths/symplectic-geometry.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/links/advice.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/links/index-page-2.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/links/index-page-3.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/links/index-page-4.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/links/index-page-5.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/links/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/links/study-advice.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/search/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/compare/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/coverage-page-2.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/coverage-page-3.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/coverage-page-4.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/coverage.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/experiences.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/fee-status.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/guides.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/index-page-2.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/index-page-3.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/index-page-4.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/index-page-5.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/index-page-6.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/index-page-7.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/index-page-8.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/index-page-9.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-10.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-11.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-12.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-13.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-14.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-15.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-16.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-17.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-18.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-19.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-2.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-20.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-21.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-22.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-23.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-24.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-25.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-26.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-27.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-28.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-29.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-3.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-30.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-31.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-32.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-33.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-34.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-35.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-36.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-37.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-38.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-39.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-4.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-40.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-41.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-42.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-43.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-44.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-45.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-46.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-47.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-48.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-49.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-5.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-50.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-51.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-52.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-53.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-54.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-55.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-56.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-57.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-58.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-59.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-6.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-60.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-61.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-62.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-63.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-64.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-65.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-66.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-67.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-68.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-69.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-7.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-70.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-71.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-72.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-73.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-74.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-75.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-76.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-77.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-78.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-8.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers-page-9.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/study-careers/researchers.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/abelian-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/absolute-series-convergence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/adapted-stochastic-process/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/additive-combinatorics/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/additive-sumset/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/adele-ring/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/adjunction-counit/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/adjunction-unit/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/adjunction/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/algebraic-element/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/algebraic-integer/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/algebraic-prime-spectrum/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/almost-complex-structure/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/almost-everywhere/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/almost-sure-convergence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/alpha-limit-set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/analysis-distribution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/argument-principle/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/atomic-formula/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/banach-open-mapping-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/banach-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/bernoulli-distribution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/bijective-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/binomial-coefficient/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/binomial-distribution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/binomial-random-graph/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/bipartite-graph/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/birkhoff-ergodic-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/bound-variable-occurrence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/bounded-linear-operator/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/brownian-motion/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/cartesian-product/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/categorical-colimit/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/categorical-coproduct/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/categorical-equalizer/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/categorical-limit/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/categorical-product/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/categorical-pullback/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/category-isomorphism/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/category-morphism/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/category/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/cauchy-integral-formula/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/cauchy-riemann-equations/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/cauchy-sequence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/cellular-homology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/central-limit-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/chain-complex-modules/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/characteristic-function-probability/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/characteristic-polynomial-linear-map/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/chinese-remainder-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/class-number/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/closed-graph-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/closed-manifold/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/closed-subset/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/cocountable-topology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/cofinite-topology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/commutative-ring/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/compact-linear-operator/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/complete-graph/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/complete-measure-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/complete-residue-system/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/complex-contour-integral/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/complex-essential-singularity/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/complex-pole/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/complex-removable-singularity/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/complex-residue/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/composite-number/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/conditional-expectation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/conditional-probability/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/conditionally-independent-events/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/conductor-of-dirichlet-character/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/congruence-subgroup/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/conjunction/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/connected-component/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/connected-graph/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/connected-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/continuous-dual-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/continuous-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/continuum-hypothesis/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/contractible-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/contravariant-functor/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/convergence-in-distribution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/convergence-in-probability/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/convergent-power-series/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/cotangent-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/countable-set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/counterexample/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/counting-addition-principle/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/counting-multiplication-principle/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/covariance/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/covering-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/cumulative-distribution-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/cup-product/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/cusp-form/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/cw-complex/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/cyclic-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/cyclotomic-field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/cyclotomic-polynomial/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/de-rham-cohomology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/deck-transformation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/dedekind-zeta-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/deformation-retract/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/devaney-chaos/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/diagonalizable-linear-map/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/differential-form/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/differential-graded-category/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/direct-proof/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/directional-derivative/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/dirichlet-character/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/dirichlet-l-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/dirichlet-unit-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/discrete-topology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/disjoint-union/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/disjunction/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/dominated-convergence-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/dynamical-fixed-point/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/dynamical-flow/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/dynamical-invariant-set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/dynamical-orbit/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/dynamical-periodic-point/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/dynamical-semiflow/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/eigenvalue-linear-map/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/eisenstein-series/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/empty-set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/entire-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/equinumerosity/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/equivalence-class/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/equivalence-of-categories/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/equivalence-relation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/ergodic-transformation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/euclidean-domain/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/euler-characteristic/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/euler-totient/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/eulers-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/existential-quantifier/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/expectation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/exponential-distribution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/exponential-generating-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/exterior-derivative/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/extremal-graph-theory/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/faithful-functor/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/fatou-lemma/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/fermats-little-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/field-extension/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/finite-field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/finite-group-linear-representation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/finite-set-permutation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/finite-simple-graph/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/finitely-generated-module/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/first-countable-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/first-order-compactness/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/first-order-completeness/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/first-order-formula/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/first-order-sentence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/first-order-structure/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/first-order-term/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/flat-module/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/formal-power-series/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/fourier-series/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/fourier-transform/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/fractional-ideal-of-number-field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/free-module/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/free-variable/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/fubini-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/full-functor/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/function-convolution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/function-image/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/function-preimage/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/functor-category/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/functor/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/fundamental-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/fundamental-theorem-calculus/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/fundamental-theorem-of-arithmetic/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/galois-extension/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/gauss-sum/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/gaussian-distribution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/gaussian-process/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/gradient-real-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-augmenting-path/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-chromatic-number/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-clique/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-cycle/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-independent-set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-induced-subgraph/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-isomorphism/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-matching/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-maximal-matching/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-maximum-matching/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-path/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-perfect-matching/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-spanning-tree/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-subgraph/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-tree/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-vertex-cover/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/graph-vertex-degree/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/group-action/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/group-homomorphism-kernel/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/group-homomorphism/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/group-identity-element/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/group-inverse-element/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/group-orbit/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/group-stabilizer/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/groupoid/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/hahn-banach-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/halls-marriage-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/hamiltonian-floer-homology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/hamiltonian-vector-field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/harmonic-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/hausdorff-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/heat-equation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/hecke-operator/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/hensels-lemma/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/higher-category/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/higher-homotopy-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/hilbert-class-field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/hilbert-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/holomorphic-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/homeomorphism/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/homotopy-equivalence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/homotopy-of-maps/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/ideal-class-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/idele-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/implicit-function-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/inclusion-exclusion-principle/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/independent-events/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/independent-identically-distributed/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/independent-random-variables/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-10.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-11.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-12.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-13.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-14.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-15.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-16.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-17.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-18.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-19.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-2.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-20.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-21.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-3.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-4.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-5.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-6.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-7.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-8.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index-page-9.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/indiscrete-topology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/initial-object/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/injective-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/integer-congruence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/integer-coprimality/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/integer-divisibility/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/integer-division-algorithm/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/integer-euclidean-algorithm/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/integer-greatest-common-divisor/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/integral-basis/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/integral-domain/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/invariant-measure/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/inverse-fourier-transform/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/irreducible-element/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/jump-real-discontinuity/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/lagrangian-submanifold/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/laplace-equation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/laurent-series/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/law-of-large-numbers/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/lebesgue-integral/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/lebesgue-measurable-set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/lebesgue-measure/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/lebesgue-outer-measure/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/left-continuous-real-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/left-module/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/levi-civita-connection/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/li-yorke-chaos/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/li-yorke-scrambled-pair/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/lie-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/linear-independence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/linear-map-rank/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/linear-map/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/linear-operator-norm/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/littlewood-paley-decomposition/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/local-ring/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/localization-commutative-ring/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/locally-compact-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/locally-connected-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/locally-path-connected-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/locally-small-category/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/logical-consequence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/logical-equivalence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/logical-implication/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/logical-validity/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/lp-convergence-random-variables/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/lp-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/manifold-orientation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/manifold-with-boundary/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/markov-chain/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/martingale/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/mathematical-induction/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/maximal-ideal/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/measurable-real-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/measurable-simple-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/measure-null-set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/measure-preserving-transformation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/measure-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/meromorphic-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/metrizable-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/minimal-dynamical-system/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/minimal-polynomial-field-extension/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/mobius-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/mobius-inversion/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/modular-curve/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/modular-form/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/modular-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/module-annihilator/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/module-direct-sum/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/module-ext-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/module-homology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/module-homomorphism/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/monoid/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/monotone-convergence-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/morse-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/natural-isomorphism/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/natural-transformation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/negation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/neighborhood-basis/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/newform/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/noetherian-ring/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/nonwandering-point/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/normal-field-extension/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/normal-subgroup/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/normal-topological-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/normalized-hecke-eigenform/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/normed-vector-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/null-homotopic-map/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/number-field-discriminant/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/number-field-norm/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/number-field-trace/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/number-field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/omega-limit-set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/one-point-compactification/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/open-neighborhood/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/open-subset/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/opposite-category/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/ordinary-generating-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/orientable-surface-genus/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/p-adic-integer/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/p-adic-number-field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/p-adic-valuation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/pairwise-independent-events/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/parallel-transport/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/parseval-fourier-series/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/partial-derivative/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/partial-order/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/path-component/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/path-connected-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/pell-equation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/permutation-derangement/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/pigeonhole-principle/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/poincare-duality/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/poincare-recurrence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/poincare-return-map/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/pointwise-convergence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/poisson-distribution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/poisson-equation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/poisson-process/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/polynomial-ring/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/power-set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/prime-element/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/prime-ideal/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/prime-number/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/primitive-dirichlet-character/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/principal-ideal-domain/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/probabilistic-method/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/probability-density-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/probability-distribution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/probability-event/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/probability-filtration/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/probability-mass-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/probability-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/product-topology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/projective-module/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/proof-by-contradiction/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/proof-by-contraposition/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/pseudoholomorphic-curve/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/quadratic-field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/quadratic-fundamental-unit/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/quotient-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/quotient-map/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/quotient-module/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/quotient-ring/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/quotient-set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/quotient-topology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/ramification-index/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/ramsey-number/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/random-variable/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/rank-nullity-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/real-antiderivative/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/real-derivative/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/real-function-differential/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/real-infimum/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/real-mean-value-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/real-projective-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/real-sequence-liminf/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/real-sequence-limit/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/real-sequence-limsup/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/real-sequence-subsequence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/real-supremum/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/reduced-residue-system/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/regular-covering-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/regular-topological-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/removable-real-discontinuity/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/representable-functor/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/residue-degree/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/riemann-curvature-tensor/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/riemann-integral/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/riemann-surface/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/riemann-zeta-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/riemannian-geodesic/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/riemannian-metric/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/right-continuous-real-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/ring-ideal/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/ring-of-integers/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/ring-unit/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/rouche-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/sample-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/satisfiability/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/scheme/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/schwartz-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/second-countable-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/second-real-derivative/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/sensitive-dependence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/separable-field-extension/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/separable-topological-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/sequence-convolution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/sequence-recurrence-relation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/sequential-compactness/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/set-cardinality/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/set-difference/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/set-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/set-intersection/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/set-union/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/sheaf/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/short-exact-sequence-modules/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/sigma-finite-measure/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/simply-connected-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/singular-cohomology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/singular-homology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/singular-simplex/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/small-category/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/smooth-immersion/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/smooth-manifold/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/smooth-submersion/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/smooth-vector-bundle/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/smooth-vector-field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/sobolev-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/sobolev-trace/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/spectral-sequence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/spectral-theorem-compact-self-adjoint/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/splitting-field/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/stable-homotopy-group/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/stochastic-differential-equation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/stochastic-process/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/stokes-theorem-manifolds/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/stopping-time/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/strong-induction/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/strong-mixing/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/subgroup/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/submartingale/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/submodule/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/subset/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/subspace-topology/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/supermartingale/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/surjective-function/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/suspension-flow/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/sylow-subgroup/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/symplectic-form/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/symplectic-manifold/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/syntactic-consistency/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/t1-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/tame-ramification/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/tangent-bundle/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/tangent-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/taylor-formula/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/tempered-distribution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/tensor-product-modules/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/terminal-object/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topological-basis/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topological-closed-map/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topological-closure/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topological-compactness/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topological-conjugacy/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topological-dynamical-system/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topological-embedding/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topological-entropy/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topological-interior/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topological-manifold/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topological-mixing/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topological-open-map/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topological-retraction/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topological-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topological-transitivity/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/topologically-dense-subset/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/total-differential/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/uniform-boundedness-principle/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/uniform-continuity/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/uniform-convergence/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/uniform-distribution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/unique-ergodicity/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/unique-factorization-domain/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/unital-ring/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/universal-covering-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/universal-property/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/universal-quantifier/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/unramified-extension/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/van-kampen-theorem/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/variance/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/vector-basis/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/vector-norm/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/vector-space-dimension/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/vector-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/wandering-point/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/wave-equation/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/wavefront-set/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/weak-convergence-normed-space/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/weak-derivative/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/weak-mixing/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/weak-pde-solution/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/well-order/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/yoneda-lemma/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/terminology/zero-divisor/index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "resources/topics/algebraic-geometry/index.html",
+      "status": "body-translated",
+      "scope": "page",
+      "sourceHash": "83938c474567e5baaee670e106cc278f915df0e4b0df45662186a230ce300ecc",
+      "approvedSourceHash": "83938c474567e5baaee670e106cc278f915df0e4b0df45662186a230ce300ecc",
+      "reviewed": "2026-10-19"
+    }
+  ]
+}

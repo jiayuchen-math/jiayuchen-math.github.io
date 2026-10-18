@@ -86,7 +86,7 @@ export function translateSubjectFigures(html){
   return result.replace(/>([^<>]+)</g,(_,text)=>'>'+(figureLabels[text]?E(figureLabels[text]):text)+'<');
  });
 }
-export function translationPayload(blocks){
+export function translationPayload(blocks,coverage){
  // Inert JSON keeps just one set of live anchors. English is the no-JS fallback.
- return '<script type="application/json" id="page-translations">'+JSON.stringify({version:1,blocks}).replaceAll('<','\\u003c')+'</script>';
+ return '<script type="application/json" id="page-translations">'+JSON.stringify({version:1,blocks,...coverage?{coverage}:{}}).replaceAll('<','\\u003c')+'</script>';
 }

@@ -1,0 +1,75 @@
+name: Article proposal / 文章提案
+description: Propose a mathematical explanation or learning guide; an outline is enough.
+title: "[Article proposal] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A proposal can be a short outline, not a finished article. Start with an existing page where possible. Proposals receive editorial review before publication.
+        可以先交提纲，不必写完全文；如果已有相关页面，也欢迎提出具体修改。
+        Reading the site needs no account. Submitting this public form requires GitHub sign-in, not a separate site account. Leave out private correspondence, account tokens and sensitive student data.
+  - type: input
+    id: page-url
+    attributes:
+      label: Related site page URL / 相关页面网址
+      description: Give the existing page or subject this proposal would improve. Replace the contribution-guide default if another page is more relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: location
+    attributes:
+      label: Page position or proposed placement / 页面位置或建议放置处
+      description: Identify a heading, entry ID or short passage. For a new topic, explain where it belongs; do not invent an unpublished page URL.
+    validations:
+      required: true
+  - type: input
+    id: reader-level
+    attributes:
+      label: Intended readers and preparation / 读者与所需基础
+      description: State the mathematical background needed rather than just a year of study.
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question the contribution answers / 想回答的问题
+      description: Give a concrete question or difficulty, and explain the scope. Is this an original explanation, worked example, learning guide or external reading guide?
+    validations:
+      required: true
+  - type: textarea
+    id: related-pages
+    attributes:
+      label: Related pages and overlap / 相关页面与已有内容
+      description: Link to existing entries or routes and explain what is missing. If you found none, say which subjects or terms you searched.
+    validations:
+      required: true
+  - type: textarea
+    id: primary-sources
+    attributes:
+      label: Primary sources and exact reading locations / 主要来源及具体位置
+      description: Give authors, titles, versions, authorized URLs and sections, definitions, theorems or pages. Distinguish sources you inspected, with actual dates, from leads still to check. For a Chinese term, provide separate translation evidence; an English definition alone does not establish the rendering.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-contribution
+    attributes:
+      label: What you would contribute / 拟补充的内容
+      description: A few paragraphs or an outline are enough. Identify examples, arguments or reading advice you plan to add, how they help, and any unresolved points. No full article is required.
+    validations:
+      required: true
+  - type: textarea
+    id: attribution-rights
+    attributes:
+      label: Attribution, rights and assistance / 署名、许可与辅助工具
+      description: State who would write or adapt the material, its licence or permission if applicable, and any AI assistance. A proposal is not a licence grant for external works. New original encyclopedia and terminology text uses CC BY-SA 4.0; other sections retain their terms. Do not name someone as a reviewer without an actual review.
+    validations:
+      required: true
+  - type: checkboxes
+    id: public-content
+    attributes:
+      label: Before submitting / 提交前确认
+      options:
+        - label: I have excluded private or sensitive information and will contribute only material I wrote or have the right to provide.
+          required: true
+        - label: I understand this is a proposal for review, not automatic publication or a request to upload an unauthorized book.
+          required: true

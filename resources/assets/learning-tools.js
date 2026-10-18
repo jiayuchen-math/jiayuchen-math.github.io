@@ -33,7 +33,7 @@ export function isShelfEntry(entry) {
   if (!url.startsWith('/') || !string(entry.title).trim()) return false;
   // Guide collections also contain application advice: only learning paths,
   // prerequisite reviews and learning short guides are eligible.
-  return entry.type !== 'guides' || /^\/(?:en\/)?resources\/library-paths\//.test(url);
+  return entry.type !== 'guides' || /^\/(?:en\/)?resources\/(?:library-paths|topics)\//.test(url);
 }
 
 export function normalizeEntries(entries) {

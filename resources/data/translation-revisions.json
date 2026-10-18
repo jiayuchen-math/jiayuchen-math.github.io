@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "note": "Explicit source revisions checked against their Chinese renderings during AI-assisted editorial integration, not external human or mathematical peer review. The build never updates these approvals. Study-page approvals cover learning sections and navigation, not catalogue annotations.",
+  "pages": {
+    "resources/index.html": {"sourceHash":"8e5f64652535d879a3662e338a8551bffb9e88e759206def0fcade83df18f611","reviewed":"2026-10-19"},
+    "notes/reading-notes/library.html": {"sourceHash":"5cbdff9f61f0c1f48602af331f09a2c2ef66c27062b5a10cab8bba180f3219dd","reviewed":"2026-10-19"},
+    "notes/reading-notes/library/algebra/algebraic-geometry.html": {"sourceHash":"d4587106d3a6a0d1e0412b57edea594848a943ee34aef8df68dfe41e95d69ba6","reviewed":"2026-10-19"},
+    "notes/reading-notes/library/analysis/differential-equations.html": {"sourceHash":"a558797e76987e995553680589193ead87246a9dc0e8f2dcb1f7afe1875b71df","reviewed":"2026-10-19"},
+    "notes/reading-notes/library/probability-dynamics/probability.html": {"sourceHash":"adf9be41287d07c39ee0aff425cef91573449b52d1590437676371fb3766dda3","reviewed":"2026-10-19"},
+    "resources/library-paths/routes/algebraic-geometry.html": {"sourceHash":"c06e73d676e33c16c81e550aaded76a63a7c9a9fbfadc95bac34c3315976541f","reviewed":"2026-10-19"},
+    "resources/library-paths/routes/analysis-pde.html": {"sourceHash":"20a7ba3659bbde6f99d006a4a92492ffc803115e5b80cf56425ae631efe8cf9c","reviewed":"2026-10-19"},
+    "resources/library-paths/routes/probability.html": {"sourceHash":"871f18f6e2e26c1df8ce181c2395a8d7931a470f69192e3e09ab0e361494abff","reviewed":"2026-10-19"},
+    "resources/topics/algebraic-geometry/index.html": {"sourceHash":"83938c474567e5baaee670e106cc278f915df0e4b0df45662186a230ce300ecc","reviewed":"2026-10-19"},
+    "resources/encyclopedia/contributing.html": {"sourceHash":"0aef305d11ebfe556e17d826584050e04cce288075ff62edc9707f69acbe561d","reviewed":"2026-10-19"}
+  }
+}

@@ -11,7 +11,9 @@ const topics=json('notes/reading-notes/library/catalogue.json').topics,edition=l
 const counts=validateLearningEdition(edition,topics,old);
 assert.equal(new Set(Object.values(edition.subjects).map(e=>e.opening)).size,29,'Subject openings must be individually edited');
 for(const topic of topics){
- const html=read('notes/reading-notes/library/'+topic.route),e=edition.subjects[topic.id],checks=combinedChecks(old[topic.id],edition.checks[topic.id]);
+ // Preserve these exact assertions for the original worked checks; additive
+ // pilot checks have their own mathematics and bilingual integration tests.
+ const html=read('notes/reading-notes/library/'+topic.route).replace(/<!-- pilot-edition:start -->[\s\S]*?<!-- pilot-edition:end -->/g,''),e=edition.subjects[topic.id],checks=combinedChecks(old[topic.id],edition.checks[topic.id]);
  for(const anchor of ['study-guide','choose-reading','practice-learning','check-learning','continue-learning','subject-bibliography'])assert.equal((html.match(new RegExp('id="'+anchor+'"','g'))||[]).length,1,topic.id+' duplicate/missing '+anchor);
  assert(html.includes('study-jumps'));
  assert.equal((html.match(/class="reading-choice"/g)||[]).length,e.comparison.length);

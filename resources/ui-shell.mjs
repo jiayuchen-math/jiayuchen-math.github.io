@@ -130,6 +130,7 @@ ${head}
 <script src="${asset('theme.js')}"></script>
 <script src="${asset('portal.js')}" defer></script>
 <script src="${asset('language.js')}" type="module"></script>
+<script src="${asset('learning-context.js')}" type="module"></script>
 ${pageScripts.map(scriptTag).join('\n')}
 </head><body class="portal portal-${kind}${contents ? ' portal-has-toc' : ''}${inNotes?' portal-personal-notes':''}">
 <a class="skip-link" href="#portal-main">Skip to content</a>
@@ -137,10 +138,11 @@ ${pageScripts.map(scriptTag).join('\n')}
 <div class="portal-layout">${sidebar}
 <main class="portal-main" id="portal-main" tabindex="-1">
 ${breadcrumbs(title, pathname, section, kind)}
+${kind==='home'?'':'<p class="knowledge-meta" data-route-context hidden></p>'}
 <header class="portal-page-header"><h1>${escape(title)}</h1></header>
 <p class="language-content-status" id="language-content-status" hidden></p><noscript><p class="language-content-status">Language switching requires JavaScript; the English pages remain readable.</p></noscript>
 <div class="portal-content-layout">${contents}<div class="portal-body"><!-- portal-content:start -->${body ?? ''}<!-- portal-content:end --></div></div>
-<footer class="portal-footer">© Jiayu Chen · <a href="/en/disclaimer.html">Disclaimer</a></footer>
+<footer class="portal-footer">© Jiayu Chen · <a href="/en/disclaimer.html">Disclaimer</a> · <a href="/en/resources/encyclopedia/contributing.html" data-contribute-hub>Contribute or report an issue</a></footer>
 </main></div>
 </body></html>
 `;

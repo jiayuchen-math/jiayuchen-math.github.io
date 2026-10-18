@@ -1,5 +1,5 @@
-import {translateUI,languageURL} from './locale-data.js?v=20261018-translation-1';
-import {createPageTranslator} from './page-translation.js?v=20261018-translation-1';
+import {translateUI,languageURL} from './locale-data.js?v=20261019-learning-edition';
+import {createPageTranslator} from './page-translation.js?v=20261019-learning-edition';
 
 const KEY='jiayu.interface-language.v1';
 const normalize=value=>value==='zh'||value==='zh-Hans'?'zh':value==='en'?'en':'';
@@ -60,7 +60,11 @@ if(typeof document!=='undefined'){
   }
   if(switcher){switcher.hidden=false;switcher.textContent=language==='zh'?'English':'中文';switcher.lang=language==='zh'?'en':'zh-Hans';switcher.setAttribute('aria-label',language==='zh'?'Switch interface to English':'切换为简体中文界面');switcher.title=language==='zh'?'English interface':'简体中文界面'}
   const notice=document.getElementById('language-content-status');
-  if(notice){notice.hidden=language!=='zh'||Boolean(translatePage);notice.textContent='中文界面；尚未翻译的正文与引用保留原文。'}
+  if(notice){
+   const status=translatePage?.coverage?.status;
+   notice.hidden=language!=='zh'||status==='body-translated';
+   notice.textContent=status==='needs-review'?'本页译文待复核；英文内容已有变化，请对照原文阅读。':status==='partly-translated'?'学习说明已译；书目简介等内容保留原文。':'中文界面；正文与引用保留原文。';
+  }
   for(const anchor of document.querySelectorAll('a[href]')){
    if(anchor.closest('[data-preserve-url]')||anchor.hasAttribute('data-language-choice'))continue;
    const raw=anchor.getAttribute('href');if(!raw||raw.startsWith('#'))continue;

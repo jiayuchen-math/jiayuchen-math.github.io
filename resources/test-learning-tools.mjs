@@ -42,7 +42,8 @@ test('generator is pure, returns the two pages, assets and bounded learning regi
   assert.equal(new Set(entries.map(entryKey)).size, entries.length);
   assert(entries.every(isShelfEntry));
   assert(!entries.some(e => ['programs','researchers'].includes(e.type)));
-  assert(entries.filter(e => e.type === 'guides').every(e => e.url.startsWith('/en/resources/library-paths/')));
+  assert(entries.filter(e => e.type === 'guides').every(e => /^\/en\/resources\/(?:library-paths|topics)\//.test(e.url)));
+  assert.equal(entries.filter(e => e.type === 'guides' && e.url.startsWith('/en/resources/topics/')).length,1,'Only the verified algebraic geometry topic is added');
   for (const e of entries) assert(Object.keys(e).every(key => ['id','type','title','url','summary','area','readingUrl'].includes(key)));
   for (const p of output.pages) {
     assert.deepEqual(p.scripts, [{src:'/en/resources/assets/learning-tools.js', type:'module'}]);

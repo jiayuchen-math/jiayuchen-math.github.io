@@ -14,42 +14,42 @@
       "url": "/en/notes/reading-notes/library/catalogue.html",
       "records": 576,
       "pages": 16,
-      "firstPageBytes": 135116
+      "firstPageBytes": 135379
     },
     {
       "id": "links",
       "url": "/en/resources/links/index.html",
       "records": 110,
       "pages": 5,
-      "firstPageBytes": 32715
+      "firstPageBytes": 32978
     },
     {
       "id": "programs",
       "url": "/en/resources/study-careers/index.html",
       "records": 225,
       "pages": 9,
-      "firstPageBytes": 290716
+      "firstPageBytes": 290979
     },
     {
       "id": "researchers",
       "url": "/en/resources/study-careers/researchers.html",
       "records": 1939,
       "pages": 78,
-      "firstPageBytes": 298464
+      "firstPageBytes": 298727
     },
     {
       "id": "encyclopedia",
       "url": "/en/resources/encyclopedia/index.html",
       "records": 210,
       "pages": 9,
-      "firstPageBytes": 25703
+      "firstPageBytes": 25966
     },
     {
       "id": "terminology",
       "url": "/en/resources/terminology/index.html",
       "records": 513,
       "pages": 21,
-      "firstPageBytes": 20378
+      "firstPageBytes": 20641
     }
   ],
   "protected": [
@@ -788,17 +788,17 @@
       "url": "/en/notes/reading-notes/library/exposition.html",
       "records": 14,
       "pages": 1,
-      "firstPageBytes": 33414
+      "firstPageBytes": 33677
     },
     {
       "id": "coverage",
       "url": "/en/resources/study-careers/coverage.html",
       "records": 80,
       "pages": 4,
-      "firstPageBytes": 48790
+      "firstPageBytes": 49053
     }
   ],
-  "indexBytes": 1501772,
+  "indexBytes": 1501865,
   "searchCollections": [
     {
       "id": "library",
@@ -837,5 +837,11 @@
   "limits": {
     "firstPageHTML": 358400,
     "searchIndex": 2097152
+  },
+  "translationCoverage": {
+    "body-translated": 26,
+    "partly-translated": 29,
+    "interface-only": 940,
+    "needs-review": 0
   }
 }
