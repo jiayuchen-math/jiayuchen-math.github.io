@@ -17,6 +17,7 @@ import {createLearningTools} from './learning-tools.mjs';
 import {chineseCompanion,chineseSubjectMetadata} from './localization.mjs';
 import {subjectTranslationHTML,translationPayload} from './subject-translations.mjs';
 import {translateRouteLabels,routeTranslations} from './route-translations.mjs';
+import {homeTranslationBlocks} from './home-translations.mjs';
 
 const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const text=html=>decodeHTML(String(html||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim());
@@ -266,8 +267,9 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  if(read(weeklyFile).includes('portal-content:start'))save(weeklyFile,read(weeklyFile).replace('<h1>Weekly Notes</h1>','<h1 id="title">Weekly Notes</h1>').replace(/<p id="title" class="weekly-course">[\s\S]*?<\/p>/,''));
  // Home remains a personal page; repair malformed contact markup without changing its content.
  const homeOld=read('index.html');let homeBody=bodyOf(homeOld);homeBody=homeBody.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g,'').replace('</p></section> · <a href="https://jiayuchen-math.github.io/mathpi/"',' · <a href="https://jiayuchen-math.github.io/mathpi/"');
- homeBody=homeBody.replace(/<p class="tagline">[\s\S]*?<\/p>/g,'');
- addPage('index.html','Jiayu Chen','<p class="tagline">Undergraduate mathematics student</p>'+homeBody,'home');
+ homeBody=homeBody.replace(/<p\b(?=[^>]*\bclass="tagline")[^>]*>[\s\S]*?<\/p>/g,'');
+ const homeCopy='<p class="tagline" id="home-tagline">Undergraduate mathematics student</p>'+homeBody;
+ addPage('index.html','Jiayu Chen',homeCopy+translationPayload(homeTranslationBlocks(homeCopy)),'home');
  const hubGroups=[
   ['learn','Learn Mathematics',[
    ['Learning paths','/en/resources/library-paths/','Follow a direction from its first questions to more advanced reading.'],
