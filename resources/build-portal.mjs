@@ -19,6 +19,7 @@ import {subjectTranslationHTML,translationPayload} from './subject-translations.
 import {translateRouteLabels,routeTranslations} from './route-translations.mjs';
 import {homeTranslationBlocks} from './home-translations.mjs';
 import {personalNotesPage} from './personal-notes.mjs';
+import {createLibraryTranslations} from './library-translations.mjs';
 import {translationCoverage,readTranslationApprovals,focusedPages,coverageTable,compilationRecord} from './editorial-support.mjs';
 import {translateEntranceHTML,simplifyLibraryEntrance} from './entrance-translations.mjs';
 import {pilotSubjectSection,pilotRouteSection} from './learning-pilots.mjs';
@@ -59,6 +60,10 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  const registryFile='resources/data/stable-ui-ids.json';
  const registry=fs.existsSync(path.join(root,registryFile))?json(registryFile):{library:{},links:{}};
  function stable(type,key){if(!registry[type][key])registry[type][key]=`${type==='library'?'work':'link'}-${String(Object.keys(registry[type]).length+1).padStart(4,'0')}`;return registry[type][key]}
+ const libraryChinese=createLibraryTranslations(root,books,registry.library);
+ const libraryCopyData='export const dictionary='+JSON.stringify(libraryChinese.dictionary)+';\nexport const records='+JSON.stringify(libraryChinese.records)+';\n';
+ save('resources/assets/library-copy-data.js',libraryCopyData);
+ const libraryCopyScript={src:'/en/resources/assets/library-copy.js?v='+digest(read('resources/assets/library-copy.js')).slice(0,12)+'&data='+digest(libraryCopyData).slice(0,12),type:'module'};
  const knowledge=loadKnowledge(root),articleIds=new Set(knowledge.articles.map(a=>a.id));
  const conceptReadings=loadConceptReadings(root),introductions=loadDirectionIntroductions(root),courseStudies=loadCourseStudies(root);
  const learningEdition=loadLearningEdition(root);
@@ -107,6 +112,16 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
     coverage=translationCoverage(file,{title:topic.title,body:renderCourseStudy(topic,courseStudies[subjectId],loadStudyChecks(root)[subjectId]||[],{editorial:learningEdition.subjects[subjectId],additionalChecks:learningEdition.checks[subjectId]||[],topics:merged.topics}),pilot:english,preparation:prep},approvals,'learning-sections');
     extra.head=(extra.head||'')+editionStyle;
    }
+   if(libraryChinese.scope.includes(subjectId)){
+    // Three non-overlapping blocks preserve the original guide and every bookmark.
+    body=body.replace(/<!-- library-copy:(intro|books):start --><div id="library-copy-\1">([\s\S]*?)<\/div><!-- library-copy:\1:end -->/g,'$2');
+    const split=body.match(/^([\s\S]*?)(<!-- subject-guide:start -->[\s\S]*?<!-- subject-guide:end -->)([\s\S]*)$/);
+    if(!split)throw Error('Missing subject guide boundary: '+subjectId);
+    body='<!-- library-copy:intro:start --><div id="library-copy-intro">'+split[1]+'</div><!-- library-copy:intro:end -->'+split[2]+'<!-- library-copy:books:start --><div id="library-copy-books">'+split[3]+'</div><!-- library-copy:books:end -->';
+    blocks['library-copy-intro']=libraryChinese.html(split[1]);blocks['library-copy-books']=libraryChinese.html(split[3]);
+    // Page annotations are translated; original book titles and authors are retained.
+    coverage={status:'body-translated',scope:'study-guide-and-library-annotations',translationRevised:'2026-10-19',sourceReview:'Existing English catalogue checked for translation; external sources not rechecked.'};
+   }
    body+=translationPayload(blocks,coverage);
   }
   if(/^resources\/encyclopedia\/[^/]+\/index\.html$/.test(file))body=`<!-- learning-control:start --><div class="entry-actions">${saveControl(file.split('/').at(-2),'encyclopedia')}</div><!-- learning-control:end -->`+body;
@@ -142,6 +157,7 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  const titleSearch=e=>strings([e.title,e.chinese,e.chineseLabel,Array.isArray(e.aliases)?e.aliases.join(' '):e.aliases,e.author,e.institution,e.topics,e.originalTitle]);
  function row(e,extra){return {id:e.id,title:e.title,subtitle:'',summary:'',meta:'',fields:{},search:titleSearch(e),...extra}}
  const libraryRows=books.map(e=>row({...e,id:stable('library',e.url.replace(/\/$/,''))},{subtitle:e.author,summary:brief(e.note),meta:strings([e.level,e.readingAccess,e.access]),readingUrl:e.url,fields:fields(e,['topic','level','readingAccess','kind','language','readingMode','access']),search:strings([titleSearch(e),e.topic,e.prerequisites,e.note])}));
+ for(const row of libraryRows){const translated=libraryChinese.records[row.id];if(translated)row.search+=' · '+translated.note+' · '+translated.preparation;}
  const linksRows=links.map(e=>row({...e,id:stable('links',e.url)},{subtitle:strings([e.author,e.originalTitle||e.chineseLabel]),aliases:e.aliases,summary:e.section?e.note:brief(e.note),meta:strings([e.category,e.area,e.language]),readingUrl:e.url,fields:fields(e,['category','area','language']),search:strings([titleSearch(e),e.category,e.area,e.note,e.use])}));
  const programRows=programs.map(e=>{const timing=applicationView(e);return row(e,{subtitle:strings([e.institution,e.country.replaceAll('|',', '),e.degree]),summary:brief(e.note),meta:strings([e.applicationWindow?.deadlineLabel?`Deadline: ${e.applicationWindow.deadlineLabel}`:'Deadline not verified',brief(e.tuition,130),brief(e.fundingDetail,130)]),readingUrl:e.url,fields:{...fields(e,['country','degree','region','programmeForm','intakeYear','orientation','language','fees','funding']),backgroundMatch:'Eligibility not established'},applicationWindow:timing.data,applicationDates:timing.dates,background:{institution:e.institution,country:e.country,degree:e.degree,language:e.language,funding:e.funding,entryLevels:e.entryLevels,eligibilityRule:e.eligibilityRule},search:strings([titleSearch(e),e.country,e.degree,e.orientation,e.preparation,e.note])})});
  for(const r of programRows){const recorded=r.applicationDates.filter(d=>d.type==='Admission'&&d.date);if(recorded.length&&r.meta.startsWith('Deadline not verified'))r.meta=r.meta.replace('Deadline not verified','Recorded admission: '+recorded.map(d=>d.label||d.date).join('; '));}
@@ -210,7 +226,7 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
    const compat=n===1&&!all&&render?`<noscript><details class="legacy-bookmarks"><summary>All entry links / older bookmarks</summary>${rows.filter(r=>!current.includes(r)).map(r=>`<a id="${E(r.id)}" href="${E(r.url)}">${E(r.title)}</a>`).join(' ')}</details></noscript>`:'';
    const filters=`<form class="controls" data-portal-catalogue data-index="/en/resources/catalogue-data/${id}/index.json?v=${indexVersion}" data-base="${href(file)}" data-defaults="${E(JSON.stringify(all?{}:defaults))}" data-current-page="${n}" hidden>${all?summaries.html.replaceAll(' selected',''):summaries.html}</form><div id="active-filters" class="chips" aria-label="Selected filters"></div>`;
    const body=`${intro}${filters}<p id="result-count" class="meta" role="status" tabindex="-1" aria-live="polite">${shown.length} results · page ${n} of ${pages}</p><noscript><p>Browse every entry using the page links.${defaults.readingAccess?' '+link(href(pageFile(file,1,true)),'Browse all access types')+'.':''}</p></noscript><p id="no-results" hidden>No matching entries. Clear filters or try another keyword.</p><div id="portal-results" class="results">${current.map(r=>summaryHTML(r,full[rows.indexOf(r)],id)).join('')}</div>${nav}${compat}`;
-   addPage(name,title,body,'directory',{scripts:['/en/resources/assets/portal-catalogue.js']});
+   addPage(name,title,body,'directory',{scripts:['/en/resources/assets/portal-catalogue.js',...(id==='library'?[libraryCopyScript]:[])]});
    if(n===1&&!all){const target=collection?report.directories:(report.supplementaryDirectories||=[]);target.push({id,url:href(file),records:rows.length,pages,firstPageBytes:Buffer.byteLength(read(name))})}
   }}
   staticSeries(false);if(defaults.readingAccess)staticSeries(true);

@@ -45,8 +45,10 @@
     },
     {
       "file": "notes/reading-notes/library/algebra/abstract-algebra.html",
-      "status": "partly-translated",
-      "scope": "learning-sections"
+      "status": "body-translated",
+      "scope": "study-guide-and-library-annotations",
+      "translationRevised": "2026-10-19",
+      "sourceReview": "Existing English catalogue checked for translation; external sources not rechecked."
     },
     {
       "file": "notes/reading-notes/library/algebra/algebraic-geometry.html",
@@ -73,8 +75,10 @@
     },
     {
       "file": "notes/reading-notes/library/algebra/linear-algebra.html",
-      "status": "partly-translated",
-      "scope": "learning-sections"
+      "status": "body-translated",
+      "scope": "study-guide-and-library-annotations",
+      "translationRevised": "2026-10-19",
+      "sourceReview": "Existing English catalogue checked for translation; external sources not rechecked."
     },
     {
       "file": "notes/reading-notes/library/algebra/representation-theory.html",
@@ -121,8 +125,10 @@
     },
     {
       "file": "notes/reading-notes/library/analysis/real-analysis.html",
-      "status": "partly-translated",
-      "scope": "learning-sections"
+      "status": "body-translated",
+      "scope": "study-guide-and-library-annotations",
+      "translationRevised": "2026-10-19",
+      "sourceReview": "Existing English catalogue checked for translation; external sources not rechecked."
     },
     {
       "file": "notes/reading-notes/library/catalogue-all-page-1.html",

@@ -14,7 +14,7 @@
       "url": "/en/notes/reading-notes/library/catalogue.html",
       "records": 576,
       "pages": 16,
-      "firstPageBytes": 135379
+      "firstPageBytes": 135497
     },
     {
       "id": "links",
@@ -833,14 +833,14 @@
       "records": 93
     }
   ],
-  "directoryIndexBytes": 4265047,
+  "directoryIndexBytes": 4274024,
   "limits": {
     "firstPageHTML": 358400,
     "searchIndex": 2097152
   },
   "translationCoverage": {
-    "body-translated": 27,
-    "partly-translated": 29,
+    "body-translated": 30,
+    "partly-translated": 26,
     "interface-only": 939,
     "needs-review": 0
   }

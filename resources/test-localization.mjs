@@ -71,4 +71,5 @@ for(const file of ['index.html','resources/index.html','resources/study-careers/
 const guideIndex=read('resources/library-paths/index.html');assert(guideIndex.includes('id="chinese-subject-guides"'),'Old bookmark retained');assert(!guideIndex.includes('按学科读中文导读'));assert(!guideIndex.includes('选择学科：29 篇导读'));
 assert(!read('resources/assets/language.js').includes('fetch('),'No machine-translation service or remote locale lookup');
 assert(!read('resources/assets/page-translation.js').includes('fetch('),'Translations ship with the original page');
+await import('./test-library-translations.mjs');
 console.log(JSON.stringify({passed:true,interfaceLabels:Object.keys(zh).length,translatedSubjects:29,translatedWorkedChecks:40,independentCompanions:0,englishDefault:true,sourceFactsRetained:true}));
