@@ -18,6 +18,7 @@ import {chineseCompanion,chineseSubjectMetadata} from './localization.mjs';
 import {subjectTranslationHTML,translationPayload} from './subject-translations.mjs';
 import {translateRouteLabels,routeTranslations} from './route-translations.mjs';
 import {homeTranslationBlocks} from './home-translations.mjs';
+import {personalNotesPage} from './personal-notes.mjs';
 import {translationCoverage,readTranslationApprovals,focusedPages,coverageTable,compilationRecord} from './editorial-support.mjs';
 import {translateEntranceHTML,simplifyLibraryEntrance} from './entrance-translations.mjs';
 import {pilotSubjectSection,pilotRouteSection} from './learning-pilots.mjs';
@@ -355,7 +356,8 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  contribution.body+=coverageTable(coverageRecords);contributionChinese.body+=coverageTable(coverageRecords,'zh');
  contribution.contents.push({id:'translation-coverage',label:'Translation coverage'});contributionChinese.contents.push({id:'translation-coverage',label:'本轮翻译范围'});
  bilingualPage(contributionFile,contribution,contributionChinese,'article');
- addPage('notes/index.html','Personal Notes',`<p>My notes from coursework and mathematical reading.</p><div class="cards"><section class="card"><h2>${link('/en/notes/mathematical-notes/page.html','Course notes')}</h2><p>Calculus and linear algebra, organized by week.</p></section><section class="card"><h2>${link('/en/notes/reading-notes/reading-notes.html','Reading notes')}</h2><p>Notes written alongside my reading. This section has no published notes yet.</p></section></div>`);
+ const personalNotes=personalNotesPage();
+ bilingualPage('notes/index.html',personalNotes.english,personalNotes.chinese,'directory',{head:personalNotes.head});
  const notes=[];for(const file of walk('notes/mathematical-notes').filter(f=>/\/(?:MAweek\d+|LAweek\d+)\.html$/.test(f))){const html=read(file);notes.push({id:'note-'+digest(file).slice(0,12),type:'notes',title:text(html.match(/<title>([\s\S]*?)<\/title>/)?.[1]||path.basename(file)),url:href(file),summary:brief(text(html.match(/<body[^>]*>([\s\S]*)<\/body>/)?.[1]||''),180),area:file.includes('calculus')?areas.analysis.title:areas.algebra.title})}
  // Keep individual notes searchable and saveable without duplicating the
  // existing course/week entrances on the personal-notes landing page.

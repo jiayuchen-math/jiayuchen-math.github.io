@@ -22,6 +22,7 @@ import {protectedBytes,windowsSourceBlobs} from './protected-bytes.mjs';
 import {titleDestination,entryActions,showsDetails,hasDetailContent} from './assets/entry-presentation.js';
 import {loadConceptReadings} from './study-content.mjs';
 import {loadAdviceReadings} from './advice-readings.mjs';
+import {personalNotesPage} from './personal-notes.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
@@ -700,7 +701,21 @@ if(!options.has('--business-only')&&!options.has('--baseline'))await check('reso
  const notesLanding=read('notes/index.html');
  assert(!notesLanding.includes('Published notes'),'No duplicate published-notes section');
  assert(!notesLanding.includes('data-save-learning'),'No detached per-note save buttons on the landing page');
- for(const target of ['/en/notes/mathematical-notes/page.html','/en/notes/reading-notes/reading-notes.html'])assert(notesLanding.includes('href="'+target+'"'),'Existing notes entrance retained');
+ assert(notesLanding.includes('href="/en/notes/mathematical-notes/page.html"'),'Course entrance retained');
+ assert(!notesLanding.includes('href="/en/notes/reading-notes/reading-notes.html"'),'No clickable unpublished reading-notes entrance');
+ assert(fs.existsSync(path.join(root,'notes/reading-notes/reading-notes.html')),'Old reading-notes URL retained');
+ const notesPayload=JSON.parse(notesLanding.match(/id="page-translations">([\s\S]*?)<\/script>/)[1]);
+ const notesCopy=personalNotesPage();
+ assert(notesLanding.includes('<div id="entrance-copy">'+notesCopy.english.body+'</div>'),'English landing copy');
+ assert.equal(notesPayload.blocks['entrance-copy'],notesCopy.chinese.body,'Complete Chinese landing copy');
+ assert.equal(notesPayload.coverage.status,'body-translated','No interface-only warning for translated notes landing');
+ for(const copy of [notesCopy.english.body,notesCopy.chinese.body]){
+  assert.equal((copy.match(/<a\b/g)||[]).length,1,'Only the real course entrance is a link');
+  assert(/<section[^>]*id="reading-notes"><h2>[^<]+<\/h2>/.test(copy),'Reading notes is a plain heading');
+  for(const format of ['PDF','HTML'])assert(copy.includes(format),'Format explanation is retained');
+ }
+ assert(notesCopy.head.includes('max-width:760px'),'Page-local narrow layout');
+ assert(!notesLanding.includes('class="cards"'),'No stretched two-column placeholder layout');
  const noteIndex=json('resources/search/index/notes.json');
  for(const suffix of ['calculus/MAweek1.html','calculus/MAweek2.html','linear-algebra/LAweek1.html'])assert(noteIndex.some(n=>n.url==='/en/notes/mathematical-notes/'+suffix),'Original note remains in search: '+suffix);
  for(const note of noteIndex)assert(fs.existsSync(path.join(root,note.url.replace(/^\/en\//,''))),'Original note file retained: '+note.id);

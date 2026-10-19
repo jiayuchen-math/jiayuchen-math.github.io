@@ -14,8 +14,11 @@
     },
     {
       "file": "notes/index.html",
-      "status": "interface-only",
-      "scope": "interface"
+      "status": "body-translated",
+      "scope": "page",
+      "sourceHash": "0305e39914f52ba30872fed52532749ff444dede58cc7ed5bc8e612c4f5d9077",
+      "approvedSourceHash": "0305e39914f52ba30872fed52532749ff444dede58cc7ed5bc8e612c4f5d9077",
+      "reviewed": "2026-10-19"
     },
     {
       "file": "notes/mathematical-notes/page.html",

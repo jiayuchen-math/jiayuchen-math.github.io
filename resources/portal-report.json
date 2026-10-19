@@ -839,9 +839,9 @@
     "searchIndex": 2097152
   },
   "translationCoverage": {
-    "body-translated": 26,
+    "body-translated": 27,
     "partly-translated": 29,
-    "interface-only": 940,
+    "interface-only": 939,
     "needs-review": 0
   }
 }
