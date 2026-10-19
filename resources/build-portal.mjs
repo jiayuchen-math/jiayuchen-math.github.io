@@ -23,6 +23,7 @@ import {createLibraryTranslations} from './library-translations.mjs';
 import {polishPage,conciseText} from './concise-copy.mjs';
 import {translationCoverage,readTranslationApprovals,focusedPages,coverageTable,compilationRecord} from './editorial-support.mjs';
 import {translateEntranceHTML,simplifyLibraryEntrance} from './entrance-translations.mjs';
+import {translateLearningEntrance,entranceInterfaceBlocks,categoryTitles,interfaceTitles} from './entrance-pages-zh.mjs';
 import {pilotSubjectSection,pilotRouteSection} from './learning-pilots.mjs';
 import {algebraicGeometryTopic} from './algebraic-geometry-topic.mjs';
 import {contributionHub} from './contribution-hub.mjs';
@@ -84,9 +85,16 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
   // Unwrapped legacy entrances retain the inert translation script. Remove it
   // before either extraction branch, not only from already wrapped pages.
   html=html.replace(/<script type="application\/json" id="page-translations">[\s\S]*?<\/script>/g,'');
+  html=html.replace(/<span id="translated-entrance-text-\d+">([\s\S]*?)<\/span>/g,'$1').replace(/ id="translated-entrance-option-\d+"/g,'');
+  // Category introductions can precede a retained translated container. Remove
+  // every owned container, not just one that happens to wrap the entire body.
+  const containers=[];
+  html=html.replace(/<\/?div\b[^>]*>/g,tag=>{if(tag.startsWith('</'))return containers.pop()?'':tag;const own=/\bid="entrance-copy"/.test(tag);containers.push(own);return own?'':tag;});
   const marked=html.match(/<!-- portal-content:start -->([\s\S]*?)<!-- portal-content:end -->/);if(marked)return marked[1].replace(/<!-- learning-control:start -->[\s\S]*?<!-- learning-control:end -->/g,'').replace(/<script type="application\/json" id="page-translations">[\s\S]*?<\/script>/g,'').replace(/^<div id="entrance-copy">([\s\S]*)<\/div>\s*$/,'$1');
   let body=html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1]||html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1]||html;
-  return body.replace(/<header\b[^>]*>[\s\S]*?<\/header>/i,'').replace(/^\s*<nav\b[^>]*>[\s\S]*?<\/nav>/i,'').replace(/<footer\b[^>]*>[\s\S]*?<\/footer>/i,'');
+  body=body.replace(/<header\b[^>]*>[\s\S]*?<\/header>/i,'').replace(/^\s*<nav\b[^>]*>[\s\S]*?<\/nav>/i,'').replace(/<footer\b[^>]*>[\s\S]*?<\/footer>/i,'');
+  while(/^\s*<div id="entrance-copy">[\s\S]*<\/div>\s*$/.test(body))body=body.replace(/^\s*<div id="entrance-copy">([\s\S]*)<\/div>\s*$/,'$1');
+  return body;
  }
  function articleContents(body){
   const headings=[...body.matchAll(/<h[23][^>]*id="([^"]+)"[^>]*>([\s\S]*?)<\/h[23]>/g),...body.matchAll(/<section[^>]*id="([^"]+)"[^>]*>\s*<h2[^>]*>([\s\S]*?)<\/h2>/g)].sort((a,b)=>a.index-b.index);
@@ -94,6 +102,14 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
   return unique.length?'<nav class="contents" aria-label="Article contents"><strong>Contents</strong><ul>'+unique.map(([id,label])=>'<li>'+link('#'+id,label)+'</li>').join('')+'</ul></nav>':'';
  }
  function addPage(file,title,body,kind='directory',extra={}){
+  if(file==='notes/mathematical-notes/weekly.html'&&!body.includes('id="page-translations"'))body+=translationPayload({},translationCoverage(file,{title,body},approvals));
+  if(interfaceTitles[file]&&!body.includes('id="page-translations"')){
+   const translated=entranceInterfaceBlocks(body,{topics:merged.topics,goalPaths,books});
+   if(translated.untranslated.length)console.warn('UNTRANSLATED ENTRANCE '+file+' '+JSON.stringify(translated.untranslated));
+   const coverage=translationCoverage(file,{title,body:translated.html},approvals,'page',translated.untranslated.length);
+   const chineseTitle=interfaceTitles[file];
+   body=translated.html+translationPayload({...translated.blocks,'translated-page-title':chineseTitle,'translated-breadcrumb-title':chineseTitle,'translated-document-title':chineseTitle+' · Jiayu Chen'},coverage);extra.translatedTitle=chineseTitle;
+  }
   const subjectId=merged.topics.find(t=>'notes/reading-notes/library/'+t.route===file)?.id;
   if(subjectId){
    body=body.replace(/<!-- chinese-companion:start -->[\s\S]*?<!-- chinese-companion:end -->/g,'').replace(/<script type="application\/json" id="page-translations">[\s\S]*?<\/script>/g,'');
@@ -288,12 +304,24 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
   }
   const article=file.includes('/library-paths/')||file.endsWith('guides.html')||file.endsWith('fee-status.html')||file.endsWith('contributing.html')||file.endsWith('/paths.html')||file.endsWith('/advice.html')||file.endsWith('/study-advice.html')||file.endsWith('/experiences.html');
   let toc='';if(article){toc=body.match(/<nav class="contents"[^>]*>[\s\S]*?<\/nav>/)?.[0]||'';if(toc)body=body.replace(toc,'');if(!toc.includes('href="#'))toc=articleContents(body)}
-  addPage(file,title,body,article?'article':'directory',{toc,head:(file.includes('/encyclopedia/')?'<link rel="stylesheet" href="/en/resources/assets/knowledge.css"><link rel="stylesheet" href="/en/resources/assets/katex/katex.min.css">':'')+(courses.length?'<link rel="stylesheet" href="/en/resources/assets/study-guides.css?v='+digest(read('resources/assets/study-guides.css')).slice(0,12)+'">':'')});
   const subject=merged.topics.find(t=>file==='notes/reading-notes/library/'+t.route||file==='resources/library-paths/'+t.id+'.html');
+  const prerequisite=subject&&file==='resources/library-paths/'+subject.id+'.html';
+  if(courses.length||prerequisite){
+   const translated=translateLearningEntrance(body,{topics:merged.topics,goalPaths,books});
+   if(translated.untranslated.length)console.warn('UNTRANSLATED ENTRANCE '+file+' '+JSON.stringify(translated.untranslated));
+   const contents=prerequisite?[{id:'intro',label:'Entry / bridge route'},{id:'research',label:'Research reading: additional tools'}]:[];
+   const chineseContents=prerequisite?[{id:'intro',label:'入门与衔接'},{id:'research',label:'进阶阅读：补充工具'}]:[];
+   if(prerequisite){
+    const leaves=entranceInterfaceBlocks(body,{topics:merged.topics,goalPaths,books}),chineseTitle=chineseSubjectMetadata[subject.id].title+'：先修知识';
+    const englishToc='<ul>'+contents.map(c=>'<li>'+link('#'+c.id,c.label)+'</li>').join('')+'</ul>',chineseToc='<ul>'+chineseContents.map(c=>'<li>'+link('#'+c.id,c.label)+'</li>').join('')+'</ul>';
+    const coverage=translationCoverage(file,{title,body:leaves.html},approvals,'page',leaves.untranslated.length);
+    addPage(file,title,leaves.html+translationPayload({...leaves.blocks,'translated-page-title':chineseTitle,'translated-breadcrumb-title':chineseTitle,'translated-document-title':chineseTitle+' · Jiayu Chen','translated-page-toc':chineseToc},coverage),'article',{translatedTitle:chineseTitle,toc:'<nav class="contents" id="translated-page-toc" aria-label="Article contents">'+englishToc+'</nav>'});
+   }else bilingualPage(file,{title,body,contents},{title:categoryTitles[category],body:translated.html,contents:chineseContents},'directory',{untranslated:translated.untranslated.length,head:'<link rel="stylesheet" href="/en/resources/assets/study-guides.css?v='+digest(read('resources/assets/study-guides.css')).slice(0,12)+'">'});
+  }else addPage(file,title,body,article?'article':'directory',{toc,head:file.includes('/encyclopedia/')?'<link rel="stylesheet" href="/en/resources/assets/knowledge.css"><link rel="stylesheet" href="/en/resources/assets/katex/katex.min.css">':''});
   if(article||file.includes('/library/')){
    const englishBody=body.replace(/<!-- chinese-companion:start -->[\s\S]*?<!-- chinese-companion:end -->/g,'').replace(/<script type="application\/json" id="page-translations">[\s\S]*?<\/script>/g,'');
-   const chinese=file.startsWith('notes/reading-notes/library/')&&subject?chineseSubjectMetadata[subject.id]?.title:undefined;
-   guideRows.push({id:'guide-'+digest(file).slice(0,12),title,url:href(file),summary:brief(text(englishBody)),...(chinese?{chinese,aliases:[chineseSubjectMetadata[subject.id].summary]}:{}),area:subject?areaForTopic(subject):'',type:'guides'});
+   const chinese=prerequisite?chineseSubjectMetadata[subject.id].title+'：先修知识':courses.length?categoryTitles[category]:file.startsWith('notes/reading-notes/library/')&&subject?chineseSubjectMetadata[subject.id]?.title:undefined;
+   guideRows.push({id:'guide-'+digest(file).slice(0,12),title,url:href(file),summary:brief(text(englishBody)),...(chinese?{chinese,aliases:[chinese,...(subject?[chineseSubjectMetadata[subject.id].summary]:[])]}:{}),area:subject?areaForTopic(subject):'',type:'guides'});
   }
  }
  // Goal routes sit above the smaller prerequisite reviews, which keep their URLs.
@@ -332,7 +360,7 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
   guideRows.push({id:'guide-'+digest(page.file).slice(0,12),title:page.title,chinese:chinese.title,aliases:[chinese.title,chinese.guide.summary],url:href(page.file),summary:page.guide.summary,area:areas[page.guide.area]?.title||page.guide.area,type:'guides'});
  }
  // The weekly entrance retains every real file and future-week slot, without its old duplicate theme script.
- const weeklyFile='notes/mathematical-notes/weekly.html',weeklyOld=read(weeklyFile);const weeklyScript=weeklyOld.match(/const courses=[\s\S]*?(?=const root=document.documentElement)/)?.[0]||(fs.existsSync(path.join(root,'resources/assets/weekly-entrance.js'))?read('resources/assets/weekly-entrance.js'):'');
+ const weeklyFile='notes/mathematical-notes/weekly.html',weeklyOld=read(weeklyFile);const weeklyScript=(weeklyOld.match(/const courses=[\s\S]*?(?=const root=document.documentElement)/)?.[0]||(fs.existsSync(path.join(root,'resources/assets/weekly-entrance.js'))?read('resources/assets/weekly-entrance.js'):'')).replaceAll('\r\n','\n');
  if(weeklyScript){save('resources/assets/weekly-entrance.js',weeklyScript);addPage(weeklyFile,'Weekly Notes','<p id="title" class="weekly-course">Weekly Notes</p><p id="subtitle" class="muted">Choose a week</p><p>'+link('page.html','Back to course notes')+'</p><section><h2 id="heading">Available weeks</h2><div class="weeks" id="weeks"></div><p id="empty" hidden>No materials are available for this category yet.</p></section><noscript><p>'+link('/en/notes/mathematical-notes/calculus/MAweek1.html','Calculus — week 1')+' · '+link('/en/notes/mathematical-notes/calculus/MAweek2.html','Calculus — week 2')+' · '+link('/en/notes/mathematical-notes/linear-algebra/LAweek1.html','Linear algebra — week 1')+'</p></noscript>','directory',{scripts:['/en/resources/assets/weekly-entrance.js']})}
  if(read(weeklyFile).includes('portal-content:start'))save(weeklyFile,read(weeklyFile).replace('<h1>Weekly Notes</h1>','<h1 id="title">Weekly Notes</h1>').replace(/<p id="title" class="weekly-course">[\s\S]*?<\/p>/,''));
  // Home remains a personal page; repair malformed contact markup without changing its content.

@@ -72,4 +72,5 @@ const guideIndex=read('resources/library-paths/index.html');assert(guideIndex.in
 assert(!read('resources/assets/language.js').includes('fetch('),'No machine-translation service or remote locale lookup');
 assert(!read('resources/assets/page-translation.js').includes('fetch('),'Translations ship with the original page');
 await import('./test-library-translations.mjs');
+await import('./test-entrance-translations.mjs');
 console.log(JSON.stringify({passed:true,interfaceLabels:Object.keys(zh).length,translatedSubjects:29,translatedWorkedChecks:40,independentCompanions:0,englishDefault:true,sourceFactsRetained:true}));

@@ -50,10 +50,13 @@ const text={
  'The study guide above is translated; catalogue annotations below retain their original language.':'上面的学习说明已译为中文；下方书目简介保留原文。'
 };
 for(const [id,entry]of Object.entries(subjectTranslations))if(entry.title)text[({proofs:'Proofs & Mathematical Writing','commutative-algebra':'Commutative Algebra','real-analysis':'Real Analysis','linear-algebra':'Linear Algebra',calculus:'Calculus'})[id]||id]=entry.title;
-export function translateEntranceHTML(html){
+export function translateEntranceHTML(html,extraLabels={},protectedText=[]){
+ const dictionary={...text,...extraLabels},keep=new Set(protectedText);
  const untranslated=new Set();
  const convert=value=>{
-  if(text[value])return text[value];
+  if(keep.has(value))return value;
+  if(dictionary[value])return dictionary[value];
+  if(value.endsWith('.')&&dictionary[value.slice(0,-1)])return dictionary[value.slice(0,-1)]+'。';
   let m;if((m=value.match(/^(\d+) books, lecture notes and papers\. Free-to-read material is selected by default\.$/)))return m[1]+' 项书籍、讲义与论文，默认显示可免费阅读的资料。';
   if((m=value.match(/^(\d+) broad areas · (\d+) subject pages · (\d+) distinct resources$/)))return m[1]+' 个大类 · '+m[2]+' 个学科 · '+m[3]+' 项不同资料';
   if((m=value.match(/^(\d+) resources?$/)))return m[1]+' 项资料';
@@ -61,7 +64,7 @@ export function translateEntranceHTML(html){
   untranslated.add(value);return value;
  };
  let result=html.replace(/>([^<>]+)</g,(_,raw)=>{const value=decodeHTML(raw).trim();return '>'+(value?raw.replace(raw.trim(),E(convert(value))):raw)+'<'});
- result=result.replace(/(placeholder|aria-label)="([^"]+)"/g,(whole,key,value)=>text[decodeHTML(value)]?key+'="'+E(text[decodeHTML(value)])+'"':whole);
+ result=result.replace(/(placeholder|aria-label)="([^"]+)"/g,(whole,key,value)=>dictionary[decodeHTML(value)]?key+'="'+E(dictionary[decodeHTML(value)])+'"':whole);
  return {html:result,untranslated:[...untranslated]};
 }
 export function simplifyLibraryEntrance(body){
