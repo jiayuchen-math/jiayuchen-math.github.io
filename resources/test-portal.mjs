@@ -697,6 +697,13 @@ if(!options.has('--business-only')&&!options.has('--baseline'))await check('reso
   for(const match of toc.matchAll(/href="#([^"]+)"/g))assert(html.includes('id="'+match[1]+'"'),'Contents target '+match[1]);
  }
  assert(!read('notes/index.html').includes('class="portal-toc"'),'No empty contents');
+ const notesLanding=read('notes/index.html');
+ assert(!notesLanding.includes('Published notes'),'No duplicate published-notes section');
+ assert(!notesLanding.includes('data-save-learning'),'No detached per-note save buttons on the landing page');
+ for(const target of ['/en/notes/mathematical-notes/page.html','/en/notes/reading-notes/reading-notes.html'])assert(notesLanding.includes('href="'+target+'"'),'Existing notes entrance retained');
+ const noteIndex=json('resources/search/index/notes.json');
+ for(const suffix of ['calculus/MAweek1.html','calculus/MAweek2.html','linear-algebra/LAweek1.html'])assert(noteIndex.some(n=>n.url==='/en/notes/mathematical-notes/'+suffix),'Original note remains in search: '+suffix);
+ for(const note of noteIndex)assert(fs.existsSync(path.join(root,note.url.replace(/^\/en\//,''))),'Original note file retained: '+note.id);
 });
 console.log(JSON.stringify({passed:passed.length, failures, mode:options.has('--baseline') ? 'baseline' : options.has('--business-only') ? 'business-only' : 'portal', counts}));
 if (failures.length) process.exitCode = 1;
