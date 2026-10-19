@@ -1,9 +1,10 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {cleanPageCopy} from './editorial-copy.mjs';
+import './test-concise-copy.mjs';
 const home=fs.readFileSync('index.html','utf8');
 const disclaimer=fs.readFileSync('disclaimer.html','utf8');
-assert(home.includes('<a href="disclaimer.html">Disclaimer</a></footer>'));
+assert(/<a href="(?:\/en\/)?disclaimer.html">Disclaimer<\/a>/.test(home),'Disclaimer remains linked from the home page');
 assert(home.includes('>CUHKSZ MathPi</a>'),'Homepage MathPi link retained without Club');
 assert(disclaimer.includes('No public record')||disclaimer.includes('no public record'));
 assert(disclaimer.includes('not live admissions portals'));

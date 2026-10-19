@@ -14,7 +14,7 @@
       "url": "/en/notes/reading-notes/library/catalogue.html",
       "records": 576,
       "pages": 16,
-      "firstPageBytes": 135497
+      "firstPageBytes": 132738
     },
     {
       "id": "links",
@@ -35,7 +35,7 @@
       "url": "/en/resources/study-careers/researchers.html",
       "records": 1939,
       "pages": 78,
-      "firstPageBytes": 298727
+      "firstPageBytes": 298145
     },
     {
       "id": "encyclopedia",
@@ -788,7 +788,7 @@
       "url": "/en/notes/reading-notes/library/exposition.html",
       "records": 14,
       "pages": 1,
-      "firstPageBytes": 33677
+      "firstPageBytes": 32597
     },
     {
       "id": "coverage",
@@ -798,7 +798,7 @@
       "firstPageBytes": 49053
     }
   ],
-  "indexBytes": 1501865,
+  "indexBytes": 1501354,
   "searchCollections": [
     {
       "id": "library",
@@ -833,7 +833,7 @@
       "records": 93
     }
   ],
-  "directoryIndexBytes": 4274024,
+  "directoryIndexBytes": 4192546,
   "limits": {
     "firstPageHTML": 358400,
     "searchIndex": 2097152

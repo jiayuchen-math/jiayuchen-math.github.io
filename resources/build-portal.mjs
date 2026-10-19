@@ -20,6 +20,7 @@ import {translateRouteLabels,routeTranslations} from './route-translations.mjs';
 import {homeTranslationBlocks} from './home-translations.mjs';
 import {personalNotesPage} from './personal-notes.mjs';
 import {createLibraryTranslations} from './library-translations.mjs';
+import {polishPage,conciseText} from './concise-copy.mjs';
 import {translationCoverage,readTranslationApprovals,focusedPages,coverageTable,compilationRecord} from './editorial-support.mjs';
 import {translateEntranceHTML,simplifyLibraryEntrance} from './entrance-translations.mjs';
 import {pilotSubjectSection,pilotRouteSection} from './learning-pilots.mjs';
@@ -139,7 +140,7 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
   if(file.startsWith('resources/library-paths/'))extra.scripts=[...(extra.scripts||[]),'/en/resources/assets/paths.js'];
   let output=shell({title,body,url:href(file.replace(/index\.html$/,'')),kind,...extra});
   if(extra.translatedTitle)output=output.replace('<title>','<title id="translated-document-title">').replace('<h1>','<h1 id="translated-page-title">').replace('<span aria-current="page">','<span id="translated-breadcrumb-title" aria-current="page">');
-  save(file,output);
+  save(file,polishPage(output,file));
   const payload=body.match(/<script type="application\/json" id="page-translations">([\s\S]*?)<\/script>/)?.[1];
   const data=payload?JSON.parse(payload):null;
   coverageRecords.set(file,data?.coverage||{status:data?(data.blocks['study-guide']?'partly-translated':'body-translated'):'interface-only',scope:data?.blocks['study-guide']?'learning-sections':data?'page':'interface'});
@@ -158,10 +159,12 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  function row(e,extra){return {id:e.id,title:e.title,subtitle:'',summary:'',meta:'',fields:{},search:titleSearch(e),...extra}}
  const libraryRows=books.map(e=>row({...e,id:stable('library',e.url.replace(/\/$/,''))},{subtitle:e.author,summary:brief(e.note),meta:strings([e.level,e.readingAccess,e.access]),readingUrl:e.url,fields:fields(e,['topic','level','readingAccess','kind','language','readingMode','access']),search:strings([titleSearch(e),e.topic,e.prerequisites,e.note])}));
  for(const row of libraryRows){const translated=libraryChinese.records[row.id];if(translated)row.search+=' · '+translated.note+' · '+translated.preparation;}
+ for(const row of libraryRows){row.summary=brief(conciseText(books.find(b=>stable('library',b.url.replace(/\/$/,''))===row.id).note));row.meta=strings([row.fields.level,row.fields.readingAccess==='Free to read'?(row.fields.access==='Direct open PDF'?'PDF':'Free to read'):row.fields.readingAccess]);}
  const linksRows=links.map(e=>row({...e,id:stable('links',e.url)},{subtitle:strings([e.author,e.originalTitle||e.chineseLabel]),aliases:e.aliases,summary:e.section?e.note:brief(e.note),meta:strings([e.category,e.area,e.language]),readingUrl:e.url,fields:fields(e,['category','area','language']),search:strings([titleSearch(e),e.category,e.area,e.note,e.use])}));
  const programRows=programs.map(e=>{const timing=applicationView(e);return row(e,{subtitle:strings([e.institution,e.country.replaceAll('|',', '),e.degree]),summary:brief(e.note),meta:strings([e.applicationWindow?.deadlineLabel?`Deadline: ${e.applicationWindow.deadlineLabel}`:'Deadline not verified',brief(e.tuition,130),brief(e.fundingDetail,130)]),readingUrl:e.url,fields:{...fields(e,['country','degree','region','programmeForm','intakeYear','orientation','language','fees','funding']),backgroundMatch:'Eligibility not established'},applicationWindow:timing.data,applicationDates:timing.dates,background:{institution:e.institution,country:e.country,degree:e.degree,language:e.language,funding:e.funding,entryLevels:e.entryLevels,eligibilityRule:e.eligibilityRule},search:strings([titleSearch(e),e.country,e.degree,e.orientation,e.preparation,e.note])})});
  for(const r of programRows){const recorded=r.applicationDates.filter(d=>d.type==='Admission'&&d.date);if(recorded.length&&r.meta.startsWith('Deadline not verified'))r.meta=r.meta.replace('Deadline not verified','Recorded admission: '+recorded.map(d=>d.label||d.date).join('; '));}
  const researcherRows=researchers.map(e=>{const f=researcherFilters(e);return row({...e,title:e.name},{subtitle:strings([e.institution,e.country]),summary:brief(e.topics.replaceAll('|',', ')),meta:strings([e.role,e.email?'Public email available':'Email not verified']),readingUrl:e.official,email:e.email||'',fields:{...fields(f,['country','institution','area','region','availability','recent','contact','topicStatus']),topic:e.topics},search:strings([e.name,e.institution,e.country,e.topics,e.area,e.aliases||''])})});
+ for(const row of researcherRows)row.meta=/^Listed |rank not supplied|rank not established/i.test(row.meta)?'':row.meta.split(' · ')[0];
  const conceptFields=e=>({area:areas[e.area].title,topic:topicTitle(e.topic),level:e.level,contentKind:e.contentKind||'Original explanation',coverage:articleIds.has(e.id)?'Encyclopedia explanation':readingIds.has(e.id)?'External reading guide':'Short definition only',translationStatus:e.translationStatus||''});
  const articleRows=knowledge.articles.map(e=>row(e,{chinese:e.chinese,aliases:e.aliases,summary:e.summary,meta:strings([areas[e.area].title,e.level]),fields:conceptFields(e),url:`/en/resources/encyclopedia/${e.id}/`,termUrl:`/en/resources/terminology/${e.id}/`,search:strings([titleSearch(e),e.summary,areas[e.area].title,topicTitle(e.topic)])}));
  articleRows.push(...conceptReadings.map(e=>{

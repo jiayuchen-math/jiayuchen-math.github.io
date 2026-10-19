@@ -1,6 +1,7 @@
 import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {fileURLToPath} from 'node:url';
 import {withAccess} from './data/library-access.mjs';
 import {createLibraryTranslations,librarySourceHash} from './library-translations.mjs';
+import {polishFragment,conciseText} from './concise-copy.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8'),json=f=>JSON.parse(read(f));
 const catalogue=json('notes/reading-notes/library/catalogue.json'),registry=json('resources/data/stable-ui-ids.json').library,copy=json('resources/data/library-zh-undergraduate.json');
 const topics=catalogue.topics.filter(t=>copy.scope.includes(t.id)),books=topics.flatMap(t=>t.books.map(b=>withAccess({...b,language:b.language||'English (legacy metadata)'}))),before=JSON.stringify(books),tr=createLibraryTranslations(root,books,registry);
@@ -11,10 +12,10 @@ for(const topic of topics){
  for(const name of ['intro','books']){
   const english=built.match(new RegExp('<!-- library-copy:'+name+':start --><div id="library-copy-'+name+'">([\\s\\S]*?)</div><!-- library-copy:'+name+':end -->'))[1];
   assert.deepEqual(hrefs(p.blocks['library-copy-'+name]),hrefs(english),'All source and reading links preserved');
-  assert.equal(p.blocks['library-copy-'+name],tr.html(english),'Exact compiled translation');
+  assert.equal(p.blocks['library-copy-'+name],polishFragment(tr.html(english),{library:name==='books'}),'Exact compiled translation after reviewed copy edits');
   assert.equal((built.match(new RegExp('id="library-copy-'+name+'"','g'))||[]).length,1,'No nested blocks on rebuild');
  }
- for(const b of topic.books){const id=registry[b.url.replace(/\/$/,'')];assert(p.blocks['library-copy-books'].includes(copy.entries[id].note),id+' complete Chinese annotation');assert(built.includes(b.title.replaceAll('&','&amp;')),id+' original title retained');}
+ for(const b of topic.books){const id=registry[b.url.replace(/\/$/,'')];assert(p.blocks['library-copy-books'].includes(conciseText(copy.entries[id].note)),id+' Chinese annotation without catalogue bookkeeping');assert(built.includes(b.title.replaceAll('&','&amp;')),id+' original title retained');}
  assert.equal(p.coverage.status,'body-translated');
  assert(!/Further print reading|Additional reading|Introductory reading|Review dates appear/.test(p.blocks['library-copy-books']));
 }

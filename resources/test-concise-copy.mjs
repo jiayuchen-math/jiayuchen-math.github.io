@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import {trimCopy,polishPage,polishFragment,emptyRecommendations} from './concise-copy.mjs';
+for(const sentence of emptyRecommendations)assert.equal(trimCopy('<p class="meta">'+(sentence.match(/[\u4e00-\u9fff]/)?'用途：':'Use: ')+sentence+'</p>'),'');
+const meaningful='<p class="meta">Preparation: Sobolev spaces; functional analysis.</p><p class="meta">Tuition: EUR 1,500 per semester; non-EU applicants, 2026/27.</p><p class="meta">Historical fee; current year not published.</p><p class="meta">Individual use only; redistribution is not licensed.</p><p class="meta">Scholarships require a separate application.</p><p class="meta">Department membership only; individual interests not verified.</p><a href="https://example.org/source" target="_blank" rel="noopener noreferrer">Source</a>';
+assert.equal(trimCopy(meaningful),meaningful,'Specific preparation, legal, access and admission constraints remain');
+const liveRegions='<p class="knowledge-meta" data-route-context hidden></p><p class="language-content-status" id="language-content-status" hidden></p>';assert.equal(trimCopy(liveRegions),liveRegions,'Empty dynamic-language and return-route slots remain');
+assert.equal(trimCopy('<p>Preparation: Editorial preparation guide: Groups, rings and modules.</p>'),'<p>Preparation: Groups, rings and modules.</p>');
+assert.equal(trimCopy('<p>先修：编选建议：环、模与群表示。</p>'),'<p>先修：环、模与群表示。</p>');
+const maths='<div class="article-body"><p>Use: Bridge undergraduate foundations to more advanced reading.</p><div>\\(a&lt;b\\)</div></div>',script='<script type="module" src="/en/resources/assets/language.js?v=exact"></script>';
+const payload='<script type="application/json" id="page-translations">'+JSON.stringify({version:1,blocks:{copy:'<p>用途：从本科基础继续走向进阶读物。</p>'+maths}})+'</script>';
+const sample='<article class="entry"><h3><a href="https://example.org/book">Book</a></h3><p class="meta">Author · Graduate · English</p><p>Description.</p><p class="meta">Version: second edition, 2012 · Checked 2026-10-11</p><a href="https://example.org/source">Source</a></article>'+maths+payload+script;
+const output=polishPage(sample,'notes/reading-notes/library/algebra/example.html');assert(output.includes(maths));assert(output.includes(script));assert(output.includes('second edition, 2012'));assert(output.includes('2026-10-11'));assert(output.includes('class="bibliographic-details"'));assert.equal(polishPage(output,'notes/reading-notes/library/algebra/example.html'),output,'Repeat pass is byte-stable');
+const p=JSON.parse(output.match(/id="page-translations">([\s\S]*?)<\/script>/)[1]);assert.equal(p.blocks.copy,maths);assert(!output.includes('undefined'));assert(!output.includes('\u0001COPY'));
+assert.equal(polishFragment(output),output,'Already folded text remains stable');
+assert.equal(polishPage(sample,'disclaimer.html'),sample);
+for(const f of ['resources/catalogue-data/library/index.json','resources/catalogue-data/researchers/index.json']){const rows=JSON.parse(fs.readFileSync(f,'utf8')).records;assert(!rows.some(r=>/Public email available/.test(r.meta)),'No repeated contact badge');}
+console.log('Concise English/Chinese copy, idempotence, script/math protection and meaningful limitations passed');

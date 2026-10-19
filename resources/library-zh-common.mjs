@@ -1,5 +1,6 @@
 // Translate catalogue wording, never infer access, dates or bibliographic facts.
 export const libraryZhCommon={
+ 'Edition and sources':'版本与来源',
  'Introductory':'入门','Intermediate':'进阶','Graduate':'研究生','Research':'研究',
  'Textbook':'教材','Course notes':'课程讲义','Survey':'综述','Long lecture notes':'长篇讲义','Author textbook':'作者教材','Author manuscript':'作者稿',
  'English (legacy metadata)':'英语（原记录）','English':'英语','Danish':'丹麦语',

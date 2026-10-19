@@ -1,3 +1,4 @@
+import {trimCopy} from './concise-copy.mjs';
 // Presentation-only changes: source records, mathematical prose, dates and badges
 // remain intact. General caveats belong on the single site disclaimer page.
 const paragraphs=[
@@ -74,5 +75,5 @@ export function cleanPageCopy(html,file){
   for(const [before,after] of sentences)result=result.split(before).join(after);
   return result.trim()?`<p${attrs}>${result}</p>`:'';
  });
- return html;
+ return trimCopy(html);
 }

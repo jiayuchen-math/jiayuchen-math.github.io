@@ -3,6 +3,7 @@ import path from 'node:path';
 import {decodeHTML} from 'entities';
 import {createHash} from 'node:crypto';
 import {libraryZhCommon} from './library-zh-common.mjs';
+import {conciseText} from './concise-copy.mjs';
 const escape=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 export function libraryTranslationSource(book){return Object.fromEntries(['title','author','url','note','prerequisites','use','version','accessNote','archiveNote','freeVersion','level','kind','language','access','readingAccess'].map(k=>[k,book[k]||'']));}
 export const librarySourceHash=book=>createHash('sha256').update(JSON.stringify(libraryTranslationSource(book))).digest('hex');
@@ -17,9 +18,12 @@ export function createLibraryTranslations(root,books,registry){
   if(review[id]!==librarySourceHash(b))throw Error('English source changed; review library translation: '+id);
   const prep=(/^Editorial preparation(?: guide)?:/.test(b.prerequisites)?'编选建议：':'')+zh.preparation;
   dictionary[b.note]=zh.note;dictionary[b.prerequisites]=prep;
+  const concisePreparation=conciseText('Preparation: '+b.prerequisites).replace(/^Preparation: /,'');
+  if(concisePreparation)dictionary[concisePreparation]=prep.replace(/^编选建议：/,'');
   records[id]={url:b.url,note:zh.note,preparation:prep};
   for(const key of ['use','version','accessNote','archiveNote','freeVersion'])if(b[key]&&!/^\d+$/.test(b[key])&&!dictionary[b[key]])throw Error('Missing Chinese library field '+id+' '+key+': '+b[key]);
  }
+ for(const [english,chinese] of Object.entries({...dictionary})){const shortEnglish=conciseText(english),shortChinese=conciseText(chinese);if(shortEnglish&&shortEnglish!==english)dictionary[shortEnglish]=shortChinese;}
  const translate=value=>{
   if(dictionary[value])return dictionary[value];
   if(/^Further print reading \(\d+ retained references\)$/.test(value))return '纸质书参考（保留 '+value.match(/\d+/)[0]+' 项）';
