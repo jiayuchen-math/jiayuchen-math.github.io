@@ -75,7 +75,7 @@
     ],
     [
       "notes/mathematical-notes/calculus/MAweek1.html",
-      "cb234f7563124bd03821f6c30ee00ee9ddaa9aca5c3aaf05187e745e3d30b6ce"
+      "61b7df41d39a22f5d9758d2fee5792d0e9adc4cd550caeaaf9596b92b62a9ca5"
     ],
     [
       "notes/mathematical-notes/calculus/MAweek1.pdf",
@@ -87,11 +87,11 @@
     ],
     [
       "notes/mathematical-notes/calculus/MAweek2.html",
-      "73f25c521bd51185e13c600fff57b3feef11815e205ff028b5ec07d1cbed82df"
+      "31ed3c3330a979f97811eef22b8aeadfa89b85ceeba67486770bf60f4624b462"
     ],
     [
       "notes/mathematical-notes/calculus/MAweek3.html",
-      "9219177dd9bb3146d880e59e6424bc8ed1e0ca0fc68a4d8bfd04fbb38d1afb19"
+      "aee7eca8501ebc720247c800fe7670d0edb108e13867b09bc9ffe89f23fd09ff"
     ],
     [
       "notes/mathematical-notes/calculus/MAweek3.pdf",
@@ -103,7 +103,7 @@
     ],
     [
       "notes/mathematical-notes/calculus/MAweek4.html",
-      "c30f165153044e0456e1c1841c638cf84674a20b2d3c353a41587a1eb8742d72"
+      "01f719c4aeb581c5f2d310a0c950cb4eb479534a873fa13a7912bf8f1cf4d365"
     ],
     [
       "notes/mathematical-notes/calculus/MAweek4.pdf",
@@ -115,7 +115,7 @@
     ],
     [
       "notes/mathematical-notes/calculus/MAweek5.html",
-      "e2affe0831eca375628d1d3eaecd69d5aab6abdcdd0a3186e47a609341e2c6b9"
+      "702e467cc65a82c10a21a94cab7a2b91351d5a2762489b840a797647a47591b0"
     ],
     [
       "notes/mathematical-notes/calculus/MAweek5.pdf",
@@ -886,7 +886,7 @@
       "firstPageBytes": 49053
     }
   ],
-  "indexBytes": 1516483,
+  "indexBytes": 1516488,
   "searchCollections": [
     {
       "id": "library",

@@ -24,6 +24,7 @@ import {loadConceptReadings} from './study-content.mjs';
 import {loadAdviceReadings} from './advice-readings.mjs';
 import {personalNotesPage} from './personal-notes.mjs';
 import {addedCourseFiles} from './test-course-notes.mjs';
+import {legacyCourseSources} from './test-course-note-layout.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
@@ -89,7 +90,7 @@ function walk(dir = '') {
     return e.isDirectory() ? walk(file) : e.isFile() ? [file] : [];
   });
 }
-function fingerprint(files, value = file => protectedBytes(fs.readFileSync(path.join(root, file)),file)) {
+function fingerprint(files, value = file => protectedBytes(fs.readFileSync(path.join(root, legacyCourseSources[file]||file)),file)) {
   return {files:files.length, sha256:sha([...files].sort().map(file => file+'\0'+sha(value(file))).join('\n'))};
 }
 function articleBody(html) {

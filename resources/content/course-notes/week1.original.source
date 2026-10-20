@@ -1,0 +1,364 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Calculus & Mathematical Analysis"><title>Calculus & Mathematical Analysis</title>
+<style>
+:root{--bg:#fff;--text:#242424;--muted:#6b7280;--link:#1458a6;--line:#e5e7eb;--box:#f8fafc}:root.dark{--bg:#15171a;--text:#e8eaed;--muted:#a6adb8;--link:#8ab4f8;--line:#30343b;--box:#1b1f24}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.8 Georgia,"Times New Roman","Noto Serif SC",serif}main{width:min(760px,calc(100% - 40px));margin:0 auto;padding:46px 0 80px}
+header{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:35px}h1{font-size:clamp(26px,5vw,36px);line-height:1.25;margin:0;font-weight:600}h2{font-size:25px;margin:35px 0 12px}h3{font-size:21px;margin:27px 0 9px}h4{font-size:18px;margin:22px 0 7px}h5{font-size:17px;margin:18px 0 5px}p{margin:8px 0 14px}.date{color:var(--muted)}a{color:var(--link);text-underline-offset:3px}.display-math,.math.display{overflow-x:auto;margin:15px 0}.boxed,.proof{border-left:3px solid var(--link);background:var(--box);padding:10px 16px;margin:16px 0}.label{color:var(--link);font-weight:600;text-transform:capitalize}blockquote{border-left:3px solid var(--line);margin:14px 0;padding:2px 16px;color:var(--muted)}li{margin:3px 0}.center{text-align:center}img{max-width:100%;height:auto}figure{text-align:center;margin:18px 0}button{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:6px;padding:5px 9px;cursor:pointer;font:inherit}@media(max-width:560px){main{width:min(100% - 28px,760px);padding-top:28px}header{display:block}button{margin-top:12px}}
+</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><main>
+<header><div><h1>Calculus &amp; Mathematical Analysis</h1><p class="date">Week 1 · Notes</p></div><button id="theme">Dark mode</button></header>
+<p><a href="../weekly.html?course=calculus&amp;type=html">← Back to HTML weekly notes</a></p><article><h1>Mathematical Analysis --- Lecture 1-4</h1>
+        <div class="grading">Class 5% &nbsp;&nbsp; Homework 15% &nbsp;&nbsp; Quizzes 20% &nbsp;&nbsp; Midterm 20%
+            &nbsp;&nbsp; Final 40%</div>
+
+        <h2>Preliminary</h2>
+        <ul>
+            <li>$\mathbb{N}$ denotes the set of all positive integers.</li>
+            <li>$\mathbb{Z}$ denotes the set of all integers.</li>
+            <li>$\mathbb{Q}$ denotes the set of all rational numbers.</li>
+            <li>$\mathbb{R}$ denotes the set of all real numbers.</li>
+        </ul>
+
+        <h2>Limits and Continuity</h2>
+        <h3>1. Key idea</h3>
+        <blockquote>We use limits to describe the tendency of a function as the variable approaches a given point, but
+            not the value at the point.</blockquote>
+
+        <h3>2. Important examples</h3>
+        <h4>Example 1: Same limit, different value at the point</h4>
+        <div class="equation">$$f(x)=\begin{cases}x^2\sin\dfrac{1}{x},&x\ne0,\\0,&x=0.\end{cases}$$</div>
+        <div class="figure"><img src="image.png" alt="Graph of f(x)"></div>
+        <div class="equation">$$g(x)=\begin{cases}x\sin\dfrac{1}{x},&x\ne0,\\1,&x=0.\end{cases}$$</div>
+        <div class="figure"><img src="image-1.png" alt="Graph of g(x)"></div>
+        <p>Useful estimates:</p>
+        <div class="equation">$$|f(x)|\le |x|^2,\qquad |g(x)|\le |x|.$$</div>
+        <p>Therefore:</p>
+        <div class="equation">$$\lim_{x\to0}f(x)=\underline{\hspace{2cm}},\qquad
+            \lim_{x\to0}g(x)=\underline{\hspace{2cm}}.$$</div>
+        <p>My takeaway:</p>
+        <blockquote>If $x$ gets close to 0, keeping $x\ne0$, $f(x)$ approaches 0 with error $\leq |x|^2$; $g(x)$
+            approaches 0 with error $\leq |x|$.</blockquote>
+
+        <h4>Example 2: Average speed and instantaneous speed</h4>
+        <p><strong>Average speed:</strong></p>
+        <div class="equation">$$\frac{\Delta s}{\Delta t}=\frac{f(t_2)-f(t_1)}{t_2-t_1}.$$</div>
+        <p>With $h=t_2-t_1$:</p>
+        <div class="equation">$$\frac{f(t_1+h)-f(t_1)}{h}.$$</div>
+        <p><strong>Instantaneous speed at $t_0$:</strong></p>
+        <div class="equation">$$v(t_0)=\lim_{h\to0}\frac{f(t_0+h)-f(t_0)}{h}=\lim_{t\to t_0}\frac{f(t)-f(t_0)}{t-t_0}.$$
+        </div>
+
+        <h3>Informal definition of limit</h3>
+        <blockquote>Assume $f(x)$ is defined on an open interval about $c$, except possibly at $c$ itself. If $f(x)$ is
+            arbitrarily close to $L$ for all $x$ sufficiently close to $c$ other than $c$ itself, then $$\lim_{x\to
+            c}f(x)=L.$$ This is read “the limit of $f(x)$ as $x$ approaches $c$ is $L$.”</blockquote>
+
+        <h3>3. Limit calculation techniques</h3>
+        <h4>Algebraic simplification</h4>
+        <div class="equation">$$\lim_{x\to1}\frac{x^2-1}{x-1}=\lim_{x\to1}(x+1)=\underline{\hspace{2cm}}.$$</div>
+        <h4>Rationalizing the denominator</h4>
+        <div class="equation">
+            $$\lim_{x\to1}\frac{\sqrt{x}-1}{x-1}=\lim_{x\to1}\frac{1}{\sqrt{x}+1}=\underline{\hspace{2cm}}.$$</div>
+        <p><strong>Remark:</strong> Simplification when calculating limits.</p>
+        <p><strong>General strategy:</strong></p>
+        <ol>
+            <li>Check direct substitution.</li>
+            <li>Factor or rationalize if necessary.</li>
+            <li>Simplify, then evaluate the limit.</li>
+        </ol>
+
+        <h3>Class 2: Describing the behavior of a function as $x\to0$</h3>
+        <p><strong>1. Jump</strong></p>
+        <div class="figure"><img src="image-2.png" alt="Jump"></div>
+        <p><strong>2. Unbounded</strong></p>
+        <div class="figure"><img src="image-3.png" alt="Unbounded behavior"></div>
+        <p><strong>3. Oscillation</strong></p>
+        <div class="figure"><img src="image-4.png" alt="Oscillation"></div>
+        <h3>4. When a limit does not exist</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>What happens near the point?</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jump</td>
+                    <td>Left and right sides approach different values</td>
+                    <td>Unit step function</td>
+                </tr>
+                <tr>
+                    <td>Unbounded</td>
+                    <td>Function values grow without bound</td>
+                    <td>$1/x$ near 0</td>
+                </tr>
+                <tr>
+                    <td>Oscillation</td>
+                    <td>Values do not approach one fixed number</td>
+                    <td>$\sin(1/x)$ near 0</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>A few words</h3>
+        <blockquote>I will take notes in class every time, and I will post them to my personal website. The notes will
+            include the main points of the lecture, and I will try to make them as clear as possible. However, I will
+            not be able to include all the details, so please make sure to attend the lectures. Also, I will not be
+            writing down every single example, so please make sure to read the textbook and do the exercises.
+        </blockquote>
+
+        <h2>Lecture 2</h2>
+        <h3>Definition of limit (Informal)</h3>
+        <div class="equation">$$g(x)=\begin{cases}2x, & \text{if } x\ne4,\\0, & \text{if } x=4.\end{cases}$$</div>
+        <p>By the informal description of a limit: if $x$ gets sufficiently close to $4$, but is not equal to $4$, then
+            $g(x)$ gets arbitrarily close to $8$.</p>
+        <p>We need to show that the gap between $g(x)$ and $L=8$, namely $|g(x)-8|$, can be made as small as we choose
+            if $x$ is kept close enough to $c=4$, but is not equal to $4$.</p>
+        <h3>Definition</h3>
+        <p>Let $f(x)$ be defined on an open interval $I$ about $c$, except possibly at $c$ itself. We say that the limit
+            of $f(x)$ as $x$ approaches $c$ is the number $L$, and write</p>
+        <div class="equation">$$\lim_{x\to c}f(x)=L,$$</div>
+        <p>if, for every $\varepsilon&gt;0$, there exists a corresponding $\delta&gt;0$ such that</p>
+        <div class="equation">$$|f(x)-L|&lt;\varepsilon\quad\text{whenever }x\in I\text{ and }0&lt;|x-c|&lt;\delta.$$
+        </div>
+        <h3>Simpler writing</h3>
+        <p>We say $\lim_{x\to c}f(x)=L$ if, for any $\varepsilon&gt;0$, there exists $\delta&gt;0$ such that</p>
+        <div class="equation">$$\text{if }x\in I,\quad 0&lt;|x-c|&lt;\delta,\quad\text{then }|f(x)-L|&lt;\varepsilon.$$
+        </div>
+        <h3>Personal interpretation</h3>
+        <ul>
+            <li>$\varepsilon$: how close we require $f(x)$ to be to $L$.</li>
+            <li>$\delta$: how close $x$ needs to be to $c$ in order to satisfy that requirement.</li>
+            <li>$|f(x)-L|&lt;\varepsilon$: $f(x)$ lies within an $\varepsilon$-neighborhood of $L$.</li>
+            <li>$0&lt;|x-c|&lt;\delta$: $x$ lies within a $\delta$-neighborhood of $c$, but $x\ne c$.</li>
+        </ul>
+        <p>The key idea is</p>
+        <div class="equation">$$\boxed{\text{Given any }\varepsilon&gt;0,\text{ we can find a }\delta&gt;0}$$</div>
+        <p>such that</p>
+        <div class="equation">$$x\text{ is sufficiently close to }c\quad\Longrightarrow\quad f(x)\text{ is within
+            }\varepsilon\text{ of }L.$$</div>
+        <p>In other words, $\varepsilon$ is the required accuracy for the output, while $\delta$ is how much accuracy we
+            need for the input.</p>
+        <p>Thus, the $\varepsilon$-$\delta$ definition gives a precise mathematical meaning to the intuitive statement:
+            if $x$ is sufficiently close to $c$, then $f(x)$ is sufficiently close to $L$.</p>
+        <h3>Useful remarks</h3>
+        <p>We shall often use the following arguments:</p>
+        <ol type="i">
+            <li>Let $a$ be a real number. If, for every $\varepsilon&gt;0$, we have $a\leq\varepsilon$, then $a\leq0$.
+            </li>
+            <li>Let $a$ be a real number. If, for every $\varepsilon&gt;0$, we have $$-\varepsilon\leq
+                a\leq\varepsilon,$$ then $a=0$.</li>
+        </ol>
+        <h3>Example: revisiting $g(x)$</h3>
+        <div class="equation">$$g(x)=\begin{cases}2x, & \text{if }x\ne4,\\0, & \text{if }x=4.\end{cases}$$</div>
+        <p>Show that</p>
+        <div class="equation">$$\lim_{x\to4}g(x)=8.$$</div>
+        <p><strong>Analysis.</strong> For every $\varepsilon&gt;0$, we need</p>
+        <div class="equation">$$|g(x)-8|=|2x-8|&lt;\varepsilon,\qquad x\ne4,$$</div>
+        <p>which requires</p>
+        <div class="equation">$$0&lt;|x-4|&lt;\frac{\varepsilon}{2}.$$</div>
+        <p><strong>Proof.</strong> Given arbitrary $\varepsilon&gt;0$, take</p>
+        <div class="equation">$$\delta=\frac{\varepsilon}{2}.$$</div>
+        <p>Then</p>
+        <div class="equation">$$|g(x)-8|=|2x-8|=2|x-4|&lt;2\delta=\varepsilon$$</div>
+        <p>whenever $0&lt;|x-4|&lt;\delta$. By the definition of limit,</p>
+        <div class="equation">$$\lim_{x\to4}g(x)=8.$$</div>
+        <h3>Exercise</h3>
+        <p>Prove that</p>
+        <div class="equation">$$\lim_{x\to1}\frac{1}{x}=1.$$</div>
+        <p><strong>Hint.</strong> Restrict $x$ by taking $x&gt;\frac12$. Then</p>
+        <div class="equation">$$\left|\frac{1}{x}-1\right|=\frac{|x-1|}{|x|}&lt;2|x-1|.$$</div>
+        <h3>Exercise 1.1.5 revisited</h3>
+        <p>Using the definition of limit, prove that the following functions have no limit as $x\to0$.</p>
+        <h4>(a)</h4>
+        <div class="equation">$$U(x)=\begin{cases}0, & x&lt;0,\\1, & x\geq0.\end{cases}$$</div>
+        <h4>(b)</h4>
+        <div class="equation">$$g(x)=\begin{cases}\dfrac{1}{x}, & x\ne0,\\0, & x=0.\end{cases}$$</div>
+        <h4>(c)</h4>
+        <div class="equation">$$f(x)=\begin{cases}0, & x\leq0,\\\sin\dfrac{1}{x}, & x&gt;0.\end{cases}$$</div>
+        <p><strong>Tip.</strong> Suppose the limit exists and derive a contradiction.</p>
+        <p><strong>For (b).</strong> Suppose $$\lim_{x\to0}\frac{1}{x}=L.$$ Use the definition of the limit with
+            $\varepsilon_0=1$.</p>
+
+        <h2>Lecture 3</h2>
+        <p><strong>Date:</strong> 2026.9.10</p>
+        <h3>Theorem 1.1.3 (Limit Laws)</h3>
+        <div class="proof"><strong>Proof.</strong> For the sum, use
+          <span class="equation">\(|f(x)+g(x)-(L+M)|\le |f(x)-L|+|g(x)-M|\)</span>
+          and choose each error smaller than \(\varepsilon/2\). For products,
+          write \(f(x)g(x)-LM=f(x)(g(x)-M)+M(f(x)-L)\); boundedness of \(f\)
+          near \(c\) then makes both terms small. If \(M\ne0\), then \(g(x)\)
+          stays away from zero and
+          \(\left|1/g(x)-1/M\right|=|g(x)-M|/(|g(x)||M|)\to0\), which proves the quotient rule.</div>
+        <p>Assume that</p>
+        <div class="equation">$$\lim_{x\to c}f(x)=L\qquad\text{and}\qquad\lim_{x\to c}g(x)=M.$$</div>
+        <h4>(a) Sum Rule</h4>
+        <div class="equation">$$\lim_{x\to c}\bigl(f(x)+g(x)\bigr)=\lim_{x\to c}f(x)+\lim_{x\to c}g(x).$$</div>
+        <h4>(b) Product Rule</h4>
+        <div class="equation">$$\lim_{x\to c}\bigl(f(x)\cdot g(x)\bigr)=\lim_{x\to c}f(x)\cdot\lim_{x\to c}g(x).$$</div>
+        <h4>(c) Quotient Rule</h4>
+        <p>If $M\ne0$, then</p>
+        <div class="equation">$$\lim_{x\to c}\frac{f(x)}{g(x)}=\frac{\displaystyle\lim_{x\to
+            c}f(x)}{\displaystyle\lim_{x\to c}g(x)}.$$</div>
+        <h3>Remark: Does the Converse Hold?</h3>
+        <p>The Sum Rule requires that both limits on the right-hand side exist. In general, the converse is false: the
+            existence of $$\lim_{x\to c}(f(x)+g(x))$$ does not imply that both $\lim_{x\to c}f(x)$ and $\lim_{x\to
+            c}g(x)$ exist.</p>
+        <h4>Counterexample</h4>
+        <div class="equation">$$f(x)=\sin\frac{1}{x},\qquad g(x)=-\sin\frac{1}{x}.$$</div>
+        <p>Consider $x\to0$. Although $$\lim_{x\to0}\sin\frac{1}{x}$$ does not exist, we have $$f(x)+g(x)=0.$$
+            Therefore, $$\lim_{x\to0}(f(x)+g(x))=0$$ exists. Thus,</p>
+        <div class="equation">$$\boxed{\lim(f+g)\text{ exists}\not\Longrightarrow\lim f,\lim g\text{ both exist}}$$
+        </div>
+        <p>The problematic behavior of two functions can cancel each other out.</p>
+        <h3>Exercise 1.1.9 (Limits of Polynomials)</h3>
+        <div class="equation">$$P(x)=\sum_{k=0}^{n}a_kx^k=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_0,$$</div>
+        <p>then</p>
+        <div class="equation">$$\lim_{x\to c}P(x)=\sum_{k=0}^{n}a_kc^k=P(c).$$</div>
+        <h3>Exercise 1.1.10 (Limits of Rational Functions)</h3>
+        <p>If $P(x)$ and $Q(x)$ are polynomials and $Q(c)\ne0$, then</p>
+        <div class="equation">$$\lim_{x\to c}\frac{P(x)}{Q(x)}=\frac{P(c)}{Q(c)}.$$</div>
+        <h3>Theorem 1.1.4 (The Sandwich Theorem)</h3>
+        <div class="proof"><strong>Proof.</strong> Given \(\varepsilon&gt;0\), choose a neighborhood in which
+          \(L-\varepsilon&lt;g(x)\) and \(h(x)&lt;L+\varepsilon\). Since
+          \(g(x)\le f(x)\le h(x)\), the same bounds hold for \(f(x)\), so
+          \(|f(x)-L|&lt;\varepsilon\).</div>
+        <p>Suppose that</p>
+        <div class="equation">$$g(x)\leq f(x)\leq h(x)$$</div>
+        <p>for all $x$ in some open interval containing $c$, except possibly at $x=c$. Suppose also that</p>
+        <div class="equation">$$\lim_{x\to c}g(x)=\lim_{x\to c}h(x)=L.$$</div>
+        <p>Then</p>
+        <div class="equation">$$\lim_{x\to c}f(x)=L.$$</div>
+        <div class="figure"><img src="image-5.png" alt="Sandwich theorem"></div>
+        <h3>Exercise 1.1.12</h3>
+        <p>Assume $I$ is an open interval, $c\in I$, and $$f(x)\leq b\qquad\text{for all }x\in I\setminus\{c\}.$$ Then
+            $$\lim_{x\to c}f(x)\leq b,$$ provided the limit exists.</p>
+        <h3>Exercise 1.1.13 (Order-preserving Property of Limits)</h3>
+        <p>If $$f(x)\leq g(x)$$ for all $x$ in some open interval containing $c$, except possibly at $x=c$, and both
+            limits exist, then</p>
+        <div class="equation">$$\lim_{x\to c}f(x)\leq\lim_{x\to c}g(x).$$</div>
+        <p>Limits preserve the non-strict inequality $\leq$, but may not preserve the strict inequality $&lt;$. For
+            example, let</p>
+        <div class="equation">$$f(x)=x^2,\qquad g(x)=2x^2.$$</div>
+        <p>For $x\ne0$, $f(x)&lt;g(x)$, but</p>
+        <div class="equation">$$\lim_{x\to0}x^2=\lim_{x\to0}2x^2=0.$$</div>
+        <h3>Lemma 1.1.5</h3>
+        <div class="proof"><strong>Proof.</strong> The mean value theorem gives
+          \(|\sin\theta|\le|\theta|\). Also
+          \(1-\cos\theta=2\sin^2(\theta/2)\le|\theta|\), giving the stated inequalities.</div>
+        <p>For $\theta$ measured in radians,</p>
+        <div class="equation">$$-|\theta|\leq\sin\theta\leq|\theta|,\qquad -|\theta|\leq1-\cos\theta\leq|\theta|.$$
+        </div>
+        <p>In particular, for $0&lt;\theta\leq\dfrac{\pi}{2}$,</p>
+        <div class="equation">$$0&lt;\sin\theta&lt;\theta.$$</div>
+        <div class="figure"><img src="image-7.png" alt="Trigonometric inequality"></div>
+        <h3>One-sided Limits</h3>
+        <h4>Left-hand limit</h4>
+        <div class="equation">$$\lim_{x\to c^-}f(x)=L$$</div>
+        <p>if, for every $\varepsilon&gt;0$, there exists $\delta&gt;0$ such that</p>
+        <div class="equation">$$c-\delta&lt;x&lt;c\quad\Longrightarrow\quad|f(x)-L|&lt;\varepsilon.$$</div>
+        <h4>Right-hand limit</h4>
+        <div class="equation">$$\lim_{x\to c^+}f(x)=L$$</div>
+        <p>if, for every $\varepsilon&gt;0$, there exists $\delta&gt;0$ such that</p>
+        <div class="equation">$$c&lt;x&lt;c+\delta\quad\Longrightarrow\quad|f(x)-L|&lt;\varepsilon.$$</div>
+        <p>The two-sided limit exists if and only if the one-sided limits both exist and are equal:</p>
+        <div class="equation">$$\lim_{x\to c}f(x)=L\quad\Longleftrightarrow\quad\lim_{x\to c^-}f(x)=\lim_{x\to
+            c^+}f(x)=L.$$</div>
+        <h3>Examples at $x\to0$</h3>
+        <h4>Example 1: The $0$-$1$ step function.</h4>
+        <div class="equation">$$U(x)=\begin{cases}0, & x&lt;0,\\1, & x\geq0.\end{cases}$$</div>
+        <p>Then</p>
+        <div class="equation">$$\lim_{x\to0^-}U(x)=0,\qquad\lim_{x\to0^+}U(x)=1,$$</div>
+        <p>so the two-sided limit does not exist.</p>
+        <h4>Example 2: The function $1/x$.</h4>
+        <div class="equation">$$\lim_{x\to0^-}\frac{1}{x}=-\infty,\qquad\lim_{x\to0^+}\frac{1}{x}=+\infty.$$</div>
+        <p>Thus, $1/x$ has no finite two-sided limit at $0$.</p>
+        <h4>Example 3: The oscillating function $\sin(1/x)$.</h4>
+        <div class="equation">$$\lim_{x\to0^-}\sin\frac{1}{x}\quad\text{and}\quad\lim_{x\to0^+}\sin\frac{1}{x}$$</div>
+        <p>both do not exist.</p>
+        <h4>The density of $\mathbb{Q}$ in $\mathbb{R}$.</h4>
+        <p>We say that $\mathbb{Q}$ is dense in $\mathbb{R}$ if every non-empty open interval contains a rational
+            number. For any $a,b\in\mathbb{R}$ with $a&lt;b$, there exists $q\in\mathbb{Q}$ such that</p>
+        <div class="equation">$$a&lt;q&lt;b.$$</div>
+        <p>Equivalently, for every $x\in\mathbb{R}$ and every $\varepsilon&gt;0$, there exists $q\in\mathbb{Q}$ such
+            that</p>
+        <div class="equation">$$|q-x|&lt;\varepsilon.$$</div>
+        <p>The irrational numbers are also dense in $\mathbb{R}$.</p>
+        <h4>Example 4: The Dirichlet function.</h4>
+        <div class="equation">$$D(x)=\begin{cases}1, & x\in\mathbb{Q},\\0, &
+            x\in\mathbb{R}\setminus\mathbb{Q}.\end{cases}$$</div>
+        <p>Every interval to the left or right of $0$ contains both rational and irrational numbers. Hence,</p>
+        <div class="equation">$$\lim_{x\to0^-}D(x)\quad\text{and}\quad\lim_{x\to0^+}D(x)$$</div>
+        <p>both do not exist.</p>
+        <h3>Theorem 1.1.6</h3>
+        <p>Suppose that $f(x)$ is defined on an open interval containing $c$, except possibly at $c$ itself. Then $f(x)$
+            has a limit as $x$ approaches $c$ if and only if its left-hand and right-hand limits both exist and are
+            equal:</p>
+        <div class="equation">$$\lim_{x\to c}f(x)=L\quad\Longleftrightarrow\quad\lim_{x\to c^-}f(x)=\lim_{x\to
+            c^+}f(x)=L.$$</div>
+        <h4>Proof</h4>
+        <p>If $\lim_{x\to c}f(x)=L$, the $\varepsilon$-$\delta$ condition immediately implies the same estimate for
+            $x&lt;c$ and for $x&gt;c$. Therefore both one-sided limits equal $L$.</p>
+        <p>Conversely, suppose both one-sided limits equal $L$. Given $\varepsilon&gt;0$, choose
+            $\delta_1,\delta_2&gt;0$ from the left- and right-hand definitions and let</p>
+        <div class="equation">$$\delta=\min\{\delta_1,\delta_2\}.$$</div>
+        <p>If $0&lt;|x-c|&lt;\delta$, then either $c-\delta&lt;x&lt;c$ or $c&lt;x&lt;c+\delta$. In either case,
+            $$|f(x)-L|&lt;\varepsilon.$$ Thus $\lim_{x\to c}f(x)=L$.</p>
+        <h3>Theorem 1.1.7</h3>
+        <p>For $\theta$ measured in radians,</p>
+        <div class="equation">$$\lim_{\theta\to0}\frac{\sin\theta}{\theta}=1.$$</div>
+        <div class="figure"><img src="image-8.png" alt="Sine limit"></div>
+        <h4>Proof</h4>
+        <p>For $0&lt;\theta&lt;\dfrac{\pi}{2}$,</p>
+        <div class="equation">$$\cos\theta\leq\frac{\sin\theta}{\theta}\leq1.$$</div>
+        <p>Since $\lim_{\theta\to0}\cos\theta=1$, the Sandwich Theorem gives</p>
+        <div class="equation">$$\lim_{\theta\to0^+}\frac{\sin\theta}{\theta}=1.$$</div>
+        <p>For $\theta&lt;0$,</p>
+        <div class="equation">$$\frac{\sin\theta}{\theta}=\frac{\sin(-\theta)}{-\theta},$$</div>
+        <p>so the left-hand limit is also $1$. Therefore,</p>
+        <div class="equation">$$\boxed{\displaystyle\lim_{\theta\to0}\frac{\sin\theta}{\theta}=1}.$$</div>
+        <h4>Consequences</h4>
+        <p>For any constant $k\ne0$,</p>
+        <div class="equation">
+            $$\lim_{\theta\to0}\frac{\sin(k\theta)}{\theta}=k\lim_{\theta\to0}\frac{\sin(k\theta)}{k\theta}=k.$$</div>
+        <p>Also,</p>
+        <div class="equation">$$\lim_{x\to0}\frac{\sin(\sin x)}{\sin x}=1,$$</div>
+        <p>and, for $n$ nested sine functions,</p>
+        <div class="equation">$$\lim_{x\to0}\frac{\sin\bigl(\sin(\cdots\sin x\cdots)\bigr)}{x}=1.$$</div>
+        <h4>Proof of $\displaystyle\lim_{x\to0}\frac{\sin(\sin x)}{x}=1$</h4>
+        <p>Since $\lim_{x\to0}\sin x=0$, Theorem 1.1.7 gives</p>
+        <div class="equation">$$\lim_{x\to0}\frac{\sin(\sin x)}{\sin x}=1.$$</div>
+        <p>Moreover,</p>
+        <div class="equation">$$\frac{\sin(\sin x)}{x}=\frac{\sin(\sin x)}{\sin x}\cdot\frac{\sin x}{x}.$$</div>
+        <p>Therefore,</p>
+        <div class="equation">$$\begin{aligned}\lim_{x\to0}\frac{\sin(\sin x)}{x}&=\left(\lim_{x\to0}\frac{\sin(\sin
+            x)}{\sin x}\right)\left(\lim_{x\to0}\frac{\sin x}{x}\right)\\&=1\cdot1=1.\end{aligned}$$</div>
+
+        <h2>Lecture 4</h2>
+        <h3>Example 1.1.19</h3>
+        <div class="equation">$$f(x)=\begin{cases}x, & x&lt;0,\\1, & 0\leq x&lt;1,\\2, & x=1,\\x, & x&gt;1.\end{cases}$$
+        </div>
+        <div class="figure"><img src="image-9.png" alt="Graph of a piecewise function"></div>
+        <h3>Definition 1.1.8 (Continuity at a Point)</h3>
+        <p>Let $c$ be a real number that is either an interior point or an endpoint of an interval in the domain of $f$.
+        </p>
+        <h4>(a) Interior point</h4>
+        <p>$f$ is continuous at $c$ if</p>
+        <div class="equation">$$\lim_{x\to c}f(x)=f(c).$$</div>
+        <h4>(b) Right-continuity</h4>
+        <p>$f$ is right-continuous at $c$ (or continuous from the right) if</p>
+        <div class="equation">$$\lim_{x\to c^+}f(x)=f(c).$$</div>
+        <h4>(c) Left-continuity</h4>
+        <p>$f$ is left-continuous at $c$ (or continuous from the left) if</p>
+        <div class="equation">$$\lim_{x\to c^-}f(x)=f(c).$$</div>
+        <h2>Additional examples from the lectures</h2>
+        <h3>Uniqueness of the limit</h3>
+        <div class="proof"><strong>Proposition.</strong> A function cannot have two different limits at the same point. If \(f(x)\to L\) and \(f(x)\to K\), choose \(\varepsilon=|L-K|/3\). The two corresponding neighborhoods are disjoint, but the definition would force \(f(x)\) to lie in both. Hence \(L=K\).</div>
+        <h3>A useful ε-δ example</h3>
+        <p>To prove \(\lim_{x\to2}x^2=4\), write \(|x^2-4|=|x-2||x+2|\). If \(|x-2|<1\), then \(|x+2|<5\), so take \(\delta=\min\{1,\varepsilon/5\}\).</p>
+        <h3>Power and root rules</h3>
+        <p>The limit laws imply \(\lim[f(x)]^n=[\lim f(x)]^n\). If \(f\ge0\) near \(c\), then \(\lim\sqrt[n]{f(x)}=\sqrt[n]{\lim f(x)}\). For example, \(\lim_{x\to4}\sqrt{x}=2\) and \(\lim_{x\to1}(x^3+2x)/(x+1)=3/2\).</p>
+        <h3>One-sided limit example</h3>
+        <p>For \(f(x)=|x|/x\), the left-hand limit at zero is \(-1\) and the right-hand limit is \(1\). Thus the two-sided limit does not exist.</p>
+        <h3>Continuity test and discontinuity types</h3>
+        <p>At an interior point \(c\), continuity requires that \(f(c)\) be defined, that the limit exist, and that the limit equal \(f(c)\). In the piecewise example, \(0\) is a jump discontinuity. At \(1\), the limit is \(1\) but the value is \(2\), so changing the value to \(1\) would give a removable discontinuity.</p></article><footer><p><a href="../weekly.html?course=calculus&amp;type=html">Back to HTML weekly notes</a></p></footer></main>
+<script>const r=document.documentElement,btn=document.getElementById("theme");if(localStorage.getItem("theme")==="dark")r.classList.add("dark");btn.onclick=()=>{r.classList.toggle("dark");localStorage.setItem("theme",r.classList.contains("dark")?"dark":"light")};</script></body></html>

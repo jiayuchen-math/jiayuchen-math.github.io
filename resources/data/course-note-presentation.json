@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "legacy": [
+    {
+      "week": 1,
+      "file": "notes/mathematical-notes/calculus/MAweek1.html",
+      "original": "resources/content/course-notes/week1.original.source",
+      "sha256": "cb234f7563124bd03821f6c30ee00ee9ddaa9aca5c3aaf05187e745e3d30b6ce"
+    },
+    {
+      "week": 2,
+      "file": "notes/mathematical-notes/calculus/MAweek2.html",
+      "original": "resources/content/course-notes/week2.original.source",
+      "sha256": "73f25c521bd51185e13c600fff57b3feef11815e205ff028b5ec07d1cbed82df"
+    }
+  ]
+}

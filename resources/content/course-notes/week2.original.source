@@ -1,0 +1,944 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Calculus & Mathematical Analysis"><title>Calculus & Mathematical Analysis</title>
+<style>
+:root{--bg:#fff;--text:#242424;--muted:#6b7280;--link:#1458a6;--line:#e5e7eb;--box:#f8fafc}:root.dark{--bg:#15171a;--text:#e8eaed;--muted:#a6adb8;--link:#8ab4f8;--line:#30343b;--box:#1b1f24}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.8 Georgia,"Times New Roman","Noto Serif SC",serif}main{width:min(760px,calc(100% - 40px));margin:0 auto;padding:46px 0 80px}
+header{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:35px}h1{font-size:clamp(26px,5vw,36px);line-height:1.25;margin:0;font-weight:600}h2{font-size:25px;margin:35px 0 12px}h3{font-size:21px;margin:27px 0 9px}h4{font-size:18px;margin:22px 0 7px}h5{font-size:17px;margin:18px 0 5px}p{margin:8px 0 14px}.date{color:var(--muted)}a{color:var(--link);text-underline-offset:3px}.display-math,.math.display{overflow-x:auto;margin:15px 0}.boxed,.proof{border-left:3px solid var(--link);background:var(--box);padding:10px 16px;margin:16px 0}.label{color:var(--link);font-weight:600;text-transform:capitalize}blockquote{border-left:3px solid var(--line);margin:14px 0;padding:2px 16px;color:var(--muted)}li{margin:3px 0}.center{text-align:center}img{max-width:100%;height:auto}figure{text-align:center;margin:18px 0}button{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:6px;padding:5px 9px;cursor:pointer;font:inherit}@media(max-width:560px){main{width:min(100% - 28px,760px);padding-top:28px}header{display:block}button{margin-top:12px}}
+</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><main>
+<header><div><h1>Calculus &amp; Mathematical Analysis</h1><p class="date">Week 2 · Notes</p></div><button id="theme">Dark mode</button></header>
+<p><a href="../weekly.html?course=calculus&amp;type=html">← Back to HTML weekly notes</a></p><article>
+
+<h1 id="tutorial-1">Tutorial 1</h1>
+<h2 id="proof-logic-and-limit-language">1 Proof, logic, and limit
+language</h2>
+<h3 id="basic-terminology">1.1 Basic terminology</h3>
+<blockquote>
+<p>• An axiom is a statement, rule, or principle that is accepted as
+true without needing proof. • A theorem is an important statement
+established by proof; a less central result is often called a
+proposition or lemma. • A proof is a finite, logically valid argument
+using definitions, axioms, and results already proved. • A statement of
+the form <span class="math inline">\(P ⇒ Q\)</span> is a conditional
+statement: <span class="math inline">\(P\)</span> is the hypothesis and
+<span class="math inline">\(Q\)</span> is the conclusion.</p>
+</blockquote>
+<h3 id="the-varepsilon-delta-definition">1.2 The <span
+class="math inline">\(\varepsilon\)</span>-<span
+class="math inline">\(\delta\)</span> definition</h3>
+<blockquote>
+<p>Here <span class="math inline">\(\delta\)</span> controls how close
+the input <span class="math inline">\(x\)</span> is to <span
+class="math inline">\(x_0\)</span>, while <span
+class="math inline">\(\epsilon\)</span> prescribes how close <span
+class="math inline">\(f(x)\)</span> must be to <span
+class="math inline">\(ℓ\)</span>.</p>
+</blockquote>
+<p>A standard proof has the following shape:</p>
+<p>1. Let <span class="math inline">\(\varepsilon&gt;0\)</span> be
+arbitrary. 2. Choose an explicit <span
+class="math inline">\(\delta&gt;0\)</span>, usually by first estimating
+<span class="math inline">\(|f(x)-\ell|\)</span> in terms of <span
+class="math inline">\(|x-x_0|\)</span>. 3. Assume <span
+class="math inline">\(0&lt;|x-x_0|&lt;\delta\)</span> and verify <span
+class="math inline">\(|f(x)-\ell|&lt;\varepsilon\)</span>.</p>
+<h3 id="direct-
+proof-contradiction-and-contraposition">1.3 Direct proof,
+contradiction, and contraposition</h3>
+<h4 id="direct-proof">Direct proof</h4>
+<p>To prove a statement of the form</p>
+<p><span class="math display">\[P\Rightarrow Q,\]</span></p>
+<p>assume that <span class="math inline">\(P\)</span> is true and use
+definitions, axioms, and previously proved results until <span
+class="math inline">\(Q\)</span> follows. This is the default method for
+most <span class="math inline">\(\varepsilon\)</span>-<span
+class="math inline">\(\delta\)</span> arguments.</p>
+<h4 id="proof-by-contradiction">Proof by contradiction</h4>
+<p>To prove a statement <span class="math inline">\(S\)</span>:</p>
+<ol>
+<li><p>Assume its negation, <span class="math inline">\(\neg
+S\)</span>.</p></li>
+<li><p>Derive a contradiction, such as <span
+class="math inline">\(R\land\neg R\)</span>, an impossible inequality,
+or a conflict with a known theorem.</p></li>
+<li><p>Conclude that <span class="math inline">\(\neg S\)</span> is
+false, so <span class="math inline">\(S\)</span> is true.</p></li>
+</ol>
+<p>For a uniqueness statement, assume that two distinct objects both
+satisfy the defining property. For a nonexistence statement, assume that
+the object exists and use its required properties to obtain a
+contradiction.</p>
+<h4 id="example-irrationality-of-sqrt2">Example: irrationality of <span
+class="math inline">\(\sqrt2\)</span></h4>
+<p>Suppose, for contradiction, that</p>
+<p><span class="math display">\[\sqrt2=\frac{p}{q},\]</span></p>
+<p>where <span class="math inline">\(p,q\)</span> are positive integers
+with no common factor. Squaring gives</p>
+<p><span class="math display">\[p^2=2q^2.\]</span></p>
+<p>Thus <span class="math inline">\(p^2\)</span> is even, so <span
+class="math inline">\(p\)</span> is even. Write <span
+class="math inline">\(p=2r\)</span>. Substitution gives</p>
+<p><span class="math display">\[4r^2=2q^2
+\quad\Longrightarrow\quad
+q^2=2r^2.\]</span></p>
+<p>Therefore <span class="math inline">\(q\)</span> is also even. Hence
+<span class="math inline">\(p\)</span> and <span
+class="math inline">\(q\)</span> have the common factor <span
+class="math inline">\(2\)</span>, contradicting the assumption that
+<span class="math inline">\(p/q\)</span> is in lowest terms.
+Consequently,</p>
+<p><span class="math display">\[\sqrt2\notin\mathbb{Q}.\]</span></p>
+<h4 id="proof-by-contraposition">Proof by contraposition</h4>
+<p>To prove</p>
+<p><span class="math display">\[P\Rightarrow Q,\]</span></p>
+<p>it is enough to prove the logically equivalent statement</p>
+<p><span class="math display">\[\neg Q\Rightarrow\neg P.\]</span></p>
+<p>This method is especially useful when the negation of the conclusion
+gives more concrete information than the conclusion itself.</p>
+<h3 id="mathematical-induction">1.4 Mathematical induction</h3>
+<p>Let <span class="math inline">\(P(n)\)</span> be a statement for
+<span class="math inline">\(n\in\mathbb{Z}_{&gt;0}\)</span>. The
+principle of mathematical induction says that if:</p>
+<ol>
+<li><p><strong>Base case:</strong> <span
+class="math inline">\(P(1)\)</span> is true;</p></li>
+<li><p><strong>Inductive step:</strong> for every positive integer <span
+class="math inline">\(n\)</span>, assuming <span
+class="math inline">\(P(n)\)</span> is true implies that <span
+class="math inline">\(P(n+1)\)</span> is true;</p></li>
+</ol>
+<p>then <span class="math inline">\(P(n)\)</span> is true for every
+positive integer <span class="math inline">\(n\)</span>.</p>
+<p>In the inductive step, clearly state the <strong>induction
+hypothesis</strong> <span class="math inline">\(P(n)\)</span> before
+proving <span class="math inline">\(P(n+1)\)</span>. Do not assume the
+statement that is being proved.</p>
+<h4 id="example-sum-of-the-first-n-positive-integers">Example: sum of
+the first <span class="math inline">\(n\)</span> positive integers</h4>
+<p>We prove that</p>
+<p><span class="math display">\[1+2+\cdots+n=\frac{n(n+1)}{2}
+\qquad(n\geq1).\]</span></p>
+<p>For <span class="math inline">\(n=1\)</span>, both sides equal <span
+class="math inline">\(1\)</span>. Now assume the formula holds for <span
+class="math inline">\(n=k\)</span>:</p>
+<p><span
+class="math display">\[1+2+\cdots+k=\frac{k(k+1)}{2}.\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[\begin{aligned}
+1+2+\cdots+k+(k+1)
+&amp;=\frac{k(k+1)}{2}+(k+1)\\
+&amp;=\frac{(k+1)(k+2)}{2}.
+\end{aligned}\]</span></p>
+<p>Thus, the statement for <span class="math inline">\(k\)</span>
+implies the statement for <span class="math inline">\(k+1\)</span>, so
+the formula holds for every <span
+class="math inline">\(n\geq1\)</span>.</p>
+<h4 id="strong-induction">Strong induction</h4>
+<p>The principle of strong induction replaces the induction hypothesis
+<span class="math inline">\(P(n)\)</span> by</p>
+<p><span
+class="math display">\[P(1),P(2),\ldots,P(n)\quad\Longrightarrow\quad
+P(n+1).\]</span></p>
+<p>It is useful when the case <span class="math inline">\(n+1\)</span>
+depends on several earlier cases rather than only on the immediately
+preceding case.</p>
+<p>Ordinary induction, strong induction, and the well-ordering principle
+are equivalent principles. The well-ordering principle states that every
+nonempty subset of <span
+class="math inline">\(\mathbb{Z}_{&gt;0}\)</span> has a least
+element.</p>
+<h2 id="lecture-5">Lecture 5</h2>
+<p>2026 9.16</p>
+<h2 id="exercise-1.1.26">Exercise 1.1.26</h2>
+<p>Any polynomial of odd degree with real coefficients has at least one
+real root.</p>
+<h3 id="proof">Proof</h3>
+<p>Let</p>
+<p><span class="math display">\[P(x)=\sum_{k=0}^{n}a_kx^k\]</span></p>
+<p>be a polynomial of degree <span class="math inline">\(n\)</span> with
+real coefficients, where <span class="math inline">\(n\)</span> is an
+odd integer and <span class="math inline">\(a_n\neq0\)</span>. Without
+loss of generality, assume that <span
+class="math inl
+ine">\(a_n&gt;0\)</span>. If <span
+class="math inline">\(a_n&lt;0\)</span>, we can apply the same argument
+to <span class="math inline">\(-P\)</span>.</p>
+<p>Let</p>
+<p><span class="math display">\[C=\max_{0\leq k\leq
+n-1}|a_k|.\]</span></p>
+<p>For <span class="math inline">\(|x|\geq1\)</span>, we have</p>
+<p><span class="math display">\[\begin{aligned}
+\left|P(x)-a_nx^n\right|
+&amp;=\left|\sum_{k=0}^{n-1}a_kx^k\right|\\
+&amp;\leq C\sum_{k=0}^{n-1}|x|^k\\
+&amp;\leq Cn|x|^{n-1}
+=\frac{Cn}{|a_n||x|}|a_nx^n|.
+\end{aligned}\]</span></p>
+<p>Choose</p>
+<p><span
+class="math display">\[R&gt;\max\left\{1,\frac{2Cn}{|a_n|}\right\}.\]</span></p>
+<p>Then, whenever <span class="math inline">\(|x|\geq R\)</span>,</p>
+<p><span
+class="math display">\[\left|P(x)-a_nx^n\right|&lt;\frac12|a_nx^n|.\]</span></p>
+<p>Since <span class="math inline">\(n\)</span> is odd, <span
+class="math inline">\(R^n&gt;0\)</span> and <span
+class="math inline">\((-R)^n&lt;0\)</span>. For <span
+class="math inline">\(x=R\)</span>, we obtain</p>
+<p><span class="math display">\[\begin{aligned}
+P(R)
+&amp;\geq a_nR^n-\left|P(R)-a_nR^n\right|\\
+&amp;&gt;a_nR^n-\frac12|a_nR^n|
+=\frac12a_nR^n&gt;0.
+\end{aligned}\]</span></p>
+<p>For <span class="math inline">\(x=-R\)</span>, we obtain</p>
+<p><span class="math display">\[\begin{aligned}
+P(-R)
+&amp;\leq a_n(-R)^n+\left|P(-R)-a_n(-R)^n\right|\\
+&amp;&lt;a_n(-R)^n+\frac12|a_n(-R)^n|
+=\frac12a_n(-R)^n&lt;0.
+\end{aligned}\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[P(-R)&lt;0&lt;P(R).\]</span></p>
+<p>Because <span class="math inline">\(P\)</span> is continuous on <span
+class="math inline">\([-R,R]\)</span>, the Intermediate Value Theorem
+gives some <span class="math inline">\(c\in[-R,R]\)</span> such that</p>
+<p><span class="math display">\[P(c)=0.\]</span></p>
+<p>Therefore, <span class="math inline">\(P\)</span> has at least one
+real root. <span class="math inline">\(\square\)</span></p>
+<h3 id="proof-of-the-intermediate-value-theorem">Proof of the
+Intermediate Value Theorem</h3>
+<p>Let <span class="math inline">\(f\)</span> be continuous on <span
+class="math inline">\([a,b]\)</span>, and suppose first that</p>
+<p><span class="math display">\[f(a)&lt;y_0&lt;f(b).\]</span></p>
+<p>Define</p>
+<p><span class="math display">\[S=\{x\in[a,b]:f(x)\leq
+y_0\}.\]</span></p>
+<p>The set <span class="math inline">\(S\)</span> is nonempty because
+<span class="math inline">\(a\in S\)</span>, and it is bounded above by
+<span class="math inline">\(b\)</span>. By the completeness of <span
+class="math inline">\(\mathbb{R}\)</span>, the supremum</p>
+<p><span class="math display">\[c=\sup S\]</span></p>
+<p>exists. Since <span
+class="math inline">\(f(a)&lt;y_0&lt;f(b)\)</span>, we have <span
+class="math inline">\(a&lt;c&lt;b\)</span>.</p>
+<p>We claim that <span class="math inline">\(f(c)=y_0\)</span>. Suppose
+first that <span class="math inline">\(f(c)&lt;y_0\)</span>. By
+continuity of <span class="math inline">\(f\)</span> at <span
+class="math inline">\(c\)</span>, there exists <span
+class="math inline">\(\delta&gt;0\)</span> such that</p>
+<p><span class="math display">\[|x-c|&lt;\delta\quad\Longrightarrow\quad
+f(x)&lt;y_0.\]</span></p>
+<p>Choosing <span class="math inline">\(x&gt;c\)</span> sufficiently
+close to <span class="math inline">\(c\)</span> gives <span
+class="math inline">\(x\in S\)</span>, contradicting the fact that <span
+class="math inline">\(c\)</span> is an upper bound of <span
+class="math inline">\(S\)</span>.</p>
+<p>On the other hand, suppose that <span
+class="math inline">\(f(c)&gt;y_0\)</span>. By continuity of <span
+class="math inline">\(f\)</span> at <span
+class="math inline">\(c\)</span>, there exists <span
+class="math inline">\(\delta&gt;0\)</span> such that</p>
+<p><span class="math display">\[|x-c|&lt;\delta\quad\Longrightarrow\quad
+f(x)&gt;y_0.\]</span></p>
+<p>Since <span class="math inline">\(c=\sup S\)</span>, there is some
+<span class="math inline">\(x\in S\)</span> with <span
+class="math inline">\(c-\delta&lt;x\leq c\)</span>. This contradicts
+<span class="math inline">\(f(x)&gt;y_0\)</span>.</p>
+<p>Therefore neither <span class="math inline">\(f(c)&lt;y_0\)</span>
+nor <span class="math inline">\(f(c)&gt;y_0\)</span> is possible, and
+hence</p>
+<p><span class="math display">\[f(c)=y_0.\]</span></p>
+<p>If <span class="math inline">\(y_0=f(a)\)</span> or <span
+class="math inline">\(y_0=f(b)\)</span>, the conclusion is immediate by
+taking <span class="math inline">\(c=a\)</span> or <span
+class="math inline">\(c=b\)</span>. If <span
+class="math inline">\(f(b)&lt;f(a)\)</span>, apply the same argument to
+<span class="math inline">\(-f\)</span>. Therefore, for every value
+<span class="math inline">\(y_0\)</span> between <span
+class="math inline">\(f(a)\)</span> and <span
+class="math inline">\(f(b)\)</span>, there exists <span
+class="math inline">\(c\in[a,b]\)</span> such that</p>
+<p><span class="math display">\[f(c)=y_0.\]</span></p>
+<h2 id="lecture-6">Lecture 6</h2>
+<h5 id="section-2">2026.9.16</h5>
+<h2 id="limits-involving-infinity">Limits Involving Infinity</h2>
+<h3 id="finite-limits-as-xtoinfty">Finite limits as <span
+class="math inline">\(x\to+\infty\)</span></h3>
+<p>We say that</p>
+<p><span class="math display">\[\lim_{x\to+\infty}f(x)=L\]</span></p>
+<p>if, for every <span class="math inline">\(\varepsilon&gt;0\)</span>,
+there exists <span class="math inline">\(M&gt;0\)</span> such that</p>
+<p><span class="math display">\[x&gt;M\quad\Longrightarrow\quad
+|f(x)-L|&lt;\varepsilon.\]</span></p>
+<p>In words, <span class="math inline">\(f(x)\)</span> becomes
+arbitrarily close to <span class="math inline">\(L\)</span> when <span
+class="math inline">\(x\)</span> is sufficiently large.</p>
+<p>Similarly,</p>
+<p><span class="math display">\[\lim_{x\to-\infty}f(x)=L\]</span></p>
+<p>if, for every <span class="math inline">\(\varepsilon&gt;0\)</span>,
+there exists <span 
+class="math inline">\(M&lt;0\)</span> such that</p>
+<p><span class="math display">\[x&lt;M\quad\Longrightarrow\quad
+|f(x)-L|&lt;\varepsilon.\]</span></p>
+<h3 id="examples">Examples</h3>
+<p>For the reciprocal function,</p>
+<p><span class="math display">\[\lim_{x\to+\infty}\frac{1}{x}=0,
+\qquad
+\lim_{x\to-\infty}\frac{1}{x}=0.\]</span></p>
+<p>Indeed, if <span class="math inline">\(|x|&gt;1/\varepsilon\)</span>,
+then</p>
+<p><span
+class="math display">\[\left|\frac{1}{x}-0\right|=\frac{1}{|x|}&lt;\varepsilon.\]</span></p>
+<p>For a rational function whose numerator has lower degree than its
+denominator,</p>
+<p><span class="math display">\[\lim_{x\to\pm\infty}\frac{P(x)}{Q(x)}=0,
+\qquad \deg P&lt;\deg Q.\]</span></p>
+<h3 id="infinite-limits-as-xto-c">Infinite limits as <span
+class="math inline">\(x\to c\)</span></h3>
+<p>We write</p>
+<p><span class="math display">\[\lim_{x\to c}f(x)=+\infty\]</span></p>
+<p>if, for every <span class="math inline">\(A&gt;0\)</span>, there
+exists <span class="math inline">\(\delta&gt;0\)</span> such that</p>
+<p><span class="math display">\[0&lt;|x-c|&lt;\delta
+\quad\Longrightarrow\quad
+f(x)&gt;A.\]</span></p>
+<p>Similarly,</p>
+<p><span class="math display">\[\lim_{x\to c}f(x)=-\infty\]</span></p>
+<p>if, for every <span class="math inline">\(B&gt;0\)</span>, there
+exists <span class="math inline">\(\delta&gt;0\)</span> such that</p>
+<p><span class="math display">\[0&lt;|x-c|&lt;\delta
+\quad\Longrightarrow\quad
+f(x)&lt;-B.\]</span></p>
+<p>For example,</p>
+<p><span
+class="math display">\[\lim_{x\to0}\frac{1}{x^2}=+\infty,\]</span></p>
+<p>because <span class="math inline">\(1/x^2\)</span> can be made larger
+than any prescribed positive number by choosing <span
+class="math inline">\(x\)</span> sufficiently close to <span
+class="math inline">\(0\)</span>, with <span
+class="math inline">\(x\neq0\)</span>.</p>
+<h3 id="infinite-limits-as-xtopminfty">Infinite limits as <span
+class="math inline">\(x\to\pm\infty\)</span></h3>
+<p>The notation</p>
+<p><span
+class="math display">\[\lim_{x\to+\infty}f(x)=+\infty\]</span></p>
+<p>means that for every <span class="math inline">\(A&gt;0\)</span>,
+there exists <span class="math inline">\(M&gt;0\)</span> such that</p>
+<p><span class="math display">\[x&gt;M\quad\Longrightarrow\quad
+f(x)&gt;A.\]</span></p>
+<p>The other cases are defined analogously. For instance, if <span
+class="math inline">\(n\)</span> is odd and <span
+class="math inline">\(a_n&gt;0\)</span>, then</p>
+<p><span class="math display">\[\lim_{x\to+\infty}a_nx^n=+\infty,
+\qquad
+\lim_{x\to-\infty}a_nx^n=-\infty.\]</span></p>
+<h2 id="exercise-1.1.30">Exercise 1.1.30</h2>
+<h3 id="a">(a)</h3>
+<p>Prove, using the <span class="math inline">\(N\)</span>-<span
+class="math inline">\(\delta\)</span> language, that</p>
+<p><span
+class="math display">\[\lim_{x\to0^+}\frac{1}{\sqrt[3]{x}}=+\infty.\]</span></p>
+<h3 id="b">(b)</h3>
+<p>Find the limit</p>
+<p><span
+class="math display">\[\lim_{x\to+\infty}\left(\sqrt{x+1}-\sqrt{x-1}\right),\]</span></p>
+<p>and prove your result using the <span
+class="math inline">\(\varepsilon\)</span>-<span
+class="math inline">\(N\)</span> language.</p>
+<h3 id="solution">Solution</h3>
+<h4 id="a-1">(a)</h4>
+<p>Let <span class="math inline">\(N&gt;0\)</span> be arbitrary.
+Choose</p>
+<p><span class="math display">\[\delta=\frac{1}{N^3}.\]</span></p>
+<p>If <span class="math inline">\(0&lt;x&lt;\delta\)</span>, then</p>
+<p><span
+class="math display">\[\sqrt[3]{x}&lt;\sqrt[3]{\delta}=\frac{1}{N}.\]</span></p>
+<p>Therefore,</p>
+<p><span
+class="math display">\[\frac{1}{\sqrt[3]{x}}&gt;\frac{1}{\sqrt[3]{\delta}}=N.\]</span></p>
+<p>Hence, for every <span class="math inline">\(N&gt;0\)</span>, there
+exists <span class="math inline">\(\delta&gt;0\)</span> such that</p>
+<p><span class="math display">\[0&lt;x&lt;\delta
+\quad\Longrightarrow\quad
+\frac{1}{\sqrt[3]{x}}&gt;N.\]</span></p>
+<p>Thus,</p>
+<p><span
+class="math display">\[\boxed{\displaystyle\lim_{x\to0^+}\frac{1}{\sqrt[3]{x}}=+\infty}.\]</span></p>
+<h4 id="b-1">(b)</h4>
+<p>Let</p>
+<p><span class="math display">\[f(x)=\sqrt{x+1}-\sqrt{x-1}.\]</span></p>
+<p>For <span class="math inline">\(x\geq1\)</span>, rationalizing
+gives</p>
+<p><span class="math display">\[f(x)
+=\frac{(x+1)-(x-1)}{\sqrt{x+1}+\sqrt{x-1}}
+=\frac{2}{\sqrt{x+1}+\sqrt{x-1}}.\]</span></p>
+<p>Since <span
+class="math inline">\(\sqrt{x+1}+\sqrt{x-1}\to+\infty\)</span> as <span
+class="math inline">\(x\to+\infty\)</span>, we obtain</p>
+<p><span class="math display">\[\lim_{x\to+\infty}f(x)=0.\]</span></p>
+<p>To prove this using the <span
+class="math inline">\(\varepsilon\)</span>-<span
+class="math inline">\(N\)</span> language, let <span
+class="math inline">\(\varepsilon&gt;0\)</span> be given. Choose</p>
+<p><span
+class="math display">\[N=1+\frac{1}{\varepsilon^2}.\]</span></p>
+<p>If <span class="math inline">\(x&gt;N\)</span>, then <span
+class="math inline">\(x&gt;1\)</span> and</p>
+<p><span class="math display">\[0&lt;f(x)
+=\frac{2}{\sqrt{x+1}+\sqrt{x-1}}
+\leq\frac{1}{\sqrt{x-1}}.\]</span></p>
+<p>Moreover, <span class="math inline">\(x&gt;N\)</span> implies <span
+class="math inline">\(x-1&gt;1/\varepsilon^2\)</span>, so</p>
+<p><span class="math display">\[\left|f(x)-0\right|=f(x)
+\leq\frac{1}{\sqrt{x-1}}&lt;\varepsilon.\]</span></p>
+<p>Therefore, for every <span
+class="math inline">\(\varepsilon&gt;0\)</span>, there exists <span
+class="math inline">\(N&gt;0\)</span> such that</p>
+<p><span class="math display">\[x&gt;N\quad\Longrightarrow\quad
+\left|\sqrt{x+1}-\sqrt{x-1}\right|&lt;\varepsilon.\]</span></p>
+<p>Hence,</p>
+<p><span class="math display">\[\boxed{\displaystyle
+\lim_{x\to+\infty}\left(\sqrt{x+1}-\sqrt{x-1}\right)=0}.\]</span></p>
+<h2 id="exercise-1.1.28">Exercise 1.1.28</h2>
+<p>All the Limit Laws remain true when we replace</p>
+<p><span class="math display">\[\lim_{x\to c}\]</span></p>
+<p>by</p>
+<p><span class="math displ
+ay">\[\lim_{x\to+\infty}
+\quad\text{or}\quad
+\lim_{x\to-\infty}.\]</span></p>
+<p>For example, if</p>
+<p><span class="math display">\[\lim_{x\to+\infty}f(x)=L,
+\qquad
+\lim_{x\to+\infty}g(x)=M,\]</span></p>
+<p>then</p>
+<p><span
+class="math display">\[\lim_{x\to+\infty}(f(x)+g(x))=L+M,\]</span></p>
+<p>and, provided <span class="math inline">\(M\neq0\)</span>,</p>
+<p><span
+class="math display">\[\lim_{x\to+\infty}\frac{f(x)}{g(x)}=\frac{L}{M}.\]</span></p>
+<p>The same statements hold as <span
+class="math inline">\(x\to-\infty\)</span>.</p>
+<h2 id="asymptotes">Asymptotes</h2>
+<p>The graph of <span class="math inline">\(y=f(x)\)</span> on an
+interval <span class="math inline">\(I\)</span> is</p>
+<p><span class="math display">\[\{(x,y):x\in I,\ y=f(x)\}.\]</span></p>
+<p>A line is called an <strong>asymptote</strong> of the graph if the
+distance between the graph and the line approaches <span
+class="math inline">\(0\)</span> as the point on the graph moves to
+infinity or approaches a finite endpoint.</p>
+<h3 id="horizontal-asymptotes">Horizontal asymptotes</h3>
+<p>A line <span class="math inline">\(y=b\)</span> is a horizontal
+asymptote of <span class="math inline">\(y=f(x)\)</span> as <span
+class="math inline">\(x\to+\infty\)</span> if</p>
+<p><span class="math display">\[\lim_{x\to+\infty}f(x)=b.\]</span></p>
+<p>Similarly, <span class="math inline">\(y=b\)</span> is a horizontal
+asymptote as <span class="math inline">\(x\to-\infty\)</span> if</p>
+<p><span class="math display">\[\lim_{x\to-\infty}f(x)=b.\]</span></p>
+<h4 id="example-1.1.32">Example 1.1.32</h4>
+<p>Find the horizontal asymptotes of</p>
+<p><span class="math display">\[f(x)=\frac{\sin x+\cos
+x}{1+x^2},\]</span></p>
+<p>and</p>
+<p><span class="math display">\[g(x)=\sqrt{1-\frac{1}{x^2}},\qquad
+|x|\geq1.\]</span></p>
+<p>Since <span class="math inline">\(|\sin x+\cos x|\leq2\)</span>,</p>
+<p><span class="math display">\[\left|\frac{\sin x+\cos x}{1+x^2}\right|
+\leq\frac{2}{1+x^2}\longrightarrow0.\]</span></p>
+<p>Thus, <span class="math inline">\(y=0\)</span> is a horizontal
+asymptote of <span class="math inline">\(f\)</span> as <span
+class="math inline">\(x\to\pm\infty\)</span>.</p>
+<p>For <span class="math inline">\(g\)</span>,</p>
+<p><span class="math display">\[\lim_{x\to\pm\infty}g(x)
+=\sqrt{1-\lim_{x\to\pm\infty}\frac1{x^2}}
+=1.\]</span></p>
+<p>Thus, <span class="math inline">\(y=1\)</span> is a horizontal
+asymptote of <span class="math inline">\(g\)</span> as <span
+class="math inline">\(x\to\pm\infty\)</span>.</p>
+<h3 id="sketches-of-horizontal-asymptotes">Sketches of horizontal
+asymptotes</h3>
+
+
+<h3 id="vertical-asymptotes">Vertical asymptotes</h3>
+<p>A line <span class="math inline">\(x=a\)</span> is a vertical
+asymptote of <span class="math inline">\(y=f(x)\)</span> as <span
+class="math inline">\(x\to a^+\)</span> if</p>
+<p><span class="math display">\[\lim_{x\to a^+}f(x)=+\infty
+\quad\text{or}\quad
+\lim_{x\to a^+}f(x)=-\infty.\]</span></p>
+<p>The analogous definition applies as <span class="math inline">\(x\to
+a^-\)</span>. In the notation <span
+class="math inline">\(\pm\infty\)</span>, the sign may be either <span
+class="math inline">\(+\)</span> or <span
+class="math inline">\(-\)</span>.</p>
+<h4 id="example-1.1.33">Example 1.1.33</h4>
+<p>Consider</p>
+<p><span class="math display">\[h(x)=\sqrt{1-\frac{\sin
+x}{x^2}},\]</span></p>
+<p>on its domain</p>
+<p><span class="math display">\[(-\infty,0)\cup[a,+\infty),\]</span></p>
+<p>where the boundary point <span class="math inline">\(a&gt;0\)</span>
+is determined by</p>
+<p><span class="math display">\[a^2=\sin a,\]</span></p>
+<p>where <span class="math inline">\(0&lt;a&lt;1\)</span>. As <span
+class="math inline">\(x\to0^-\)</span>, we have <span
+class="math inline">\(\sin x\sim x\)</span>, and therefore</p>
+<p><span class="math display">\[1-\frac{\sin x}{x^2}
+\sim 1-\frac1x\longrightarrow+\infty.\]</span></p>
+<p>Consequently,</p>
+<p><span class="math display">\[\lim_{x\to0^-}h(x)=+\infty,\]</span></p>
+<p>so <span class="math inline">\(x=0\)</span> is a vertical asymptote.
+Near <span class="math inline">\(x=a\)</span> from the right, the
+expression under the square root approaches <span
+class="math inline">\(0\)</span>, so <span
+class="math inline">\(x=a\)</span> is not a vertical asymptote.</p>
+<p>This example emphasizes that a domain endpoint is not automatically a
+vertical asymptote: the function itself must tend to <span
+class="math inline">\(\pm\infty\)</span>.</p>
+<h3 id="sketches-of-vertical-asymptotes">Sketches of vertical
+asymptotes</h3>
+
+
+<h3 id="oblique-asymptotes">Oblique asymptotes</h3>
+<p>A line</p>
+<p><span class="math display">\[y=ax+b,\qquad a\neq0,\]</span></p>
+<p>is an oblique asymptote of <span
+class="math inline">\(y=f(x)\)</span> as <span
+class="math inline">\(x\to+\infty\)</span> if</p>
+<p><span
+class="math display">\[\lim_{x\to+\infty}[f(x)-ax-b]=0.\]</span></p>
+<p>The definition as <span class="math inline">\(x\to-\infty\)</span> is
+analogous.</p>
+<p>When the limits exist, the coefficients can be found from</p>
+<p><span class="math display">\[a=\lim_{x\to\pm\infty}\frac{f(x)}{x},
+\qquad
+b=\lim_{x\to\pm\infty}[f(x)-ax].\]</span></p>
+<h4 id="example-1.1.34">Example 1.1.34</h4>
+<p>Find the oblique asymptote of</p>
+<p><span class="math display">\[f(x)=\frac{x^2-3}{2x-4}.\]</span></p>
+<p>Polynomial division gives</p>
+<p><span class="math display">\[\begin{aligned}
+f(x)
+&amp;=\frac{x^2-4+1}{2(x-2)}\\
+&amp;=\frac12(x+2)+\frac{1}{
+2(x-2)}.
+\end{aligned}\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[f(x)-\left(\frac{x}{2}+1\right)
+=\frac{1}{2(x-2)}\longrightarrow0
+\qquad(x\to\pm\infty).\]</span></p>
+<p>The oblique asymptote is</p>
+<p><span class="math display">\[y=\frac{x}{2}+1.\]</span></p>
+<p>Also, <span class="math inline">\(x=2\)</span> is a vertical
+asymptote.</p>
+
+<h4 id="example-1.1.35">Example 1.1.35</h4>
+<p>Let</p>
+<p><span
+class="math display">\[f(x)=\frac{x^3}{(x+2)(x-1)}.\]</span></p>
+<p>The vertical asymptotes are</p>
+<p><span class="math display">\[x=-2,\qquad x=1.\]</span></p>
+<p>For the oblique asymptote,</p>
+<p><span class="math display">\[\frac{f(x)}{x}
+=\frac{x^2}{(x+2)(x-1)}\longrightarrow1,\]</span></p>
+<p>and</p>
+<p><span class="math display">\[f(x)-x
+=\frac{-x^2+2x}{(x+2)(x-1)}\longrightarrow-1.\]</span></p>
+<p>Hence the oblique asymptote is</p>
+<p><span class="math display">\[y=x-1\]</span></p>
+<p>as <span class="math inline">\(x\to\pm\infty\)</span>.</p>
+
+<h2 id="exercise-1.1.36">Exercise 1.1.36</h2>
+<p>Let</p>
+<p><span class="math display">\[f(x)=\frac1x\sin\frac1x.\]</span></p>
+<p>Does the graph of <span class="math inline">\(f\)</span> have a
+vertical asymptote at <span class="math inline">\(x=0\)</span>? Explain
+your answer using the definition of a vertical asymptote.</p>
+<p>Since</p>
+<p><span
+class="math display">\[\left|\frac1x\sin\frac1x\right|\leq\frac1{|x|},\]</span></p>
+<p>this estimate alone does not determine an infinite limit. To see the
+oscillation explicitly, define</p>
+<p><span class="math display">\[x_n=\frac{1}{\frac{\pi}{2}+2\pi n},
+\qquad
+y_n=\frac{1}{\frac{3\pi}{2}+2\pi n}.\]</span></p>
+<p>Then <span class="math inline">\(x_n,y_n\to0^+\)</span> and</p>
+<p><span class="math display">\[f(x_n)=\frac{\pi}{2}+2\pi
+n\longrightarrow+\infty,\]</span></p>
+<p>while</p>
+<p><span class="math display">\[f(y_n)=-\left(\frac{3\pi}{2}+2\pi
+n\right)\longrightarrow-\infty.\]</span></p>
+<p>Thus, as <span class="math inline">\(x\to0^+\)</span>, the function
+tends neither to <span class="math inline">\(+\infty\)</span> nor to
+<span class="math inline">\(-\infty\)</span>. Applying the same argument
+to <span class="math inline">\(-x_n\)</span> and <span
+class="math inline">\(-y_n\)</span> gives the same conclusion as <span
+class="math inline">\(x\to0^-\)</span>. Therefore, <span
+class="math inline">\(x=0\)</span> is not a vertical asymptote in the
+usual one-sided sense.</p>
+
+<h2 id="more-exercises">More Exercises</h2>
+<p>Find the limits and use the <span
+class="math inline">\(\varepsilon\)</span>-<span
+class="math inline">\(N\)</span> language to prove your results.</p>
+<h3 id="a-2">(a)</h3>
+<p><span
+class="math display">\[\lim_{x\to+\infty}\sqrt{x}\left(\sqrt{x+1}-\sqrt{x-1}\right).\]</span></p>
+<h3 id="b-2">(b)</h3>
+<p><span class="math display">\[\lim_{x\to+\infty}
+\sqrt{x+\sqrt{x+\frac{\sqrt{x}}{\sqrt{x+1}}}}.\]</span></p>
+<h1 id="lecture-7">Lecture 7</h1>
+<h5 id="section-3">2026 9.17</h5>
+<h2 id="sequences-and-limits">1.7 Sequences and limits</h2>
+<h3 id="definition-1.1.12-limit-of-a-sequence">Definition 1.1.12 (Limit
+of a sequence)</h3>
+<p>A sequence <span class="math inline">\(\{a_n\}\)</span> converges to
+<span class="math inline">\(L\)</span> if for every <span
+class="math inline">\(\varepsilon&gt;0\)</span> there exists an integer
+<span class="math inline">\(N\)</span> such that</p>
+<p><span class="math display">\[n&gt;N \quad\Longrightarrow\quad
+|a_n-L|&lt;\varepsilon.\]</span></p>
+<p>If no such number <span class="math inline">\(L\)</span> exists, we
+say that the sequence diverges.</p>
+<p>We write</p>
+<p><span class="math display">\[\lim_{n\to\infty}a_n=L,
+\qquad\text{or}\qquad a_n\to L.\]</span></p>
+<h3 id="exercise-1.1.39">Exercise 1.1.39</h3>
+<p>Show that if a sequence converges, then the limit is unique.</p>
+<h4 id="proof-1">Proof</h4>
+<p>Suppose that</p>
+<p><span class="math display">\[a_n\to L_1,
+\qquad a_n\to L_2.\]</span></p>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span> be
+arbitrary. Then there exist <span class="math inline">\(N_1,N_2\)</span>
+such that</p>
+<p><span class="math display">\[n&gt;N_1 \Rightarrow
+|a_n-L_1|&lt;\varepsilon/2,\]</span></p>
+<p>and</p>
+<p><span class="math display">\[n&gt;N_2 \Rightarrow
+|a_n-L_2|&lt;\varepsilon/2.\]</span></p>
+<p>For <span class="math inline">\(n&gt;\max\{N_1,N_2\}\)</span>,</p>
+<p><span class="math display">\[|L_1-L_2|
+\le |a_n-L_1|+|a_n-L_2|
+&lt; \varepsilon.\]</span></p>
+<p>Since this holds for every <span
+class="math inline">\(\varepsilon&gt;0\)</span>, we must have <span
+class="math inline">\(L_1=L_2\)</span>.</p>
+<p>Hence the limit is unique.</p>
+<h3 id="example-1.1.40">Example 1.1.40</h3>
+<p>Investigate the convergence or divergence of the following
+sequences.</p>
+<h4 id="a--1n">(a) <span class="math inline">\((-1)^n\)</span></h4>
+<p>This sequence alternates between <span
+class="math inline">\(-1\)</span> and <span
+class="math inline">\(1\)</span>, so it does not approach any single
+number. Therefore,</p>
+<p><span class="math display">\[(-1)^n\text{ diverges.}\]</span></p>
+<h4 id="b-displaystyle-fracsin-n-n2n31">(b) <span
+class="math inline">\(\displaystyle \frac{\sin
+n-n^2}{n^3+1}\)</span></h4>
+<p>Since</p>
+<p><span class="math display">\[\frac{\sin n-n^2}{n^3+1}
+=
+\frac{\sin n}{n^3+1}-\frac{n^2}{n^3+1},\]</span></p>
+<p>and both terms go to <span class="math inline">\(0\)</span>, we
+have</p>
+<p><span class="math display">\[\lim_{n\to\infty}\frac{\sin
+n-n^2}{n^3+1}=0.\]</span></p>
+<h4 id="c-displaystyle-frac-1sqrt-nn">(c) <span
+class="math inline">\
+(\displaystyle \frac{(-1)^{[\sqrt
+n]}}{n}\)</span></h4>
+<p>Here <span class="math inline">\([\sqrt n]\)</span> is the integer
+part of <span class="math inline">\(\sqrt n\)</span>, and the numerator
+is always <span class="math inline">\(\pm1\)</span>. Since dividing by
+<span class="math inline">\(n\)</span> makes the magnitude go to <span
+class="math inline">\(0\)</span>,</p>
+<p><span class="math display">\[\lim_{n\to\infty}\frac{(-1)^{[\sqrt
+n]}}{n}=0.\]</span></p>
+<h2 id="bounded-sequences">Bounded sequences</h2>
+<h3 id="definition">Definition</h3>
+<p>A sequence <span class="math inline">\(\{a_n\}\)</span> is
+called:</p>
+<ul>
+<li><p>bounded above if there exists a constant <span
+class="math inline">\(M\)</span> such that <span
+class="math inline">\(a_n\le M\)</span> for all <span
+class="math inline">\(n\)</span>;</p></li>
+<li><p>bounded below if there exists a constant <span
+class="math inline">\(m\)</span> such that <span
+class="math inline">\(a_n\ge m\)</span> for all <span
+class="math inline">\(n\)</span>;</p></li>
+<li><p>bounded if there exists a constant <span
+class="math inline">\(C&gt;0\)</span> such that <span
+class="math inline">\(|a_n|\le C\)</span> for all <span
+class="math inline">\(n\)</span>.</p></li>
+</ul>
+<p>Equivalently, <span class="math inline">\(\{a_n\}\)</span> is bounded
+iff there exist <span class="math inline">\(m,M\)</span> with</p>
+<p><span class="math display">\[m\le a_n\le M \qquad \forall
+n\ge1.\]</span></p>
+<h3 id="theorem">Theorem</h3>
+<p>Every convergent sequence is bounded.</p>
+<h4 id="proof-2">Proof</h4>
+<p>If <span class="math inline">\(a_n\to L\)</span>, then for <span
+class="math inline">\(\varepsilon=1\)</span> there exists <span
+class="math inline">\(N\)</span> such that</p>
+<p><span class="math display">\[n&gt;N \Rightarrow
+|a_n-L|&lt;1.\]</span></p>
+<p>Thus for all <span class="math inline">\(n&gt;N\)</span>,</p>
+<p><span class="math display">\[|a_n|\le |L|+1.\]</span></p>
+<p>Let</p>
+<p><span
+class="math display">\[C=\max\{|a_1|,\dots,|a_N|,|L|+1\}.\]</span></p>
+<p>Then <span class="math inline">\(|a_n|\le C\)</span> for all <span
+class="math inline">\(n\)</span>, so the sequence is bounded.</p>
+<h2 id="divergence-to-infinity">Divergence to infinity</h2>
+<h3 id="definition-1">Definition</h3>
+<p>We say that <span class="math inline">\(a_n\to +\infty\)</span> if
+for every real number <span class="math inline">\(M\)</span> there
+exists an integer <span class="math inline">\(N\)</span> such that</p>
+<p><span class="math display">\[n\ge N \Rightarrow
+a_n&gt;M.\]</span></p>
+<p>We say that <span class="math inline">\(a_n\to -\infty\)</span> if
+for every real number <span class="math inline">\(m&gt;0\)</span> there
+exists an integer <span class="math inline">\(N\)</span> such that</p>
+<p><span class="math display">\[n\ge N\Rightarrow
+a_n&lt;-m.\]</span></p>
+<h3 id="example-1.1.41">Example 1.1.41</h3>
+<p>Investigate the behavior of the following sequences as <span
+class="math inline">\(n\to\infty\)</span>.</p>
+<h4 id="a--1n-n">(a) <span class="math inline">\((-1)^n n\)</span></h4>
+<p>This sequence alternates sign and grows in magnitude, so it is
+unbounded and does not converge to a finite limit. It also does not tend
+to <span class="math inline">\(+\infty\)</span> or <span
+class="math inline">\(-\infty\)</span> in the usual sense because the
+signs alternate.</p>
+<h4 id="b-ann-with-a0">(b) <span class="math inline">\(a^n/n!\)</span>
+with <span class="math inline">\(a&gt;0\)</span></h4>
+<p>For fixed <span class="math inline">\(a&gt;0\)</span>, the factorial
+grows faster than any exponential, so</p>
+<p><span class="math display">\[\frac{a^n}{n!}\to0.\]</span></p>
+<h4 id="c-nnn">(c) <span class="math inline">\(n^n/n!\)</span></h4>
+<p>Since</p>
+<p><span
+class="math display">\[\frac{n^n}{n!}=\prod_{k=1}^n\frac{n}{k},\]</span></p>
+<p>this sequence grows very rapidly, so</p>
+<p><span class="math display">\[\frac{n^n}{n!}\to +\infty.\]</span></p>
+<h2 id="limit-laws-for-sequences">Limit laws for sequences</h2>
+<p>If</p>
+<p><span class="math display">\[\lim_{n\to\infty}a_n=A,
+\qquad
+\lim_{n\to\infty}b_n=B,\]</span></p>
+<p>then the following hold:</p>
+<ol>
+<li><p><span class="math inline">\(\displaystyle
+\lim_{n\to\infty}(a_n+b_n)=A+B\)</span>;</p></li>
+<li><p><span class="math inline">\(\displaystyle
+\lim_{n\to\infty}(a_n-b_n)=A-B\)</span>;</p></li>
+<li><p><span class="math inline">\(\displaystyle \lim_{n\to\infty}(k
+a_n)=kA\)</span> for any constant <span
+class="math inline">\(k\)</span>;</p></li>
+<li><p><span class="math inline">\(\displaystyle \lim_{n\to\infty}(a_n
+b_n)=AB\)</span>;</p></li>
+<li><p>if <span class="math inline">\(B\neq0\)</span>, then <span
+class="math display">\[\lim_{n\to\infty}\frac{a_n}{b_n}=\frac{A}{B}.\]</span></p></li>
+</ol>
+<h2 id="exercise-1.1.43">Exercise 1.1.43</h2>
+<p>Let <span class="math inline">\(\{a_n\}\)</span> and <span
+class="math inline">\(\{b_n\}\)</span> be convergent sequences and
+assume <span class="math inline">\(a_n\ge b_n\)</span> for all
+sufficiently large <span class="math inline">\(n\)</span>. Prove
+that</p>
+<p><span class="math display">\[\lim_{n\to\infty}a_n\ge
+\lim_{n\to\infty}b_n.\]</span></p>
+<h3 id="proof-3">Proof</h3>
+<p>Let</p>
+<p><span class="math display">\[A=\lim_{n\to\infty}a_n,
+\qquad B=\lim_{n\to\infty}b_n.\]</span></p>
+<p>Suppose, for contradiction, that <span
+class="math inline">\(A&lt;B\)</span>. Set</p>
+<p><span
+class="math display">\[\varepsilon=\frac{B-A}{2}&gt;0.\]</span></p>
+<p>Then there exists <span class="math inline">\(N\)</span> such that
+for all <span class="math inline">\(n&gt;N\)</span>,</p>
+<p><span class="math display">\[|a_n-A|&lt;\varepsilon,
+\qquad |b_n-B|&lt;\varepsilon.\]</span></p>
+<p>Hence for <span class="math inline">\(n&gt;N\)</span>,</p>
+<p><span
+class="math display">\[a_n&lt;A+\varepsilon=\frac{A+B}{2},\]</span></p>
+<p>and</p>
+<p><span
+class="math display
+">\[b_n&gt;B-\varepsilon=\frac{A+B}{2}.\]</span></p>
+<p>So <span class="math inline">\(a_n&lt;b_n\)</span> for all
+sufficiently large <span class="math inline">\(n\)</span>, contradicting
+the assumption that <span class="math inline">\(a_n\ge b_n\)</span>
+eventually. Therefore,</p>
+<p><span class="math display">\[A\ge B.\]</span></p>
+<h2 id="exercise-1.1.43-continued">Exercise 1.1.43 (continued)</h2>
+<p>Assume <span class="math inline">\(a_n\le b_n\le c_n\)</span> for all
+<span class="math inline">\(n\ge N_0\)</span> and</p>
+<p><span class="math display">\[\lim_{n\to\infty}a_n =
+\lim_{n\to\infty}c_n = L.\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[\lim_{n\to\infty}b_n = L.\]</span></p>
+<h3 id="proof-4">Proof</h3>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span> be given.
+Since <span class="math inline">\(a_n\to L\)</span> and <span
+class="math inline">\(c_n\to L\)</span>, there exist <span
+class="math inline">\(N_1,N_2\)</span> such that</p>
+<p><span class="math display">\[n&gt;N_1 \Rightarrow
+|a_n-L|&lt;\varepsilon,\]</span></p>
+<p>and</p>
+<p><span class="math display">\[n&gt;N_2 \Rightarrow
+|c_n-L|&lt;\varepsilon.\]</span></p>
+<p>Let <span class="math inline">\(N=\max\{N_0,N_1,N_2\}\)</span>. Then
+for all <span class="math inline">\(n&gt;N\)</span>,</p>
+<p><span class="math display">\[L-\varepsilon&lt;a_n\le b_n\le
+c_n&lt;L+\varepsilon.\]</span></p>
+<p>Hence</p>
+<p><span class="math display">\[|b_n-L|&lt;\varepsilon,\]</span></p>
+<p>for all <span class="math inline">\(n&gt;N\)</span>. Therefore, <span
+class="math inline">\(b_n\to L\)</span>.</p>
+<p>This is the sequence version of the Sandwich Theorem.</p>
+<h2 id="exercise-1.1.44">Exercise 1.1.44</h2>
+<p>Let <span class="math inline">\(\{a_n\}\)</span> be a sequence with
+<span class="math inline">\(a_n\to L\)</span>, and let <span
+class="math inline">\(f\)</span> be a function continuous at <span
+class="math inline">\(L\)</span> and defined at all <span
+class="math inline">\(a_n\)</span>. Then</p>
+<p><span class="math display">\[f(a_n)\to f(L).\]</span></p>
+<h3 id="proof-5">Proof</h3>
+<p>Let <span class="math inline">\(\varepsilon&gt;0\)</span> be given.
+Since <span class="math inline">\(f\)</span> is continuous at <span
+class="math inline">\(L\)</span>, there exists <span
+class="math inline">\(\delta&gt;0\)</span> such that</p>
+<p><span class="math display">\[|x-L|&lt;\delta \Rightarrow
+|f(x)-f(L)|&lt;\varepsilon.\]</span></p>
+<p>Because <span class="math inline">\(a_n\to L\)</span>, there exists
+<span class="math inline">\(N\)</span> such that</p>
+<p><span class="math display">\[n&gt;N \Rightarrow
+|a_n-L|&lt;\delta.\]</span></p>
+<p>Therefore, for all <span class="math inline">\(n&gt;N\)</span>,</p>
+<p><span
+class="math display">\[|f(a_n)-f(L)|&lt;\varepsilon.\]</span></p>
+<p>So <span class="math inline">\(f(a_n)\to f(L)\)</span>.</p>
+<h2
+id="proposition-1.1.13-function-limits-and-sequence-limits">Proposition
+1.1.13 (function limits and sequence limits)</h2>
+<p>Let <span class="math inline">\(I\)</span> be an interval containing
+<span class="math inline">\(x_0\)</span> in its interior and let <span
+class="math inline">\(f\)</span> be defined on <span
+class="math inline">\(I\setminus\{x_0\}\)</span>. Then</p>
+<p><span class="math display">\[\lim_{x\to x_0}f(x)=A\]</span></p>
+<p>exists if and only if for every sequence <span
+class="math inline">\(\{a_n\}\subset I\setminus\{x_0\}\)</span> with
+<span class="math inline">\(a_n\to x_0\)</span>, the limit</p>
+<p><span class="math display">\[\lim_{n\to\infty}f(a_n)\]</span></p>
+<p>exists and equals <span class="math inline">\(A\)</span>.</p>
+<h3 id="proof-sketch">Proof sketch</h3>
+<ul>
+<li><p>If <span class="math inline">\(f(x)\to A\)</span> as <span
+class="math inline">\(x\to x_0\)</span>, then for any sequence <span
+class="math inline">\(a_n\to x_0\)</span>, the values <span
+class="math inline">\(f(a_n)\)</span> must also approach <span
+class="math inline">\(A\)</span>.</p></li>
+<li><p>Conversely, if every sequence approaching <span
+class="math inline">\(x_0\)</span> produces the same limiting value
+<span class="math inline">\(A\)</span>, then <span
+class="math inline">\(f(x)\)</span> cannot fail to approach <span
+class="math inline">\(A\)</span>; otherwise one could construct a
+sequence <span class="math inline">\(x_n\to x_0\)</span> with <span
+class="math inline">\(|f(x_n)-A|\ge\varepsilon_0\)</span> for all <span
+class="math inline">\(n\)</span>, contradicting the assumption.</p></li>
+</ul>
+<p>Thus, the limit of a function can be tested using sequences.</p>
+<h2 id="exercise-1.1.45">Exercise 1.1.45</h2>
+<p>Let <span class="math inline">\(f\)</span> be a function defined on
+<span class="math inline">\([M,\infty)\)</span>. Prove:</p>
+<h3 id="a-3">(a)</h3>
+<p><span class="math display">\[\lim_{x\to\infty}f(x)=L\]</span></p>
+<p>if and only if for every sequence <span
+class="math inline">\(a_n\to\infty\)</span>,</p>
+<p><span class="math display">\[\lim_{n\to\infty}f(a_n)=L.\]</span></p>
+<h3 id="b-3">(b)</h3>
+<p><span
+class="math display">\[\lim_{x\to\infty}f(x)=+\infty\]</span></p>
+<p>if and only if for every sequence <span
+class="math inline">\(a_n\to\infty\)</span>,</p>
+<p><span
+class="math display">\[\lim_{n\to\infty}f(a_n)=+\infty.\]</span></p>
+<p>These results show that the behavior of a function at infinity can be
+studied through sequences tending to infinity.</p>
+<h2 id="least-upper-bound-and-greatest-lower-bound">1.8 Least upper
+bound and greatest lower bound</h2>
+<h3 id="definition-2">Definition</h3>
+<p>Let <span class="math inline">\(\{a_n\}\)</span> be a sequence
+bounded above. A number <span class="math inline">\(L\)</span> is called
+the least upper bound, or supremum, of <span
+class="math inline">\(\{a_n\}\)</span> if:</p>
+<ol>
+<li><p><span class="math inline">\(a_n\le L\)</span> for all <span
+class="math inline">\(n\)</span>;</p></li>
+<li><p>if <span class="math inline">\(M\)</span> is any upper bound,
+then <span class="math inline">\(L\le M\)</span>.</p></li>
+</ol>
+<p>We write</p>
+<p><span class="math display">\[L=\sup_{n\ge1}a_n.\]</span></p>
+<p>Similarly, if <span class="math inline">\(\{a_n\}\)</span> is bounded
+below, a number <span class="math inline">\(l\)</span> is called the
+greatest lower bound, or infimum, if:</p>
+<ol>
+<li><p><span class="math inline">\(a_n\ge l\)</span> for all <span
+class="math inline">\(n\)</span>;</p></li>
+<li><p>if <span class="math inline">\(m\)</span> is any lower bound,
+then <span class="math inline">\(l\ge m\)</span>.</p></li>
+</ol>
+<p>We write</p>
+<p><span class="math display">\[l=\inf_{n\ge1}a_n.\]</span></p>
+<h3 id="remarks">Remarks</h3>
+<ul>
+<li><p>For the supremum: for every <span
+class="math inline">\(\varepsilon&gt;0\)</span>, there exists <span
+class="math inline">\(n\)</span> such that <span
+class="math display">\[a_n&gt;L-\varepsilon.\]</span></p></li>
+<li><p>For the infimum: for every <span
+class="math inline">\(\varepsilon&gt;0\)</span>, there exists <span
+class="math inline">\(n\)</span> such that <span
+class="math display">\[a_n&lt;l+\varepsilon.\]</span></p></li>
+</ul>
+<h3 id="theorem-1.1.15">Theorem 1.1.15</h3>
+<p>Any sequence bounded above has a supremum, and any sequence bounded
+below has an infimum.</p>
+<p>This is the completeness property of the real numbers.</p>
+<h2 id="example-1.1.47">Example 1.1.47</h2>
+<p>Find the infimum and supremum of the following sequences.</p>
+<h3 id="a-left-1nnright_nge1">(a) <span
+class="math inline">\(\left\{(-1)^n/n\right\}_{n\ge1}\)</span></h3>
+<p><span class="math display">\[\inf=-\frac12,\qquad
+\sup=\frac12.\]</span></p>
+<h3 id="b--1n-n_nge1">(b) <span class="math inline">\(\{(-1)^n
+n\}_{n\ge1}\)</span></h3>
+<p>This sequence is unbounded above and below, so</p>
+<p><span class="math display">\[\sup=+\infty,
+\qquad\inf=-\infty.\]</span></p>
+<h3 id="c-n-1n_nge1">(c) <span
+class="math inline">\(\{n(-1)^n\}_{n\ge1}\)</span></h3>
+<p>Again unbounded, so</p>
+<p><span class="math display">\[\sup=+\infty,
+\qquad\inf=-\infty.\]</span></p>
+<h3 id="d-a_1sqrt2-a_n1sqrt2a_n">(d) <span
+class="math inline">\(a_1=\sqrt2\)</span>, <span
+class="math inline">\(a_{n+1}=\sqrt{2+a_n}\)</span></h3>
+<p>This sequence is increasing and bounded above by <span
+class="math inline">\(2\)</span>, so it converges to the positive
+solution of</p>
+<p><span class="math display">\[x=\sqrt{2+x},\]</span></p>
+<p>namely</p>
+<p><span class="math display">\[x^2-x-2=0 \Rightarrow x=2.\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[\sup=2,
+\qquad\inf=\sqrt2.\]</span></p>
+<h1 id="lecture-8">Lecture 8</h1>
+<h5 id="section-4">2026 9.17</h5>
+</article><footer><p><a href="../weekly.html?course=calculus&amp;type=html">Back to HTML weekly notes</a></p></footer></main>
+<script>const r=document.documentElement,btn=document.getElementById("theme");if(localStorage.getItem("theme")==="dark")r.classList.add("dark");btn.onclick=()=>{r.classList.toggle("dark");localStorage.setItem("theme",r.classList.contains("dark")?"dark":"light")};</script></body></html>
