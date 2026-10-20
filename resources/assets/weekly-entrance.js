@@ -1,5 +1,5 @@
 const courses={
- "calculus":{name:"Calculus",weeks:{1:{pdf:"MAweek1.pdf",html:"MAweek1.html",exercises:"Homework1.pdf"},2:{pdf:"week2.pdf",html:"MAweek2.html",exercises:"Homework2.pdf"},3:{pdf:"MAweek3.pdf",html:"MAweek3.html"},4:{pdf:"MAweek4.pdf",html:"MAweek4.html"},5:{pdf:"MAweek5.pdf",html:"MAweek5.html"}}},
+ "calculus":{name:"Calculus",weeks:{1:{pdf:"MAweek1.pdf",html:"MAweek1.html",exercises:"Homework1.pdf"},2:{pdf:"week2.pdf",html:"MAweek2.html",exercises:"Homework2.pdf"},3:{pdf:"MAweek3.pdf",html:"MAweek3.html",exercises:"Homework3.pdf"},4:{pdf:"MAweek4.pdf",html:"MAweek4.html",exercises:"Homework4.pdf"},5:{pdf:"MAweek5.pdf",html:"MAweek5.html",exercises:"HW5.pdf"}}},
  "linear-algebra":{name:"Linear Algebra",weeks:{1:{pdf:"LAweek1.pdf",html:"LAweek1.html",exercises:"LAexercises1.pdf"},2:{pdf:"LAweek2.pdf",html:"LAweek2.html",exercises:"LAexercises2.pdf"},3:{pdf:"LAweek3.pdf",html:"LAweek3.html"},4:{pdf:"LAweek4.pdf",html:"LAweek4.html"},5:{pdf:"LAweek5.pdf",html:"LAweek5.html"}}}
 };
 const params=new URLSearchParams(location.search),course=params.get("course")||"calculus",type=params.get("type")||"pdf",data=courses[course];

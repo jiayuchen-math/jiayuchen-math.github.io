@@ -1,0 +1,5 @@
+import fs from'node:fs';import path from'node:path';import assert from'node:assert/strict';import{createHash}from'node:crypto';import{fileURLToPath}from'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),read=f=>fs.readFileSync(path.join(root,f),'utf8'),entries=JSON.parse(read('resources/data/calculus-exercises.json')).entries;
+export const addedExerciseFiles=new Set(entries.filter(f=>!f.alreadyPublished).map(f=>f.path));assert.equal(entries.length,5);assert.equal(addedExerciseFiles.size,3);assert.deepEqual(entries.map(f=>f.week),[1,2,3,4,5]);
+const weekly=read('resources/assets/weekly-entrance.js');for(const e of entries){const bytes=fs.readFileSync(path.join(root,e.path));assert.equal(bytes.subarray(0,5).toString(),'%PDF-');assert.equal(createHash('sha256').update(bytes).digest('hex'),e.sha256);assert(weekly.includes('exercises:"'+path.posix.basename(e.path)+'"'));assert(e.path.startsWith('notes/mathematical-notes/calculus/'))}
+console.log(JSON.stringify({passed:true,calculusExerciseWeeks:5,originalPDFsExact:5,newPDFs:3}));
