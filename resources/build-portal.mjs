@@ -366,7 +366,7 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  // Home remains a personal page; repair malformed contact markup without changing its content.
  const homeOld=read('index.html');let homeBody=bodyOf(homeOld);homeBody=homeBody.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g,'').replace('</p></section> · <a href="https://jiayuchen-math.github.io/mathpi/"',' · <a href="https://jiayuchen-math.github.io/mathpi/"');
  homeBody=homeBody.replace(/<p\b(?=[^>]*\bclass="tagline")[^>]*>[\s\S]*?<\/p>/g,'');
- const homeCopy='<p class="tagline" id="home-tagline">Undergraduate mathematics student</p>'+homeBody;
+ const homeCopy=homeBody;
  addPage('index.html','Jiayu Chen',homeCopy+translationPayload(homeTranslationBlocks(homeCopy)),'home');
  const hubGroups=[
   ['learn','Learn Mathematics',[

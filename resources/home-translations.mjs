@@ -17,7 +17,7 @@ const copy={
 };
 const unchanged=new Set(['GitHub','LinkedIn','CUHKSZ MathPi','·']);
 export function homeTranslationBlocks(body){
- const blocks={'home-tagline':'数学专业本科生'},used=new Set();
+ const blocks={},used=new Set();
  for(const id of ['about','notes','contact']){
   const source=body.match(new RegExp('<section id="'+id+'">([\\s\\S]*?)</section>'))?.[1];
   if(!source)throw Error('Missing homepage section: '+id);
