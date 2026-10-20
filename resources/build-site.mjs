@@ -17,6 +17,16 @@ export function migrateURLs(text) {
     .replace(/(["'`])\/en(?=\/|["'`?#])/g, '$1');
 }
 
+// Compatibility pages contain no copied notes, assets or downloads.
+export function legacyRedirectPage(relative) {
+  const target='/'+encodeURI(relative.replace(/index\.html$/, ''));
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><link rel="canonical" href="https://jiayuchen-math.github.io${target}"><title>Page moved</title><script>location.replace(${JSON.stringify(target)}+location.search+location.hash);</script></head><body><p>This page has moved. <a href="${target}">Continue to the current page</a>.</p></body></html>`;
+}
+
+export function notFoundPage() {
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Page not found · Jiayu Chen</title><style>:root{color-scheme:light dark}body{max-width:720px;margin:60px auto;padding:0 24px;font:18px/1.8 Georgia,serif}a{color:light-dark(#1458a6,#8ab4f8)}</style></head><body><h1>Page not found</h1><p id="message">The address may have changed.</p><p><a id="current" href="/">Go to the homepage</a></p><script>if(location.pathname.startsWith('/en/')){const target=location.pathname.slice(3)+location.search+location.hash;document.getElementById('current').href=target;document.getElementById('current').textContent='Continue to the current address';document.getElementById('message').textContent='This file has moved.';location.replace(target);}</script></body></html>`;
+}
+
 export function publicFiles(directory=root, prefix='') {
   const found=[];
   for (const item of fs.readdirSync(directory,{withFileTypes:true})) {
@@ -52,16 +62,20 @@ export function buildSite() {
       bytes=Buffer.from(bytes.toString('utf8').replace(/<link\b[^>]*rel=["']canonical["'][^>]*>/gi,'')
         .replace('</head>',`<link rel="canonical" href="${canonical}"></head>`));
     }
-    // Old HTML stays readable even without JavaScript, with navigation to root.
-    // Old PDFs and other download addresses are exact byte-for-byte aliases.
-    for(const prefix of ['', 'en/']) {
-      const target=path.join(destination,prefix,relative);
-      fs.mkdirSync(path.dirname(target),{recursive:true});
-      fs.writeFileSync(target,bytes);
+    const target=path.join(destination,relative);
+    fs.mkdirSync(path.dirname(target),{recursive:true});
+    fs.writeFileSync(target,bytes);
+    // Legacy HTML retains a no-JS link; query strings and fragments survive JS redirects.
+    // Other old /en/ requests use the small custom 404 instead of duplicated binaries.
+    if(relative.endsWith('.html')) {
+      const legacy=path.join(destination,'en',relative);
+      fs.mkdirSync(path.dirname(legacy),{recursive:true});
+      fs.writeFileSync(legacy,legacyRedirectPage(relative));
     }
   }
+  fs.writeFileSync(path.join(destination,'404.html'),notFoundPage());
   fs.writeFileSync(path.join(destination,'.nojekyll'),'');
-  return {files:files.length,compatibilityPrefix:'/en/',canonicalBase:'/'};
+  return {files:files.length,compatibilityPrefix:'/en/',legacyMode:'html redirects and 404 fallback',canonicalBase:'/'};
 }
 
 if(process.argv[1] && path.resolve(process.argv[1])===fileURLToPath(import.meta.url))
