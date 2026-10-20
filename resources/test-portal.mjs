@@ -27,10 +27,11 @@ import {addedCourseFiles} from './test-course-notes.mjs';
 import {legacyCourseSources} from './test-course-note-layout.mjs';
 import {addedLinearFiles,priorLinearSources} from './test-linear-notes.mjs';
 import {addedExerciseFiles} from './test-calculus-exercises.mjs';
+import {addedLinearExerciseFiles} from './test-linear-exercises.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
-const archivedCourseSources={...legacyCourseSources,...priorLinearSources},newNoteFiles=new Set([...addedCourseFiles,...addedLinearFiles,...addedExerciseFiles]);
+const archivedCourseSources={...legacyCourseSources,...priorLinearSources},newNoteFiles=new Set([...addedCourseFiles,...addedLinearFiles,...addedExerciseFiles,...addedLinearExerciseFiles]);
 const json = file => JSON.parse(read(file));
 const sha = value => createHash('sha256').update(value).digest('hex');
 const bytes = file => fs.statSync(path.join(root, file)).size;

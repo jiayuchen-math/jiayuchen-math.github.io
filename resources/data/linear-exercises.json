@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "week": 1,
+      "label": "EM",
+      "source": "Assignment_Equations_Matrices(2).pdf",
+      "path": "notes/mathematical-notes/linear-algebra/LAexercises1.pdf",
+      "sha256": "493528d95632e317485e12839d097ca6ef2f0fff3aad4ea51a1104798c27749f",
+      "alreadyPublished": true
+    },
+    {
+      "week": 2,
+      "label": "VS",
+      "source": "Assignment_Vector Spaces.pdf",
+      "path": "notes/mathematical-notes/linear-algebra/LAexercises2.pdf",
+      "sha256": "070e227edc5f049b4ee7d9679fe5e6ee881cb8b4d147169603004dea27a1b2ec",
+      "alreadyPublished": true
+    },
+    {
+      "week": 3,
+      "label": "LT",
+      "source": "Assignment_Linear Transformation.pdf",
+      "path": "notes/mathematical-notes/linear-algebra/LAexercises3.pdf",
+      "sha256": "da51adb245efbd6159758a8f99f9a829e0195a0592ff89b96836217ac51fc0b7",
+      "alreadyPublished": false
+    },
+    {
+      "week": 4,
+      "label": "LTDS",
+      "source": "Assignment_Linear Transformation_Dual Space.pdf",
+      "path": "notes/mathematical-notes/linear-algebra/LAexercises4.pdf",
+      "sha256": "7bd067ca99814011531b9687c887734150547369fe5baf04e0fa536309c119b4",
+      "alreadyPublished": false
+    },
+    {
+      "week": 5,
+      "label": "D",
+      "source": "Assignment_Determinant.pdf",
+      "path": "notes/mathematical-notes/linear-algebra/LAexercises5.pdf",
+      "sha256": "807ccf1edb1f10bfa028f27166fd50a302c292309554a2de57fa4e379c44027f",
+      "alreadyPublished": false
+    }
+  ]
+}
