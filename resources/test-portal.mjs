@@ -25,9 +25,11 @@ import {loadAdviceReadings} from './advice-readings.mjs';
 import {personalNotesPage} from './personal-notes.mjs';
 import {addedCourseFiles} from './test-course-notes.mjs';
 import {legacyCourseSources} from './test-course-note-layout.mjs';
+import {addedLinearFiles,priorLinearSources} from './test-linear-notes.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
+const archivedCourseSources={...legacyCourseSources,...priorLinearSources},newNoteFiles=new Set([...addedCourseFiles,...addedLinearFiles]);
 const json = file => JSON.parse(read(file));
 const sha = value => createHash('sha256').update(value).digest('hex');
 const bytes = file => fs.statSync(path.join(root, file)).size;
@@ -90,7 +92,7 @@ function walk(dir = '') {
     return e.isDirectory() ? walk(file) : e.isFile() ? [file] : [];
   });
 }
-function fingerprint(files, value = file => protectedBytes(fs.readFileSync(path.join(root, legacyCourseSources[file]||file)),file)) {
+function fingerprint(files, value = file => protectedBytes(fs.readFileSync(path.join(root, archivedCourseSources[file]||file)),file)) {
   return {files:files.length, sha256:sha([...files].sort().map(file => file+'\0'+sha(value(file))).join('\n'))};
 }
 function articleBody(html) {
@@ -111,8 +113,8 @@ function protectedSnapshot() {
   const entrances = ['notes/index.html', 'notes/reading-notes/library.html', 'notes/reading-notes/reading-notes.html',
     'notes/mathematical-notes/page.html', 'notes/mathematical-notes/weekly.html'];
   const groups = {
-    notes:files.filter(f => f.startsWith('notes/') && !f.startsWith('notes/reading-notes/library/') && !entrances.includes(f) && !addedCourseFiles.has(f) && /\.(md|html|tex|pdf|png|jpe?g|gif|svg|webp)$/i.test(f)),
-    sourceMedia:files.filter(f => !addedCourseFiles.has(f) && /\.(pdf|tex|png|jpe?g|gif|svg|webp)$/i.test(f)),
+    notes:files.filter(f => f.startsWith('notes/') && !f.startsWith('notes/reading-notes/library/') && !entrances.includes(f) && !newNoteFiles.has(f) && /\.(md|html|tex|pdf|png|jpe?g|gif|svg|webp)$/i.test(f)),
+    sourceMedia:files.filter(f => !newNoteFiles.has(f) && /\.(pdf|tex|png|jpe?g|gif|svg|webp)$/i.test(f)),
     encyclopedia:files.filter(f => f.startsWith('resources/content/encyclopedia/') && f.endsWith('.md')),
     terminology:files.filter(f => /^resources\/data\/terminology-.*\.json$/.test(f)),
     businessData:businessFiles,

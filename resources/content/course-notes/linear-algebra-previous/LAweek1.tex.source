@@ -1,0 +1,368 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,microtype,setspace}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\setstretch{1.50}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}\newtheorem*{remark}{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\nul}{\operatorname{Nul}}
+\newcommand{\rank}{\operatorname{rank}}
+\title{Honours Linear Algebra\\\large Week 1 Notes}
+\author{Jiayu Chen}
+\date{}
+\begin{document}
+\maketitle
+\begin{center}\small Systems of Linear Equations, Matrices, Elimination, LU Decomposition, and Vector Spaces\end{center}
+
+\section{Systems of Linear Equations}
+A linear equation in $n$ unknowns has the form
+\[
+a_1x_1+\cdots+a_nx_n=b.
+\]
+A system of $m$ such equations can be written as $AX=b$, where $A$ is the coefficient matrix, $X=(x_1,\ldots,x_n)^T$, and $b$ is the right-hand side vector.
+
+\subsection{A motivating example}
+Consider
+\[
+\begin{cases}3x+2y+z=39,\\2x+3y+z=34,\\x+2y+3z=26.\end{cases}
+\]
+Eliminate the first variable from the second and third equations:
+\[
+\begin{aligned}
+E_2&\leftarrow 3E_2-2E_1,\\
+E_3&\leftarrow 3E_3-E_1.
+\end{aligned}
+\]
+This gives $5y+z=24$ and $4y+8z=39$. Multiplying the second of these by $5$ and subtracting $4$ times the first gives $36z=99$. Back substitution then yields
+\[
+z=\frac{11}{4},\qquad y=\frac{17}{4},\qquad x=\frac{17}{4}.
+\]
+
+\newpage
+\section{Matrices and Augmented Matrices}
+\begin{definition}
+An $m\times n$ matrix is a rectangular array with $m$ rows and $n$ columns. The $(i,j)$-entry is denoted $a_{ij}$. We write $A=(a_{ij})$.
+\end{definition}
+The coefficient and augmented matrices of a system are respectively
+\[
+A=(a_{ij})_{m\times n},\qquad [A\mid b]=\begin{bmatrix}A&b\end{bmatrix}.
+\]
+Each row of $[A\mid b]$ records one equation. This lets us perform elimination by changing entries rather than repeatedly rewriting variables and equal signs.
+
+\subsection{Basic terminology}
+A $1\times n$ matrix is a row vector and an $m\times1$ matrix is a column vector. A square matrix has the same number of rows and columns. The identity matrix $I_n$ has ones on the diagonal and zeros elsewhere. The transpose $A^T$ is obtained by exchanging rows and columns. Upper and lower triangular matrices have zero entries below or above the diagonal, respectively; a diagonal matrix is both.
+
+For matrices of the same size, addition is entrywise:
+\[
+(A+B)_{ij}=a_{ij}+b_{ij}.
+\]
+Scalar multiplication is also entrywise: $(cA)_{ij}=ca_{ij}$. These operations satisfy associativity, commutativity of addition, and the existence of a zero matrix.
+
+\newpage
+\section{Elementary Row Operations}
+The three elementary row operations are:
+\begin{enumerate}[label=(\roman*)]
+\item interchange two rows;
+\item multiply a row by a nonzero scalar;
+\item replace a row by itself plus a scalar multiple of another row.
+\end{enumerate}
+Each operation is reversible. Therefore it preserves the solution set of a linear system. For example, replacing $R_i$ by $R_i+cR_j$ can be undone by replacing $R_i$ by $R_i-cR_j$.
+
+\begin{theorem}[Equivalence under row operations]
+Elementary row operations on an augmented matrix produce an equivalent system: the original and new systems have exactly the same solutions.
+\end{theorem}
+\begin{proof}
+Row interchange only changes the order of equations. Scaling by a nonzero number replaces an equation by an equivalent one. Replacing one row by itself plus a multiple of another is reversible, so a solution of one system is a solution of the other.
+\end{proof}
+
+\newpage
+\section{Gaussian Elimination}
+Gaussian elimination uses elementary row operations to reduce an augmented matrix to a simpler form. A matrix is in row echelon form if:
+\begin{enumerate}
+\item all zero rows are at the bottom;
+\item each pivot of a nonzero row is strictly to the right of the pivot above it;
+\item every entry below a pivot is zero.
+\end{enumerate}
+In reduced row echelon form, each pivot is $1$ and is the only nonzero entry in its column.
+
+\subsection{Complete worked example}
+For the motivating system, the augmented matrix is
+\[
+\left[\begin{array}{ccc|c}3&2&1&39\\2&3&1&34\\1&2&3&26\end{array}\right].
+\]
+The elimination sequence is
+\[
+\begin{bmatrix}3&2&1&39\\2&3&1&34\\1&2&3&26\end{bmatrix}
+\xrightarrow{\,R_2\leftarrow3R_2-2R_1,\;R_3\leftarrow3R_3-R_1\,}
+\begin{bmatrix}3&2&1&39\\0&5&1&24\\0&4&8&39\end{bmatrix}
+\xrightarrow{\,R_3\leftarrow5R_3-4R_2\,}
+\begin{bmatrix}3&2&1&39\\0&5&1&24\\0&0&36&99\end{bmatrix}.
+\]
+Back substitution gives $z=11/4$, $y=17/4$, and $x=17/4$. The pivots show that every variable is determined, so the solution is unique.
+
+\subsection{Reading solutions from echelon form}
+\[
+\left[\begin{array}{ccc|c}1&0&2&3\\0&1&-1&4\\0&0&0&0\end{array}\right]
+\]
+represents $x_1+2x_3=3$ and $x_2-x_3=4$. The variable $x_3$ is free. Setting $x_3=t$ gives
+\[
+X=\begin{bmatrix}3\\4\\0\end{bmatrix}+t\begin{bmatrix}-2\\1\\1\end{bmatrix}.
+\]
+By contrast, a row $[0\;0\;0\mid c]$ with $c\ne0$ represents $0=c$ and proves that the system is inconsistent.
+
+\newpage
+\section{Inverse Matrices}
+\begin{definition}
+An $m\times m$ matrix $A$ is invertible if there is a matrix $A^{-1}$ such that $AA^{-1}=A^{-1}A=I_m$.
+\end{definition}
+The inverse, when it exists, is unique. To compute it, row reduce
+\[
+[A\mid I_m]\longrightarrow[I_m\mid A^{-1}].
+\]
+If the left block cannot be reduced to $I_m$, then $A$ is not invertible.
+
+\begin{proposition}
+If $A$ and $B$ are invertible, then $AB$ is invertible and $(AB)^{-1}=B^{-1}A^{-1}$.
+\end{proposition}
+\begin{proof}
+\[
+(B^{-1}A^{-1})(AB)=B^{-1}(A^{-1}A)B=I,
+\]
+and similarly $(AB)(B^{-1}A^{-1})=I$.
+\end{proof}
+
+Also, $(A^T)^{-1}=(A^{-1})^T$. A triangular matrix with nonzero diagonal entries is invertible; elimination never encounters a zero pivot, and the inverse has the same triangular shape.
+
+\newpage
+\section{LU Decomposition}
+Suppose $A$ can be reduced to an upper triangular matrix $U$ without row interchanges. The elimination matrices satisfy
+\[
+E_k\cdots E_2E_1A=U.
+\]
+Therefore
+\[
+A=E_1^{-1}E_2^{-1}\cdots E_k^{-1}U=LU,
+\]
+where $L$ is lower triangular with ones on its diagonal.
+
+\subsection{Example}
+For
+\[
+A=\begin{bmatrix}3&2&1\\2&3&1\\1&2&3\end{bmatrix},
+\]
+the multipliers are $2/3$, $1/3$, and $4/5$. Hence
+\[
+L=\begin{bmatrix}1&0&0\\2/3&1&0\\1/3&4/5&1\end{bmatrix},\qquad
+U=\begin{bmatrix}3&2&1\\0&5/3&1/3\\0&0&12/5\end{bmatrix},
+\]
+and $A=LU$.
+
+To solve $Ax=b$, first solve $Ld=b$ by forward substitution, then solve $Ux=d$ by back substitution. This is usually preferable to explicitly computing $A^{-1}$: both approaches have cubic preprocessing cost, but LU is cheaper and generally more stable for repeated right-hand sides.
+
+\newpage
+\section{Vector Spaces and Null Spaces}
+For a homogeneous system $AX=0$, define
+\[
+\nul(A)=\{X\in\R^n:AX=0\}.
+\]
+\begin{theorem}
+$\nul(A)$ is a subspace of $\R^n$.
+\end{theorem}
+\begin{proof}
+The zero vector belongs to $\nul(A)$. If $u,v\in\nul(A)$ and $a\in\R$, then
+\[
+A(au+v)=aAu+Av=0,
+\]
+so $au+v\in\nul(A)$. Thus the subspace test applies.
+\end{proof}
+
+More generally, the span of a set $S$ is the set of all finite linear combinations of vectors in $S$. It is a subspace, and if $U$ is already a subspace then $\operatorname{Span}(U)=U$.
+
+\newpage
+\section{Classifying Solutions}
+For a system with $n$ variables, the pivot count is at most the number of rows and at most $n$. A pivot in the augmented column gives a row $[0\ \cdots\ 0\mid c]$ with $c\ne0$, which means $0=c$ and proves inconsistency. Otherwise, non-pivot variables are free.
+
+\begin{theorem}[Three possibilities]
+Every linear system has exactly one of: no solution, one solution, or infinitely many solutions.
+\end{theorem}
+\begin{proof}
+Row operations preserve the solution set. A contradiction row gives no solution. If there is no contradiction and every variable is a pivot variable, back substitution determines a unique solution. If there is a free variable, assigning different values to it produces infinitely many solutions.
+\end{proof}
+
+\subsection{A two-parameter family}
+Suppose reduction gives
+\[
+\left[\begin{array}{cccc|c}1&-1&4&5&4\\0&0&0&0&0\\0&1&-2&1&3\end{array}\right].
+\]
+Set $x_3=s$ and $x_4=t$. Then $x_1=4-s-5t$ and $x_2=3+2s-t$, so
+\[
+X=\begin{bmatrix}4\\3\\0\\0\end{bmatrix}+s\begin{bmatrix}-4\\2\\1\\0\end{bmatrix}+t\begin{bmatrix}-5\\-1\\0\\1\end{bmatrix}.
+\]
+The two free variables describe two independent directions in the solution set.
+
+\subsection{Homogeneous systems}
+The homogeneous system $AX=0$ is always consistent because $X=0$ is a solution. A nonzero solution is called nontrivial.
+\begin{theorem}
+An $m\times n$ homogeneous system has a nontrivial solution whenever $n>m$.
+\end{theorem}
+\begin{proof}
+There are at most $m$ pivots, so at least $n-m>0$ variables are free. Assigning a nonzero value to one free variable gives a nontrivial solution.
+\end{proof}
+
+\newpage
+\section{A Second Elimination Example}
+Solve
+\[
+\begin{cases}x+2y+3z=6,\\2x+3y+z=7,\\3x+5y+4z=13.\end{cases}
+\]
+The augmented matrix becomes
+\[
+\left[\begin{array}{ccc|c}1&2&3&6\\2&3&1&7\\3&5&4&13\end{array}\right]
+\xrightarrow{R_2-2R_1,\ R_3-3R_1}
+\left[\begin{array}{ccc|c}1&2&3&6\\0&-1&-5&-5\\0&-1&-5&-5\end{array}\right]
+\xrightarrow{R_3-R_2}
+\left[\begin{array}{ccc|c}1&2&3&6\\0&-1&-5&-5\\0&0&0&0\end{array}\right].
+\]
+Thus $y+5z=5$. With $z=t$, $y=5-5t$ and $x=5+7t$, so
+\[
+X=\begin{bmatrix}5\\5\\0\end{bmatrix}+t\begin{bmatrix}7\\-5\\1\end{bmatrix}.
+\]
+The zero row is not an error: it records a dependent equation.
+
+\subsection{An inconsistent system}
+The reduced matrix
+\[
+\left[\begin{array}{ccc|c}1&0&2&3\\0&1&-1&4\\0&0&0&1\end{array}\right]
+\]
+contains $0=1$, so no choice of variables can solve the system.
+
+\newpage
+\section{Matrix Algebra and Geometry}
+For matrices of the same size, addition and scalar multiplication are entrywise. If $A=[a_1\ \cdots\ a_n]$ and $X=(x_1,\ldots,x_n)^T$, then
+\[
+AX=x_1a_1+\cdots+x_na_n.
+\]
+Therefore $AX=b$ is solvable precisely when $b$ lies in the span of the columns of $A$.
+
+For compatible matrices,
+\[
+(AB)_{ij}=\sum_k a_{ik}b_{kj}.
+\]
+Matrix multiplication is associative but generally not commutative: $AB$ and $BA$ may both exist and be different.
+
+\subsection{Elementary matrices}
+Each elementary row operation is left multiplication by an elementary matrix $E$. A sequence of operations has the form $E_k\cdots E_1A$. Since each $E_i$ is invertible, elimination is multiplication by an invertible matrix and does not change the essential solution information.
+
+\newpage
+\section{Inverse Matrices in Practice}
+To compute $A^{-1}$, row reduce
+\[
+[A\mid I]\longrightarrow[I\mid A^{-1}].
+\]
+For $A=\begin{bmatrix}2&1\\1&1\end{bmatrix}$,
+\[
+\left[\begin{array}{cc|cc}2&1&1&0\\1&1&0&1\end{array}\right]
+\sim\left[\begin{array}{cc|cc}1&0&1&-1\\0&1&-1&2\end{array}\right],
+\]
+so $A^{-1}=\begin{bmatrix}1&-1\\-1&2\end{bmatrix}$.
+
+\begin{proposition}
+If $A$ is invertible, then $AX=b$ has the unique solution $X=A^{-1}b$ for every $b$.
+\end{proposition}
+\begin{proof}
+Multiplication by $A^{-1}$ gives $X=A^{-1}b$. Conversely, $A(A^{-1}b)=b$. If two solutions existed, their difference would be a nonzero vector in $\nul(A)$, impossible for an invertible matrix.
+\end{proof}
+
+If $A$ and $B$ are invertible, then $(AB)^{-1}=B^{-1}A^{-1}$, and $(A^T)^{-1}=(A^{-1})^T$. A triangular matrix with nonzero diagonal entries is invertible because elimination produces a pivot in every column.
+
+\newpage
+\section{LU Decomposition}
+Without row interchanges, elimination gives $E_k\cdots E_1A=U$. Therefore
+\[
+A=E_1^{-1}\cdots E_k^{-1}U=LU,
+\]
+where $L$ is lower triangular.
+
+For
+\[
+A=\begin{bmatrix}3&2&1\\2&3&1\\1&2&3\end{bmatrix},
+\]
+the elimination multipliers are $2/3$, $1/3$, and $4/5$. Hence
+\[
+L=\begin{bmatrix}1&0&0\\2/3&1&0\\1/3&4/5&1\end{bmatrix},\quad
+U=\begin{bmatrix}3&2&1\\0&5/3&1/3\\0&0&12/5\end{bmatrix}.
+\]
+Direct multiplication confirms $LU=A$.
+
+To solve $Ax=b$, solve $Ld=b$ by forward substitution, then $Ux=d$ by back substitution. If row exchanges are required, the factorization becomes $PA=LU$.
+
+\subsection{A substitution example}
+For $b=(1,2,3)^T$, solve
+\[
+d_1=1,\qquad \frac23d_1+d_2=2,\qquad \frac13d_1+\frac45d_2+d_3=3.
+\]
+This gives $d=(1,4/3,8/3)^T$. The remaining triangular system $Ux=d$ is then solved from the last row upward.
+
+\newpage
+\section{Efficiency and Numerical Practice}
+Both computing an inverse and computing an LU factorization require order $n^3$ arithmetic operations. Once $A=LU$ is known, each new system with the same $A$ requires only order $n^2$ operations. Thus LU is especially useful for many right-hand sides.
+
+Explicit inversion can also introduce unnecessary rounding error. Solving $Ld=b$ and $Ux=d$ uses the triangular structure directly and is normally the preferred numerical method. Pivoting avoids unstable divisions by tiny pivots. These observations explain why the theoretical inverse is not always the best computational tool.
+
+\newpage
+\section{Null Spaces and Solution Sets}
+\[
+\nul(A)=\{X\in\R^n:AX=0\}
+\]
+is the null space of $A$.
+\begin{theorem}
+$\nul(A)$ is a subspace of $\R^n$.
+\end{theorem}
+\begin{proof}
+The zero vector belongs to $\nul(A)$. If $u,v\in\nul(A)$ and $a\in\R$, then
+\[
+A(au+v)=aAu+Av=0,
+\]
+so $au+v\in\nul(A)$.
+\end{proof}
+
+If $AX=b$ is consistent and $X_0$ is one solution, then
+\[
+\{X:AX=b\}=X_0+\nul(A).
+\]
+Indeed, $AX=AX_0$ exactly when $A(X-X_0)=0$. Thus the null space describes all directions in which one may move without changing $AX$.
+
+\newpage
+\section{Span and Subspaces}
+For $S=\{v_1,\ldots,v_r\}$,
+\[
+\operatorname{Span}(S)=\{c_1v_1+\cdots+c_rv_r:c_i\in\R\}.
+\]
+It is a subspace: the zero combination gives zero, and linear combinations of linear combinations are still linear combinations of the same vectors.
+
+The span of one nonzero vector is a line through the origin. The span of two independent vectors in $\R^3$ is a plane through the origin. The column space of $A$ is the span of its columns, and $AX=b$ is solvable exactly when $b$ belongs to this column space.
+
+\subsection{A structural observation}
+If each $u_i$ is a linear combination of $v_1,\ldots,v_r$, then every linear combination of the $u_i$ is also a linear combination of the $v_j$. This simple observation is the reason that $\operatorname{Span}(S)$ is the smallest subspace containing $S$.
+
+\section*{Problem-solving checklist}
+\begin{enumerate}
+\item Form the augmented matrix.
+\item Apply reversible row operations.
+\item Identify pivots, free variables, and contradiction rows.
+\item Parametrize all solutions.
+\item For homogeneous systems, interpret the free directions as null-space vectors.
+\item For square matrices, use $[A\mid I]$ for inverses or elimination multipliers for LU.
+\end{enumerate}
+
+\section*{Summary}
+Systems, matrices, Gaussian elimination, inverses, LU decomposition, null spaces, and spans are connected parts of one theory. Row reduction is the central algorithm: it solves equations, detects dependence, constructs inverses, produces LU factors, and reveals the geometry of solution sets.
+The first week develops one central workflow: represent a system by an augmented matrix, apply reversible row operations, read the solution from echelon form, and then interpret the same operations through inverses, LU decomposition, and null spaces. These viewpoints are different descriptions of the same underlying linear structure.
+\end{document}
+

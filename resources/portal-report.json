@@ -235,15 +235,79 @@
     ],
     [
       "notes/mathematical-notes/linear-algebra/LAweek1.html",
-      "44bd7f8300404b102c54d898bb1587fbc08e2721e0f345daf42b01053b64e409"
+      "d82325c24d75bc5c30b667c7da3a98d2fb8e32b8986905929dba132e6b8b6029"
     ],
     [
       "notes/mathematical-notes/linear-algebra/LAweek1.pdf",
-      "6b19d56e19cf82a629eed3b7359e26590069f3236077d5980b397f25663a8057"
+      "f232528839d2df90c306956a437a5654c89dcb2917e0b1b360d2293b41191bad"
     ],
     [
       "notes/mathematical-notes/linear-algebra/LAweek1.tex",
-      "65848766363d58794c53c285328301f532651ffc0cd8f0c2ccf22bea0f753c2e"
+      "35a436f8715fa46f78c423fced5fd9ba118194169982eccd46ec1351b78c7d7e"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/LAweek2.html",
+      "3a0eedae7db012ed998b19d9ad4bbd031e4aac270c090eccf3b97996631dfbf1"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/LAweek2.pdf",
+      "1c1df5f0faab89d10ca9f4830c8c43a817f2ea4b297bb76febb756266cb89d2e"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/LAweek2.tex",
+      "30755ac11d595ea0f887b990f40eb802ee1f4f42e0f5a34a7955f6fca2f7f8b5"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/LAweek3.html",
+      "a7fd93645a12cd13cf23baa556a5e53b1077174ba8feb3d44b48e70f355bc04e"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/LAweek3.pdf",
+      "11bf7cd56707427bbbf2523e9491e8cfda83be7341c6cbcde10c067e32eea618"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/LAweek3.tex",
+      "00655cd97e5bb678934d200f4e7d3867a1f9fa3fc608b5cf3282d2b15bc2e597"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/LAweek4.html",
+      "20b20f376ad03d7e5c249515f1c370a638e072d1c995c30324687be0f05d70c7"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/LAweek4.pdf",
+      "2f6dd31dcbc6b00a51fe5f9c12005093a88c84a50f9757fecb7b1556c20f6c37"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/LAweek4.tex",
+      "9d0971bb39d7bbd3e4c9706475b37968a886588773be1136a9b165b9e597b232"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/LAweek5.html",
+      "c3559355850f8014a8a64cc4a7431ffe95ad4b8425e09f49e86ea1acd6e08785"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/LAweek5.pdf",
+      "c7ec51eb47575816a5ac3165861f1812a480f9efe7a71b89d01582e990aa32fc"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/LAweek5.tex",
+      "e60453a2c023aed35875bdfcb5eac8f80e414a63eca1026da4986276279fcf06"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/images/subspace-annotation.png",
+      "35d18c501122636cc305f42ff73a7e98591ae790146b76321ee09acb19d18c92"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/images/w2-basis.png",
+      "6d597ae7f742b76819bf5590813a0d806f3ff7b9c6ad0f8bca4935cb5065b850"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/images/w3-composition.png",
+      "e0e8e1873093807d1446466f70df7f3f7dd5c3bca6adf50105b1a9d47569aa88"
+    ],
+    [
+      "notes/mathematical-notes/linear-algebra/images/w5-volume-additivity.png",
+      "43ad7047ec9ed236a96826310c973be16a8bfa4758e4420dd71eb445bf6a0d52"
     ],
     [
       "notes/reading-notes/library-pdfs/algebra/algebraic-geometry/the-rising-sea-vakil-2024.pdf",
@@ -886,7 +950,7 @@
       "firstPageBytes": 49053
     }
   ],
-  "indexBytes": 1516488,
+  "indexBytes": 1518064,
   "searchCollections": [
     {
       "id": "library",
@@ -914,7 +978,7 @@
     },
     {
       "id": "notes",
-      "records": 6
+      "records": 10
     },
     {
       "id": "guides",

@@ -1,282 +1,207 @@
-# Honours Linear Algebra — Week 1 Notes
+---
+title: "Honours Linear Algebra - Week 1"
+subtitle: "7 and 9 September 2026"
+lang: en
+---
 
-## 1. Systems of linear equations
+## 7 Sept. / Linear equations
 
-A linear system can be written as $AX=b$. The matrix $A$ is the coefficient matrix, $X$ is the vector of unknowns, and $b$ is the right-hand side.
-
-For example,
-
+$A=(a_{ij})\in M_{m\times n}(\mathbb R)$: $m$ rows, $n$ columns. Column vectors throughout.
 $$
-\begin{cases}
-3x+2y+z=39,\\
-2x+3y+z=34,\\
-x+2y+3z=26
-\end{cases}
+\sum_{j=1}^n a_{ij}x_j=b_i\quad\longleftrightarrow\quad Ax=b,
+\qquad[A\mid b]\in M_{m\times(n+1)}.
 $$
-
-has augmented matrix
-
-$$
-\left[\begin{array}{ccc|c}3&2&1&39\\2&3&1&34\\1&2&3&26\end{array}\right].
-$$
-
-Elimination gives
-
-$$
-\begin{bmatrix}3&2&1&39\\2&3&1&34\\1&2&3&26\end{bmatrix}
-\longrightarrow
-\begin{bmatrix}3&2&1&39\\0&5&1&24\\0&0&36&99\end{bmatrix},
-$$
-
-so
-
-$$z=\frac{11}{4},\qquad y=\frac{17}{4},\qquad x=\frac{17}{4}.
-$$
-
-## 2. Matrices
-
-An $m\times n$ matrix is a rectangular array with $m$ rows and $n$ columns. The $(i,j)$-entry is $a_{ij}$. The identity matrix is $I_n$, and the transpose is $A^T$.
-
-Matrix addition and scalar multiplication are entrywise. A square matrix is triangular if it is upper or lower triangular, and diagonal if all off-diagonal entries vanish.
-
-## 3. Elementary row operations
-
-The three operations are:
-
-1. interchange two rows;
-2. multiply a row by a nonzero scalar;
-3. add a multiple of one row to another.
-
-All are reversible, so they preserve the solution set. Gaussian elimination uses them to produce row echelon form. Reduced row echelon form additionally has pivots equal to $1$ and zeroes elsewhere in each pivot column.
-
-### Reading a solution
-
-$$
-\left[\begin{array}{ccc|c}1&0&2&3\\0&1&-1&4\\0&0&0&0\end{array}\right]
-$$
-
-gives $x_3=t$, $x_1=3-2t$, $x_2=4+t$. Thus
-
-$$
-X=\begin{bmatrix}3\\4\\0\end{bmatrix}+t\begin{bmatrix}-2\\1\\1\end{bmatrix}.
-$$
-
-A row $[0\ 0\ 0\mid c]$ with $c\ne0$ means $0=c$, so the system is inconsistent.
-
-## 4. Inverse matrices
-
-$A$ is invertible if $AA^{-1}=A^{-1}A=I$. Compute the inverse by
-
-$$[A\mid I]\longrightarrow[I\mid A^{-1}].$$
-
-If $A$ and $B$ are invertible, then $(AB)^{-1}=B^{-1}A^{-1}$. Also,
-$(A^T)^{-1}=(A^{-1})^T$. A triangular matrix with nonzero diagonal entries is invertible and its inverse has the same triangular form.
-
-## 5. LU decomposition
-
-If elimination reduces $A$ to an upper triangular matrix $U$ without row swaps, then
-
-$$A=LU,$$
-
-where $L$ is lower triangular. For
-
-$$A=\begin{bmatrix}3&2&1\\2&3&1\\1&2&3\end{bmatrix},$$
-
-one obtains
-
-$$
-L=\begin{bmatrix}1&0&0\\2/3&1&0\\1/3&4/5&1\end{bmatrix},\qquad
-U=\begin{bmatrix}3&2&1\\0&5/3&1/3\\0&0&12/5\end{bmatrix}.
-$$
-
-To solve $Ax=b$, solve $Ld=b$ first and then $Ux=d$. This is forward substitution followed by back substitution.
-
-## 6. Vector spaces and null spaces
-
-$$
-\nul(A)=\{X\in\mathbb R^n:AX=0\}
-$$
-
-is the null space of $A$.
-
-It is a subspace: if $u,v\in\nul(A)$ and $a\in\mathbb R$, then
-
-$$A(au+v)=aAu+Av=0.$$
-
-The span of a set is the collection of all finite linear combinations of its vectors; the span is always a subspace.
-
-## Summary
-
-Systems, matrices, Gaussian elimination, inverses, LU decomposition, and null spaces are different ways of describing the same linear structure.
-
-## 7. Classifying the solutions of a system
-
-After row reduction, every linear system falls into one of three cases.
-
-1. It has no solution, because a row of the form
-   $$[0\ \cdots\ 0\mid c],\qquad c\ne 0,$$
-   represents the contradiction $0=c$.
-2. It has exactly one solution, when every variable is a pivot variable.
-3. It has infinitely many solutions, when the system is consistent and at least one free variable remains.
-
-This classification is more useful than simply obtaining one numerical answer: it tells us the shape of the whole solution set.
-
-### Example: two free variables
-
-Consider
-
+**Notation.**
 $$
 \begin{aligned}
-x_1+2x_3-x_4&=3,\\
-x_2-x_3+2x_4&=1.
+(A^T)_{ij}&=a_{ji},\quad A^T\in M_{n\times m},& I_n&=(\delta_{ij}),\\
+(A+B)_{ij}&=a_{ij}+b_{ij},&(cA)_{ij}&=ca_{ij}.
 \end{aligned}
 $$
+Upper triangular: $a_{ij}=0$ for $i>j$; lower: $i<j$; diagonal: $i\ne j$.
 
-The variables $x_3$ and $x_4$ are free. Set $x_3=s$ and $x_4=t$. Then
-
+**Row operations.**
 $$
-X=\begin{bmatrix}3-2s+t\\1+s-2t\\s\\t\end{bmatrix}
-=\begin{bmatrix}3\\1\\0\\0\end{bmatrix}
-s\begin{bmatrix}-2\\1\\1\\0\end{bmatrix}
-t\begin{bmatrix}1\\-2\\0\\1\end{bmatrix}.
+R_i\leftrightarrow R_j,\qquad R_i\leftarrow cR_i\ (c\ne0),\qquad
+R_i\leftarrow R_i+cR_j\ (i\ne j).
 $$
+All reversible $\Rightarrow$ same solutions. Operate on the right-hand side too.
 
-Thus the solution set is an affine plane in $\mathbb R^4$: one particular solution plus the span of two direction vectors.
+**REF.** Zero rows last; leading $1$'s move right down the rows. RREF: pivot columns zero elsewhere. This lecture takes pivots to be $1$.
 
-### Example: detecting inconsistency
-
-Suppose elimination gives
-
+**Solving.** Eliminate $\to$ back substitute. For $n$ variables and $r$ coefficient pivots:
 $$
-\begin{bmatrix}1&2&-1&\mid&4\\0&1&3&\mid&2\\0&0&0&\mid&5\end{bmatrix}.
-$$
-
-The last row says $0=5$, so the system has no solution. No choice of free variables can repair this contradiction.
-
-## 8. Homogeneous systems and dependence
-
-A homogeneous system has the form $AX=0$. It is always consistent because $X=0$ is a solution. If there are more unknowns than equations, then at least one variable is free after elimination, so there is a nonzero solution.
-
-For example, a system with $m$ equations and $n>m$ unknowns has at most $m$ pivots. Therefore at least $n-m$ variables are free. This observation is the first appearance of a dimension count: the number of free variables measures how many independent directions occur in the null space.
-
-## 9. Matrices as transformations
-
-An $m\times n$ matrix defines a function
-
-$$
-T_A:\mathbb R^n\to\mathbb R^m,\qquad T_A(X)=AX.
+\begin{array}{c|c}
+[0\ \cdots\ 0\mid1]\text{ occurs}&\text{no solution}\\
+\text{consistent},\ r=n&\text{unique}\\
+\text{consistent},\ r<n&n-r\text{ free variables}
+\end{array}
 $$
 
-The columns of $A$ describe where the standard basis vectors are sent. If $A=[a_1\ \cdots\ a_n]$ and $X=(x_1,\ldots,x_n)^T$, then
-
-$$AX=x_1a_1+\cdots+x_na_n.$$
-
-Consequently, $AX=b$ is solvable exactly when $b$ lies in the span of the columns of $A$. Row reduction is therefore not merely a computational trick: it determines which vectors can be produced by the transformation.
-
-## 10. Elementary matrices
-
-Each elementary row operation can be represented by multiplication on the left by an elementary matrix $E$. For instance, swapping two rows of $A$ is the same as multiplying $A$ by a permutation matrix. A row replacement has the form
-
-$$E=I+cE_{ij},$$
-
-where $E_{ij}$ has a single $1$ in position $(i,j)$. Since every row operation is reversible, every elementary matrix is invertible. If
-
-$$E_k\cdots E_2E_1A=U,$$
-
-then the elimination process can be read as matrix multiplication. This point of view explains why row reduction interacts naturally with inverses and LU decomposition.
-
-## 11. Inverses in practice
-
-For a square matrix $A$, the equation $AX=b$ has the solution $X=A^{-1}b$ whenever $A$ is invertible. The augmented-matrix algorithm computes the inverse by performing the same row operations on $I$:
-
-$$[A\mid I]\longrightarrow[I\mid A^{-1}].$$
-
-For a $2\times2$ matrix,
-
+**Ex.** Nonzero rows of the echelon system:
 $$
-A=\begin{bmatrix}a&b\\c&d\end{bmatrix},\qquad
-A^{-1}=\frac1{ad-bc}\begin{bmatrix}d&-b\\-c&a\end{bmatrix},
+\begin{aligned}
+x_1-x_2+4x_3+5x_4+4x_5&=0,\\
+x_3+2x_4+6x_5&=1,\qquad x_5=3.
+\end{aligned}
 $$
-
-provided $ad-bc\ne0$. The determinant formula is a compact special case of the row-reduction procedure.
-
-### A short inverse example
-
-Let
-
-$$A=\begin{bmatrix}1&2\\3&7\end{bmatrix}.$$
-
-The determinant is $1$, so $A$ is invertible and
-
-$$A^{-1}=\begin{bmatrix}7&-2\\-3&1\end{bmatrix}.$$
-
-Indeed,
-
+$x_2=s$, $x_4=t$ $\Rightarrow x_3=-17-2t$, $x_1=56+s+3t$.
 $$
-\begin{bmatrix}7&-2\\-3&1\end{bmatrix}
-\begin{bmatrix}1&2\\3&7\end{bmatrix}
-=\begin{bmatrix}1&0\\0&1\end{bmatrix}.
+x=\begin{pmatrix}56\\0\\-17\\0\\3\end{pmatrix}
++s\begin{pmatrix}1\\1\\0\\0\\0\end{pmatrix}
++t\begin{pmatrix}3\\0\\-2\\1\\0\end{pmatrix},\qquad s,t\in\mathbb R.
 $$
+**Ex.** $3x_1-9x_2=4$, $-2x_1+6x_2=h$ $\Rightarrow 0=h+8/3$.
+Consistent iff $h=-8/3$; then $(x_1,x_2)=(4/3+3t,t)$.
 
-## 12. LU decomposition and repeated solves
-
-Gaussian elimination records its multipliers below the diagonal. For the matrix
-
-$$A=\begin{bmatrix}3&2&1\\2&3&1\\1&2&3\end{bmatrix},$$
-
-the factorization is
-
+**Theorem.** Homogeneous, $n>m$ $\Rightarrow$ nonzero solutions:
 $$
-A=LU,
-\quad L=\begin{bmatrix}1&0&0\\2/3&1&0\\1/3&4/5&1\end{bmatrix},
-\quad U=\begin{bmatrix}3&2&1\\0&5/3&1/3\\0&0&12/5\end{bmatrix}.
+x=0\text{ solves it},\qquad n-r\ge n-m>0.
 $$
+At least one free variable. Square RREF with $n$ pivots $=I_n$.
 
-To solve $Ax=b$, first solve $Ly=b$ by forward substitution and then solve $Ux=y$ by back substitution. The same factorization can be reused for many different right-hand sides $b$, which is why LU is preferable to recomputing an inverse repeatedly.
+\newpage
 
-### Substitution example
+## 9 Sept. (I) / Inverse and LU
 
-If
+$(AB)_{ij}=\sum_k a_{ik}b_{kj}$; $(m\times n)(n\times p)\to m\times p$.
 
+**Inverse.** $AA^{-1}=A^{-1}A=I$; square $A$ only.
 $$
-L=\begin{bmatrix}1&0&0\\2&1&0\\-1&3&1\end{bmatrix},\qquad
-b=\begin{bmatrix}2\\5\\1\end{bmatrix},
+A\text{ invertible}\iff Ax=b\text{ has exactly one solution for every }b.
 $$
+Row-reduce $[A\mid I]\to[Q\mid E]$: $Q=I\Rightarrow A^{-1}=E$; otherwise no inverse.
 
-then $Ly=b$ gives $y_1=2$, $2y_1+y_2=5$, and $-y_1+3y_2+y_3=1$. Hence $y=(2,1,2)^T$. The upper-triangular step is solved from the bottom row upward.
+Why: $E=E_k\cdots E_1$ (elementary matrices), $EA=I$.
+Each $E_i$ invertible $\Rightarrow A=E^{-1}\Rightarrow AE=I$ too.
+$$
+\begin{aligned}
+(AB)^{-1}&=B^{-1}A^{-1},&(A^T)^{-1}&=(A^{-1})^T,\\
+(B^{-1}A^{-1})(AB)&=I,&(A^{-1})^TA^T&=(AA^{-1})^T=I.
+\end{aligned}
+$$
+Other product orders similarly. Inverses reverse order.
 
-## 13. Null spaces and affine solution sets
+**Theorem.** Triangular + nonzero diagonal $\Rightarrow$ inverse triangular of the same type.
 
-The null space is
+Upper case: solve $Ax=e_j$ backwards. $i>j\Rightarrow x_i=0$; division only by $a_{ii}\ne0$. These $x$'s form $A^{-1}$.
 
-$$\operatorname{Nul}(A)=\{X:AX=0\}.$$
+**LU.** Elimination without row swaps:
+$$
+E_k\cdots E_1A=U
+\quad\Rightarrow\quad
+A=LU,\quad L=E_1^{-1}\cdots E_k^{-1}.
+$$
+$L$: unit lower triangular; elimination multipliers below the diagonal.
 
-It is a subspace: it contains $0$, and if $u,v$ are in the null space, then $A(\alpha u+\beta v)=0$ for all scalars $\alpha,\beta$.
+**Ex.** Opening matrix from *The Nine Chapters*:
+$$
+A=\begin{pmatrix}3&2&1\\2&3&1\\1&2&3\end{pmatrix},\qquad
+\begin{aligned}
+R_2&\leftarrow R_2-\tfrac23R_1,\\
+R_3&\leftarrow R_3-\tfrac13R_1,\\
+R_3&\leftarrow R_3-\tfrac45R_2.
+\end{aligned}
+$$
+$$
+A=\underbrace{\begin{pmatrix}1&0&0\\2/3&1&0\\1/3&4/5&1\end{pmatrix}}_L
+\underbrace{\begin{pmatrix}3&2&1\\0&5/3&1/3\\0&0&12/5\end{pmatrix}}_U.
+$$
+$Ax=b$: first $Ld=b$ (forwards), then $Ux=d$ (backwards).
+$$
+b=\begin{pmatrix}39\\34\\26\end{pmatrix}
+\Rightarrow d=\begin{pmatrix}39\\8\\33/5\end{pmatrix}
+\Rightarrow x=\begin{pmatrix}37/4\\17/4\\11/4\end{pmatrix}.
+$$
+With swaps: $PA=LU$, so $Ld=Pb$, $Ux=d$. Slides' $A=PLU$ uses the inverse permutation.
 
-If $AX=b$ is consistent and $X_0$ is one solution, then every solution has the form
+Factor once $O(n^3)$; each new $b$: $O(n^2)$. Reuse $L,U$ rather than form $A^{-1}$.
 
-$$X=X_0+Z,\qquad Z\in\operatorname{Nul}(A).$$
+\newpage
 
-Indeed, $AX=b$ is equivalent to $A(X-X_0)=0$. Thus the null space gives precisely the directions in which one may move from a particular solution while remaining inside the solution set.
+## 9 Sept. (II) / Fields; vector spaces
 
-## 14. Span, column space, and a working checklist
+**Def.1.1.** Field $K$: $(K,+)$, $(K\setminus\{0\},\cdot)$ abelian groups + distributivity; $0\ne1$.
 
-For vectors $v_1,\ldots,v_r$,
+Examples: $\mathbb Q,\mathbb R,\mathbb C$, $\mathbb Q(\sqrt2)$, $\mathbb R(t)$, $\mathbb F_p$ ($p$ prime).
+$\mathbb Z/6\mathbb Z$ fails: $2\cdot3=0$.
 
-$$\operatorname{Span}\{v_1,\ldots,v_r\}=\{c_1v_1+\cdots+c_rv_r\}.$$
+**Def.1.4.** Vector space over $K$: addition $V\times V\to V$, scalar multiplication $K\times V\to V$; for $u,v,w\in V$, $c,d\in K$,
+$$
+\begin{aligned}
+u+v&=v+u,&(u+v)+w&=u+(v+w),\\
+u+0&=u,&u+(-u)&=0,\\
+(cd)u&=c(du),&1u&=u,\\
+c(u+v)&=cu+cv,&(c+d)u&=cu+du.
+\end{aligned}
+$$
+$0\in V$ and negatives must exist. Scalars $\in K$; vectors $\in V$.
 
-The span is the smallest subspace containing the given vectors. The column space of $A$ is the span of its columns, so the equation $AX=b$ is solvable precisely when $b$ lies in that column space.
+**Prop.1.5--7.** Unique zero, unique negative; cancellation; $cu=0\iff c=0$ or $u=0$.
+$$
+\begin{aligned}
+0'&=0'+0=0,\\
+u',u''\text{ negatives of }u:\quad
+u'&=u'+(u+u'')=(u'+u)+u''=u'',\\
+0u=(0+0)u=0u+0u&\Rightarrow0u=0,\\
+c0=c(0+0)=c0+c0&\Rightarrow c0=0,\\
+cu=0,\ c\ne0&\Rightarrow u=c^{-1}(cu)=0.
+\end{aligned}
+$$
+Cancellation: add $-u$. Also $u+(-1)u=(1-1)u=0\Rightarrow(-1)u=-u$.
 
-When solving a new problem, the following checklist is reliable:
+**Examples.** $\{0\}$, $K^n$, $M_{m\times n}(K)$, $K[t]$. Over $\mathbb R$: $C^0(\mathbb R)$; $\{f:f''+f=0\}$, since
+$$
+(af+bg)''+(af+bg)=a(f''+f)+b(g''+g)=0.
+$$
+$\mathbb C$ over $\mathbb R$: yes. $\mathbb R$ over $\mathbb C$: no, $i\cdot1\notin\mathbb R$.
 
-1. Write the augmented matrix.
-2. Use reversible row operations to reach echelon form.
-3. Check for contradiction rows.
-4. Identify pivot and free variables.
-5. Parametrize the solution set.
-6. Interpret the answer using column space or null space.
+**Non-examples (usual operations).**
 
-## Final summary
+- $x,y\ge0$: multiplying $(1,0)$ by $-1$ leaves the set.
+- Invertible matrices; degree exactly $n$; $f(0)=1$: zero missing.
+- A line not through $0$: same obstruction.
 
-The central workflow of the first week is simple but powerful: represent equations as a matrix, simplify by reversible operations, and interpret the resulting pivots and free variables. The same process leads to the notions of inverse matrix, LU decomposition, null space, span, and column space. These are not separate tricks; they are several compatible languages for the same linear structure.
+\newpage
 
+## Subspaces; span
+
+![](images/subspace-annotation.png){width=90%}
+
+*9 Sept., vector spaces, p.13.*
+
+**Test.** $U\ne\varnothing$ and $au+bv\in U$ for all $u,v\in U$, $a,b\in K$.
+Identities inherited from $V$; $-u=(-1)u\in U$.
+
+Examples: $x+y+z=0$ in $\mathbb R^3$; $K_n[t]$ (degree $\le n$, including $0$); $\{f:f(0)=0\}$.
+$\mathbb R^2$ itself is not a subset of $\mathbb R^3$; $\{(x,y,0)^T\}$ is.
+
+**Null space.** $A\in M_{m\times n}(K)$:
+$$
+\operatorname{Nul}(A)=\{x\in K^n:Ax=0\}\le K^n,
+\qquad A(au+bv)=aAu+bAv=0.
+$$
+**Def.1.11.** $\operatorname{Span}(S)=\{\text{finite linear combinations of vectors in }S\}$;
+$\operatorname{Span}(\varnothing)=\{0\}$.
+
+**Thm.1.12.** $\operatorname{Span}(S)$ is a subspace, the smallest one containing $S$. In particular $\operatorname{Span}(U)=U$ for a subspace $U$.
+
+Proof: add/scale combinations; still finite combinations. Any subspace containing $S$ contains all of them.
+$$
+u_i=\sum_j a_{ij}v_j\quad\Rightarrow\quad
+\sum_i c_i u_i=\sum_j\left(\sum_i c_i a_{ij}\right)v_j.
+$$
+**Ex.1.27.**
+$$
+\begin{pmatrix}a-3b\\b-a\\a\\b\end{pmatrix}
+=a\begin{pmatrix}1\\-1\\1\\0\end{pmatrix}
++b\begin{pmatrix}-3\\1\\0\\1\end{pmatrix}.
+$$
+$a,b\in\mathbb R$ arbitrary $\Rightarrow U=\operatorname{Span}\{(1,-1,1,0)^T,(-3,1,0,1)^T\}\le\mathbb R^4$.
+
+**Back to equations.** If $Ax_p=b$,
+$$
+Ax=b\iff A(x-x_p)=0
+\iff x\in x_p+\operatorname{Nul}(A).
+$$
+Homogeneous: subspace. Inhomogeneous: translate; $b\ne0\Rightarrow0$ not a solution.

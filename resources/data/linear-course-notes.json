@@ -1,0 +1,208 @@
+{
+  "version": 1,
+  "imported": "2026-10-20",
+  "legacy": [
+    {
+      "file": "notes/mathematical-notes/linear-algebra/LAweek1.html",
+      "archived": "resources/content/course-notes/linear-algebra-previous/LAweek1.html.source",
+      "sha256": "44bd7f8300404b102c54d898bb1587fbc08e2721e0f345daf42b01053b64e409",
+      "blob": "067199e79fa108113b6c068847bb37c9b8afb281"
+    },
+    {
+      "file": "notes/mathematical-notes/linear-algebra/LAweek1.md",
+      "archived": "resources/content/course-notes/linear-algebra-previous/LAweek1.md.source",
+      "sha256": "0d018e0b4373a80d577a024284981436629ee20c824ac0e70632eb430b21af13",
+      "blob": "c10783edcdb92378c7060fc1b66ac613ff0c397f"
+    },
+    {
+      "file": "notes/mathematical-notes/linear-algebra/LAweek1.tex",
+      "archived": "resources/content/course-notes/linear-algebra-previous/LAweek1.tex.source",
+      "sha256": "65848766363d58794c53c285328301f532651ffc0cd8f0c2ccf22bea0f753c2e",
+      "blob": "ba5653a9440bd27c34f546ac039d93fc89c3fd97"
+    },
+    {
+      "file": "notes/mathematical-notes/linear-algebra/LAweek1.pdf",
+      "archived": "resources/content/course-notes/linear-algebra-previous/LAweek1.pdf.source",
+      "sha256": "6b19d56e19cf82a629eed3b7359e26590069f3236077d5980b397f25663a8057",
+      "blob": "ac2cfbfa7c95cc8b061bdcd9098fcf4097b9335d"
+    }
+  ],
+  "entries": [
+    {
+      "week": 1,
+      "name": "LAweek1",
+      "kind": "notes",
+      "html": "notes/mathematical-notes/linear-algebra/LAweek1.html"
+    },
+    {
+      "week": 2,
+      "name": "LAweek2",
+      "kind": "notes",
+      "html": "notes/mathematical-notes/linear-algebra/LAweek2.html"
+    },
+    {
+      "week": 3,
+      "name": "LAweek3",
+      "kind": "notes",
+      "html": "notes/mathematical-notes/linear-algebra/LAweek3.html"
+    },
+    {
+      "week": 4,
+      "name": "LAweek4",
+      "kind": "review",
+      "html": "notes/mathematical-notes/linear-algebra/LAweek4.html"
+    },
+    {
+      "week": 5,
+      "name": "LAweek5",
+      "kind": "notes",
+      "html": "notes/mathematical-notes/linear-algebra/LAweek5.html"
+    }
+  ],
+  "files": [
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek1.md",
+      "source": "week1.md",
+      "sha256": "f328ec2516f892b04437f01ba46478221d28e46d36f0045af4dc1d105c168fb4",
+      "replacesExisting": true
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek1.tex",
+      "source": "week1.tex",
+      "sha256": "35a436f8715fa46f78c423fced5fd9ba118194169982eccd46ec1351b78c7d7e",
+      "replacesExisting": true
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek1.pdf",
+      "source": "week1.pdf",
+      "sha256": "f232528839d2df90c306956a437a5654c89dcb2917e0b1b360d2293b41191bad",
+      "replacesExisting": true
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek2.md",
+      "source": "week2.md",
+      "sha256": "969446651971b7260752fc20742324946028b916426bceb279d420763c884418",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek2.tex",
+      "source": "week2.tex",
+      "sha256": "30755ac11d595ea0f887b990f40eb802ee1f4f42e0f5a34a7955f6fca2f7f8b5",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek2.pdf",
+      "source": "week2.pdf",
+      "sha256": "1c1df5f0faab89d10ca9f4830c8c43a817f2ea4b297bb76febb756266cb89d2e",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek3.md",
+      "source": "week3.md",
+      "sha256": "79fdd0c86767d5b3c525e7e3617a47a27eb153557e5e5ac5f8f53e76eb5ab24e",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek3.tex",
+      "source": "week3.tex",
+      "sha256": "00655cd97e5bb678934d200f4e7d3867a1f9fa3fc608b5cf3282d2b15bc2e597",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek3.pdf",
+      "source": "week3.pdf",
+      "sha256": "11bf7cd56707427bbbf2523e9491e8cfda83be7341c6cbcde10c067e32eea618",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek4.md",
+      "source": "week4-review.md",
+      "sha256": "742670dcc4dcac34cac15d26155fd8ea456b3b02baed632a9bbd8cff2a094a97",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek4.tex",
+      "source": "week4-review.tex",
+      "sha256": "9d0971bb39d7bbd3e4c9706475b37968a886588773be1136a9b165b9e597b232",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek4.pdf",
+      "source": "week4-review.pdf",
+      "sha256": "2f6dd31dcbc6b00a51fe5f9c12005093a88c84a50f9757fecb7b1556c20f6c37",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek5.md",
+      "source": "week5.md",
+      "sha256": "7be792770679a437da94145485123c32d958b9bd0f7fa475f1934feb416136ea",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek5.tex",
+      "source": "week5.tex",
+      "sha256": "e60453a2c023aed35875bdfcb5eac8f80e414a63eca1026da4986276279fcf06",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek5.pdf",
+      "source": "week5.pdf",
+      "sha256": "c7ec51eb47575816a5ac3165861f1812a480f9efe7a71b89d01582e990aa32fc",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/images/subspace-annotation.png",
+      "source": "images/subspace-annotation.png",
+      "sha256": "35d18c501122636cc305f42ff73a7e98591ae790146b76321ee09acb19d18c92",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/images/w2-basis.png",
+      "source": "images/w2-basis.png",
+      "sha256": "6d597ae7f742b76819bf5590813a0d806f3ff7b9c6ad0f8bca4935cb5065b850",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/images/w3-composition.png",
+      "source": "images/w3-composition.png",
+      "sha256": "e0e8e1873093807d1446466f70df7f3f7dd5c3bca6adf50105b1a9d47569aa88",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/images/w5-volume-additivity.png",
+      "source": "images/w5-volume-additivity.png",
+      "sha256": "43ad7047ec9ed236a96826310c973be16a8bfa4758e4420dd71eb445bf6a0d52",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek1.html",
+      "sha256": "d82325c24d75bc5c30b667c7da3a98d2fb8e32b8986905929dba132e6b8b6029",
+      "source": "Rendered from supplied Markdown",
+      "replacesExisting": true
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek2.html",
+      "sha256": "3a0eedae7db012ed998b19d9ad4bbd031e4aac270c090eccf3b97996631dfbf1",
+      "source": "Rendered from supplied Markdown",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek3.html",
+      "sha256": "a7fd93645a12cd13cf23baa556a5e53b1077174ba8feb3d44b48e70f355bc04e",
+      "source": "Rendered from supplied Markdown",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek4.html",
+      "sha256": "20b20f376ad03d7e5c249515f1c370a638e072d1c995c30324687be0f05d70c7",
+      "source": "Rendered from supplied Markdown",
+      "replacesExisting": false
+    },
+    {
+      "path": "notes/mathematical-notes/linear-algebra/LAweek5.html",
+      "sha256": "c3559355850f8014a8a64cc4a7431ffe95ad4b8425e09f49e86ea1acd6e08785",
+      "source": "Rendered from supplied Markdown",
+      "replacesExisting": false
+    }
+  ]
+}
