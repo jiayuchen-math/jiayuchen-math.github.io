@@ -1,0 +1,148 @@
+{
+  "version": 1,
+  "imported": "2026-10-20",
+  "entries": [
+    {
+      "week": 3,
+      "name": "MAweek3",
+      "html": "notes/mathematical-notes/calculus/MAweek3.html"
+    },
+    {
+      "week": 4,
+      "name": "MAweek4",
+      "html": "notes/mathematical-notes/calculus/MAweek4.html"
+    },
+    {
+      "week": 5,
+      "name": "MAweek5",
+      "html": "notes/mathematical-notes/calculus/MAweek5.html"
+    }
+  ],
+  "files": [
+    {
+      "path": "notes/mathematical-notes/calculus/MAweek3.md",
+      "sha256": "150b7fb2823f636aeddab1dfe14637820955efb9f04b8a6a49a500e91133e3e3",
+      "source": "week3.md"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/MAweek3.tex",
+      "sha256": "b4822866df46b6d31d144ba7d0e0b3898dd24963a5ded0fc4058c3e005f869b7",
+      "source": "week3.tex"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/MAweek3.pdf",
+      "sha256": "551b7e59a3bff0ad5e301f3f1c85c93822ed71fec545bc57b72d1cc1413eb76e",
+      "source": "week3.pdf"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/MAweek4.md",
+      "sha256": "1b8ce2345c5a76d3e1f4225c173a038d914189fc694a8a38dbcedc39aed32182",
+      "source": "week4.md"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/MAweek4.tex",
+      "sha256": "539021dbeeb26bb3726f4addcb905d30e00cb531369c93947fb720149cc95036",
+      "source": "week4.tex"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/MAweek4.pdf",
+      "sha256": "b6b54a6651efabb79069a09e9fe1408af37776e9639e6505afa4deeb60f8ca35",
+      "source": "week4.pdf"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/MAweek5.md",
+      "sha256": "ec3a8d2d612eb55c62c7ac31e1361d2916c294f91f01282fe002b581f5cbf3b3",
+      "source": "week5.md"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/MAweek5.tex",
+      "sha256": "322db77fbb9fdbffbbdd4610c9b0152594c3be76ed838b23557af22ecb8c12af",
+      "source": "week5.tex"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/MAweek5.pdf",
+      "sha256": "adf8a818934f72567a34e6f2a86391c867a4008e1de1cc20a1b2ffeaaec7eed3",
+      "source": "week5.pdf"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/note-images/w3-secant.png",
+      "sha256": "0f3d73e3c095a7f6a8051ea2d46706a35b50ebf59ab5cd9636a9899f0381a6bc",
+      "source": "note-images/w3-secant.png"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/note-images/w3-oscillation.png",
+      "sha256": "c80ee3afe1441218bfb41d98252f595ce184fb5521ab9ddce17e7c8bece5343c",
+      "source": "note-images/w3-oscillation.png"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/note-images/w3-differential.png",
+      "sha256": "6ee0295b9e8fccd30cd978e162c58567e647e36058b185029d0917b8dddaaeec",
+      "source": "note-images/w3-differential.png"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/note-images/w4-local-global.png",
+      "sha256": "5cf224c25b22dc788e6d462fb82be7ca3345d124169f7ed28ea4ac61726a8318",
+      "source": "note-images/w4-local-global.png"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/note-images/w4-refraction.png",
+      "sha256": "730432c1660d51b52d826c69e49488c583c73abd40f34d2181caf0c22033ce2c",
+      "source": "note-images/w4-refraction.png"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/note-images/w4-rolle.png",
+      "sha256": "c06e83ce18a0b41d28688be9f8a4988e81ed5f2f293843ecdb2d9686992ffc4b",
+      "source": "note-images/w4-rolle.png"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/note-images/w4-oscillation.png",
+      "sha256": "40e62adbb3a07f8414ca32fb04b9b691aa734fb1c66c97281921f2fee40a75ca",
+      "source": "note-images/w4-oscillation.png"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/note-images/w4-convex.png",
+      "sha256": "097525c353a16d0b2db96770648c3f73e33ded5f2e88a20b6709ae485a3ee1f5",
+      "source": "note-images/w4-convex.png"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/note-images/w4-cuberoot.png",
+      "sha256": "fdc9c31fc10a74f45218d59986f15d6fe95b635bddc1f522c46803553f4d6279",
+      "source": "note-images/w4-cuberoot.png"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/note-images/w4-sketch.png",
+      "sha256": "f917ec3b450f541f39dcbeb15e5662a57e24c00041179b62e599570d77e67fde",
+      "source": "note-images/w4-sketch.png"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/note-images/w4-newton.png",
+      "sha256": "e26b5e0a59b1032e7e9bf7d4f112bae6378f3a355ff83fcc5a2a5bd8642dd83d",
+      "source": "note-images/w4-newton.png"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/note-images/w5-riemann.png",
+      "sha256": "df27144b23cf0600d7573fac0e665e110f485747c2cab84b640c0dbc76ae59ac",
+      "source": "note-images/w5-riemann.png"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/note-images/w5-upper-lower.png",
+      "sha256": "36c130da6abd64fa30de4ca8bc42596a83da17ade6f8d52a7da90bb52a049a98",
+      "source": "note-images/w5-upper-lower.png"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/MAweek3.html",
+      "sha256": "9219177dd9bb3146d880e59e6424bc8ed1e0ca0fc68a4d8bfd04fbb38d1afb19",
+      "source": "rendered from supplied Markdown"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/MAweek4.html",
+      "sha256": "c30f165153044e0456e1c1841c638cf84674a20b2d3c353a41587a1eb8742d72",
+      "source": "rendered from supplied Markdown"
+    },
+    {
+      "path": "notes/mathematical-notes/calculus/MAweek5.html",
+      "sha256": "e2affe0831eca375628d1d3eaecd69d5aab6abdcdd0a3186e47a609341e2c6b9",
+      "source": "rendered from supplied Markdown"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 const courses={
- "calculus":{name:"Calculus",weeks:{1:{pdf:"MAweek1.pdf",html:"MAweek1.html",exercises:"Homework1.pdf"},2:{pdf:"week2.pdf",html:"MAweek2.html",exercises:"Homework2.pdf"}}},
+ "calculus":{name:"Calculus",weeks:{1:{pdf:"MAweek1.pdf",html:"MAweek1.html",exercises:"Homework1.pdf"},2:{pdf:"week2.pdf",html:"MAweek2.html",exercises:"Homework2.pdf"},3:{pdf:"MAweek3.pdf",html:"MAweek3.html"},4:{pdf:"MAweek4.pdf",html:"MAweek4.html"},5:{pdf:"MAweek5.pdf",html:"MAweek5.html"}}},
  "linear-algebra":{name:"Linear Algebra",weeks:{1:{pdf:"LAweek1.pdf",html:"LAweek1.html",exercises:"LAexercises1.pdf"},2:{exercises:"LAexercises2.pdf"}}}
 };
 const params=new URLSearchParams(location.search),course=params.get("course")||"calculus",type=params.get("type")||"pdf",data=courses[course];

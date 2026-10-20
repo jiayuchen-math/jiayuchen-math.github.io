@@ -23,6 +23,7 @@ import {titleDestination,entryActions,showsDetails,hasDetailContent} from './ass
 import {loadConceptReadings} from './study-content.mjs';
 import {loadAdviceReadings} from './advice-readings.mjs';
 import {personalNotesPage} from './personal-notes.mjs';
+import {addedCourseFiles} from './test-course-notes.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
@@ -109,8 +110,8 @@ function protectedSnapshot() {
   const entrances = ['notes/index.html', 'notes/reading-notes/library.html', 'notes/reading-notes/reading-notes.html',
     'notes/mathematical-notes/page.html', 'notes/mathematical-notes/weekly.html'];
   const groups = {
-    notes:files.filter(f => f.startsWith('notes/') && !f.startsWith('notes/reading-notes/library/') && !entrances.includes(f) && /\.(md|html|tex|pdf|png|jpe?g|gif|svg|webp)$/i.test(f)),
-    sourceMedia:files.filter(f => /\.(pdf|tex|png|jpe?g|gif|svg|webp)$/i.test(f)),
+    notes:files.filter(f => f.startsWith('notes/') && !f.startsWith('notes/reading-notes/library/') && !entrances.includes(f) && !addedCourseFiles.has(f) && /\.(md|html|tex|pdf|png|jpe?g|gif|svg|webp)$/i.test(f)),
+    sourceMedia:files.filter(f => !addedCourseFiles.has(f) && /\.(pdf|tex|png|jpe?g|gif|svg|webp)$/i.test(f)),
     encyclopedia:files.filter(f => f.startsWith('resources/content/encyclopedia/') && f.endsWith('.md')),
     terminology:files.filter(f => /^resources\/data\/terminology-.*\.json$/.test(f)),
     businessData:businessFiles,

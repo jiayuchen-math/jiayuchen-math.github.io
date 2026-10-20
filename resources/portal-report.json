@@ -90,6 +90,42 @@
       "73f25c521bd51185e13c600fff57b3feef11815e205ff028b5ec07d1cbed82df"
     ],
     [
+      "notes/mathematical-notes/calculus/MAweek3.html",
+      "9219177dd9bb3146d880e59e6424bc8ed1e0ca0fc68a4d8bfd04fbb38d1afb19"
+    ],
+    [
+      "notes/mathematical-notes/calculus/MAweek3.pdf",
+      "551b7e59a3bff0ad5e301f3f1c85c93822ed71fec545bc57b72d1cc1413eb76e"
+    ],
+    [
+      "notes/mathematical-notes/calculus/MAweek3.tex",
+      "b4822866df46b6d31d144ba7d0e0b3898dd24963a5ded0fc4058c3e005f869b7"
+    ],
+    [
+      "notes/mathematical-notes/calculus/MAweek4.html",
+      "c30f165153044e0456e1c1841c638cf84674a20b2d3c353a41587a1eb8742d72"
+    ],
+    [
+      "notes/mathematical-notes/calculus/MAweek4.pdf",
+      "b6b54a6651efabb79069a09e9fe1408af37776e9639e6505afa4deeb60f8ca35"
+    ],
+    [
+      "notes/mathematical-notes/calculus/MAweek4.tex",
+      "539021dbeeb26bb3726f4addcb905d30e00cb531369c93947fb720149cc95036"
+    ],
+    [
+      "notes/mathematical-notes/calculus/MAweek5.html",
+      "e2affe0831eca375628d1d3eaecd69d5aab6abdcdd0a3186e47a609341e2c6b9"
+    ],
+    [
+      "notes/mathematical-notes/calculus/MAweek5.pdf",
+      "adf8a818934f72567a34e6f2a86391c867a4008e1de1cc20a1b2ffeaaec7eed3"
+    ],
+    [
+      "notes/mathematical-notes/calculus/MAweek5.tex",
+      "322db77fbb9fdbffbbdd4610c9b0152594c3be76ed838b23557af22ecb8c12af"
+    ],
+    [
       "notes/mathematical-notes/calculus/image-1.png",
       "ae70fc41389d88bd205b6131e01ae47cabe52407f0f1cad173d631396a9e1071"
     ],
@@ -128,6 +164,58 @@
     [
       "notes/mathematical-notes/calculus/image.png",
       "82c5793716e635915c363114064d98dc1f91aad6402529db346968837707f254"
+    ],
+    [
+      "notes/mathematical-notes/calculus/note-images/w3-differential.png",
+      "6ee0295b9e8fccd30cd978e162c58567e647e36058b185029d0917b8dddaaeec"
+    ],
+    [
+      "notes/mathematical-notes/calculus/note-images/w3-oscillation.png",
+      "c80ee3afe1441218bfb41d98252f595ce184fb5521ab9ddce17e7c8bece5343c"
+    ],
+    [
+      "notes/mathematical-notes/calculus/note-images/w3-secant.png",
+      "0f3d73e3c095a7f6a8051ea2d46706a35b50ebf59ab5cd9636a9899f0381a6bc"
+    ],
+    [
+      "notes/mathematical-notes/calculus/note-images/w4-convex.png",
+      "097525c353a16d0b2db96770648c3f73e33ded5f2e88a20b6709ae485a3ee1f5"
+    ],
+    [
+      "notes/mathematical-notes/calculus/note-images/w4-cuberoot.png",
+      "fdc9c31fc10a74f45218d59986f15d6fe95b635bddc1f522c46803553f4d6279"
+    ],
+    [
+      "notes/mathematical-notes/calculus/note-images/w4-local-global.png",
+      "5cf224c25b22dc788e6d462fb82be7ca3345d124169f7ed28ea4ac61726a8318"
+    ],
+    [
+      "notes/mathematical-notes/calculus/note-images/w4-newton.png",
+      "e26b5e0a59b1032e7e9bf7d4f112bae6378f3a355ff83fcc5a2a5bd8642dd83d"
+    ],
+    [
+      "notes/mathematical-notes/calculus/note-images/w4-oscillation.png",
+      "40e62adbb3a07f8414ca32fb04b9b691aa734fb1c66c97281921f2fee40a75ca"
+    ],
+    [
+      "notes/mathematical-notes/calculus/note-images/w4-refraction.png",
+      "730432c1660d51b52d826c69e49488c583c73abd40f34d2181caf0c22033ce2c"
+    ],
+    [
+      "notes/mathematical-notes/calculus/note-images/w4-rolle.png",
+      "c06e83ce18a0b41d28688be9f8a4988e81ed5f2f293843ecdb2d9686992ffc4b"
+    ],
+    [
+      "notes/mathematical-notes/calculus/note-images/w4-sketch.png",
+      "f917ec3b450f541f39dcbeb15e5662a57e24c00041179b62e599570d77e67fde"
+    ],
+    [
+      "notes/mathematical-notes/calculus/note-images/w5-riemann.png",
+      "df27144b23cf0600d7573fac0e665e110f485747c2cab84b640c0dbc76ae59ac"
+    ],
+    [
+      "notes/mathematical-notes/calculus/note-images/w5-upper-lower.png",
+      "36c130da6abd64fa30de4ca8bc42596a83da17ade6f8d52a7da90bb52a049a98"
     ],
     [
       "notes/mathematical-notes/calculus/week2.pdf",
@@ -798,7 +886,7 @@
       "firstPageBytes": 49053
     }
   ],
-  "indexBytes": 1515359,
+  "indexBytes": 1516483,
   "searchCollections": [
     {
       "id": "library",
@@ -826,7 +914,7 @@
     },
     {
       "id": "notes",
-      "records": 3
+      "records": 6
     },
     {
       "id": "guides",
