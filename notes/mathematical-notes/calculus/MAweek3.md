@@ -4,7 +4,9 @@ subtitle: "Lecture 8-12 and Tutorial 2"
 lang: en
 ---
 
-# Lecture 8
+The derivative is a limit of slopes, but it is also the coefficient of the best local linear approximation. Keeping these two descriptions together makes the rules less mysterious: the product rule separates two increments, the chain rule composes two linear approximations, and the mean value theorem turns local derivative information into comparisons over an interval.
+
+# Lecture 8: the derivative
 
 ## Derivative at a point
 
@@ -18,18 +20,31 @@ $$
 *Lecture 8, p.5.*
 
 **Definition 1.2.1.** $f$ defined on an open interval about $a$. If the following limit is finite, $f$ is differentiable at $a$:
+
 $$
 f'(a)=\lim_{h\to0}\frac{f(a+h)-f(a)}h
 =\lim_{x\to a}\frac{f(x)-f(a)}{x-a}.
 $$
+
 Equivalently, $\forall\varepsilon>0\ \exists\delta>0$ such that
+
 $$
 0<|h|<\delta\implies
 \left|\frac{f(a+h)-f(a)}h-f'(a)\right|<\varepsilon.
 $$
+
 Tangent: $y=f(a)+f'(a)(x-a)$. Other notation: $y'(a)$, $\frac{dy}{dx}(a)$.
 
-**Ex.1.2.1.** From the definition:
+### Example 1.2.1: differentiating from the definition
+
+Start with the difference quotient before using any differentiation rule. For $n\ge1$, the binomial theorem gives
+
+$$
+(a+h)^n-a^n=na^{n-1}h+\sum_{k=2}^{n}\binom nk a^{n-k}h^k.
+$$
+
+After division by $h$, every term in the sum tends to zero. The inverse-square and sine examples use the same plan, with factorization or a trigonometric identity in place of the binomial theorem:
+
 $$
 \begin{aligned}
 \frac{(a+h)^n-a^n}{h}&=na^{n-1}+O(h)\to na^{n-1},\quad n\ge1,\\
@@ -38,30 +53,40 @@ $$
 &=\sin a\frac{\cos h-1}h+\cos a\frac{\sin h}h\to\cos a.
 \end{aligned}
 $$
+
 Likewise $(\cos x)'=-\sin x$. Radians throughout. Here $O(h)$ means a remainder bounded by $C|h|$ for small $h$.
 
 ## Oscillation; one-sided derivatives
 
-**Ex.1.2.2.** Extend $f=x^2\sin(1/x)$ and $g=x\sin(1/x)$ by $f(0)=g(0)=0$.
+### Example 1.2.2: a small function need not have a small slope
+
+Extend $f=x^2\sin(1/x)$ and $g=x\sin(1/x)$ by $f(0)=g(0)=0$. The estimates $|f(x)|\le x^2$ and $|g(x)|\le|x|$ prove that both functions are continuous at zero. Differentiability asks for more: the change in the function must be compared with the change in the input.
 
 ![](note-images/w3-oscillation.png){width=78%}
 
 *Lecture 8, pp.17-18. Left: $f$; right: $g$. Different vertical scales.*
 
 Both continuous at $0$, but
+
 $$
 \frac{f(h)}h=h\sin(1/h)\to0,\qquad
 \frac{g(h)}h=\sin(1/h)\text{ has no limit}.
 $$
-For the second quotient use $h_n=(\pi/2+2n\pi)^{-1}$ and $k_n=(3\pi/2+2n\pi)^{-1}$: values $1,-1$. Thus $f'(0)=0$, $g'(0)$ undefined. Check the amplitude **after division by $h$**.
+
+For the second quotient use $h_n=(\pi/2+2n\pi)^{-1}$ and $k_n=(3\pi/2+2n\pi)^{-1}$. The quotient is $1$ along the first sequence and $-1$ along the second, so it cannot converge. Thus $f'(0)=0$, whereas $g'(0)$ is undefined.
+
+The amplitude has to be checked **after division by $h$**. A graph that looks flat at one scale is not a substitute for that test.
 
 **Theorem 1.2.2.** Differentiable at $a$ $\Rightarrow$ continuous at $a$.
+
 $$
 f(a+h)-f(a)=\frac{f(a+h)-f(a)}h\,h\to f'(a)\cdot0=0.
 $$
+
 For an explicit estimate: bound the quotient by $|f'(a)|+1$ for $0<|h|<\delta_1$, then take $\delta=\min\{\delta_1,\varepsilon/(|f'(a)|+1)\}$.
 
 **Definition.** $f'_\pm(a)=\lim_{h\to0^\pm}[f(a+h)-f(a)]/h$. At an interior point, $f'(a)$ exists iff both one-sided derivatives are finite and equal.
+
 $$
 \begin{array}{c|c|c|c}
 f(x)&\text{left quotient limit at }0&\text{right}&\text{shape}\\\hline
@@ -70,202 +95,107 @@ f(x)&\text{left quotient limit at }0&\text{right}&\text{shape}\\\hline
 x^{1/3}&+\infty&+\infty&\text{vertical tangent}
 \end{array}
 $$
+
 Infinite limits are not ordinary derivatives. Continuity alone is not enough.
 
-# Tutorial 2
+For $|x|$, the two finite one-sided derivatives disagree. For $\sqrt{|x|}$ they have opposite infinite signs; for $x^{1/3}$ both tend to $+\infty$. These are different obstructions, even though none gives a finite derivative at zero. At an endpoint we may discuss a one-sided derivative, but this is not the two-sided definition at an interior point.
 
-## Algebra and estimates
-
-**Q1.** Cancel/rationalize first:
-$$
-\begin{aligned}
-\text{(a)}\quad &\frac{x^3-8}{x^2-4}=\frac{x^2+2x+4}{x+2}\to3\quad(x\to2),\\
-\text{(b)}\quad &\frac{\sqrt{1+2x}-\sqrt{1-x}}x
-=\frac3{\sqrt{1+2x}+\sqrt{1-x}}\to\frac32\quad(x\to0),\\
-\text{(c)}\quad &\frac{x^2\sin(1/x)}{\sqrt{1+x}-1}
-=x\sin(1/x)(\sqrt{1+x}+1)\to0,\\
-\text{(d)}\quad &\frac{x^n-1}{x^m-1}
-=\frac{1+x+\cdots+x^{n-1}}{1+x+\cdots+x^{m-1}}\to\frac nm\quad(x\to1).
-\end{aligned}
-$$
-In (c), $|\text{expression}|\le3|x|$ for $0<|x|<1/2$.
-
-**Q4(a).** For $x_0\ne0$, first impose $|x-x_0|<|x_0|/2$, so $|x|>|x_0|/2$.
-$$
-\left|\frac1x-\frac1{x_0}\right|\le\frac{2|x-x_0|}{|x_0|^2};\qquad
-\delta=\min\left\{\frac{|x_0|}2,\frac{\varepsilon|x_0|^2}2\right\}.
-$$
-
-**Q4(b).** Write $1/x=\lfloor1/x\rfloor+r$, $0\le r<1$. Then
-$$
-\left|x\lfloor1/x\rfloor-1\right|=|xr|\le|x|\to0.
-$$
-Limit $1$; $\delta=\varepsilon$. Works for negative $x$ too.
-
-**Q2.** Let $H=f/x^2\to1$ as $x\to0$. Eventually $|H|<2$, hence
-$$
-|f/x|<2|x|\to0,\qquad |f|<2x^2\to0.
-$$
-If $|H-1|<1$ for $0<|x|<\delta_1$, use respectively $\min\{\delta_1,\varepsilon/2\}$ and $\min\{\delta_1,\sqrt{\varepsilon/2}\}$.
-
-Also $H>1/2$ near $0$, so $f>0$ there and
-$$
-\frac{\sqrt f}{|x|}=\sqrt H,\qquad
-|\sqrt H-1|=\frac{|H-1|}{\sqrt H+1}\le|H-1|\to0.
-$$
-Limit $1$. Use a common radius for $H>1/2$ and $|H-1|<\varepsilon$. Remember $\sqrt{x^2}=|x|$.
-
-## Quantifiers
-
-**Q3(a).** Wrong: $\forall\varepsilon\ \forall\delta\ \exists x$ with both inequalities true. Only asks for one good point. Correct:
-$$
-\forall\varepsilon>0\ \exists\delta>0\ \forall x\in\operatorname{dom}f:
-\quad 0<|x-c|<\delta\implies |f(x)-L|<\varepsilon.
-$$
-Counterexample to the wrong definition: $f(x)=\sin(1/x)$, $c=L=0$. Every neighborhood contains $x=1/(n\pi)$ with $f(x)=0$.
-
-**Q3(b).** Negation for a fixed candidate $L$:
-$$
-\exists\varepsilon_0>0\ \forall\delta>0\ \exists x\in\operatorname{dom}f:
-\quad 0<|x-c|<\delta,\quad |f(x)-L|\ge\varepsilon_0.
-$$
-To show no finite limit, do this for **every** $L\in\mathbb R$. For $\sin(1/x)$ choose $\varepsilon_0=1$: if $L\le0$, use points with sine $1$; if $L>0$, use sine $-1$. Such points occur arbitrarily close to $0$.
-
-**Q5(a): uniqueness.** If $f\to A,B$ and $A\ne B$, choose $\varepsilon=|A-B|/3$ and a common radius. Then
-$$
-|A-B|\le|A-f(x)|+|f(x)-B|<2|A-B|/3,
-$$
-contradiction.
-
-**Q5(b).** $f=g$ for $0<|x-c|<r$ $\Rightarrow$ same limit at $c$. Use $\delta=\min\{r,\delta_f\}$. The value at $c$ is irrelevant.
-
-**Q5(c).** $f\to A\Rightarrow|f|\to|A|$, since
-$$
-\bigl||f|-|A|\bigr|\le|f-A|.
-$$
-Converse holds for all $f$ when $A=0$. For $A\ne0$, take $f=|A|$ to the right of $c$, $f=-|A|$ to the left.
-
-## Density and coupled limits
-
-**Q6.** $D=1$ on $\mathbb Q$, $0$ otherwise; $F(x)=xD(x)$.
-
-At $0$: $|F(x)|\le|x|\to0$. At $x_0\ne0$, suppose $F\to L$. Take $\varepsilon=|x_0|/4$ and $\delta\le|x_0|/4$ within the limit radius. Density gives rational $q$ and irrational $t$ in that punctured neighborhood. Then
-$$
-\frac34|x_0|<|q|=|F(q)-F(t)|<2\varepsilon=\frac12|x_0|,
-$$
-contradiction. Limit exists only at $0$.
-
-**Q7.** $f<g$, $f\to A$, $g\to B$ $\Rightarrow A\le B$.
-
-If $A>B$, use $\varepsilon=(A-B)/3$: near $c$,
-$f>A-\varepsilon>B+\varepsilon>g$, impossible. Strictness may disappear: $0<x^2$ for $x\ne0$, both limits $0$.
-
-**Q8.** Assume $S=f+g\to0$, $P=fg\to0$. Key identity:
-$$
-0\le f^2+g^2=S^2-2P\le|S|^2+2|P|.
-$$
-Given $\varepsilon>0$, choose a common radius with $|S|<\varepsilon/\sqrt2$, $|P|<\varepsilon^2/4$. Then $f^2+g^2<\varepsilon^2$, so $|f|,|g|<\varepsilon$. Both tend to $0$.
-
-Do not assume the individual limits exist first. Need both hypotheses: $(f,g)=(1,-1)$ or $(0,1)$ shows what happens if one is dropped.
-
-## Substitutions; derivatives at zero
-
-**Q9(a).** $h=x-x_0$: same radius in
-$$
-\lim_{x\to x_0}f(x)=A\iff\lim_{h\to0}f(x_0+h)=A.
-$$
-**Q9(b).** If $f(x)\to A$ at $0$, then $f(t^2)\to A$: use $|t|<\sqrt\delta$. Converse fails: $f=1$ for $x>0$, $0$ for $x<0$. Squaring only sees the right side.
-
-**Q10.** $F=x\sin x\cos(1/x)$ off $0$, $F(0)=0$:
-$$
-|F(h)/h|=|\sin h\cos(1/h)|\le|h|\to0;\quad F'(0)=0.
-$$
-**Q11.** $G=(\sqrt{1+x^2}-1)/x$ off $0$, $G(0)=0$:
-$$
-\frac{G(h)}h=\frac1{\sqrt{1+h^2}+1}\to\frac12;\quad G'(0)=\frac12.
-$$
-
-**Q12: fixed point.** Continuous $f:[0,1]\to[0,1]$. Set $H=f-x$:
-$$
-H(0)\ge0,\quad H(1)\le0\quad\xRightarrow{\mathrm{IVT}}\quad
-H(c)=0\text{ for some }c\in[0,1].
-$$
-If $f$ is strictly decreasing, two fixed points $c_1<c_2$ would give $c_1=f(c_1)>f(c_2)=c_2$. Unique. Without this, $f(x)=x$ fixes everything.
-
-**Q13.** For $f>0$ on a punctured neighborhood,
-$$
-f\to+\infty\iff1/f\to0.
-$$
-Forward: use threshold $M=1/\varepsilon$. Reverse: use error $\varepsilon=1/M$, giving $0<1/f<1/M\Rightarrow f>M$. Positivity matters: $f=-(x-c)^{-2}$ has $1/f\to0$ but $f\to-\infty$.
-
-# Lecture 9
+# Lecture 9: differentiation rules
 
 ## Rules and compositions
 
 For differentiable $u,v$:
+
 $$
 \begin{aligned}
 (cu)'&=cu',&(u+v)'&=u'+v',\\
 (uv)'&=u'v+uv',&(u/v)'&=(u'v-uv')/v^2\quad(v\ne0).
 \end{aligned}
 $$
-Product rule: insert $u(x+h)v(x)$ in the numerator:
+
+**Why the product rule has two terms.** Both factors change. Inserting $u(x+h)v(x)$ splits the change into one contribution for each factor:
+
 $$
 \frac{\Delta(uv)}h
 =u(x+h)\frac{\Delta v}h+v(x)\frac{\Delta u}h\to uv'+vu'.
 $$
+
 Reciprocal: $\Delta(1/v)/h=-[v(x+h)v(x)]^{-1}\Delta v/h$.
 
+Differentiability implies continuity, so $u(x+h)\to u(x)$ and $v(x+h)\to v(x)$. When $v(x)\ne0$, continuity also keeps $v(x+h)$ away from zero for small $h$. These facts justify the limits in the product and reciprocal calculations; multiplying by the reciprocal then gives the quotient rule.
+
 **Ex.1.2.4.** $(\tan x)'=\sec^2x$, $(\cot x)'=-\csc^2x$ on their domains;
+
 $(x^2\sin x)'=2x\sin x+x^2\cos x$.
 
 **Theorem 1.2.3 (Chain rule).** $g$ differentiable at $a$, $f$ at $g(a)$:
+
 $$
 (f\circ g)'(a)=f'(g(a))g'(a).
 $$
-The cancellation $\Delta y/\Delta x=(\Delta y/\Delta u)(\Delta u/\Delta x)$ misses $\Delta u=0$. Proof repaired in Lecture 10.
+
+The tempting cancellation $\Delta y/\Delta x=(\Delta y/\Delta u)(\Delta u/\Delta x)$ is not a proof when $\Delta u=0$. The increment-form proof in Lecture 10 includes that case. For example, if $g$ is constant near $a$, the composition has derivative zero even though this cancellation divides by zero everywhere nearby.
 
 **Ex.1.2.5.**
+
 $$
 \begin{aligned}
 (\sin(1/x))'&=-\cos(1/x)/x^2\quad(x\ne0),\\
 [\sin(\sin(\sin x))]'&=\cos(\sin(\sin x))\cos(\sin x)\cos x.
 \end{aligned}
 $$
+
 For $y=\sqrt{x+\sqrt{x+\sqrt x}}$, name the layers ($x>0$):
+
 $$
 r=\sqrt x,\ s=\sqrt{x+r},\ y=\sqrt{x+s};\qquad
 r'=\frac1{2r},\ s'=\frac{1+r'}{2s},\ y'=\frac{1+s'}{2y}.
 $$
-At a join, use the definition: $q=x^{3/2}$ for $x\ge0$, $q=x^2$ for $x<0$. Quotients at $0$: $\sqrt h$ on the right, $h$ on the left, hence $q'(0)=0$.
+
+At a join, return to the definition. Let $q(x)=x^{3/2}$ for $x\ge0$ and $q(x)=x^2$ for $x<0$. Since $q(0)=0$, the right difference quotient is $\sqrt h$ and the left quotient is $h$. Both tend to zero, so $q'(0)=0$. Differentiating the two open pieces alone would not establish the derivative at their meeting point.
 
 **Ex.1.2.6.** For the earlier $f=x^2\sin(1/x)$, extended by $0$,
+
 $$
 f'(x)=\begin{cases}2x\sin(1/x)-\cos(1/x),&x\ne0,\\0,&x=0.\end{cases}
 $$
-$f'$ is discontinuous at $0$: values $-1,1$ at $1/(2n\pi),1/((2n+1)\pi)$. Differentiable does not mean continuously differentiable.
+
+$f'$ is discontinuous at $0$: its values are exactly $-1$ and $1$ at $1/(2n\pi)$ and $1/((2n+1)\pi)$, respectively. These approach the same input point but not the same output value. The derivative exists at zero, yet it is not continuous there. This is the standard distinction between differentiability and continuous differentiability.
 
 ## Higher derivatives
 
 $f^{(0)}=f$, $f^{(n)}=(f^{(n-1)})'$; $d^2y/dx^2\ne(dy/dx)^2$. For integers $m\ge1$, $n\ge0$:
+
 $$
 \begin{aligned}
 D^n x^m&=\begin{cases}\dfrac{m!}{(m-n)!}x^{m-n},&0\le n\le m,\\0,&n>m,\end{cases}\\
 D^n\sin x&=\sin(x+n\pi/2),\qquad D^n\cos x=\cos(x+n\pi/2).
 \end{aligned}
 $$
+
 **Leibniz (Ex.1.2.8).** For $n$-times differentiable $f,g$,
+
 $$
 (fg)^{(n)}=\sum_{k=0}^n\binom nk f^{(n-k)}g^{(k)}.
 $$
-Induction: differentiate, shift the second sum, combine using $\binom nk+\binom n{k-1}=\binom{n+1}k$.
+
+**Proof by induction.** The case $n=1$ is the product rule. Differentiating the formula for $n$ produces one sum by differentiating the $f$ factors and another by differentiating the $g$ factors. Reindex the latter. The coefficient of $f^{(n+1-k)}g^{(k)}$ is then
+
+$$
+\binom nk+\binom n{k-1}=\binom{n+1}k,
+$$
+
+with the two endpoint terms kept separately. This is the formula for $n+1$.
 
 For $n\ge2$, only three terms survive in $D^n(x^2\sin x)$:
+
 $$
 x^2\sin(x+n\pi/2)+2nx\sin(x+(n-1)\pi/2)
 +n(n-1)\sin(x+(n-2)\pi/2).
 $$
+
 **Ex.1.2.9.** Writing $f'(g)=f'(g(x))$,
+
 $$
 \begin{aligned}
 y''&=f''(g)(g')^2+f'(g)g'',\\
@@ -277,84 +207,120 @@ $$
 
 Assume $y=y(x)$ differentiable on the branch being used. Remember the $y'$ factors.
 
+An equation can describe more than one branch, and not every branch is locally a differentiable graph over the $x$-axis. Implicit differentiation finds a derivative **provided such a differentiable branch is being used**. A zero coefficient of $y'$ is a signal to examine the geometry, not permission to divide by zero.
+
 **Ex.1.2.10.**
+
 $$
 \begin{aligned}
 x^2+y^2=1&\implies2x+2yy'=0\implies y'=-x/y\quad(y\ne0),\\
 y^2=x^2+\sin(xy)&\implies(2y-x\cos(xy))y'=2x+y\cos(xy).
 \end{aligned}
 $$
+
 Solve the second equation only when the coefficient of $y'$ is nonzero.
+
+For the circle, the upper and lower semicircles are graphs over $-1<x<1$. At $(1,0)$ and $(-1,0)$, the formula $-x/y$ is undefined; the circle has a vertical tangent there. This does not contradict the smoothness of the curve as a plane curve.
 
 Inverse functions, assuming both differentiable: $g(f(x))=x$ gives $f'=1/(g'\circ f)$. In particular $(\arcsin x)'=1/\sqrt{1-x^2}$ for $|x|<1$.
 
 **Ex.1.2.11.** $x^3+y^3=9xy$ at $(2,4)$:
+
 $$
 y'=\frac{3y-x^2}{y^2-3x}=\frac45;\quad
 \text{tangent }y-4=\tfrac45(x-2),\quad
 \text{normal }y-4=-\tfrac54(x-2).
 $$
+
 **Ex.1.2.12.** $F(x)+G(xy)+H(y^2)=0$:
+
 $$
 F'(x)+G'(xy)(y+xy')+2yH'(y^2)y'=0,
 $$
+
 so $y'=-[F'(x)+yG'(xy)]/[xG'(xy)+2yH'(y^2)]$ if the denominator is nonzero.
 
 **Ex.1.2.13.** $2x^3-3y^2=8$: $y'=x^2/y$, $y''=2x/y-x^4/y^3$ ($y\ne0$).
 
 For $y^4-2y^2=x^4-3x^2$, set $A=4y^3-4y$, $B=4x^3-6x$:
+
 $$
 Ay'=B\implies(12y^2-4)(y')^2+Ay''=12x^2-6.
 $$
+
 Less work than differentiating the quotient. Divide by $A$ only if $A\ne0$.
+
+Where $A\ne0$, the second derivative can be written explicitly as
+
+$$
+y''=\frac{12x^2-6-(12y^2-4)(y')^2}{4y^3-4y}.
+$$
+
+Keeping the first differentiated equation until the end usually makes both the calculation and its domain restrictions easier to see.
 
 ## A few exercises
 
 $a$ fixed: $[g(x+g(a))]'=g'(x+g(a))$, but $[g(x+g(x))]'=g'(x+g(x))(1+g'(x))$.
+
 For $g\circ g\circ g$, multiply the three derivative factors.
 
 $p=x(x-1)\cdots(x-1000)=xq$: $p'(0)=q(0)=1000!$. Do not expand.
 
 If $\varphi$ is continuous at $a$:
+
 $$
 [(x-a)\varphi(x)]'_{x=a}=\lim_{h\to0}\varphi(a+h)=\varphi(a).
 $$
+
 For $|x-a|\varphi(x)$, right/left derivatives are $\varphi(a),-\varphi(a)$; differentiable iff $\varphi(a)=0$.
 
 If $g(0)=g'(0)=0$ and $f(x)=g(x)\sin(1/x^2)$ off $0$, $f(0)=0$:
+
 $$
 |f(h)/h|\le|g(h)/h|\to0\implies f'(0)=0.
 $$
+
 Even continuous $g'$ does not force continuous $f'$: for $g=x^2$,
+
 $$
 f'(x)=2x\sin(1/x^2)-2\cos(1/x^2)/x
 $$
+
 is unbounded near $0$.
 
-# Lecture 10
+# Lecture 10: linear approximation and differentials
 
 ## Linearization and differentials
 
 For differentiable $f$ at $a$, set $\eta(h)=[f(a+h)-f(a)]/h-f'(a)\to0$. Then
+
 $$
 f(a+h)=f(a)+f'(a)h+\eta(h)h.
 $$
+
 **Definition.** $L(x)=f(a)+f'(a)(x-a)$ is the linearization. Error $o(|h|)$ means
+
 $$
 \frac{|f(a+h)-L(a+h)|}{|h|}\to0.
 $$
+
 Exact equality with the remainder; approximation only after dropping it.
 
+The statement $r(h)=o(|h|)$ says that the error is small **relative to the step**, not just that it tends to zero. Continuity gives an error tending to zero; differentiability specifies a linear part and a smaller remainder. For $|x|$ at zero, no single slope works on both sides, even though the function itself tends to zero.
+
 **Ex.1.2.14: best line.** $P=(a,f(a))$, $Q=(a+h,f(a+h))$. For the line $L_m$ through $P$ with slope $m$,
+
 $$
 \frac{\operatorname{dist}(Q,L_m)}{\operatorname{dist}(Q,P)}
 =\frac{|[f(a+h)-f(a)]/h-m|}
 {\sqrt{1+m^2}\sqrt{1+([f(a+h)-f(a)]/h)^2}}
 \to\frac{|f'(a)-m|}{\sqrt{1+m^2}\sqrt{1+f'(a)^2}}.
 $$
-Zero iff $m=f'(a)$. For the vertical line the limit is $1/\sqrt{1+f'(a)^2}>0$. Hence only the tangent has relative distance tending to zero.
+
+The displayed limit is zero exactly when $m=f'(a)$. For the vertical line through $P$ the limit is $1/\sqrt{1+f'(a)^2}>0$, so it does not qualify when the derivative is finite. A line not passing through $P$ has a positive limiting distance from $Q$ while $\operatorname{dist}(Q,P)\to0$, and therefore cannot qualify either. Hence the tangent is the unique line with relative distance tending to zero.
 
 **Definition (Differential).** $dx$ independent; $dy=f'(a)dx$. With $dx=h$,
+
 $$
 \Delta y=f(a+h)-f(a),\qquad \Delta y=dy+o(|h|).
 $$
@@ -364,47 +330,61 @@ $$
 *Lecture 10, p.27. Curve change $\Delta y$; tangent change $dy=\Delta L$.*
 
 **Ex.1.2.17.** $f=\sqrt{1+x}$ at $0$: $dy=dx/2$ and
+
 $$
 \Delta y-dy=\sqrt{1+h}-1-h/2
 =-\frac{h^2}{2(\sqrt{1+h}+1)^2},\qquad
 |\Delta y-dy|\le h^2/4\quad(|h|<1/2).
 $$
+
 Thus $\sqrt{1.02}\approx1.01$, error $\le10^{-4}$; overestimate.
+
+The sign of the remainder matters as well as its size: it is nonpositive, so the tangent line lies above the graph in this example. The estimate is obtained by rationalizing the exact error, without invoking a Taylor theorem not yet established.
 
 **Ex.1.2.18.** At $0$:
 
 - $x^2\sin(1/x)$, extended by $0$: derivative $0$, differential $0$.
-- $x^2D(x)$: quotient $hD(h)\to0$, differential $0$; discontinuous at every nonzero point.
+
+- $x^2D(x)$, where $D$ is the Dirichlet function from Week 1: the quotient is $hD(h)\to0$, so the differential at zero is $0$. At a nonzero point, rational and irrational inputs give incompatible limiting values, hence discontinuity there.
+
 - $u=x$ on rationals, $\sin x$ otherwise: quotient $1$ or $\sin h/h\to1$, so $du=dx$.
 
 ## Increment form; chain rule proof
 
-**Ex.1.2.19-20.** In one variable,
+**Exercises 1.2.19 and 1.2.20.** In one variable,
+
 $$
 f\text{ differentiable at }a
 \iff f(a+h)-f(a)=Ah+\eta(h)h,\quad\eta(h)\to0.
 $$
+
 Forward: define $\eta$ as above, $A=f'(a)$. Reverse: divide by $h$; quotient $\to A$, so $f'(a)=A$.
 
 For the chain rule, $u_0=g(a)$, $k=\Delta u$:
+
 $$
 \begin{aligned}
 \Delta u&=(g'(a)+\beta(h))h,\quad\beta(h)\to0,\\
 f(u_0+k)-f(u_0)&=(f'(u_0)+\alpha(k))k,\quad\alpha(k)\to0.
 \end{aligned}
 $$
+
 Set $\alpha(0)=0$. Since $\Delta u\to0$,
+
 $$
 \frac{f(g(a+h))-f(g(a))}{h}
 =(f'(u_0)+\alpha(\Delta u))(g'(a)+\beta(h))\to f'(u_0)g'(a).
 $$
+
 No division by $\Delta u$; the missing case is included.
+
+More explicitly, define $\alpha(k)$ by the difference quotient when $k\ne0$ and set $\alpha(0)=0$. The increment identity is then true also for $k=0$. Continuity of $g$ gives $\Delta u\to0$, so $\alpha(\Delta u)\to0$ even if $g(a+h)=g(a)$ for infinitely many steps. This is precisely the case that the informal cancellation misses.
 
 **$C^1$ reminder.** $f''$ exists $\Rightarrow f\in C^1$ ($f'$ continuous) $\Rightarrow f$ differentiable $\Rightarrow f$ continuous, on an open interval. Converses fail at $0$, respectively: $x|x|$, $x^2\sin(1/x)$ extended by $0$, $|x|$.
 
-\newpage
+For the first counterexample, $(x|x|)'=2|x|$ is continuous, but its derivative at zero does not exist. In the middle example, $f'(0)=0$ but the nearby derivative oscillates. These examples separate the implications one at a time; no continuity of $f''$ is assumed in the first implication.
 
-# Lecture 11
+# Lecture 11: extrema and the mean value theorem
 
 ## Extreme values
 
@@ -413,21 +393,31 @@ No division by $\Delta u$; the missing case is included.
 **Ex.1.2.22.**
 
 - $x$ on $(0,1)$: neither extremum. $\arctan x$ on $\mathbb R$: neither; bounds $\pm\pi/2$ not attained.
+
 - $f=|x|$ for $0<|x|<1$, $f(0)=f(\pm1)=1/2$: on $[-1,1]$, inf $0$, sup $1$, neither attained.
+
 - $u(p/q)=1/q$, reduced, $q>0$: max $1$, no minimum. Giving irrationals value $1$ on $[0,1]$ still gives max $1$, no minimum.
 
 **Theorem 1.2.4 (EVT).** Continuous on $[a,b]$ $\Rightarrow$ attains both absolute extrema. Need continuity + closed + bounded.
 
-*Proof sketch.* Unbounded $f$ would give $|f(x_n)|>n$. A subsequence $x_{n_j}\to c\in[a,b]$ contradicts continuity. Thus $M=\sup f$ is finite. Choose
+The three hypotheses do different jobs. The function $x$ on $(0,1)$ loses the endpoints; $x$ on $\mathbb R$ loses boundedness of the domain; the modified $|x|$ example above loses continuity. In each case an extremum can fail to be attained.
+
+**Proof.** We use the Bolzano–Weierstrass theorem: every bounded real sequence has a convergent subsequence. This compactness result is a completeness theorem, not a consequence of differentiation.
+
+If $f$ were unbounded, choose $x_n\in[a,b]$ with $|f(x_n)|>n$. A subsequence $x_{n_j}$ converges to a point $c\in[a,b]$, because the interval is bounded and closed. Continuity would give $f(x_{n_j})\to f(c)$, contradicting the unbounded values along that subsequence. Thus $f$ is bounded and $M=\sup f([a,b])$ is finite. Choose
+
 $$
 M-1/n<f(x_n)\le M.
 $$
-Take a convergent subsequence again: $f(c)=M$. Apply to $-f$ for the minimum. Uses the bounded-sequence subsequence theorem.
+
+Take a convergent subsequence again, say $x_{n_j}\to c\in[a,b]$. The displayed inequalities give $f(x_{n_j})\to M$, while continuity gives $f(x_{n_j})\to f(c)$. Uniqueness of the limit yields $f(c)=M$. Apply the same argument to $-f$ for the minimum.
 
 **Definition.** Local maximum at $c\in D$: for some $\delta>0$,
+
 $$
 f(x)\le f(c)\quad(x\in D\cap(c-\delta,c+\delta)).
 $$
+
 Strict: $<$ for $x\ne c$. Endpoints count relative to $D$.
 
 ![](note-images/w4-local-global.png){width=65%}
@@ -437,13 +427,18 @@ Strict: $<$ for $x\ne c$. Endpoints count relative to $D$.
 **Theorem 1.2.5 (Fermat).** Interior local extremum + differentiable $\Rightarrow f'(c)=0$.
 
 At a local maximum,
+
 $$
 h>0:\ \frac{f(c+h)-f(c)}h\le0,\qquad
 h<0:\ \frac{f(c+h)-f(c)}h\ge0.
 $$
+
 Same limit $\Rightarrow f'(c)=0$. Minimum: apply to $-f$.
 
+The point must be interior so that both signs of $h$ are allowed. The function $x$ has a relative maximum at $1$ on $[0,1]$, but its derivative there is $1$. This is why endpoints belong in a separate line of an extrema calculation.
+
 **Critical point:** interior point with $f'=0$ or $f'$ undefined. Only a candidate:
+
 $x^3$ at $0$ has no extremum; $|x|$ has a minimum but no derivative. Endpoints checked separately ($x$ on $[0,1]$).
 
 ## Refraction
@@ -454,22 +449,33 @@ $x^3$ at $0$ has no extremum; $|x|$ has a minimum but no derivative. Endpoints c
 
 *Lecture 11, p.37. Angles from the normal.*
 
-Minimize time, not length:
+The two straight segments are traveled at speeds $c_1$ and $c_2$. Their lengths come from Pythagoras, and time is length divided by speed. Therefore we minimize time, not total length:
+
 $$
 T(x)=\frac{\sqrt{a^2+x^2}}{c_1}+\frac{\sqrt{b^2+(d-x)^2}}{c_2},\quad0\le x\le d.
 $$
+
 $T'(0)<0<T'(d)$, so the EVT minimum is interior. Fermat gives
+
 $$
 T'(x)=\frac{x}{c_1\sqrt{a^2+x^2}}-\frac{d-x}{c_2\sqrt{b^2+(d-x)^2}}=0
 \implies\frac{\sin\theta_1}{c_1}=\frac{\sin\theta_2}{c_2}.
 $$
-Unique: $T''=a^2/[c_1(a^2+x^2)^{3/2}]+b^2/[c_2(b^2+(d-x)^2)^{3/2}]>0$.
+
+The angles are measured from the normal to the interface, so $\sin\theta_1=x/\sqrt{a^2+x^2}$ and $\sin\theta_2=(d-x)/\sqrt{b^2+(d-x)^2}$. Substituting gives the stated refraction law. The minimizing point is unique because
+
+$$
+T''(x)=\frac{a^2}{c_1(a^2+x^2)^{3/2}}
++\frac{b^2}{c_2(b^2+(d-x)^2)^{3/2}}>0.
+$$
+
+In particular $T'$ is strictly increasing and has exactly one zero between its negative value at $0$ and positive value at $d$.
 
 ## Rolle and MVT
 
 **Theorem 1.2.6 (Rolle).** $f\in C[a,b]$, differentiable on $(a,b)$, $f(a)=f(b)$ $\Rightarrow\exists c\in(a,b)$ with $f'(c)=0$.
 
-Proof: constant case immediate. Otherwise an absolute max or min differs from the endpoint value, hence lies inside. EVT + Fermat.
+**Proof.** The constant case is immediate. Otherwise some value differs from the common endpoint value. If that value is larger, the absolute maximum supplied by the EVT cannot be at an endpoint; if it is smaller, the absolute minimum cannot be at an endpoint. In either case an interior extremum exists, and Fermat's theorem gives a point with derivative zero.
 
 ![](note-images/w4-rolle.png){width=65%}
 
@@ -478,46 +484,60 @@ Proof: constant case immediate. Otherwise an absolute max or min differs from th
 No endpoint derivatives required. Interior differentiability matters: $|x|$ on $[-1,1]$ is a counterexample without it.
 
 **Theorem 1.2.7 (MVT).** $f\in C[a,b]$, differentiable on $(a,b)$:
+
 $$
 \exists c\in(a,b):\qquad f(b)-f(a)=f'(c)(b-a).
 $$
+
 Subtract the secant: $h(x)=f(x)-f(a)-\frac{f(b)-f(a)}{b-a}(x-a)$. Then $h(a)=h(b)=0$; Rolle gives the result.
+
+Geometrically, somewhere the tangent is parallel to the secant joining the endpoints. Logically, the subtraction is the whole reduction: $h$ inherits continuity and interior differentiability from $f$, and $h'(c)=0$ is exactly the claimed equation. Neither theorem says that the point $c$ is unique.
 
 **Corollary 1.2.8.** $f'=0$ on an interval $\Rightarrow f$ constant. Apply MVT between any two points. Disconnected domains may have different constants on different pieces.
 
 **Ex.1.2.29.** $F=x^{100}-x-1$: $F(1)=-1$ and
+
 $$
 F(1+t)>99t-1\ (t>0)\implies F(100/99)>0.
 $$
-IVT gives a root in $(1,100/99)$; $F'=100x^{99}-1>0$ there gives uniqueness by Rolle.
 
-**Ex.1.2.31.** $F=x^2-\sin x$: root $0$, and another in $(\pi/6,1)$ since $F(\pi/6)<0<F(1)$. Three roots would give two zeros of $F'$ and one of $F''$, but $F''=2+\sin x\ge1$. Exactly two roots.
+IVT gives a root in $(1,100/99)$. This is the same existence argument encountered with the IVT in Week 2. Here there is a new conclusion: $F'=100x^{99}-1>0$ on this interval, so two roots there would contradict Rolle's theorem. Thus the root **in this interval** is unique. This is not a claim that the polynomial has only one real root on the whole line.
+
+**Ex.1.2.31.** Let $F(x)=x^2-\sin x$. One root is zero. Another lies in $(\pi/6,1)$ because $F(\pi/6)=\pi^2/36-1/2<0$ and $F(1)=1-\sin1>0$.
+
+Three distinct roots anywhere on the real line would, by Rolle twice, give two zeros of $F'$ and then a zero of $F''$. But $F''=2+\sin x\ge1$, so this is impossible. There are exactly two real roots.
 
 **Ex.1.2.32.** If $f''$ is continuous on $[a-\delta,a+\delta]$, set $M=\max|f''|$. MVT twice, for $0<|h|<\delta$:
+
 $$
 \Delta y-dy=[f'(\xi)-f'(a)]h=f''(\eta)(\xi-a)h
 \implies |\Delta y-dy|\le M|h|^2.
 $$
+
 $\xi,\eta$ lie between $a$ and $a+h$.
 
 **Ex.1.2.33.** $f\in C[a,b]$, differentiable inside; $f'(x)\to L\in\mathbb R$ as $x\to a^+$. Then
+
 $$
 \frac{f(x)-f(a)}{x-a}=f'(c_x),\quad a<c_x<x;\qquad c_x\to a^+\implies f'_+(a)=L.
 $$
 
-# Lecture 12
+# Lecture 12: monotonicity and convexity
 
 ## Monotonicity and extrema tests
 
 Strict increase: $u<v\Rightarrow f(u)<f(v)$; nondecrease: $\le$ instead.
 
 **Ex.1.2.34.** For $f\in C[a,b]$, differentiable inside,
+
 $$
 f(v)-f(u)=f'(c)(v-u).
 $$
+
 Thus $f'>0$ gives strict increase; $f'\ge0$ gives nondecrease. Reverse signs for decrease. Strict increase need not mean $f'>0$ everywhere: $x^3$.
 
 **Proposition 1.2.9 (First derivative test).** $f$ continuous near $c$, differentiable on either side:
+
 $$
 \begin{array}{c|c|c}
 f'\text{ on left}&f'\text{ on right}&c\\\hline
@@ -527,15 +547,21 @@ f'\text{ on left}&f'\text{ on right}&c\\\hline
 -&-&\text{neither}
 \end{array}
 $$
+
 Proof: MVT on $[x,c]$ or $[c,x]$ compares $f(x)$ with $f(c)$. No derivative at $c$ needed.
 
+For example, if $f'<0$ to the left and $f'>0$ to the right, MVT gives $f(x)>f(c)$ for every nearby $x\ne c$. Continuity at $c$ permits the two closed intervals in that argument. Without continuity, changing the value at $c$ could destroy the conclusion while leaving every nearby derivative unchanged.
+
 **Theorem 1.2.10 (Second derivative test).** $f''$ continuous near $c$, $f'(c)=0$:
+
 $$
 f''(c)>0\Rightarrow\text{strict min},\qquad f''(c)<0\Rightarrow\text{strict max}.
 $$
+
 E.g. $f''>0$ nearby makes $f'$ strictly increasing through $0$; use the first test. If $f''(c)=0$: inconclusive ($x^4,-x^4,x^3$).
 
 **Ex.1.2.36.** $f=x^2(2+\sin(1/x))$, extended by $f(0)=0$:
+
 $$
 f(x)\ge x^2>0\ (x\ne0),\quad f'(0)=0,\quad
 f'(x)=2x(2+\sin(1/x))-\cos(1/x)\ (x\ne0).
@@ -548,6 +574,7 @@ $$
 Strict minimum at $0$, but no monotone neighborhood on either side. At $1/(2n\pi)$, $f'<0$ eventually; at $1/((2n+1)\pi)$, $f'>0$. Negative sequences give both signs too. The first-test sign pattern is sufficient, not necessary.
 
 **Ex.1.2.24 revisited.** $f=(x-1)x^{2/3}$:
+
 $$
 f'=\frac{5x-2}{3x^{1/3}},\quad
 \begin{array}{c|ccc}
@@ -555,28 +582,35 @@ x&(-\infty,0)&(0,2/5)&(2/5,\infty)\\\hline
 f'&+&-&+
 \end{array}
 $$
+
 Local max at $0$; local min at $2/5$, value $-\frac35(2/5)^{2/3}$ (correcting the slide typo).
 
 **Ex.1.2.37.** $f=|2x^3-9x^2+12x|$ on $[-1/4,5/2]$. Since $2x^2-9x+12>0$, split at $0$:
+
 $$
 f'=\begin{cases}-6(x-1)(x-2),&x<0,\\6(x-1)(x-2),&x>0.\end{cases}
 $$
+
 Candidates $0,1,2$ + endpoints:
+
 $$
 \begin{array}{c|ccccc}
 x&-1/4&0&1&2&5/2\\\hline
 f(x)&115/32&0&5&4&5
 \end{array}
 $$
+
 Motion: down/up/down/up. Global min $0$ at $0$; max $5$ at $1,5/2$. Local min at $2$; relative-domain local max at $-1/4$.
 
 ## Convexity
 
 **Definition.** On an interval $I$, convex means
+
 $$
 f(\alpha x+(1-\alpha)y)\le\alpha f(x)+(1-\alpha)f(y)
 \quad(x,y\in I,\ 0<\alpha<1).
 $$
+
 Strict: $<$ for $x\ne y$. Concave: reverse inequality. No derivative assumed.
 
 ![](note-images/w4-convex.png){width=48%}
@@ -586,22 +620,28 @@ Strict: $<$ for $x\ne y$. Concave: reverse inequality. No derivative assumed.
 For $x^2$, the left side minus the right side is $-\alpha(1-\alpha)(x-y)^2<0$ when $x\ne y$.
 
 **Ex.1.2.41 (Three-point criterion).** Convexity is equivalent to
+
 $$
 \frac{f(v)-f(u)}{v-u}\le\frac{f(w)-f(v)}{w-v}\quad(u<v<w).
 $$
+
 Proof: write $v=\alpha u+(1-\alpha)w$, $\alpha=(w-v)/(w-u)$, and rearrange the chord inequality. Strict version uses $<$.
 
 **Ex.1.2.42, 42'.** For differentiable $f$ on an open interval,
+
 $$
 f\text{ convex}\iff f'\text{ nondecreasing},\qquad
 f\text{ strictly convex}\iff f'\text{ strictly increasing}.
 $$
+
 Reverse direction: MVT on $[u,v]$, $[v,w]$ turns the two slopes into $f'(\xi_1),f'(\xi_2)$ with $\xi_1<\xi_2$.
 
 Forward, strict case: fix $u<z<v$ and shrink exterior secants:
+
 $$
 f'(u)\le\frac{f(z)-f(u)}{z-u}<\frac{f(v)-f(z)}{v-z}\le f'(v).
 $$
+
 Keep the middle strict inequality; limits alone may lose strictness. Non-strict case: replace $<$ by $\le$.
 
 **Proposition 1.2.11.** For twice-differentiable $f$, $f''\ge0\Rightarrow$ convex. If $f''\ge0$ with $f''>0$ except at finitely many points, then strictly convex. Reverse signs for concavity.
@@ -610,8 +650,187 @@ Proof: MVT makes $f'$ nondecreasing; in the second case it strictly increases on
 
 Another proof idea: add $\varepsilon x^2$, obtain strict convexity, then let $\varepsilon\downarrow0$ in the chord inequality.
 
+For the non-strict statement, this last argument uses $(f+\varepsilon x^2)''>0$ and then takes the limit for each fixed pair of points and each fixed weight. The definition of convexity involves only function values, so no passage of derivatives through a limit is needed.
+
 **Ex.1.2.43-44.**
 
 - $x^{2n}$ on $\mathbb R$ and $x^n$ on $(0,\infty)$ ($n>1$): strictly convex. Also $1/x$ on $(0,\infty)$; $\sin x$ strictly concave on $[0,\pi]$.
+
 - $x^{4/3}$: $f'=\frac43x^{1/3}$ strictly increasing even across $0$. Strictly convex, though $f''(0)$ undefined.
+
 - $x^{5/3}$: $f'=\frac53x^{2/3}$ decreases left of $0$, increases right. Concave down / up.
+
+These are three separate questions: whether the function is differentiable, whether its second derivative exists at a point, and whether a chord inequality holds on an interval. A missing second derivative at one point need not prevent convexity. Conversely, $f''(c)=0$ at a single point does not determine the shape on either side.
+
+## Review problems
+
+1. Prove from the definition that $x^2\sin(1/x)$, extended by zero, is differentiable at zero. Explain why differentiating the off-zero formula does not calculate the derivative at zero.
+
+2. Prove the chain rule without assuming the inner increment is nonzero.
+
+3. State the hypotheses of Rolle and MVT before using them to count roots. Which hypotheses fail for $|x|$ on $[-1,1]$?
+
+4. Find an extremum without a zero derivative, a zero derivative without an extremum, and a strict minimum whose nearby derivative changes sign infinitely often.
+
+5. Explain why $x^{4/3}$ is strictly convex even though its second derivative at zero does not exist.
+
+## Lecture sources
+
+Xing-Bin Pan, MAT1011 lecture slides, Lectures 8–12. Lecture 8 treats the derivative and one-sided behavior; Lecture 9 treats derivative rules, higher derivatives and implicit differentiation; Lecture 10 develops linearization and a chain-rule proof valid for zero inner increments; Lectures 11–12 develop extrema, mean value theorems and convexity. Tutorial 2 is collected after the lecture notes so that its limit exercises do not interrupt the differentiation chapter.
+
+# Tutorial 2: worked limit problems
+
+## Algebra and estimates
+
+**Q1.** Cancel/rationalize first:
+
+$$
+\begin{aligned}
+\text{(a)}\quad &\frac{x^3-8}{x^2-4}=\frac{x^2+2x+4}{x+2}\to3\quad(x\to2),\\
+\text{(b)}\quad &\frac{\sqrt{1+2x}-\sqrt{1-x}}x
+=\frac3{\sqrt{1+2x}+\sqrt{1-x}}\to\frac32\quad(x\to0),\\
+\text{(c)}\quad &\frac{x^2\sin(1/x)}{\sqrt{1+x}-1}
+=x\sin(1/x)(\sqrt{1+x}+1)\to0,\\
+\text{(d)}\quad &\frac{x^n-1}{x^m-1}
+=\frac{1+x+\cdots+x^{n-1}}{1+x+\cdots+x^{m-1}}\to\frac nm\quad(x\to1).
+\end{aligned}
+$$
+
+In (c), $|\text{expression}|\le3|x|$ for $0<|x|<1/2$.
+
+**Q4(a).** For $x_0\ne0$, first impose $|x-x_0|<|x_0|/2$, so $|x|>|x_0|/2$.
+
+$$
+\left|\frac1x-\frac1{x_0}\right|\le\frac{2|x-x_0|}{|x_0|^2};\qquad
+\delta=\min\left\{\frac{|x_0|}2,\frac{\varepsilon|x_0|^2}2\right\}.
+$$
+
+**Q4(b).** Write $1/x=\lfloor1/x\rfloor+r$, $0\le r<1$. Then
+
+$$
+\left|x\lfloor1/x\rfloor-1\right|=|xr|\le|x|\to0.
+$$
+
+Limit $1$; $\delta=\varepsilon$. Works for negative $x$ too.
+
+**Q2.** Let $H=f/x^2\to1$ as $x\to0$. Eventually $|H|<2$, hence
+
+$$
+|f/x|<2|x|\to0,\qquad |f|<2x^2\to0.
+$$
+
+If $|H-1|<1$ for $0<|x|<\delta_1$, use respectively $\min\{\delta_1,\varepsilon/2\}$ and $\min\{\delta_1,\sqrt{\varepsilon/2}\}$.
+
+Also $H>1/2$ near $0$, so $f>0$ there and
+
+$$
+\frac{\sqrt f}{|x|}=\sqrt H,\qquad
+|\sqrt H-1|=\frac{|H-1|}{\sqrt H+1}\le|H-1|\to0.
+$$
+
+Limit $1$. Use a common radius for $H>1/2$ and $|H-1|<\varepsilon$. Remember $\sqrt{x^2}=|x|$.
+
+## Quantifiers
+
+**Q3(a).** Wrong: $\forall\varepsilon\ \forall\delta\ \exists x$ with both inequalities true. Only asks for one good point. Correct:
+
+$$
+\forall\varepsilon>0\ \exists\delta>0\ \forall x\in\operatorname{dom}f:
+\quad 0<|x-c|<\delta\implies |f(x)-L|<\varepsilon.
+$$
+
+Counterexample to the wrong definition: $f(x)=\sin(1/x)$, $c=L=0$. Every neighborhood contains $x=1/(n\pi)$ with $f(x)=0$.
+
+**Q3(b).** Negation for a fixed candidate $L$:
+
+$$
+\exists\varepsilon_0>0\ \forall\delta>0\ \exists x\in\operatorname{dom}f:
+\quad 0<|x-c|<\delta,\quad |f(x)-L|\ge\varepsilon_0.
+$$
+
+To show no finite limit, do this for **every** $L\in\mathbb R$. For $\sin(1/x)$ choose $\varepsilon_0=1$: if $L\le0$, use points with sine $1$; if $L>0$, use sine $-1$. Such points occur arbitrarily close to $0$.
+
+**Q5(a): uniqueness.** If $f\to A,B$ and $A\ne B$, choose $\varepsilon=|A-B|/3$ and a common radius. Then
+
+$$
+|A-B|\le|A-f(x)|+|f(x)-B|<2|A-B|/3,
+$$
+
+contradiction.
+
+**Q5(b).** $f=g$ for $0<|x-c|<r$ $\Rightarrow$ same limit at $c$. Use $\delta=\min\{r,\delta_f\}$. The value at $c$ is irrelevant.
+
+**Q5(c).** $f\to A\Rightarrow|f|\to|A|$, since
+
+$$
+\bigl||f|-|A|\bigr|\le|f-A|.
+$$
+
+Converse holds for all $f$ when $A=0$. For $A\ne0$, take $f=|A|$ to the right of $c$, $f=-|A|$ to the left.
+
+## Density and coupled limits
+
+**Q6.** $D=1$ on $\mathbb Q$, $0$ otherwise; $F(x)=xD(x)$.
+
+At $0$: $|F(x)|\le|x|\to0$. At $x_0\ne0$, suppose $F\to L$. Take $\varepsilon=|x_0|/4$ and $\delta\le|x_0|/4$ within the limit radius. Density gives rational $q$ and irrational $t$ in that punctured neighborhood. Then
+
+$$
+\frac34|x_0|<|q|=|F(q)-F(t)|<2\varepsilon=\frac12|x_0|,
+$$
+
+contradiction. Limit exists only at $0$.
+
+**Q7.** $f<g$, $f\to A$, $g\to B$ $\Rightarrow A\le B$.
+
+If $A>B$, use $\varepsilon=(A-B)/3$: near $c$,
+
+$f>A-\varepsilon>B+\varepsilon>g$, impossible. Strictness may disappear: $0<x^2$ for $x\ne0$, both limits $0$.
+
+**Q8.** Assume $S=f+g\to0$, $P=fg\to0$. Key identity:
+
+$$
+0\le f^2+g^2=S^2-2P\le|S|^2+2|P|.
+$$
+
+Given $\varepsilon>0$, choose a common radius with $|S|<\varepsilon/\sqrt2$, $|P|<\varepsilon^2/4$. Then $f^2+g^2<\varepsilon^2$, so $|f|,|g|<\varepsilon$. Both tend to $0$.
+
+Do not assume the individual limits exist first. Need both hypotheses: $(f,g)=(1,-1)$ or $(0,1)$ shows what happens if one is dropped.
+
+## Substitutions; derivatives at zero
+
+**Q9(a).** $h=x-x_0$: same radius in
+
+$$
+\lim_{x\to x_0}f(x)=A\iff\lim_{h\to0}f(x_0+h)=A.
+$$
+
+**Q9(b).** If $f(x)\to A$ at $0$, then $f(t^2)\to A$: use $|t|<\sqrt\delta$. Converse fails: $f=1$ for $x>0$, $0$ for $x<0$. Squaring only sees the right side.
+
+**Q10.** $F=x\sin x\cos(1/x)$ off $0$, $F(0)=0$:
+
+$$
+|F(h)/h|=|\sin h\cos(1/h)|\le|h|\to0;\quad F'(0)=0.
+$$
+
+**Q11.** $G=(\sqrt{1+x^2}-1)/x$ off $0$, $G(0)=0$:
+
+$$
+\frac{G(h)}h=\frac1{\sqrt{1+h^2}+1}\to\frac12;\quad G'(0)=\frac12.
+$$
+
+**Q12: fixed point.** Continuous $f:[0,1]\to[0,1]$. Set $H=f-x$:
+
+$$
+H(0)\ge0,\quad H(1)\le0\quad\xRightarrow{\mathrm{IVT}}\quad
+H(c)=0\text{ for some }c\in[0,1].
+$$
+
+If $f$ is strictly decreasing, two fixed points $c_1<c_2$ would give $c_1=f(c_1)>f(c_2)=c_2$. Unique. Without this, $f(x)=x$ fixes everything.
+
+**Q13.** For $f>0$ on a punctured neighborhood,
+
+$$
+f\to+\infty\iff1/f\to0.
+$$
+
+Forward: use threshold $M=1/\varepsilon$. Reverse: use error $\varepsilon=1/M$, giving $0<1/f<1/M\Rightarrow f>M$. Positivity matters: $f=-(x-c)^{-2}$ has $1/f\to0$ but $f\to-\infty$.

@@ -12,7 +12,8 @@ export function renderCourseNote(raw,week,options={}){
  md.renderer.rules.math_inline=(tokens,i)=>courseMath(tokens[i].content,false);
  md.renderer.rules.math_block=(tokens,i)=>'<div class="formula">'+courseMath(tokens[i].content,true)+'</div>\n';
  const imageRule=md.renderer.rules.image;
- md.renderer.rules.image=(tokens,i,options,env,self)=>{const token=tokens[i],url=token.attrGet('src');if(!url.startsWith(imagePrefix+'/')||!/^[\w/-]+\.png$/.test(url))throw Error('Unexpected note image: '+url);const alt=labels[path.basename(url,'.png')];if(!alt)throw Error('Missing figure label: '+url);token.content=alt;token.children=[{type:'text',content:alt}];token.attrSet('alt',alt);token.attrSet('loading','lazy');token.attrSet('style','width:'+imageWidths.get(url)+'%;max-width:100%;height:auto');images.push(url);return imageRule(tokens,i,options,env,self)};
+ const approvedImages=new Set(options.approvedImages||[]);
+ md.renderer.rules.image=(tokens,i,options,env,self)=>{const token=tokens[i],url=token.attrGet('src');if((!url.startsWith(imagePrefix+'/')&&!approvedImages.has(url))||!/^[\w/-]+\.png$/.test(url))throw Error('Unexpected note image: '+url);const alt=labels[path.basename(url,'.png')];if(!alt)throw Error('Missing figure label: '+url);token.content=alt;token.children=[{type:'text',content:alt}];token.attrSet('alt',alt);token.attrSet('loading','lazy');token.attrSet('style','width:'+(imageWidths.get(url)||65)+'%;max-width:100%;height:auto');images.push(url);return imageRule(tokens,i,options,env,self)};
  const tokens=md.parse(body,{});
  for(let i=0;i<tokens.length;i++){
   const token=tokens[i];if(token.type==='heading_open'){
@@ -26,11 +27,22 @@ export function renderCourseNote(raw,week,options={}){
 export function buildCourseNotes(root){
  const report=[],legacy=JSON.parse(fs.readFileSync(path.join(root,'resources/data/course-note-presentation.json'),'utf8')).legacy;
  for(const week of[1,2,3,4,5]){
-  const name='MAweek'+week,source=legacy.find(e=>e.week===week),rendered=week<3?legacyCourseNote(fs.readFileSync(path.join(root,source.original),'utf8'),week):renderCourseNote(fs.readFileSync(path.join(root,noteDirectory,name+'.md'),'utf8'),week);
+  const name='MAweek'+week,source=legacy.find(e=>e.week===week),revised=week<=3,
+   rendered=revised?renderCourseNote(fs.readFileSync(path.join(root,noteDirectory,name+'.md'),'utf8'),week,revisedCourseOptions):week<3?legacyCourseNote(fs.readFileSync(path.join(root,source.original),'utf8'),week):renderCourseNote(fs.readFileSync(path.join(root,noteDirectory,name+'.md'),'utf8'),week);
+  if(revised){
+   const prior=fs.readFileSync(path.join(root,'resources/content/course-revisions/2026-10-24',name+'.html.source'),'utf8');
+   const oldIds=[...prior.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]).filter(id=>id!=='theme-toggle');
+   const currentIds=new Set([...rendered.html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));
+   rendered.html='<div class="legacy-note-anchors" aria-hidden="true">'+[...new Set(oldIds)].filter(id=>!currentIds.has(id)).map(id=>'<span id="'+id+'"></span>').join('')+'</div>'+rendered.html;
+  }
   for(const url of rendered.images||[])if(!fs.existsSync(path.join(root,noteDirectory,url)))throw Error('Missing image '+url);
-  const html=courseNotePage(root,week,rendered);fs.writeFileSync(path.join(root,noteDirectory,name+'.html'),html);
+  const displayed=revised?{...rendered,contents:rendered.contents.filter(c=>c.level<=3)}:rendered;
+  let html=courseNotePage(root,week,displayed,{revised});
+  if(revised)html=html.replace('</head>','<link rel="stylesheet" href="/en/resources/assets/calculus-revised.css"></head>').replace('class="course-note"','class="course-note revised-note"');
+  fs.writeFileSync(path.join(root,noteDirectory,name+'.html'),html);
   report.push({week,formulas:rendered.math.length,images:rendered.images?.length||0,headings:rendered.contents.length,htmlBytes:Buffer.byteLength(html)});
  }
  return report;
 }
+export const revisedCourseOptions={approvedImages:['image.png',...Array.from({length:19},(_,n)=>'image-'+(n+1)+'.png')],imageLabels:{image:'An oscillating function with a quadratic envelope','image-1':'An oscillating function with a linear envelope','image-2':'A jump at the origin','image-3':'Unbounded behavior near the origin','image-4':'Oscillation near the origin','image-5':'Functions bounding a squeezed function','image-7':'Chord and arc comparison on the unit circle','image-8':'Geometry of the sine-over-angle limit','image-9':'A piecewise function with jump and removable discontinuities','image-13':'A decaying oscillation and a horizontal asymptote','image-14':'A radical approaching a horizontal asymptote','image-15':'A vertical asymptote of a radical function','image-16':'The equation x squared equals sine x','image-17':'A rational function with a slanted asymptote','image-18':'A rational function with two vertical asymptotes','image-19':'Unbounded oscillation without a vertical asymptote'}};
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url))console.log(JSON.stringify(buildCourseNotes(path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'))));

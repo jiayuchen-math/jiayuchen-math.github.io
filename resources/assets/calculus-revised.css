@@ -1,0 +1,12 @@
+.revised-note>h2{scroll-margin-top:24px}
+.revised-note h3{margin-top:48px}
+.revised-note h4{margin-top:36px}
+.revised-note p{margin-bottom:25px}
+.revised-note p.note-statement{margin-top:36px}
+.revised-note .formula{padding-block:14px;margin-block:30px 34px}
+.revised-note table{display:block;max-width:100%;overflow-x:auto;border-collapse:collapse;margin:28px 0 36px;line-height:1.65}
+.revised-note th,.revised-note td{padding:12px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.revised-note th:first-child,.revised-note td:first-child{padding-left:0}
+.revised-note .legacy-note-anchors{height:0;overflow:hidden}
+@media(max-width:560px){.revised-note .formula{font-size:.94em}.revised-note th,.revised-note td{padding:10px}.revised-note img{margin-block:28px}}
+@media print{.revised-note h2,.revised-note h3,.revised-note h4{break-after:avoid}.revised-note img{max-height:65vh;object-fit:contain}.revised-note p{orphans:3;widows:3}}

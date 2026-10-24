@@ -28,10 +28,12 @@ import {legacyCourseSources} from './test-course-note-layout.mjs';
 import {addedLinearFiles,priorLinearSources} from './test-linear-notes.mjs';
 import {addedExerciseFiles} from './test-calculus-exercises.mjs';
 import {addedLinearExerciseFiles} from './test-linear-exercises.mjs';
+import {priorCalculusSources,addedCalculusRevisionFiles} from './calculus-revisions.mjs';
+import './test-calculus-revisions.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
-const archivedCourseSources={...legacyCourseSources,...priorLinearSources},newNoteFiles=new Set([...addedCourseFiles,...addedLinearFiles,...addedExerciseFiles,...addedLinearExerciseFiles]);
+const archivedCourseSources={...priorCalculusSources,...legacyCourseSources,...priorLinearSources},newNoteFiles=new Set([...addedCourseFiles,...addedLinearFiles,...addedExerciseFiles,...addedLinearExerciseFiles,...addedCalculusRevisionFiles]);
 const json = file => JSON.parse(read(file));
 const sha = value => createHash('sha256').update(value).digest('hex');
 const bytes = file => fs.statSync(path.join(root, file)).size;
@@ -217,7 +219,7 @@ function fullDetail(record, collection) {
 await check('immutable pre-portal content and rendered article bodies', () => {
   assert.deepEqual(protectedSnapshot(), baseline);
   for(const [file,expected] of Object.entries(windowsSourceBlobs)){
-    const bytes=Buffer.from(read(file).replaceAll('\r\n','\n'));
+    const bytes=Buffer.from(read(archivedCourseSources[file]||file).replaceAll('\r\n','\n'));
     const blob=createHash('sha1').update(Buffer.concat([Buffer.from('blob '+bytes.length+'\0'),bytes])).digest('hex');
     assert.equal(blob,expected,'Pre-redesign Git blob identity, ignoring checkout EOL only: '+file);
   }

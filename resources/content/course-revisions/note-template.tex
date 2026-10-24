@@ -1,0 +1,47 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=24mm,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,mathtools}
+\usepackage{graphicx,booktabs,longtable,array,calc}
+\usepackage{microtype,enumitem,needspace,etoolbox,titlesec}
+\usepackage{xcolor,xurl,hyperref,fancyhdr}
+\definecolor{noteblue}{HTML}{1458A6}
+\hypersetup{colorlinks=true,urlcolor=noteblue,linkcolor=noteblue,pdftitle={$title$},pdfauthor={Jiayu Chen}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{7pt plus 2pt minus 1pt}
+\linespread{1.12}
+\setlength{\emergencystretch}{3em}
+\setlength{\abovedisplayskip}{12pt plus 3pt minus 2pt}
+\setlength{\belowdisplayskip}{12pt plus 3pt minus 2pt}
+\setlist{itemsep=6pt,topsep=8pt,parsep=3pt,leftmargin=1.8em}
+\providecommand{\tightlist}{}
+\newcommand{\passthrough}[1]{#1}
+\newcommand{\pandocbounded}[1]{#1}
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{1}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0pt}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0pt}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0pt}{}
+\titlespacing*{\section}{0pt}{22pt}{12pt}
+\titlespacing*{\subsection}{0pt}{18pt}{9pt}
+\titlespacing*{\subsubsection}{0pt}{15pt}{7pt}
+\pretocmd{\section}{\Needspace{8\baselineskip}}{}{}
+\pretocmd{\subsection}{\Needspace{6\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\Needspace{5\baselineskip}}{}{}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Calculus}
+\fancyhead[R]{\small $title$}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\begin{document}
+{\LARGE\bfseries $title$\par}
+\vspace{5pt}
+{\large $subtitle$\par}
+\vspace{8pt}
+{\small Jiayu Chen\par}
+\vspace{10pt}
+\tableofcontents
+\vspace{16pt}
+$body$
+\end{document}

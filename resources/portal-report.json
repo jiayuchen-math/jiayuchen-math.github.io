@@ -87,31 +87,31 @@
     ],
     [
       "notes/mathematical-notes/calculus/MAweek1.html",
-      "61b7df41d39a22f5d9758d2fee5792d0e9adc4cd550caeaaf9596b92b62a9ca5"
+      "56b6f6c6e10a96630f260c2a9baee562704cc3da2adbcf5fcdd790f917eab3df"
     ],
     [
       "notes/mathematical-notes/calculus/MAweek1.pdf",
-      "1575389820a65e8c75f62edb6d76dbafb86163c6537cc06edd792db22225e616"
+      "f3a3c717a058fc5890aec64c1a41e788c51b61afaf0ae487a8dde1785bb57868"
     ],
     [
       "notes/mathematical-notes/calculus/MAweek1.tex",
-      "054a81b2d12c9f873314f64d2ea803a6cfd7710aed4a12cf843ce29c2b597314"
+      "3ccf3d8d284945de38b57fd4d8aa1b2c5e5fbcff69a95f0cdd905d2faf443cc8"
     ],
     [
       "notes/mathematical-notes/calculus/MAweek2.html",
-      "31ed3c3330a979f97811eef22b8aeadfa89b85ceeba67486770bf60f4624b462"
+      "388956d64d3c51384efbc5294056813056bc427ceefeb63106cec77fa2874e55"
     ],
     [
       "notes/mathematical-notes/calculus/MAweek3.html",
-      "aee7eca8501ebc720247c800fe7670d0edb108e13867b09bc9ffe89f23fd09ff"
+      "49e54ea762fb14b7a04c7ab741f3360f9615c436f1215292752da8dc4ce98766"
     ],
     [
       "notes/mathematical-notes/calculus/MAweek3.pdf",
-      "551b7e59a3bff0ad5e301f3f1c85c93822ed71fec545bc57b72d1cc1413eb76e"
+      "e53cd09e08dda7d8ecc4a2713255a1beb80200c2a8ff478cf147beb7483c835f"
     ],
     [
       "notes/mathematical-notes/calculus/MAweek3.tex",
-      "b4822866df46b6d31d144ba7d0e0b3898dd24963a5ded0fc4058c3e005f869b7"
+      "226b6943ed5ca105020d2a647bda5d1bfb0a0eb76056e09e83db094fe88563f0"
     ],
     [
       "notes/mathematical-notes/calculus/MAweek4.html",
@@ -140,6 +140,34 @@
     [
       "notes/mathematical-notes/calculus/image-1.png",
       "ae70fc41389d88bd205b6131e01ae47cabe52407f0f1cad173d631396a9e1071"
+    ],
+    [
+      "notes/mathematical-notes/calculus/image-13.png",
+      "bfead51a73b1271d0335631aa627f8516ab59a6d2eaf9d50faa3e932b67625ee"
+    ],
+    [
+      "notes/mathematical-notes/calculus/image-14.png",
+      "2c5a0630b97c829cd45cab49be88c6c9fdc25e7a6044268d9ccc7108d82f8a2b"
+    ],
+    [
+      "notes/mathematical-notes/calculus/image-15.png",
+      "b9e1e3cf45c9d0a26607c2b8cbce6b7b4b477cf4555fa770966cb51149dd6b56"
+    ],
+    [
+      "notes/mathematical-notes/calculus/image-16.png",
+      "2bac6cf453e579bb53fed288fba3e9dad63d2c0649bf1e8afd6a849285562114"
+    ],
+    [
+      "notes/mathematical-notes/calculus/image-17.png",
+      "2623ca6d834844ccb449723499695b708743742448d80366817f0975e608b366"
+    ],
+    [
+      "notes/mathematical-notes/calculus/image-18.png",
+      "2623ca6d834844ccb449723499695b708743742448d80366817f0975e608b366"
+    ],
+    [
+      "notes/mathematical-notes/calculus/image-19.png",
+      "c6b62802c6644cc6c5739cbbfe83f6eb6e4b228ef9de4f27583888ba4fe1bdaf"
     ],
     [
       "notes/mathematical-notes/calculus/image-2.png",
@@ -231,11 +259,11 @@
     ],
     [
       "notes/mathematical-notes/calculus/week2.pdf",
-      "ab28a95dfcc7446b11714c019c78cd0778ee2a3fd5048b2f41b67ead464c32cb"
+      "b26ac98b4deb93a40878dd9dd8d6fc335ed1eabd5423457248c1aa0c67df429f"
     ],
     [
       "notes/mathematical-notes/calculus/week2.tex",
-      "2603f39322b3c8956c12f386a393e4faab08cd0a3e43e714db6116f6fce9c140"
+      "a9c43c097ce5892d6b2662b96b5cf0a5c560de29ffb95e0b7bdb771cb9824b94"
     ],
     [
       "notes/mathematical-notes/linear-algebra/LAexercises1.pdf",
@@ -974,7 +1002,7 @@
       "firstPageBytes": 49053
     }
   ],
-  "indexBytes": 1518064,
+  "indexBytes": 1518063,
   "searchCollections": [
     {
       "id": "library",

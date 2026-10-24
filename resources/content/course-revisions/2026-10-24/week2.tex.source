@@ -1,0 +1,1430 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Mathematical Analysis Notes: Tutorial 1 and Later},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Mathematical Analysis Notes: Tutorial 1 and Later}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Tutorial 1}\label{tutorial-1}
+
+\subsection{1 Proof, logic, and limit language}\label{proof-logic-and-limit-language}
+
+\subsubsection{1.1 Basic terminology}\label{basic-terminology}
+
+\begin{quote}
+• An axiom is a statement, rule, or principle that is accepted as true without needing proof. • A theorem is an important statement established by proof; a less central result is often called a proposition or lemma. • A proof is a finite, logically valid argument using definitions, axioms, and results already proved. • A statement of the form \(P ⇒ Q\) is a conditional statement: \(P\) is the hypothesis and \(Q\) is the conclusion.
+\end{quote}
+
+\subsubsection{\texorpdfstring{1.2 The \(\varepsilon\)-\(\delta\) definition}{1.2 The \textbackslash varepsilon-\textbackslash delta definition}}\label{the-varepsilon-delta-definition}
+
+\begin{quote}
+Here \(\delta\) controls how close the input \(x\) is to \(x_0\), while \(\epsilon\) prescribes how close \(f(x)\) must be to \(ℓ\).
+\end{quote}
+
+A standard proof has the following shape:
+
+1. Let \(\varepsilon>0\) be arbitrary.
+2. Choose an explicit \(\delta>0\), usually by first estimating \(|f(x)-\ell|\) in terms of \(|x-x_0|\).
+3. Assume \(0<|x-x_0|<\delta\) and verify \(|f(x)-\ell|<\varepsilon\).
+
+\subsubsection{1.3 Direct proof, contradiction, and contraposition}\label{direct-proof-contradiction-and-contraposition}
+
+\paragraph{Direct proof}\label{direct-proof}
+
+To prove a statement of the form
+
+\[
+P\Rightarrow Q,
+\]
+
+assume that \(P\) is true and use definitions, axioms, and previously proved results until \(Q\) follows. This is the default method for most \(\varepsilon\)-\(\delta\) arguments.
+
+\paragraph{Proof by contradiction}\label{proof-by-contradiction}
+
+To prove a statement \(S\):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Assume its negation, \(\neg S\).
+\item
+  Derive a contradiction, such as \(R\land\neg R\), an impossible inequality, or a conflict with a known theorem.
+\item
+  Conclude that \(\neg S\) is false, so \(S\) is true.
+\end{enumerate}
+
+For a uniqueness statement, assume that two distinct objects both satisfy the defining property. For a nonexistence statement, assume that the object exists and use its required properties to obtain a contradiction.
+
+\paragraph{\texorpdfstring{Example: irrationality of \(\sqrt2\)}{Example: irrationality of \textbackslash sqrt2}}\label{example-irrationality-of-sqrt2}
+
+Suppose, for contradiction, that
+
+\[
+\sqrt2=\frac{p}{q},
+\]
+
+where \(p,q\) are positive integers with no common factor. Squaring gives
+
+\[
+p^2=2q^2.
+\]
+
+Thus \(p^2\) is even, so \(p\) is even. Write \(p=2r\). Substitution gives
+
+\[
+4r^2=2q^2
+\quad\Longrightarrow\quad
+q^2=2r^2.
+\]
+
+Therefore \(q\) is also even. Hence \(p\) and \(q\) have the common factor \(2\), contradicting the assumption that \(p/q\) is in lowest terms. Consequently,
+
+\[
+\sqrt2\notin\mathbb{Q}.
+\]
+
+\paragraph{Proof by contraposition}\label{proof-by-contraposition}
+
+To prove
+
+\[
+P\Rightarrow Q,
+\]
+
+it is enough to prove the logically equivalent statement
+
+\[
+\neg Q\Rightarrow\neg P.
+\]
+
+This method is especially useful when the negation of the conclusion gives more concrete information than the conclusion itself.
+
+\subsubsection{1.4 Mathematical induction}\label{mathematical-induction}
+
+Let \(P(n)\) be a statement for \(n\in\mathbb{Z}_{>0}\). The principle of mathematical induction says that if:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Base case:} \(P(1)\) is true;
+\item
+  \textbf{Inductive step:} for every positive integer \(n\), assuming \(P(n)\) is true implies that \(P(n+1)\) is true;
+\end{enumerate}
+
+then \(P(n)\) is true for every positive integer \(n\).
+
+In the inductive step, clearly state the \textbf{induction hypothesis} \(P(n)\) before proving \(P(n+1)\). Do not assume the statement that is being proved.
+
+\paragraph{\texorpdfstring{Example: sum of the first \(n\) positive integers}{Example: sum of the first n positive integers}}\label{example-sum-of-the-first-n-positive-integers}
+
+We prove that
+
+\[
+1+2+\cdots+n=\frac{n(n+1)}{2}
+\qquad(n\geq1).
+\]
+
+For \(n=1\), both sides equal \(1\). Now assume the formula holds for \(n=k\):
+
+\[
+1+2+\cdots+k=\frac{k(k+1)}{2}.
+\]
+
+Then
+
+\[
+\begin{aligned}
+1+2+\cdots+k+(k+1)
+&=\frac{k(k+1)}{2}+(k+1)\\
+&=\frac{(k+1)(k+2)}{2}.
+\end{aligned}
+\]
+
+Thus, the statement for \(k\) implies the statement for \(k+1\), so the formula holds for every \(n\geq1\).
+
+\paragraph{Strong induction}\label{strong-induction}
+
+The principle of strong induction replaces the induction hypothesis \(P(n)\) by
+
+\[
+P(1),P(2),\ldots,P(n)\quad\Longrightarrow\quad P(n+1).
+\]
+
+It is useful when the case \(n+1\) depends on several earlier cases rather than only on the immediately preceding case.
+
+Ordinary induction, strong induction, and the well-ordering principle are equivalent principles. The well-ordering principle states that every nonempty subset of \(\mathbb{Z}_{>0}\) has a least element.
+
+\subsection{Lecture 5}\label{lecture-5}
+
+2026 9.16
+
+\subsubsection{}\label{section-1}
+
+\subsection{Exercise 1.1.26}\label{exercise-1.1.26}
+
+Any polynomial of odd degree with real coefficients has at least one real root.
+
+\subsubsection{Proof}\label{proof}
+
+Let
+
+\[
+P(x)=\sum_{k=0}^{n}a_kx^k
+\]
+
+be a polynomial of degree \(n\) with real coefficients, where \(n\) is an odd integer and \(a_n\neq0\). Without loss of generality, assume that \(a_n>0\). If \(a_n<0\), we can apply the same argument to \(-P\).
+
+Let
+
+\[
+C=\max_{0\leq k\leq n-1}|a_k|.
+\]
+
+For \(|x|\geq1\), we have
+
+\[
+\begin{aligned}
+\left|P(x)-a_nx^n\right|
+&=\left|\sum_{k=0}^{n-1}a_kx^k\right|\\
+&\leq C\sum_{k=0}^{n-1}|x|^k\\
+&\leq Cn|x|^{n-1}
+=\frac{Cn}{|a_n||x|}|a_nx^n|.
+\end{aligned}
+\]
+
+Choose
+
+\[
+R>\max\left\{1,\frac{2Cn}{|a_n|}\right\}.
+\]
+
+Then, whenever \(|x|\geq R\),
+
+\[
+\left|P(x)-a_nx^n\right|<\frac12|a_nx^n|.
+\]
+
+Since \(n\) is odd, \(R^n>0\) and \((-R)^n<0\). For \(x=R\), we obtain
+
+\[
+\begin{aligned}
+P(R)
+&\geq a_nR^n-\left|P(R)-a_nR^n\right|\\
+&>a_nR^n-\frac12|a_nR^n|
+=\frac12a_nR^n>0.
+\end{aligned}
+\]
+
+For \(x=-R\), we obtain
+
+\[
+\begin{aligned}
+P(-R)
+&\leq a_n(-R)^n+\left|P(-R)-a_n(-R)^n\right|\\
+&<a_n(-R)^n+\frac12|a_n(-R)^n|
+=\frac12a_n(-R)^n<0.
+\end{aligned}
+\]
+
+Thus,
+
+\[
+P(-R)<0<P(R).
+\]
+
+Because \(P\) is continuous on \([-R,R]\), the Intermediate Value Theorem gives some \(c\in[-R,R]\) such that
+
+\[
+P(c)=0.
+\]
+
+Therefore, \(P\) has at least one real root. \(\square\)
+
+\subsubsection{Proof of the Intermediate Value Theorem}\label{proof-of-the-intermediate-value-theorem}
+
+Let \(f\) be continuous on \([a,b]\), and suppose first that
+
+\[
+f(a)<y_0<f(b).
+\]
+
+Define
+
+\[
+S=\{x\in[a,b]:f(x)\leq y_0\}.
+\]
+
+The set \(S\) is nonempty because \(a\in S\), and it is bounded above by \(b\). By the completeness of \(\mathbb{R}\), the supremum
+
+\[
+c=\sup S
+\]
+
+exists. Since \(f(a)<y_0<f(b)\), we have \(a<c<b\).
+
+We claim that \(f(c)=y_0\). Suppose first that \(f(c)<y_0\). By continuity of \(f\) at \(c\), there exists \(\delta>0\) such that
+
+\[
+|x-c|<\delta\quad\Longrightarrow\quad f(x)<y_0.
+\]
+
+Choosing \(x>c\) sufficiently close to \(c\) gives \(x\in S\), contradicting the fact that \(c\) is an upper bound of \(S\).
+
+On the other hand, suppose that \(f(c)>y_0\). By continuity of \(f\) at \(c\), there exists \(\delta>0\) such that
+
+\[
+|x-c|<\delta\quad\Longrightarrow\quad f(x)>y_0.
+\]
+
+Since \(c=\sup S\), there is some \(x\in S\) with \(c-\delta<x\leq c\). This contradicts \(f(x)>y_0\).
+
+Therefore neither \(f(c)<y_0\) nor \(f(c)>y_0\) is possible, and hence
+
+\[
+f(c)=y_0.
+\]
+
+If \(y_0=f(a)\) or \(y_0=f(b)\), the conclusion is immediate by taking \(c=a\) or \(c=b\). If \(f(b)<f(a)\), apply the same argument to \(-f\). Therefore, for every value \(y_0\) between \(f(a)\) and \(f(b)\), there exists \(c\in[a,b]\) such that
+
+\[
+f(c)=y_0.
+\]
+
+\subsection{Lecture 6}\label{lecture-6}
+
+\subparagraph{2026.9.16}\label{section-2}
+
+\subsection{Limits Involving Infinity}\label{limits-involving-infinity}
+
+\subsubsection{\texorpdfstring{Finite limits as \(x\to+\infty\)}{Finite limits as x\textbackslash to+\textbackslash infty}}\label{finite-limits-as-xtoinfty}
+
+We say that
+
+\[
+\lim_{x\to+\infty}f(x)=L
+\]
+
+if, for every \(\varepsilon>0\), there exists \(M>0\) such that
+
+\[
+x>M\quad\Longrightarrow\quad |f(x)-L|<\varepsilon.
+\]
+
+In words, \(f(x)\) becomes arbitrarily close to \(L\) when \(x\) is sufficiently large.
+
+Similarly,
+
+\[
+\lim_{x\to-\infty}f(x)=L
+\]
+
+if, for every \(\varepsilon>0\), there exists \(M<0\) such that
+
+\[
+x<M\quad\Longrightarrow\quad |f(x)-L|<\varepsilon.
+\]
+
+\subsubsection{Examples}\label{examples}
+
+For the reciprocal function,
+
+\[
+\lim_{x\to+\infty}\frac{1}{x}=0,
+\qquad
+\lim_{x\to-\infty}\frac{1}{x}=0.
+\]
+
+Indeed, if \(|x|>1/\varepsilon\), then
+
+\[
+\left|\frac{1}{x}-0\right|=\frac{1}{|x|}<\varepsilon.
+\]
+
+For a rational function whose numerator has lower degree than its denominator,
+
+\[
+\lim_{x\to\pm\infty}\frac{P(x)}{Q(x)}=0,
+\qquad \deg P<\deg Q.
+\]
+
+\subsubsection{\texorpdfstring{Infinite limits as \(x\to c\)}{Infinite limits as x\textbackslash to c}}\label{infinite-limits-as-xto-c}
+
+We write
+
+\[
+\lim_{x\to c}f(x)=+\infty
+\]
+
+if, for every \(A>0\), there exists \(\delta>0\) such that
+
+\[
+0<|x-c|<\delta
+\quad\Longrightarrow\quad
+f(x)>A.
+\]
+
+Similarly,
+
+\[
+\lim_{x\to c}f(x)=-\infty
+\]
+
+if, for every \(B>0\), there exists \(\delta>0\) such that
+
+\[
+0<|x-c|<\delta
+\quad\Longrightarrow\quad
+f(x)<-B.
+\]
+
+For example,
+
+\[
+\lim_{x\to0}\frac{1}{x^2}=+\infty,
+\]
+
+because \(1/x^2\) can be made larger than any prescribed positive number by choosing \(x\) sufficiently close to \(0\), with \(x\neq0\).
+
+\subsubsection{\texorpdfstring{Infinite limits as \(x\to\pm\infty\)}{Infinite limits as x\textbackslash to\textbackslash pm\textbackslash infty}}\label{infinite-limits-as-xtopminfty}
+
+The notation
+
+\[
+\lim_{x\to+\infty}f(x)=+\infty
+\]
+
+means that for every \(A>0\), there exists \(M>0\) such that
+
+\[
+x>M\quad\Longrightarrow\quad f(x)>A.
+\]
+
+The other cases are defined analogously. For instance, if \(n\) is odd and \(a_n>0\), then
+
+\[
+\lim_{x\to+\infty}a_nx^n=+\infty,
+\qquad
+\lim_{x\to-\infty}a_nx^n=-\infty.
+\]
+
+\subsection{Exercise 1.1.30}\label{exercise-1.1.30}
+
+\subsubsection{(a)}\label{a}
+
+Prove, using the \(N\)-\(\delta\) language, that
+
+\[
+\lim_{x\to0^+}\frac{1}{\sqrt[3]{x}}=+\infty.
+\]
+
+\subsubsection{(b)}\label{b}
+
+Find the limit
+
+\[
+\lim_{x\to+\infty}\left(\sqrt{x+1}-\sqrt{x-1}\right),
+\]
+
+and prove your result using the \(\varepsilon\)-\(N\) language.
+
+\subsubsection{Solution}\label{solution}
+
+\paragraph{(a)}\label{a-1}
+
+Let \(N>0\) be arbitrary. Choose
+
+\[
+\delta=\frac{1}{N^3}.
+\]
+
+If \(0<x<\delta\), then
+
+\[
+\sqrt[3]{x}<\sqrt[3]{\delta}=\frac{1}{N}.
+\]
+
+Therefore,
+
+\[
+\frac{1}{\sqrt[3]{x}}>\frac{1}{\sqrt[3]{\delta}}=N.
+\]
+
+Hence, for every \(N>0\), there exists \(\delta>0\) such that
+
+\[
+0<x<\delta
+\quad\Longrightarrow\quad
+\frac{1}{\sqrt[3]{x}}>N.
+\]
+
+Thus,
+
+\[
+\boxed{\displaystyle\lim_{x\to0^+}\frac{1}{\sqrt[3]{x}}=+\infty}.
+\]
+
+\paragraph{(b)}\label{b-1}
+
+Let
+
+\[
+f(x)=\sqrt{x+1}-\sqrt{x-1}.
+\]
+
+For \(x\geq1\), rationalizing gives
+
+\[
+f(x)
+=\frac{(x+1)-(x-1)}{\sqrt{x+1}+\sqrt{x-1}}
+=\frac{2}{\sqrt{x+1}+\sqrt{x-1}}.
+\]
+
+Since \(\sqrt{x+1}+\sqrt{x-1}\to+\infty\) as \(x\to+\infty\), we obtain
+
+\[
+\lim_{x\to+\infty}f(x)=0.
+\]
+
+To prove this using the \(\varepsilon\)-\(N\) language, let \(\varepsilon>0\) be given. Choose
+
+\[
+N=1+\frac{1}{\varepsilon^2}.
+\]
+
+If \(x>N\), then \(x>1\) and
+
+\[
+0<f(x)
+=\frac{2}{\sqrt{x+1}+\sqrt{x-1}}
+\leq\frac{1}{\sqrt{x-1}}.
+\]
+
+Moreover, \(x>N\) implies \(x-1>1/\varepsilon^2\), so
+
+\[
+\left|f(x)-0\right|=f(x)
+\leq\frac{1}{\sqrt{x-1}}<\varepsilon.
+\]
+
+Therefore, for every \(\varepsilon>0\), there exists \(N>0\) such that
+
+\[
+x>N\quad\Longrightarrow\quad
+\left|\sqrt{x+1}-\sqrt{x-1}\right|<\varepsilon.
+\]
+
+Hence,
+
+\[
+\boxed{\displaystyle
+\lim_{x\to+\infty}\left(\sqrt{x+1}-\sqrt{x-1}\right)=0}.
+\]
+
+\subsection{Exercise 1.1.28}\label{exercise-1.1.28}
+
+All the Limit Laws remain true when we replace
+
+\[
+\lim_{x\to c}
+\]
+
+by
+
+\[
+\lim_{x\to+\infty}
+\quad\text{or}\quad
+\lim_{x\to-\infty}.
+\]
+
+For example, if
+
+\[
+\lim_{x\to+\infty}f(x)=L,
+\qquad
+\lim_{x\to+\infty}g(x)=M,
+\]
+
+then
+
+\[
+\lim_{x\to+\infty}(f(x)+g(x))=L+M,
+\]
+
+and, provided \(M\neq0\),
+
+\[
+\lim_{x\to+\infty}\frac{f(x)}{g(x)}=\frac{L}{M}.
+\]
+
+The same statements hold as \(x\to-\infty\).
+
+\subsection{Asymptotes}\label{asymptotes}
+
+The graph of \(y=f(x)\) on an interval \(I\) is
+
+\[
+\{(x,y):x\in I,\ y=f(x)\}.
+\]
+
+A line is called an \textbf{asymptote} of the graph if the distance between the graph and the line approaches \(0\) as the point on the graph moves to infinity or approaches a finite endpoint.
+
+\subsubsection{Horizontal asymptotes}\label{horizontal-asymptotes}
+
+A line \(y=b\) is a horizontal asymptote of \(y=f(x)\) as \(x\to+\infty\) if
+
+\[
+\lim_{x\to+\infty}f(x)=b.
+\]
+
+Similarly, \(y=b\) is a horizontal asymptote as \(x\to-\infty\) if
+
+\[
+\lim_{x\to-\infty}f(x)=b.
+\]
+
+\paragraph{Example 1.1.32}\label{example-1.1.32}
+
+Find the horizontal asymptotes of
+
+\[
+f(x)=\frac{\sin x+\cos x}{1+x^2},
+\]
+
+and
+
+\[
+g(x)=\sqrt{1-\frac{1}{x^2}},\qquad |x|\geq1.
+\]
+
+Since \(|\sin x+\cos x|\leq2\),
+
+\[
+\left|\frac{\sin x+\cos x}{1+x^2}\right|
+\leq\frac{2}{1+x^2}\longrightarrow0.
+\]
+
+Thus, \(y=0\) is a horizontal asymptote of \(f\) as \(x\to\pm\infty\).
+
+For \(g\),
+
+\[
+\lim_{x\to\pm\infty}g(x)
+=\sqrt{1-\lim_{x\to\pm\infty}\frac1{x^2}}
+=1.
+\]
+
+Thus, \(y=1\) is a horizontal asymptote of \(g\) as \(x\to\pm\infty\).
+
+\subsubsection{Sketches of horizontal asymptotes}\label{sketches-of-horizontal-asymptotes}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\linewidth,height=0.32\textheight,keepaspectratio]{image-13.png}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\linewidth,height=0.32\textheight,keepaspectratio]{image-14.png}
+\end{figure}
+
+\subsubsection{Vertical asymptotes}\label{vertical-asymptotes}
+
+A line \(x=a\) is a vertical asymptote of \(y=f(x)\) as \(x\to a^+\) if
+
+\[
+\lim_{x\to a^+}f(x)=+\infty
+\quad\text{or}\quad
+\lim_{x\to a^+}f(x)=-\infty.
+\]
+
+The analogous definition applies as \(x\to a^-\). In the notation \(\pm\infty\), the sign may be either \(+\) or \(-\).
+
+\paragraph{Example 1.1.33}\label{example-1.1.33}
+
+Consider
+
+\[
+h(x)=\sqrt{1-\frac{\sin x}{x^2}},
+\]
+
+on its domain
+
+\[
+(-\infty,0)\cup[a,+\infty),
+\]
+
+where the boundary point \(a>0\) is determined by
+
+\[
+a^2=\sin a,
+\]
+
+where \(0<a<1\). As \(x\to0^-\), we have \(\sin x\sim x\), and therefore
+
+\[
+1-\frac{\sin x}{x^2}
+\sim 1-\frac1x\longrightarrow+\infty.
+\]
+
+Consequently,
+
+\[
+\lim_{x\to0^-}h(x)=+\infty,
+\]
+
+so \(x=0\) is a vertical asymptote. Near \(x=a\) from the right, the expression under the square root approaches \(0\), so \(x=a\) is not a vertical asymptote.
+
+This example emphasizes that a domain endpoint is not automatically a vertical asymptote: the function itself must tend to \(\pm\infty\).
+
+\subsubsection{Sketches of vertical asymptotes}\label{sketches-of-vertical-asymptotes}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\linewidth,height=0.32\textheight,keepaspectratio]{image-15.png}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\linewidth,height=0.32\textheight,keepaspectratio]{image-16.png}
+\end{figure}
+\subsubsection{Oblique asymptotes}
+
+A line
+
+\[
+y=ax+b,\qquad a\neq0,
+\]
+
+is an oblique asymptote of \(y=f(x)\) as \(x\to+\infty\) if
+
+\[
+\lim_{x\to+\infty}[f(x)-ax-b]=0.
+\]
+
+The definition as \(x\to-\infty\) is analogous.
+
+When the limits exist, the coefficients can be found from
+
+\[
+a=\lim_{x\to\pm\infty}\frac{f(x)}{x},
+\qquad
+b=\lim_{x\to\pm\infty}[f(x)-ax].
+\]
+
+\paragraph{Example 1.1.34}\label{example-1.1.34}
+
+Find the oblique asymptote of
+
+\[
+f(x)=\frac{x^2-3}{2x-4}.
+\]
+
+Polynomial division gives
+
+\[
+\begin{aligned}
+f(x)
+&=\frac{x^2-4+1}{2(x-2)}\\
+&=\frac12(x+2)+\frac{1}{2(x-2)}.
+\end{aligned}
+\]
+
+Therefore,
+
+\[
+f(x)-\left(\frac{x}{2}+1\right)
+=\frac{1}{2(x-2)}\longrightarrow0
+\qquad(x\to\pm\infty).
+\]
+
+The oblique asymptote is
+
+\[
+y=\frac{x}{2}+1.
+\]
+
+Also, \(x=2\) is a vertical asymptote.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\linewidth,height=0.32\textheight,keepaspectratio]{image-17.png}
+\end{figure}
+
+\paragraph{Example 1.1.35}\label{example-1.1.35}
+
+Let
+
+\[
+f(x)=\frac{x^3}{(x+2)(x-1)}.
+\]
+
+The vertical asymptotes are
+
+\[
+x=-2,\qquad x=1.
+\]
+
+For the oblique asymptote,
+
+\[
+\frac{f(x)}{x}
+=\frac{x^2}{(x+2)(x-1)}\longrightarrow1,
+\]
+
+and
+
+\[
+f(x)-x
+=\frac{-x^2+2x}{(x+2)(x-1)}\longrightarrow-1.
+\]
+
+Hence the oblique asymptote is
+
+\[
+y=x-1
+\]
+
+as \(x\to\pm\infty\).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\linewidth,height=0.32\textheight,keepaspectratio]{image-18.png}
+\end{figure}
+
+\subsection{Exercise 1.1.36}\label{exercise-1.1.36}
+
+Let
+
+\[
+f(x)=\frac1x\sin\frac1x.
+\]
+
+Does the graph of \(f\) have a vertical asymptote at \(x=0\)? Explain your answer using the definition of a vertical asymptote.
+
+Since
+
+\[
+\left|\frac1x\sin\frac1x\right|\leq\frac1{|x|},
+\]
+
+this estimate alone does not determine an infinite limit. To see the oscillation explicitly, define
+
+\[
+x_n=\frac{1}{\frac{\pi}{2}+2\pi n},
+\qquad
+y_n=\frac{1}{\frac{3\pi}{2}+2\pi n}.
+\]
+
+Then \(x_n,y_n\to0^+\) and
+
+\[
+f(x_n)=\frac{\pi}{2}+2\pi n\longrightarrow+\infty,
+\]
+
+while
+
+\[
+f(y_n)=-\left(\frac{3\pi}{2}+2\pi n\right)\longrightarrow-\infty.
+\]
+
+Thus, as \(x\to0^+\), the function tends neither to \(+\infty\) nor to \(-\infty\). Applying the same argument to \(-x_n\) and \(-y_n\) gives the same conclusion as \(x\to0^-\). Therefore, \(x=0\) is not a vertical asymptote in the usual one-sided sense.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\linewidth,height=0.32\textheight,keepaspectratio]{image-19.png}
+\end{figure}
+
+\subsection{More Exercises}\label{more-exercises}
+
+Find the limits and use the \(\varepsilon\)-\(N\) language to prove your results.
+
+\subsubsection{(a)}\label{a-2}
+
+\[
+\lim_{x\to+\infty}\sqrt{x}\left(\sqrt{x+1}-\sqrt{x-1}\right).
+\]
+
+\subsubsection{(b)}\label{b-2}
+
+\[
+\lim_{x\to+\infty}
+\sqrt{x+\sqrt{x+\frac{\sqrt{x}}{\sqrt{x+1}}}}.
+\]
+
+\section{Lecture 7}\label{lecture-7}
+
+\subparagraph{2026 9.17}\label{section-3}
+
+\subsection{1.7 Sequences and limits}\label{sequences-and-limits}
+
+\subsubsection{Definition 1.1.12 (Limit of a sequence)}\label{definition-1.1.12-limit-of-a-sequence}
+
+A sequence \(\{a_n\}\) converges to \(L\) if for every \(\varepsilon>0\) there exists an integer \(N\) such that
+
+\[
+ n>N \quad\Longrightarrow\quad |a_n-L|<\varepsilon.
+\]
+
+If no such number \(L\) exists, we say that the sequence diverges.
+
+We write
+
+\[
+\lim_{n\to\infty}a_n=L,
+\qquad\text{or}\qquad a_n\to L.
+\]
+
+\subsubsection{Exercise 1.1.39}\label{exercise-1.1.39}
+
+Show that if a sequence converges, then the limit is unique.
+
+\paragraph{Proof}\label{proof-1}
+
+Suppose that
+
+\[
+ a_n\to L_1,
+\qquad a_n\to L_2.
+\]
+
+Let \(\varepsilon>0\) be arbitrary. Then there exist \(N_1,N_2\) such that
+
+\[
+ n>N_1 \Rightarrow |a_n-L_1|<\varepsilon/2,
+\]
+
+and
+
+\[
+ n>N_2 \Rightarrow |a_n-L_2|<\varepsilon/2.
+\]
+
+For \(n>\max\{N_1,N_2\}\),
+
+\[
+ |L_1-L_2|
+\le |a_n-L_1|+|a_n-L_2|
+< \varepsilon.
+\]
+
+Since this holds for every \(\varepsilon>0\), we must have \(L_1=L_2\).
+
+Hence the limit is unique.
+
+\subsubsection{Example 1.1.40}\label{example-1.1.40}
+
+Investigate the convergence or divergence of the following sequences.
+
+\paragraph{\texorpdfstring{(a) \((-1)^n\)}{(a) (-1)\^{}n}}\label{a--1n}
+
+This sequence alternates between \(-1\) and \(1\), so it does not approach any single number. Therefore,
+
+\[
+(-1)^n\text{ diverges.}
+\]
+
+\paragraph{\texorpdfstring{(b) \(\displaystyle \frac{\sin n-n^2}{n^3+1}\)}{(b) \textbackslash displaystyle \textbackslash frac\{\textbackslash sin n-n\^{}2\}\{n\^{}3+1\}}}\label{b-displaystyle-fracsin-n-n2n31}
+
+Since
+
+\[
+\frac{\sin n-n^2}{n^3+1}
+=
+\frac{\sin n}{n^3+1}-\frac{n^2}{n^3+1},
+\]
+
+and both terms go to \(0\), we have
+
+\[
+\lim_{n\to\infty}\frac{\sin n-n^2}{n^3+1}=0.
+\]
+
+\paragraph{\texorpdfstring{(c) \(\displaystyle \frac{(-1)^{[\sqrt n]}}{n}\)}{(c) \textbackslash displaystyle \textbackslash frac\{(-1)\^{}\{{[}\textbackslash sqrt n{]}\}\}\{n\}}}\label{c-displaystyle-frac-1sqrt-nn}
+
+Here \([\sqrt n]\) is the integer part of \(\sqrt n\), and the numerator is always \(\pm1\). Since dividing by \(n\) makes the magnitude go to \(0\),
+
+\[
+\lim_{n\to\infty}\frac{(-1)^{[\sqrt n]}}{n}=0.
+\]
+
+\subsection{Bounded sequences}\label{bounded-sequences}
+
+\subsubsection{Definition}\label{definition}
+
+A sequence \(\{a_n\}\) is called:
+
+\begin{itemize}
+\tightlist
+\item
+  bounded above if there exists a constant \(M\) such that \(a_n\le M\) for all \(n\);
+\item
+  bounded below if there exists a constant \(m\) such that \(a_n\ge m\) for all \(n\);
+\item
+  bounded if there exists a constant \(C>0\) such that \(|a_n|\le C\) for all \(n\).
+\end{itemize}
+
+Equivalently, \(\{a_n\}\) is bounded iff there exist \(m,M\) with
+
+\[
+ m\le a_n\le M \qquad \forall n\ge1.
+\]
+
+\subsubsection{Theorem}\label{theorem}
+
+Every convergent sequence is bounded.
+
+\paragraph{Proof}\label{proof-2}
+
+If \(a_n\to L\), then for \(\varepsilon=1\) there exists \(N\) such that
+
+\[
+ n>N \Rightarrow |a_n-L|<1.
+\]
+
+Thus for all \(n>N\),
+
+\[
+ |a_n|\le |L|+1.
+\]
+
+Let
+
+\[
+ C=\max\{|a_1|,\dots,|a_N|,|L|+1\}.
+\]
+
+Then \(|a_n|\le C\) for all \(n\), so the sequence is bounded.
+
+\subsection{Divergence to infinity}\label{divergence-to-infinity}
+
+\subsubsection{Definition}\label{definition-1}
+
+We say that \(a_n\to +\infty\) if for every real number \(M\) there exists an integer \(N\) such that
+
+\[
+ n\ge N \Rightarrow a_n>M.
+\]
+
+We say that \(a_n\to -\infty\) if for every real number \(m>0\) there exists an integer \(N\) such that
+
+\[
+ n\ge N\Rightarrow a_n<-m.
+\]
+
+\subsubsection{Example 1.1.41}\label{example-1.1.41}
+
+Investigate the behavior of the following sequences as \(n\to\infty\).
+
+\paragraph{\texorpdfstring{(a) \((-1)^n n\)}{(a) (-1)\^{}n n}}\label{a--1n-n}
+
+This sequence alternates sign and grows in magnitude, so it is unbounded and does not converge to a finite limit. It also does not tend to \(+\infty\) or \(-\infty\) in the usual sense because the signs alternate.
+
+\paragraph{\texorpdfstring{(b) \(a^n/n!\) with \(a>0\)}{(b) a\^{}n/n! with a\textgreater0}}\label{b-ann-with-a0}
+
+For fixed \(a>0\), the factorial grows faster than any exponential, so
+
+\[
+\frac{a^n}{n!}\to0.
+\]
+
+\paragraph{\texorpdfstring{(c) \(n^n/n!\)}{(c) n\^{}n/n!}}\label{c-nnn}
+
+Since
+
+\[
+\frac{n^n}{n!}=\prod_{k=1}^n\frac{n}{k},
+\]
+
+this sequence grows very rapidly, so
+
+\[
+\frac{n^n}{n!}\to +\infty.
+\]
+
+\subsection{Limit laws for sequences}\label{limit-laws-for-sequences}
+
+If
+
+\[
+\lim_{n\to\infty}a_n=A,
+\qquad
+\lim_{n\to\infty}b_n=B,
+\]
+
+then the following hold:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\displaystyle \lim_{n\to\infty}(a_n+b_n)=A+B\);
+\item
+  \(\displaystyle \lim_{n\to\infty}(a_n-b_n)=A-B\);
+\item
+  \(\displaystyle \lim_{n\to\infty}(k a_n)=kA\) for any constant \(k\);
+\item
+  \(\displaystyle \lim_{n\to\infty}(a_n b_n)=AB\);
+\item
+  if \(B\neq0\), then \[
+  \lim_{n\to\infty}\frac{a_n}{b_n}=\frac{A}{B}.
+  \]
+\end{enumerate}
+
+\subsection{Exercise 1.1.43}\label{exercise-1.1.43}
+
+Let \(\{a_n\}\) and \(\{b_n\}\) be convergent sequences and assume \(a_n\ge b_n\) for all sufficiently large \(n\). Prove that
+
+\[
+\lim_{n\to\infty}a_n\ge \lim_{n\to\infty}b_n.
+\]
+
+\subsubsection{Proof}\label{proof-3}
+
+Let
+
+\[
+ A=\lim_{n\to\infty}a_n,
+\qquad B=\lim_{n\to\infty}b_n.
+\]
+
+Suppose, for contradiction, that \(A<B\). Set
+
+\[
+ \varepsilon=\frac{B-A}{2}>0.
+\]
+
+Then there exists \(N\) such that for all \(n>N\),
+
+\[
+ |a_n-A|<\varepsilon,
+\qquad |b_n-B|<\varepsilon.
+\]
+
+Hence for \(n>N\),
+
+\[
+ a_n<A+\varepsilon=\frac{A+B}{2},
+\]
+
+and
+
+\[
+ b_n>B-\varepsilon=\frac{A+B}{2}.
+\]
+
+So \(a_n<b_n\) for all sufficiently large \(n\), contradicting the assumption that \(a_n\ge b_n\) eventually. Therefore,
+
+\[
+ A\ge B.
+\]
+
+\subsection{Exercise 1.1.43 (continued)}\label{exercise-1.1.43-continued}
+
+Assume \(a_n\le b_n\le c_n\) for all \(n\ge N_0\) and
+
+\[
+ \lim_{n\to\infty}a_n = \lim_{n\to\infty}c_n = L.
+\]
+
+Then
+
+\[
+\lim_{n\to\infty}b_n = L.
+\]
+
+\subsubsection{Proof}\label{proof-4}
+
+Let \(\varepsilon>0\) be given. Since \(a_n\to L\) and \(c_n\to L\), there exist \(N_1,N_2\) such that
+
+\[
+ n>N_1 \Rightarrow |a_n-L|<\varepsilon,
+\]
+
+and
+
+\[
+ n>N_2 \Rightarrow |c_n-L|<\varepsilon.
+\]
+
+Let \(N=\max\{N_0,N_1,N_2\}\). Then for all \(n>N\),
+
+\[
+ L-\varepsilon<a_n\le b_n\le c_n<L+\varepsilon.
+\]
+
+Hence
+
+\[
+ |b_n-L|<\varepsilon,
+\]
+
+for all \(n>N\). Therefore, \(b_n\to L\).
+
+This is the sequence version of the Sandwich Theorem.
+
+\subsection{Exercise 1.1.44}\label{exercise-1.1.44}
+
+Let \(\{a_n\}\) be a sequence with \(a_n\to L\), and let \(f\) be a function continuous at \(L\) and defined at all \(a_n\). Then
+
+\[
+ f(a_n)\to f(L).
+\]
+
+\subsubsection{Proof}\label{proof-5}
+
+Let \(\varepsilon>0\) be given. Since \(f\) is continuous at \(L\), there exists \(\delta>0\) such that
+
+\[
+ |x-L|<\delta \Rightarrow |f(x)-f(L)|<\varepsilon.
+\]
+
+Because \(a_n\to L\), there exists \(N\) such that
+
+\[
+ n>N \Rightarrow |a_n-L|<\delta.
+\]
+
+Therefore, for all \(n>N\),
+
+\[
+ |f(a_n)-f(L)|<\varepsilon.
+\]
+
+So \(f(a_n)\to f(L)\).
+
+\subsection{Proposition 1.1.13 (function limits and sequence limits)}\label{proposition-1.1.13-function-limits-and-sequence-limits}
+
+Let \(I\) be an interval containing \(x_0\) in its interior and let \(f\) be defined on \(I\setminus\{x_0\}\). Then
+
+\[
+\lim_{x\to x_0}f(x)=A
+\]
+
+exists if and only if for every sequence \(\{a_n\}\subset I\setminus\{x_0\}\) with \(a_n\to x_0\), the limit
+
+\[
+\lim_{n\to\infty}f(a_n)
+\]
+
+exists and equals \(A\).
+
+\subsubsection{Proof sketch}\label{proof-sketch}
+
+\begin{itemize}
+\tightlist
+\item
+  If \(f(x)\to A\) as \(x\to x_0\), then for any sequence \(a_n\to x_0\), the values \(f(a_n)\) must also approach \(A\).
+\item
+  Conversely, if every sequence approaching \(x_0\) produces the same limiting value \(A\), then \(f(x)\) cannot fail to approach \(A\); otherwise one could construct a sequence \(x_n\to x_0\) with \(|f(x_n)-A|\ge\varepsilon_0\) for all \(n\), contradicting the assumption.
+\end{itemize}
+
+Thus, the limit of a function can be tested using sequences.
+
+\subsection{Exercise 1.1.45}\label{exercise-1.1.45}
+
+Let \(f\) be a function defined on \([M,\infty)\). Prove:
+
+\subsubsection{(a)}\label{a-3}
+
+\[
+\lim_{x\to\infty}f(x)=L
+\]
+
+if and only if for every sequence \(a_n\to\infty\),
+
+\[
+\lim_{n\to\infty}f(a_n)=L.
+\]
+
+\subsubsection{(b)}\label{b-3}
+
+\[
+\lim_{x\to\infty}f(x)=+\infty
+\]
+
+if and only if for every sequence \(a_n\to\infty\),
+
+\[
+\lim_{n\to\infty}f(a_n)=+\infty.
+\]
+
+These results show that the behavior of a function at infinity can be studied through sequences tending to infinity.
+
+\subsection{1.8 Least upper bound and greatest lower bound}\label{least-upper-bound-and-greatest-lower-bound}
+
+\subsubsection{Definition}\label{definition-2}
+
+Let \(\{a_n\}\) be a sequence bounded above. A number \(L\) is called the least upper bound, or supremum, of \(\{a_n\}\) if:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(a_n\le L\) for all \(n\);
+\item
+  if \(M\) is any upper bound, then \(L\le M\).
+\end{enumerate}
+
+We write
+
+\[
+ L=\sup_{n\ge1}a_n.
+\]
+
+Similarly, if \(\{a_n\}\) is bounded below, a number \(l\) is called the greatest lower bound, or infimum, if:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(a_n\ge l\) for all \(n\);
+\item
+  if \(m\) is any lower bound, then \(l\ge m\).
+\end{enumerate}
+
+We write
+
+\[
+ l=\inf_{n\ge1}a_n.
+\]
+
+\subsubsection{Remarks}\label{remarks}
+
+\begin{itemize}
+\tightlist
+\item
+  For the supremum: for every \(\varepsilon>0\), there exists \(n\) such that \[
+  a_n>L-\varepsilon.
+  \]
+\item
+  For the infimum: for every \(\varepsilon>0\), there exists \(n\) such that \[
+  a_n<l+\varepsilon.
+  \]
+\end{itemize}
+
+\subsubsection{Theorem 1.1.15}\label{theorem-1.1.15}
+
+Any sequence bounded above has a supremum, and any sequence bounded below has an infimum.
+
+This is the completeness property of the real numbers.
+
+\subsection{Example 1.1.47}\label{example-1.1.47}
+
+Find the infimum and supremum of the following sequences.
+
+\subsubsection{\texorpdfstring{(a) \(\left\{(-1)^n/n\right\}_{n\ge1}\)}{(a) \textbackslash left\textbackslash\{(-1)\^{}n/n\textbackslash right\textbackslash\}\_\{n\textbackslash ge1\}}}\label{a-left-1nnright_nge1}
+
+\[
+\inf=-\frac12,\qquad \sup=\frac12.
+\]
+
+\subsubsection{\texorpdfstring{(b) \(\{(-1)^n n\}_{n\ge1}\)}{(b) \textbackslash\{(-1)\^{}n n\textbackslash\}\_\{n\textbackslash ge1\}}}\label{b--1n-n_nge1}
+
+This sequence is unbounded above and below, so
+
+\[
+\sup=+\infty,
+\qquad\inf=-\infty.
+\]
+
+\subsubsection{\texorpdfstring{(c) \(\{n(-1)^n\}_{n\ge1}\)}{(c) \textbackslash\{n(-1)\^{}n\textbackslash\}\_\{n\textbackslash ge1\}}}\label{c-n-1n_nge1}
+
+Again unbounded, so
+
+\[
+\sup=+\infty,
+\qquad\inf=-\infty.
+\]
+
+\subsubsection{\texorpdfstring{(d) \(a_1=\sqrt2\), \(a_{n+1}=\sqrt{2+a_n}\)}{(d) a\_1=\textbackslash sqrt2, a\_\{n+1\}=\textbackslash sqrt\{2+a\_n\}}}\label{d-a_1sqrt2-a_n1sqrt2a_n}
+
+This sequence is increasing and bounded above by \(2\), so it converges to the positive solution of
+
+\[
+ x=\sqrt{2+x},
+\]
+
+namely
+
+\[
+ x^2-x-2=0 \Rightarrow x=2.
+\]
+
+Thus,
+
+\[
+\sup=2,
+\qquad\inf=\sqrt2.
+\]
+
+\section{Lecture 8}\label{lecture-8}
+
+\subparagraph{2026 9.17}\label{section-4}
+
+\end{document}
