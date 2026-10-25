@@ -1,20 +1,27 @@
 \documentclass[11pt,a4paper]{article}
-\usepackage[margin=24mm,headheight=15pt]{geometry}
+\usepackage[left=21mm,right=21mm,top=18mm,bottom=20mm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern,amsmath,amssymb,mathtools}
 \usepackage{graphicx,booktabs,longtable,array,calc}
 \usepackage{microtype,enumitem,needspace,etoolbox,titlesec}
-\usepackage{xcolor,xurl,hyperref,fancyhdr}
+\usepackage{xcolor,xurl,hyperref}
 \definecolor{noteblue}{HTML}{1458A6}
-\hypersetup{colorlinks=true,urlcolor=noteblue,linkcolor=noteblue,pdftitle={Calculus - Week 2},pdfauthor={Jiayu Chen}}
+\hypersetup{colorlinks=true,urlcolor=noteblue,linkcolor=black,pdftitle={Mathematical
+Analysis - Week 2},pdfauthor={Jiayu Chen}}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{7pt plus 2pt minus 1pt}
-\linespread{1.12}
+\setlength{\parskip}{4pt plus 1pt minus 1pt}
+\linespread{1.035}
 \setlength{\emergencystretch}{3em}
-\setlength{\abovedisplayskip}{12pt plus 3pt minus 2pt}
-\setlength{\belowdisplayskip}{12pt plus 3pt minus 2pt}
-\setlist{itemsep=6pt,topsep=8pt,parsep=3pt,leftmargin=1.8em}
+\setlength{\abovedisplayskip}{7pt plus 2pt minus 1pt}
+\setlength{\belowdisplayskip}{7pt plus 2pt minus 1pt}
+\setlength{\abovedisplayshortskip}{4pt plus 1pt}
+\setlength{\belowdisplayshortskip}{5pt plus 1pt}
+\setlist{itemsep=3pt,topsep=4pt,parsep=1pt,leftmargin=1.7em}
+\allowdisplaybreaks[1]
+\raggedbottom
+\clubpenalty=4000
+\widowpenalty=4000
 \providecommand{\tightlist}{}
 \newcommand{\passthrough}[1]{#1}
 \newcommand{\pandocbounded}[1]{#1}
@@ -23,27 +30,24 @@
 \titleformat{\section}{\Large\bfseries}{\thesection}{0pt}{}
 \titleformat{\subsection}{\large\bfseries}{\thesubsection}{0pt}{}
 \titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0pt}{}
-\titlespacing*{\section}{0pt}{22pt}{12pt}
-\titlespacing*{\subsection}{0pt}{18pt}{9pt}
-\titlespacing*{\subsubsection}{0pt}{15pt}{7pt}
-\pretocmd{\section}{\Needspace{8\baselineskip}}{}{}
-\pretocmd{\subsection}{\Needspace{6\baselineskip}}{}{}
-\pretocmd{\subsubsection}{\Needspace{5\baselineskip}}{}{}
-\pagestyle{fancy}\fancyhf{}
-\fancyhead[L]{\small Calculus}
-\fancyhead[R]{\small Calculus - Week 2}
-\fancyfoot[C]{\small\thepage}
-\renewcommand{\headrulewidth}{0.3pt}
+\titlespacing*{\section}{0pt}{14pt}{8pt}
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+\titlespacing*{\subsubsection}{0pt}{9pt}{4pt}
+\pretocmd{\section}{\Needspace{6\baselineskip}}{}{}
+\pretocmd{\subsection}{\Needspace{5\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\Needspace{4\baselineskip}}{}{}
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{0em}{0em}}
+\makeatother
+\pagestyle{plain}
 \begin{document}
-{\LARGE\bfseries Calculus - Week 2\par}
+\begin{center}
+{\LARGE Mathematical Analysis - Week 2\par}
 \vspace{5pt}
-{\large Continuity, infinity and sequences · Tutorial 1 and Lectures
-5--7\par}
-\vspace{8pt}
-{\small Jiayu Chen\par}
-\vspace{10pt}
-\tableofcontents
-\vspace{16pt}
+{\large Lectures 5-7 and Tutorial 1\par}
+\end{center}
+{\small\tableofcontents}
+\vspace{7pt}
 Week 1 supplied the definition of a limit. Here we use it in three
 settings: continuity on an interval, behavior at infinity, and
 sequences. The same estimates keep reappearing; what changes is whether
@@ -100,14 +104,9 @@ contraposition}\label{direct-proof-contradiction-and-contraposition}
 
 \paragraph{Direct proof}\label{direct-proof}
 
-To prove a statement of the form
-
-\[
-P\Rightarrow Q,
-\]
-
-assume that \(P\) is true and use definitions, axioms, and previously
-proved results until \(Q\) follows. This is the default method for most
+To prove a statement of the form \(P\Rightarrow Q,\) assume that \(P\)
+is true and use definitions, axioms, and previously proved results until
+\(Q\) follows. This is the default method for most
 \(\varepsilon\)-\(\delta\) arguments.
 
 \paragraph{Proof by contradiction}\label{proof-by-contradiction}
@@ -133,18 +132,9 @@ contradiction.
 \paragraph{\texorpdfstring{Example: irrationality of
 \(\sqrt2\)}{Example: irrationality of \textbackslash sqrt2}}\label{example-irrationality-of-sqrt2}
 
-Suppose, for contradiction, that
-
-\[
-\sqrt2=\frac{p}{q},
-\]
-
-where \(p,q\) are positive integers with no common factor. Squaring
-gives
-
-\[
-p^2=2q^2.
-\]
+Suppose, for contradiction, that \(\sqrt2=\frac{p}{q},\) where \(p,q\)
+are positive integers with no common factor. Squaring gives
+\(p^2=2q^2.\)
 
 Thus \(p^2\) is even, so \(p\) is even. Write \(p=2r\). Substitution
 gives
@@ -157,25 +147,12 @@ q^2=2r^2.
 
 Therefore \(q\) is also even. Hence \(p\) and \(q\) have the common
 factor \(2\), contradicting the assumption that \(p/q\) is in lowest
-terms. Consequently,
-
-\[
-\sqrt2\notin\mathbb{Q}.
-\]
+terms. Consequently, \(\sqrt2\notin\mathbb{Q}.\)
 
 \paragraph{Proof by contraposition}\label{proof-by-contraposition}
 
-To prove
-
-\[
-P\Rightarrow Q,
-\]
-
-it is enough to prove the logically equivalent statement
-
-\[
-\neg Q\Rightarrow\neg P.
-\]
+To prove \(P\Rightarrow Q,\) it is enough to prove the logically
+equivalent statement \(\neg Q\Rightarrow\neg P.\)
 
 This method is especially useful when the negation of the conclusion
 gives more concrete information than the conclusion itself.
@@ -211,11 +188,7 @@ We prove that
 \]
 
 For \(n=1\), both sides equal \(1\). Now assume the formula holds for
-\(n=k\):
-
-\[
-1+2+\cdots+k=\frac{k(k+1)}{2}.
-\]
+\(n=k\): \(1+2+\cdots+k=\frac{k(k+1)}{2}.\)
 
 Then
 
@@ -233,11 +206,7 @@ formula holds for every \(n\geq1\).
 \paragraph{Strong induction}\label{strong-induction}
 
 The principle of strong induction replaces the induction hypothesis
-\(P(n)\) by
-
-\[
-P(1),P(2),\ldots,P(n)\quad\Longrightarrow\quad P(n+1).
-\]
+\(P(n)\) by \(P(1),P(2),\ldots,P(n)\quad\Longrightarrow\quad P(n+1).\)
 
 It is useful when the case \(n+1\) depends on several earlier cases
 rather than only on the immediately preceding case.
@@ -312,11 +281,7 @@ be a polynomial of degree \(n\) with real coefficients, where \(n\) is
 an odd integer and \(a_n\neq0\). Without loss of generality, assume that
 \(a_n>0\). If \(a_n<0\), we can apply the same argument to \(-P\).
 
-Let
-
-\[
-C=\max_{0\leq k\leq n-1}|a_k|.
-\]
+Let \(C=\max_{0\leq k\leq n-1}|a_k|.\)
 
 For \(|x|\geq1\), we have
 
@@ -330,17 +295,10 @@ For \(|x|\geq1\), we have
 \end{aligned}
 \]
 
-Choose
-
-\[
-R>\max\left\{1,\frac{2Cn}{|a_n|}\right\}.
-\]
+Choose \(R>\max\left\{1,\frac{2Cn}{|a_n|}\right\}.\)
 
 Then, whenever \(|x|\geq R\),
-
-\[
-\left|P(x)-a_nx^n\right|<\frac12|a_nx^n|.
-\]
+\(\left|P(x)-a_nx^n\right|<\frac12|a_nx^n|.\)
 
 Since \(n\) is odd, \(R^n>0\) and \((-R)^n<0\). For \(x=R\), we obtain
 
@@ -364,18 +322,10 @@ P(-R)
 \end{aligned}
 \]
 
-Thus,
-
-\[
-P(-R)<0<P(R).
-\]
+Thus, \(P(-R)<0<P(R).\)
 
 Because \(P\) is continuous on \([-R,R]\), the Intermediate Value
-Theorem gives some \(c\in[-R,R]\) such that
-
-\[
-P(c)=0.
-\]
+Theorem gives some \(c\in[-R,R]\) such that \(P(c)=0.\)
 
 Therefore, \(P\) has at least one real root. \(\square\)
 
@@ -383,24 +333,12 @@ Therefore, \(P\) has at least one real root. \(\square\)
 Theorem}\label{proof-of-the-intermediate-value-theorem}
 
 Let \(f\) be continuous on \([a,b]\), and suppose first that
+\(f(a)<y_0<f(b).\)
 
-\[
-f(a)<y_0<f(b).
-\]
-
-Define
-
-\[
-S=\{x\in[a,b]:f(x)\leq y_0\}.
-\]
+Define \(S=\{x\in[a,b]:f(x)\leq y_0\}.\)
 
 The set \(S\) is nonempty because \(a\in S\), and it is bounded above by
-\(b\). By the completeness of \(\mathbb{R}\), the supremum
-
-\[
-c=\sup S
-\]
-
+\(b\). By the completeness of \(\mathbb{R}\), the supremum \(c=\sup S\)
 exists. Continuity at \(a\) gives a short interval \([a,a+\eta]\) on
 which \(f<y_0\); continuity at \(b\) gives a short interval
 \([b-\eta,b]\) on which \(f>y_0\), after reducing \(\eta>0\) if needed.
@@ -409,38 +347,25 @@ needed before using a two-sided neighborhood of \(c\).
 
 We claim that \(f(c)=y_0\). Suppose first that \(f(c)<y_0\). By
 continuity of \(f\) at \(c\), there exists \(\delta>0\) such that
-
-\[
-|x-c|<\delta\quad\Longrightarrow\quad f(x)<y_0.
-\]
+\(|x-c|<\delta\quad\Longrightarrow\quad f(x)<y_0.\)
 
 Choosing \(x>c\) sufficiently close to \(c\) gives \(x\in S\),
 contradicting the fact that \(c\) is an upper bound of \(S\).
 
 On the other hand, suppose that \(f(c)>y_0\). By continuity of \(f\) at
 \(c\), there exists \(\delta>0\) such that
-
-\[
-|x-c|<\delta\quad\Longrightarrow\quad f(x)>y_0.
-\]
+\(|x-c|<\delta\quad\Longrightarrow\quad f(x)>y_0.\)
 
 Since \(c=\sup S\), there is some \(x\in S\) with \(c-\delta<x\leq c\).
 This contradicts \(f(x)>y_0\).
 
 Therefore neither \(f(c)<y_0\) nor \(f(c)>y_0\) is possible, and hence
-
-\[
-f(c)=y_0.
-\]
+\(f(c)=y_0.\)
 
 If \(y_0=f(a)\) or \(y_0=f(b)\), the conclusion is immediate by taking
 \(c=a\) or \(c=b\). If \(f(b)<f(a)\), apply the same argument to \(-f\).
 Therefore, for every value \(y_0\) between \(f(a)\) and \(f(b)\), there
-exists \(c\in[a,b]\) such that
-
-\[
-f(c)=y_0.
-\]
+exists \(c\in[a,b]\) such that \(f(c)=y_0.\)
 
 \section{Lecture 6: infinity and
 asymptotes}\label{lecture-6-infinity-and-asymptotes}
@@ -457,10 +382,7 @@ We say that
 \]
 
 if, for every \(\varepsilon>0\), there exists \(M>0\) such that
-
-\[
-x>M\quad\Longrightarrow\quad |f(x)-L|<\varepsilon.
-\]
+\(x>M\quad\Longrightarrow\quad |f(x)-L|<\varepsilon.\)
 
 In words, \(f(x)\) becomes arbitrarily close to \(L\) when \(x\) is
 sufficiently large.
@@ -472,10 +394,7 @@ Similarly,
 \]
 
 if, for every \(\varepsilon>0\), there exists \(M<0\) such that
-
-\[
-x<M\quad\Longrightarrow\quad |f(x)-L|<\varepsilon.
-\]
+\(x<M\quad\Longrightarrow\quad |f(x)-L|<\varepsilon.\)
 
 \subsubsection{Examples}\label{examples}
 
@@ -488,10 +407,7 @@ For the reciprocal function,
 \]
 
 Indeed, if \(|x|>1/\varepsilon\), then
-
-\[
-\left|\frac{1}{x}-0\right|=\frac{1}{|x|}<\varepsilon.
-\]
+\(\left|\frac{1}{x}-0\right|=\frac{1}{|x|}<\varepsilon.\)
 
 For a rational function whose numerator has lower degree than its
 denominator,
@@ -551,10 +467,7 @@ The notation
 \]
 
 means that for every \(A>0\), there exists \(M>0\) such that
-
-\[
-x>M\quad\Longrightarrow\quad f(x)>A.
-\]
+\(x>M\quad\Longrightarrow\quad f(x)>A.\)
 
 The other cases are defined analogously. For instance, if \(n\) is odd
 and \(a_n>0\), then
@@ -589,23 +502,11 @@ and prove your result using the \(\varepsilon\)-\(N\) language.
 
 \paragraph{(a)}\label{a-1}
 
-Let \(N>0\) be arbitrary. Choose
+Let \(N>0\) be arbitrary. Choose \(\delta=\frac{1}{N^3}.\)
 
-\[
-\delta=\frac{1}{N^3}.
-\]
+If \(0<x<\delta\), then \(\sqrt[3]{x}<\sqrt[3]{\delta}=\frac{1}{N}.\)
 
-If \(0<x<\delta\), then
-
-\[
-\sqrt[3]{x}<\sqrt[3]{\delta}=\frac{1}{N}.
-\]
-
-Therefore,
-
-\[
-\frac{1}{\sqrt[3]{x}}>\frac{1}{\sqrt[3]{\delta}}=N.
-\]
+Therefore, \(\frac{1}{\sqrt[3]{x}}>\frac{1}{\sqrt[3]{\delta}}=N.\)
 
 Hence, for every \(N>0\), there exists \(\delta>0\) such that
 
@@ -623,11 +524,7 @@ Thus,
 
 \paragraph{(b)}\label{b-1}
 
-Let
-
-\[
-f(x)=\sqrt{x+1}-\sqrt{x-1}.
-\]
+Let \(f(x)=\sqrt{x+1}-\sqrt{x-1}.\)
 
 For \(x\geq1\), rationalizing gives
 
@@ -644,11 +541,7 @@ Since \(\sqrt{x+1}+\sqrt{x-1}\to+\infty\) as \(x\to+\infty\), we obtain
 \]
 
 To prove this using the \(\varepsilon\)-\(N\) language, let
-\(\varepsilon>0\) be given. Choose
-
-\[
-N=1+\frac{1}{\varepsilon^2}.
-\]
+\(\varepsilon>0\) be given. Choose \(N=1+\frac{1}{\varepsilon^2}.\)
 
 If \(x>N\), then \(x>1\) and
 
@@ -720,10 +613,7 @@ The same statements hold as \(x\to-\infty\).
 \subsection{Asymptotes}\label{asymptotes}
 
 The graph of \(y=f(x)\) on an interval \(I\) is
-
-\[
-\{(x,y):x\in I,\ y=f(x)\}.
-\]
+\(\{(x,y):x\in I,\ y=f(x)\}.\)
 
 A line is an asymptote when the graph approaches it along an unbounded
 branch. For horizontal and oblique lines we let \(x\) tend to an
@@ -748,12 +638,7 @@ Similarly, \(y=b\) is a horizontal asymptote as \(x\to-\infty\) if
 
 \paragraph{Example 1.1.32}\label{example-1.1.32}
 
-Find the horizontal asymptotes of
-
-\[
-f(x)=\frac{\sin x+\cos x}{1+x^2},
-\]
-
+Find the horizontal asymptotes of \(f(x)=\frac{\sin x+\cos x}{1+x^2},\)
 and
 
 \[
@@ -782,9 +667,11 @@ Thus, \(y=1\) is a horizontal asymptote of \(g\) as \(x\to\pm\infty\).
 \subsubsection{Sketches of horizontal
 asymptotes}\label{sketches-of-horizontal-asymptotes}
 
-\includegraphics[width=0.65\linewidth,height=\textheight,keepaspectratio]{image-13.png}
+\begin{center}
 
-\includegraphics[width=0.65\linewidth,height=\textheight,keepaspectratio]{image-14.png}
+\includegraphics[width=0.46\linewidth,height=\textheight,keepaspectratio]{image-13.png}\hfill\includegraphics[width=0.46\linewidth,height=\textheight,keepaspectratio]{image-14.png}
+
+\end{center}
 
 \subsubsection{Vertical asymptotes}\label{vertical-asymptotes}
 
@@ -801,25 +688,10 @@ The analogous definition applies as \(x\to a^-\). In the notation
 
 \paragraph{Example 1.1.33}\label{example-1.1.33}
 
-Consider
-
-\[
-h(x)=\sqrt{1-\frac{\sin x}{x^2}},
-\]
-
-on its domain
-
-\[
-(-\infty,0)\cup[a,+\infty),
-\]
-
-where the boundary point \(a>0\) is determined by
-
-\[
-a^2=\sin a,
-\]
-
-where \(0<a<1\). As \(x\to0^-\), we have \(\sin x\sim x\), and therefore
+Consider \(h(x)=\sqrt{1-\frac{\sin x}{x^2}},\) on its domain
+\((-\infty,0)\cup[a,+\infty),\) where the boundary point \(a>0\) is
+determined by \(a^2=\sin a,\) where \(0<a<1\). As \(x\to0^-\), we have
+\(\sin x\sim x\), and therefore
 
 \[
 1-\frac{\sin x}{x^2}
@@ -842,9 +714,11 @@ vertical asymptote: the function itself must tend to \(\pm\infty\).
 \subsubsection{Sketches of vertical
 asymptotes}\label{sketches-of-vertical-asymptotes}
 
-\includegraphics[width=0.65\linewidth,height=\textheight,keepaspectratio]{image-15.png}
+\begin{center}
 
-\includegraphics[width=0.65\linewidth,height=\textheight,keepaspectratio]{image-16.png}
+\includegraphics[width=0.46\linewidth,height=\textheight,keepaspectratio]{image-15.png}\hfill\includegraphics[width=0.46\linewidth,height=\textheight,keepaspectratio]{image-16.png}
+
+\end{center}
 
 \subsubsection{Oblique asymptotes}\label{oblique-asymptotes}
 
@@ -872,11 +746,7 @@ b=\lim_{x\to\pm\infty}[f(x)-ax].
 
 \paragraph{Example 1.1.34}\label{example-1.1.34}
 
-Find the oblique asymptote of
-
-\[
-f(x)=\frac{x^2-3}{2x-4}.
-\]
+Find the oblique asymptote of \(f(x)=\frac{x^2-3}{2x-4}.\)
 
 Polynomial division gives
 
@@ -896,23 +766,15 @@ f(x)-\left(\frac{x}{2}+1\right)
 \qquad(x\to\pm\infty).
 \]
 
-The oblique asymptote is
-
-\[
-y=\frac{x}{2}+1.
-\]
+The oblique asymptote is \(y=\frac{x}{2}+1.\)
 
 Also, \(x=2\) is a vertical asymptote.
 
-\includegraphics[width=0.65\linewidth,height=\textheight,keepaspectratio]{image-17.png}
+\includegraphics[width=0.52\linewidth,height=\textheight,keepaspectratio]{image-17.png}
 
 \paragraph{Example 1.1.35}\label{example-1.1.35}
 
-Let
-
-\[
-f(x)=\frac{x^3}{(x+2)(x-1)}.
-\]
+Let \(f(x)=\frac{x^3}{(x+2)(x-1)}.\)
 
 The vertical asymptotes are
 
@@ -934,35 +796,20 @@ f(x)-x
 =\frac{-x^2+2x}{(x+2)(x-1)}\longrightarrow-1.
 \]
 
-Hence the oblique asymptote is
+Hence the oblique asymptote is \(y=x-1\) as \(x\to\pm\infty\).
 
-\[
-y=x-1
-\]
-
-as \(x\to\pm\infty\).
-
-\includegraphics[width=0.65\linewidth,height=\textheight,keepaspectratio]{image-18.png}
+\includegraphics[width=0.52\linewidth,height=\textheight,keepaspectratio]{image-18.png}
 
 \subsection{Exercise 1.1.36}\label{exercise-1.1.36}
 
-Let
-
-\[
-f(x)=\frac1x\sin\frac1x.
-\]
+Let \(f(x)=\frac1x\sin\frac1x.\)
 
 Does the graph of \(f\) have a vertical asymptote at \(x=0\)? Explain
 your answer using the definition of a vertical asymptote.
 
-Since
-
-\[
-\left|\frac1x\sin\frac1x\right|\leq\frac1{|x|},
-\]
-
-this estimate alone does not determine an infinite limit. To see the
-oscillation explicitly, define
+Since \(\left|\frac1x\sin\frac1x\right|\leq\frac1{|x|},\) this estimate
+alone does not determine an infinite limit. To see the oscillation
+explicitly, define
 
 \[
 x_n=\frac{1}{\frac{\pi}{2}+2\pi n},
@@ -971,23 +818,15 @@ y_n=\frac{1}{\frac{3\pi}{2}+2\pi n}.
 \]
 
 Then \(x_n,y_n\to0^+\) and
-
-\[
-f(x_n)=\frac{\pi}{2}+2\pi n\longrightarrow+\infty,
-\]
-
-while
-
-\[
-f(y_n)=-\left(\frac{3\pi}{2}+2\pi n\right)\longrightarrow-\infty.
-\]
+\(f(x_n)=\frac{\pi}{2}+2\pi n\longrightarrow+\infty,\) while
+\(f(y_n)=-\left(\frac{3\pi}{2}+2\pi n\right)\longrightarrow-\infty.\)
 
 Thus, as \(x\to0^+\), the function tends neither to \(+\infty\) nor to
 \(-\infty\). Applying the same argument to \(-x_n\) and \(-y_n\) gives
 the same conclusion as \(x\to0^-\). Therefore, \(x=0\) is not a vertical
 asymptote in the usual one-sided sense.
 
-\includegraphics[width=0.65\linewidth,height=\textheight,keepaspectratio]{image-19.png}
+\includegraphics[width=0.52\linewidth,height=\textheight,keepaspectratio]{image-19.png}
 
 \subsection{More Exercises}\label{more-exercises}
 
@@ -1009,10 +848,7 @@ results.
 
 \textbf{Solution to (a).} Rationalizing and dividing the denominator by
 \(\sqrt{x}\) gives
-
-\[
-A(x)=\frac{2}{\sqrt{1+1/x}+\sqrt{1-1/x}}\longrightarrow1.
-\]
+\(A(x)=\frac{2}{\sqrt{1+1/x}+\sqrt{1-1/x}}\longrightarrow1.\)
 
 For \(x\ge2\), write \(S=\sqrt{1+1/x}+\sqrt{1-1/x}\ge1\). Rationalizing
 each difference from \(1\) shows \(|S-2|\le2/x\), so \(|A(x)-1|\le2/x\).
@@ -1047,10 +883,7 @@ sequence)}\label{definition-1.1.12-limit-of-a-sequence}
 
 A sequence \(\{a_n\}\) converges to \(L\) if for every \(\varepsilon>0\)
 there exists an integer \(N\) such that
-
-\[
-n>N \quad\Longrightarrow\quad |a_n-L|<\varepsilon.
-\]
+\(n>N \quad\Longrightarrow\quad |a_n-L|<\varepsilon.\)
 
 If no such number \(L\) exists, we say that the sequence diverges.
 
@@ -1075,17 +908,8 @@ a_n\to L_1,
 \]
 
 Let \(\varepsilon>0\) be arbitrary. Then there exist \(N_1,N_2\) such
-that
-
-\[
-n>N_1 \Rightarrow |a_n-L_1|<\varepsilon/2,
-\]
-
-and
-
-\[
-n>N_2 \Rightarrow |a_n-L_2|<\varepsilon/2.
-\]
+that \(n>N_1 \Rightarrow |a_n-L_1|<\varepsilon/2,\) and
+\(n>N_2 \Rightarrow |a_n-L_2|<\varepsilon/2.\)
 
 For \(n>\max\{N_1,N_2\}\),
 
@@ -1106,11 +930,7 @@ Investigate the convergence or divergence of the following sequences.
 \paragraph{\texorpdfstring{(a) \((-1)^n\)}{(a) (-1)\^{}n}}\label{a--1n}
 
 This sequence alternates between \(-1\) and \(1\), so it does not
-approach any single number. Therefore,
-
-\[
-(-1)^n\text{ diverges.}
-\]
+approach any single number. Therefore, \((-1)^n\text{ diverges.}\)
 
 \paragraph{\texorpdfstring{(b)
 \(\displaystyle \frac{\sin n-n^2}{n^3+1}\)}{(b) \textbackslash displaystyle \textbackslash frac\{\textbackslash sin n-n\^{}2\}\{n\^{}3+1\}}}\label{b-displaystyle-fracsin-n-n2n31}
@@ -1171,22 +991,11 @@ Every convergent sequence is bounded.
 \paragraph{Proof}\label{proof-2}
 
 If \(a_n\to L\), then for \(\varepsilon=1\) there exists \(N\) such that
+\(n>N \Rightarrow |a_n-L|<1.\)
 
-\[
-n>N \Rightarrow |a_n-L|<1.
-\]
+Thus for all \(n>N\), \(|a_n|\le |L|+1.\)
 
-Thus for all \(n>N\),
-
-\[
-|a_n|\le |L|+1.
-\]
-
-Let
-
-\[
-C=\max\{|a_1|,\dots,|a_N|,|L|+1\}.
-\]
+Let \(C=\max\{|a_1|,\dots,|a_N|,|L|+1\}.\)
 
 Then \(|a_n|\le C\) for all \(n\), so the sequence is bounded.
 
@@ -1195,18 +1004,10 @@ Then \(|a_n|\le C\) for all \(n\), so the sequence is bounded.
 \subsubsection{Definition}\label{definition-1}
 
 We say that \(a_n\to +\infty\) if for every real number \(M\) there
-exists an integer \(N\) such that
-
-\[
-n\ge N \Rightarrow a_n>M.
-\]
+exists an integer \(N\) such that \(n\ge N \Rightarrow a_n>M.\)
 
 We say that \(a_n\to -\infty\) if for every real number \(m>0\) there
-exists an integer \(N\) such that
-
-\[
-n\ge N\Rightarrow a_n<-m.
-\]
+exists an integer \(N\) such that \(n\ge N\Rightarrow a_n<-m.\)
 
 \subsubsection{Example 1.1.41}\label{example-1.1.41}
 
@@ -1224,17 +1025,11 @@ alternate.
 \(a>0\)}{(b) a\^{}n/n! with a\textgreater0}}\label{b-ann-with-a0}
 
 For fixed \(a>0\), set \(b_n=a^n/n!\). For \(n\) large enough,
-
-\[
-\frac{b_{n+1}}{b_n}=\frac{a}{n+1}\le\frac12.
-\]
+\(\frac{b_{n+1}}{b_n}=\frac{a}{n+1}\le\frac12.\)
 
 Hence \(b_{N+k}\le b_N2^{-k}\to0\). This gives a proof of the statement
 that a factorial eventually dominates a fixed exponential:
-
-\[
-\frac{a^n}{n!}\to0.
-\]
+\(\frac{a^n}{n!}\to0.\)
 
 \paragraph{\texorpdfstring{(c) \(n^n/n!\)}{(c) n\^{}n/n!}}\label{c-nnn}
 
@@ -1246,16 +1041,9 @@ Since
 
 the factors with \(k\le\lfloor n/2\rfloor\) are at least \(2\), and all
 remaining factors are at least \(1\). Consequently
+\(\frac{n^n}{n!}\ge2^{\lfloor n/2\rfloor}\longrightarrow+\infty.\)
 
-\[
-\frac{n^n}{n!}\ge2^{\lfloor n/2\rfloor}\longrightarrow+\infty.
-\]
-
-In particular,
-
-\[
-\frac{n^n}{n!}\to +\infty.
-\]
+In particular, \(\frac{n^n}{n!}\to +\infty.\)
 
 \subsection{Limit laws for sequences}\label{limit-laws-for-sequences}
 
@@ -1306,10 +1094,7 @@ A=\lim_{n\to\infty}a_n,
 \]
 
 Suppose, for contradiction, that \(A<B\). Set
-
-\[
-\varepsilon=\frac{B-A}{2}>0.
-\]
+\(\varepsilon=\frac{B-A}{2}>0.\)
 
 Then there exists \(N\) such that for all \(n>N\),
 
@@ -1318,24 +1103,11 @@ Then there exists \(N\) such that for all \(n>N\),
 \qquad |b_n-B|<\varepsilon.
 \]
 
-Hence for \(n>N\),
-
-\[
-a_n<A+\varepsilon=\frac{A+B}{2},
-\]
-
-and
-
-\[
-b_n>B-\varepsilon=\frac{A+B}{2}.
-\]
+Hence for \(n>N\), \(a_n<A+\varepsilon=\frac{A+B}{2},\) and
+\(b_n>B-\varepsilon=\frac{A+B}{2}.\)
 
 So \(a_n<b_n\) for all sufficiently large \(n\), contradicting the
-assumption that \(a_n\ge b_n\) eventually. Therefore,
-
-\[
-A\ge B.
-\]
+assumption that \(a_n\ge b_n\) eventually. Therefore, \(A\ge B.\)
 
 \subsection{Exercise 1.1.43
 (continued)}\label{exercise-1.1.43-continued}
@@ -1356,30 +1128,13 @@ Then
 
 Let \(\varepsilon>0\) be given. Since \(a_n\to L\) and \(c_n\to L\),
 there exist \(N_1,N_2\) such that
-
-\[
-n>N_1 \Rightarrow |a_n-L|<\varepsilon,
-\]
-
-and
-
-\[
-n>N_2 \Rightarrow |c_n-L|<\varepsilon.
-\]
+\(n>N_1 \Rightarrow |a_n-L|<\varepsilon,\) and
+\(n>N_2 \Rightarrow |c_n-L|<\varepsilon.\)
 
 Let \(N=\max\{N_0,N_1,N_2\}\). Then for all \(n>N\),
+\(L-\varepsilon<a_n\le b_n\le c_n<L+\varepsilon.\)
 
-\[
-L-\varepsilon<a_n\le b_n\le c_n<L+\varepsilon.
-\]
-
-Hence
-
-\[
-|b_n-L|<\varepsilon,
-\]
-
-for all \(n>N\). Therefore, \(b_n\to L\).
+Hence \(|b_n-L|<\varepsilon,\) for all \(n>N\). Therefore, \(b_n\to L\).
 
 This is the sequence version of the Sandwich Theorem.
 
@@ -1387,31 +1142,18 @@ This is the sequence version of the Sandwich Theorem.
 
 Let \(\{a_n\}\) be a sequence with \(a_n\to L\), and let \(f\) be a
 function continuous at \(L\) and defined at all \(a_n\). Then
-
-\[
-f(a_n)\to f(L).
-\]
+\(f(a_n)\to f(L).\)
 
 \subsubsection{Proof}\label{proof-5}
 
 Let \(\varepsilon>0\) be given. Since \(f\) is continuous at \(L\),
 there exists \(\delta>0\) such that
-
-\[
-|x-L|<\delta \Rightarrow |f(x)-f(L)|<\varepsilon.
-\]
+\(|x-L|<\delta \Rightarrow |f(x)-f(L)|<\varepsilon.\)
 
 Because \(a_n\to L\), there exists \(N\) such that
+\(n>N \Rightarrow |a_n-L|<\delta.\)
 
-\[
-n>N \Rightarrow |a_n-L|<\delta.
-\]
-
-Therefore, for all \(n>N\),
-
-\[
-|f(a_n)-f(L)|<\varepsilon.
-\]
+Therefore, for all \(n>N\), \(|f(a_n)-f(L)|<\varepsilon.\)
 
 So \(f(a_n)\to f(L)\).
 
@@ -1509,11 +1251,7 @@ the least upper bound, or supremum, of \(\{a_n\}\) if:
   if \(M\) is any upper bound, then \(L\le M\).
 \end{enumerate}
 
-We write
-
-\[
-L=\sup_{n\ge1}a_n.
-\]
+We write \(L=\sup_{n\ge1}a_n.\)
 
 Similarly, if \(\{a_n\}\) is bounded below, a number \(l\) is called the
 greatest lower bound, or infimum, if:
@@ -1526,11 +1264,7 @@ greatest lower bound, or infimum, if:
   if \(m\) is any lower bound, then \(l\ge m\).
 \end{enumerate}
 
-We write
-
-\[
-l=\inf_{n\ge1}a_n.
-\]
+We write \(l=\inf_{n\ge1}a_n.\)
 
 \subsubsection{Remarks}\label{remarks}
 
@@ -1617,16 +1351,7 @@ term exceeds \(L-\varepsilon\), and all later terms remain between
 
 Only after proving convergence do we pass to the limit in the
 recurrence. Continuity of the square root gives the positive solution of
-
-\[
-x=\sqrt{2+x},
-\]
-
-namely
-
-\[
-x^2-x-2=0 \Rightarrow x=2.
-\]
+\(x=\sqrt{2+x},\) namely \(x^2-x-2=0 \Rightarrow x=2.\)
 
 Thus,
 

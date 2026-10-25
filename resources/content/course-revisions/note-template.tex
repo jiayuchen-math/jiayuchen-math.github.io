@@ -1,20 +1,26 @@
 \documentclass[11pt,a4paper]{article}
-\usepackage[margin=24mm,headheight=15pt]{geometry}
+\usepackage[left=21mm,right=21mm,top=18mm,bottom=20mm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern,amsmath,amssymb,mathtools}
 \usepackage{graphicx,booktabs,longtable,array,calc}
 \usepackage{microtype,enumitem,needspace,etoolbox,titlesec}
-\usepackage{xcolor,xurl,hyperref,fancyhdr}
+\usepackage{xcolor,xurl,hyperref}
 \definecolor{noteblue}{HTML}{1458A6}
-\hypersetup{colorlinks=true,urlcolor=noteblue,linkcolor=noteblue,pdftitle={$title$},pdfauthor={Jiayu Chen}}
+\hypersetup{colorlinks=true,urlcolor=noteblue,linkcolor=black,pdftitle={$title$},pdfauthor={Jiayu Chen}}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{7pt plus 2pt minus 1pt}
-\linespread{1.12}
+\setlength{\parskip}{4pt plus 1pt minus 1pt}
+\linespread{1.035}
 \setlength{\emergencystretch}{3em}
-\setlength{\abovedisplayskip}{12pt plus 3pt minus 2pt}
-\setlength{\belowdisplayskip}{12pt plus 3pt minus 2pt}
-\setlist{itemsep=6pt,topsep=8pt,parsep=3pt,leftmargin=1.8em}
+\setlength{\abovedisplayskip}{7pt plus 2pt minus 1pt}
+\setlength{\belowdisplayskip}{7pt plus 2pt minus 1pt}
+\setlength{\abovedisplayshortskip}{4pt plus 1pt}
+\setlength{\belowdisplayshortskip}{5pt plus 1pt}
+\setlist{itemsep=3pt,topsep=4pt,parsep=1pt,leftmargin=1.7em}
+\allowdisplaybreaks[1]
+\raggedbottom
+\clubpenalty=4000
+\widowpenalty=4000
 \providecommand{\tightlist}{}
 \newcommand{\passthrough}[1]{#1}
 \newcommand{\pandocbounded}[1]{#1}
@@ -23,25 +29,23 @@
 \titleformat{\section}{\Large\bfseries}{\thesection}{0pt}{}
 \titleformat{\subsection}{\large\bfseries}{\thesubsection}{0pt}{}
 \titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0pt}{}
-\titlespacing*{\section}{0pt}{22pt}{12pt}
-\titlespacing*{\subsection}{0pt}{18pt}{9pt}
-\titlespacing*{\subsubsection}{0pt}{15pt}{7pt}
-\pretocmd{\section}{\Needspace{8\baselineskip}}{}{}
-\pretocmd{\subsection}{\Needspace{6\baselineskip}}{}{}
-\pretocmd{\subsubsection}{\Needspace{5\baselineskip}}{}{}
-\pagestyle{fancy}\fancyhf{}
-\fancyhead[L]{\small Calculus}
-\fancyhead[R]{\small $title$}
-\fancyfoot[C]{\small\thepage}
-\renewcommand{\headrulewidth}{0.3pt}
+\titlespacing*{\section}{0pt}{14pt}{8pt}
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+\titlespacing*{\subsubsection}{0pt}{9pt}{4pt}
+\pretocmd{\section}{\Needspace{6\baselineskip}}{}{}
+\pretocmd{\subsection}{\Needspace{5\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\Needspace{4\baselineskip}}{}{}
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{0em}{0em}}
+\makeatother
+\pagestyle{plain}
 \begin{document}
-{\LARGE\bfseries $title$\par}
+\begin{center}
+{\LARGE $title$\par}
 \vspace{5pt}
 {\large $subtitle$\par}
-\vspace{8pt}
-{\small Jiayu Chen\par}
-\vspace{10pt}
-\tableofcontents
-\vspace{16pt}
+\end{center}
+{\small\tableofcontents}
+\vspace{7pt}
 $body$
 \end{document}

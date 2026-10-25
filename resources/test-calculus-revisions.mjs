@@ -6,6 +6,18 @@ const root=new URL('../',import.meta.url),read=f=>fs.readFileSync(new URL(f,root
 for(const e of calculusRevision.archives){assert.equal(createHash('sha256').update(fs.readFileSync(new URL(e.original,root))).digest('hex'),e.sha256,'Unchanged original: '+e.file);}
 assert.equal(calculusRevision.archives.length,11);assert.deepEqual(calculusRevision.scope,[1,2,3]);
 assert.equal(calculusRevision.editions.length,3);
+// The print-layout edit must preserve the complete pre-compression body.
+const compactBodyHashes=['5b760d11064735c19c395f446272349390cbdcc23d94c0a568b6898de80eb54a','64157a4d8301f6bd833ed8347d4e66578cde7fbfba54741f8b12e8c85afcf5b9','1ec04aaa8a0f8aaade55a4879b5c66a85c3c02e7d457922ed4970df698d1518d'];
+for(const week of[1,2,3]){
+ const tex=read(noteDirectory+'/'+(week===2?'week2':'MAweek'+week)+'.tex');
+ assert(tex.includes('\\documentclass[11pt,a4paper]'));
+ assert(!tex.includes('fancyhdr'));
+ const body=tex.split('\\vspace{7pt}')[1].split('\\end{document}')[0]
+  .replace(/\\(?:\[|\]|\(|\))/g,'').replace(/width=[\d.]+\\linewidth/g,'width=PRINTWIDTH')
+  .replace(/\\begin\{center\}|\\end\{center\}|\\hfill/g,'').replace(/\s+/g,'');
+ assert.equal(createHash('sha256').update(body).digest('hex'),compactBodyHashes[week-1],'Pre-compression mathematics retained, week '+week);
+}
+assert.deepEqual(calculusRevision.layout.pages.map(e=>e.after),[17,19,15]);
 for(const edition of calculusRevision.editions)for(const file of edition.files){const bytes=fs.readFileSync(new URL(file.path,root));assert.equal(bytes.length,file.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),file.sha256,'Current revised edition: '+file.path);}
 let formulas=0,figures=0;
 for(const week of[1,2,3]){

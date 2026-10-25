@@ -92,13 +92,13 @@
         },
         {
           "path": "notes/mathematical-notes/calculus/MAweek1.tex",
-          "sha256": "3ccf3d8d284945de38b57fd4d8aa1b2c5e5fbcff69a95f0cdd905d2faf443cc8",
-          "bytes": 30333
+          "sha256": "06d153926cea113195b1285e4f11cdcb4adef1b9fd70be7020d35252dbefc3c0",
+          "bytes": 30418
         },
         {
           "path": "notes/mathematical-notes/calculus/MAweek1.pdf",
-          "sha256": "f3a3c717a058fc5890aec64c1a41e788c51b61afaf0ae487a8dde1785bb57868",
-          "bytes": 3561140
+          "sha256": "661b2789e9bdde2388a868ee4ba73dbea9a2b7ab366ca19db2f39c9043c84c6a",
+          "bytes": 3578858
         }
       ]
     },
@@ -112,13 +112,13 @@
         },
         {
           "path": "notes/mathematical-notes/calculus/week2.tex",
-          "sha256": "a9c43c097ce5892d6b2662b96b5cf0a5c560de29ffb95e0b7bdb771cb9824b94",
-          "bytes": 39544
+          "sha256": "acfd1591501953c230bef33216e37b18d7673a9a3fd047734687857dbc71ea46",
+          "bytes": 39172
         },
         {
           "path": "notes/mathematical-notes/calculus/week2.pdf",
-          "sha256": "b26ac98b4deb93a40878dd9dd8d6fc335ed1eabd5423457248c1aa0c67df429f",
-          "bytes": 522436
+          "sha256": "e70b7814ad9c11cd9475d24178570ebbc4363e8b07419509c359b911f947bfe9",
+          "bytes": 541774
         }
       ]
     },
@@ -132,15 +132,39 @@
         },
         {
           "path": "notes/mathematical-notes/calculus/MAweek3.tex",
-          "sha256": "226b6943ed5ca105020d2a647bda5d1bfb0a0eb76056e09e83db094fe88563f0",
-          "bytes": 38799
+          "sha256": "a7347527b7f5d5a49af7260b03b6f59de8e1a05bf63c386bf2ef00eb3f7e959c",
+          "bytes": 38910
         },
         {
           "path": "notes/mathematical-notes/calculus/MAweek3.pdf",
-          "sha256": "e53cd09e08dda7d8ecc4a2713255a1beb80200c2a8ff478cf147beb7483c835f",
-          "bytes": 4375330
+          "sha256": "0033e64c1a03cddabab16a3aed386b4fc30f9d6a09bff466cd24f5e5d8d229cc",
+          "bytes": 4396396
         }
       ]
     }
-  ]
+  ],
+  "layout": {
+    "date": "2026-10-25",
+    "bodyFontPoints": 11,
+    "content": "All mathematical text, proofs, exercises and diagrams retained. Only print layout changes; Markdown and HTML are byte-for-byte unchanged.",
+    "pages": [
+      {
+        "week": 1,
+        "before": 22,
+        "after": 17
+      },
+      {
+        "week": 2,
+        "before": 30,
+        "after": 19
+      },
+      {
+        "week": 3,
+        "before": 19,
+        "after": 15
+      }
+    ],
+    "generation": "Pandoc with note-template.tex and note-figures.lua; title Mathematical Analysis - Week N; compact-inline=true for Week 2 only; pdfLaTeX.",
+    "notes": "Plain page numbers, compact title and contents, moderate spacing; short prose calculations inline and consecutive plots paired in Week 2."
+  }
 }
