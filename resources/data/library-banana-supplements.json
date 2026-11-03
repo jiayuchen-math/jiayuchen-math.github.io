@@ -1,0 +1,132 @@
+{
+  "https://pi.math.cornell.edu/~hatcher/AT/AT%2B.pdf": {
+    "discoverySource": "https://bananaspace.org/books/%E4%BB%A3%E6%95%B0%E6%8B%93%E6%89%91%E5%9F%BA%E7%A1%80/",
+    "discoveryLocator": "References: Algebraic Topology",
+    "sourceVerification": {
+      "checked": "2026-11-03",
+      "method": "Primary PDF title and contents inspected",
+      "url": "https://pi.math.cornell.edu/~hatcher/AT/AT%2B.pdf",
+      "pages": 560
+    }
+  },
+  "https://people.mpim-bonn.mpg.de/scholze/Condensed.pdf": {
+    "discoverySource": "https://bananaspace.org/books/%E5%87%9D%E8%81%9A%E6%80%81%E6%95%B0%E5%AD%A6/",
+    "discoveryLocator": "References: Lectures on Condensed Mathematics",
+    "sourceVerification": {
+      "checked": "2026-11-03",
+      "method": "Primary PDF title and contents inspected",
+      "url": "https://people.mpim-bonn.mpg.de/scholze/Condensed.pdf",
+      "pages": 78
+    }
+  },
+  "https://people.mpim-bonn.mpg.de/scholze/Analytic.pdf": {
+    "discoverySource": "https://bananaspace.org/books/%E5%87%9D%E8%81%9A%E6%80%81%E6%95%B0%E5%AD%A6/",
+    "discoveryLocator": "References: Lectures on Analytic Geometry",
+    "sourceVerification": {
+      "checked": "2026-11-03",
+      "method": "Primary PDF title and contents inspected",
+      "url": "https://people.mpim-bonn.mpg.de/scholze/Analytic.pdf",
+      "pages": 110
+    }
+  },
+  "https://people.mpim-bonn.mpg.de/scholze/proetale.pdf": {
+    "discoverySource": "https://bananaspace.org/books/%E5%87%9D%E8%81%9A%E6%80%81%E6%95%B0%E5%AD%A6/",
+    "discoveryLocator": "References: The Pro-Étale Topology for Schemes",
+    "sourceVerification": {
+      "checked": "2026-11-03",
+      "method": "Primary PDF title and contents inspected",
+      "url": "https://people.mpim-bonn.mpg.de/scholze/proetale.pdf",
+      "pages": 72
+    }
+  },
+  "https://www.math.ias.edu/~lurie/papers/HA.pdf": {
+    "discoverySource": "https://bananaspace.org/books/%E5%87%9D%E8%81%9A%E6%80%81%E6%95%B0%E5%AD%A6/",
+    "discoveryLocator": "References: Higher Algebra",
+    "sourceVerification": {
+      "checked": "2026-11-03",
+      "method": "Primary PDF title and contents inspected",
+      "url": "https://www.math.ias.edu/~lurie/papers/HA.pdf",
+      "pages": 1553
+    }
+  },
+  "https://www.math.ias.edu/~lurie/papers/SAG-rootfile.pdf": {
+    "discoverySource": "https://bananaspace.org/books/%E5%87%9D%E8%81%9A%E6%80%81%E6%95%B0%E5%AD%A6/",
+    "discoveryLocator": "References: Spectral Algebraic Geometry",
+    "sourceVerification": {
+      "checked": "2026-11-03",
+      "method": "Primary PDF title and contents inspected",
+      "url": "https://www.math.ias.edu/~lurie/papers/SAG-rootfile.pdf",
+      "pages": 2319
+    }
+  },
+  "https://people.mpim-bonn.mpg.de/scholze/EtCohDiamonds.pdf": {
+    "discoverySource": "https://bananaspace.org/books/%E5%87%9D%E8%81%9A%E6%80%81%E6%95%B0%E5%AD%A6/",
+    "discoveryLocator": "References: Étale Cohomology of Diamonds",
+    "sourceVerification": {
+      "checked": "2026-11-03",
+      "method": "Primary PDF title and contents inspected",
+      "url": "https://people.mpim-bonn.mpg.de/scholze/EtCohDiamonds.pdf",
+      "pages": 168
+    }
+  },
+  "https://www.math.ias.edu/~lurie/papers/HTT.pdf": {
+    "discoverySource": "https://bananaspace.org/books/%E5%90%8C%E4%BC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E5%90%8C%E8%B0%83%E4%BB%A3%E6%95%B0/",
+    "discoveryLocator": "References: Higher Topos Theory",
+    "sourceVerification": {
+      "checked": "2026-11-03",
+      "method": "Primary PDF title and contents inspected",
+      "url": "https://www.math.ias.edu/~lurie/papers/HTT.pdf",
+      "pages": 949
+    }
+  },
+  "https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf": {
+    "discoverySource": "https://bananaspace.org/books/%E7%A4%BA%E6%80%A7%E7%B1%BB/",
+    "discoveryLocator": "References: Vector Bundles and K-Theory",
+    "sourceVerification": {
+      "checked": "2026-11-03",
+      "method": "Primary PDF title and contents inspected",
+      "url": "https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf",
+      "pages": 124
+    }
+  },
+  "https://www.math.uchicago.edu/~may/CONCISE/ConciseRevised.pdf": {
+    "discoverySource": "https://bananaspace.org/books/%E7%A4%BA%E6%80%A7%E7%B1%BB/",
+    "discoveryLocator": "References: A Concise Course in Algebraic Topology",
+    "sourceVerification": {
+      "checked": "2026-11-03",
+      "method": "Primary PDF title and contents inspected",
+      "url": "https://www.math.uchicago.edu/~may/CONCISE/ConciseRevised.pdf",
+      "pages": 251
+    }
+  },
+  "https://www.jmilne.org/math/CourseNotes/LEC.pdf": {
+    "discoverySource": "https://bananaspace.org/books/%E7%BB%99%E5%87%A0%E4%BD%95%E4%BA%BA%E7%9A%84%E5%B9%B3%E5%B1%95%E4%B8%8A%E5%90%8C%E8%B0%83/",
+    "discoveryLocator": "References: Lectures on Étale Cohomology",
+    "sourceVerification": {
+      "checked": "2026-11-03",
+      "method": "Primary PDF title and contents inspected",
+      "url": "https://www.jmilne.org/math/CourseNotes/LEC.pdf",
+      "pages": 202
+    }
+  },
+  "https://www.jmilne.org/math/CourseNotes/CFT.pdf": {
+    "discoverySource": "https://bananaspace.org/books/%E7%BB%99%E5%87%A0%E4%BD%95%E4%BA%BA%E7%9A%84%E5%B9%B3%E5%B1%95%E4%B8%8A%E5%90%8C%E8%B0%83/",
+    "discoveryLocator": "References: Class Field Theory",
+    "sourceVerification": {
+      "checked": "2026-11-03",
+      "method": "Primary PDF title and contents inspected",
+      "url": "https://www.jmilne.org/math/CourseNotes/CFT.pdf",
+      "pages": 296
+    }
+  },
+  "https://linear.axler.net/LADR4e.pdf": {
+    "discoverySource": "https://bananaspace.org/books/%E8%A1%8C%E5%88%97%E5%BC%8F%E5%85%A5%E9%97%A8/",
+    "discoveryLocator": "References: Linear algebra done right",
+    "sourceVerification": {
+      "checked": "2026-11-03",
+      "method": "Primary PDF title and contents inspected",
+      "url": "https://linear.axler.net/LADR4e.pdf",
+      "pages": 404
+    }
+  }
+}

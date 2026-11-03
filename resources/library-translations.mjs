@@ -23,7 +23,29 @@ export function createLibraryTranslations(root,books,registry){
   records[id]={url:b.url,note:zh.note,preparation:prep};
   for(const key of ['use','version','accessNote','archiveNote','freeVersion'])if(b[key]&&!/^\d+$/.test(b[key])&&!dictionary[b[key]])throw Error('Missing Chinese library field '+id+' '+key+': '+b[key]);
  }
+ for(const b of books){
+  const id=registry[b.url.replace(/\/$/,'')];
+  if(b.discoverySource&&!records[id])records[id]={url:b.url,note:b.note,preparation:b.prerequisites||''};
+  if(!b.translation)continue;
+  if(!id)throw Error('New bilingual work needs a stable ID: '+b.title);
+  const zh=b.translation;
+  for(const [key,target] of [['note','note'],['prerequisites','preparation'],['use','use'],['version','version'],['accessNote','accessNote']]){
+   if(!zh[target])throw Error('Missing bilingual library field '+b.title+' '+target);
+   dictionary[b[key]]=zh[target];
+  }
+  records[id]={url:b.url,note:zh.note,preparation:zh.preparation};
+ }
+ Object.assign(dictionary,{'Chinese':'中文','Student exposition':'学生专题文章','Research monograph':'研究专著','Expository research paper':'研究性讲解文章','Research paper':'研究论文','Found via':'收录线索','Reading version':'阅读版本','Online lecture version':'在线讲义版','Preparation:':'先修：','Use:':'用途：','Version:':'版本：','Access:':'获取方式：'});
+ dictionary['Full-text source checked: 2026-11-03']='全文来源核查：2026-11-03';
  for(const [english,chinese] of Object.entries({...dictionary})){const shortEnglish=conciseText(english),shortChinese=conciseText(chinese);if(shortEnglish&&shortEnglish!==english)dictionary[shortEnglish]=shortChinese;}
+ // Directory excerpts must translate independently of the full detail paragraph.
+ // Match the generator's word-boundary excerpt instead of translating fragments.
+ for(const book of books){
+  const translated=records[registry[book.url.replace(/\/$/,'')]];
+  if(!translated)continue;
+  const note=conciseText(book.note),excerpt=note.length>220?note.slice(0,220).replace(/\s+\S*$/,'')+'…':note;
+  dictionary[excerpt]=translated.note.length>220?translated.note.slice(0,220)+'…':translated.note;
+ }
  const translate=value=>{
   if(dictionary[value])return dictionary[value];
   if(/^Further print reading \(\d+ retained references\)$/.test(value))return '纸质书参考（保留 '+value.match(/\d+/)[0]+' 项）';

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "counts": {
-    "library": 576,
+    "library": 609,
     "encyclopedia": 150,
     "terminology": 513,
     "links": 110,
@@ -12,9 +12,9 @@
     {
       "id": "library",
       "url": "/en/notes/reading-notes/library/catalogue.html",
-      "records": 576,
-      "pages": 16,
-      "firstPageBytes": 132738
+      "records": 609,
+      "pages": 17,
+      "firstPageBytes": 140670
     },
     {
       "id": "links",
@@ -992,7 +992,7 @@
       "url": "/en/notes/reading-notes/library/exposition.html",
       "records": 14,
       "pages": 1,
-      "firstPageBytes": 32597
+      "firstPageBytes": 32585
     },
     {
       "id": "coverage",
@@ -1002,11 +1002,11 @@
       "firstPageBytes": 49053
     }
   ],
-  "indexBytes": 1518063,
+  "indexBytes": 1533184,
   "searchCollections": [
     {
       "id": "library",
-      "records": 576
+      "records": 609
     },
     {
       "id": "links",
@@ -1037,7 +1037,7 @@
       "records": 93
     }
   ],
-  "directoryIndexBytes": 4192546,
+  "directoryIndexBytes": 4247487,
   "limits": {
     "firstPageHTML": 358400,
     "searchIndex": 2097152
@@ -1045,7 +1045,7 @@
   "translationCoverage": {
     "body-translated": 70,
     "partly-translated": 26,
-    "interface-only": 899,
+    "interface-only": 901,
     "needs-review": 0
   }
 }

@@ -41,7 +41,7 @@ assert(cards.includes('library/catalogue.html'));
 assert(cards.includes('library-browse.css'));
 for(const area of ['foundations','algebra','analysis','geometry-topology','number-theory','discrete-mathematics','probability-dynamics'])
  assert(read('notes/reading-notes/library/'+area+'.html').includes('library-browse.css'));
-assert.equal(JSON.parse(read('resources/portal-report.json')).counts.library,576);
+assert.equal(JSON.parse(read('resources/portal-report.json')).counts.library,576+JSON.parse(read('resources/data/library-banana.json')).length);
 const hub=read('resources/index.html');
 assert(hub.includes('<ul class="subject-links">'));
 const subjectNavigation=hub.match(/<ul class="subject-links">([\s\S]*?)<\/ul>/)[1];

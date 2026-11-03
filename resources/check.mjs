@@ -3,7 +3,8 @@ import {withAccess,accessLabels} from './data/library-access.mjs';import researc
 import './test-library-counts.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');const read=p=>fs.readFileSync(path.join(root,p),'utf8');const json=p=>JSON.parse(read(p));
 const old=json('resources/data/library-original.json');const current=json('notes/reading-notes/library/catalogue.json');const add=json('resources/data/library-additions.json');const links=json('resources/data/links.json');const programmes=json('resources/data/programs.json');
-for(const t of old.topics){assert.deepEqual(current.topics.find(x=>x.id===t.id).books.slice(0,t.books.length),t.books,'Legacy books changed in '+t.id)}
+const originalBookFacts=book=>{const value={...book};for(const key of ['discoverySource','discoveryLocator','sourceVerification'])delete value[key];return value;};
+for(const t of old.topics){assert.deepEqual(current.topics.find(x=>x.id===t.id).books.slice(0,t.books.length).map(originalBookFacts),t.books,'Legacy books changed in '+t.id)}
 const works=new Set(current.topics.flatMap(t=>t.books).map(b=>b.url.replace(/\/$/,'')));assert(works.size>=150);assert(add.length>=98);assert(new Set(add.map(x=>x.url)).size===add.length);assert(links.length>=80);assert(new Set(links.map(x=>x.url)).size===links.length);assert(programmes.filter(x=>x.degree==='Masters').length>=80);assert(programmes.filter(x=>x.degree==='Doctorate').length>=40);assert(new Set(programmes.map(x=>x.id)).size===programmes.length);
 for(const [bucket,target] of Object.entries({'Algebraic geometry & frontiers':30,'Higher categories & homotopy':14,'Analysis & PDE':20,'Differential, symplectic & geometric analysis':10,'Number theory':12,'Logic, combinatorics, probability & dynamics':12}))assert(add.filter(x=>x.bucket===bucket).length>=target,bucket);
 assert(add.filter(x=>['Graduate','Research'].includes(x.level)).length>=70);

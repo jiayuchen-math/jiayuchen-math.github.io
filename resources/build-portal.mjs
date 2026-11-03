@@ -28,6 +28,7 @@ import {pilotSubjectSection,pilotRouteSection} from './learning-pilots.mjs';
 import {algebraicGeometryTopic} from './algebraic-geometry-topic.mjs';
 import {contributionHub} from './contribution-hub.mjs';
 import {staticRouteContext} from './assets/learning-context.js';
+import {bananaStudyReading} from './banana-library.mjs';
 
 const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const text=html=>decodeHTML(String(html||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim());
@@ -62,6 +63,7 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  const registryFile='resources/data/stable-ui-ids.json';
  const registry=fs.existsSync(path.join(root,registryFile))?json(registryFile):{library:{},links:{}};
  function stable(type,key){if(!registry[type][key])registry[type][key]=`${type==='library'?'work':'link'}-${String(Object.keys(registry[type]).length+1).padStart(4,'0')}`;return registry[type][key]}
+ for(const book of books)stable('library',book.url.replace(/\/$/,''));
  const libraryChinese=createLibraryTranslations(root,books,registry.library);
  const libraryCopyData='export const dictionary='+JSON.stringify(libraryChinese.dictionary)+';\nexport const records='+JSON.stringify(libraryChinese.records)+';\n';
  save('resources/assets/library-copy-data.js',libraryCopyData);
@@ -82,6 +84,7 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  report.learningEdition=learningCounts;
  const collections=[];
  function bodyOf(html){
+  html=html.replace(/<!-- banana-study:start -->[\s\S]*?<!-- banana-study:end -->/g,'');
   // Unwrapped legacy entrances retain the inert translation script. Remove it
   // before either extraction branch, not only from already wrapped pages.
   html=html.replace(/<script type="application\/json" id="page-translations">[\s\S]*?<\/script>/g,'');
@@ -154,6 +157,7 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
    return /\/(?:portal-catalogue|unified-search)\.js$/.test(source)?{src,type:'module'}:src;
   });
   if(file.startsWith('resources/library-paths/'))extra.scripts=[...(extra.scripts||[]),'/en/resources/assets/paths.js'];
+  body=body.replace(/<!-- banana-study:start -->[\s\S]*?<!-- banana-study:end -->/g,'')+bananaStudyReading(file);
   let output=shell({title,body,url:href(file.replace(/index\.html$/,'')),kind,...extra});
   if(extra.translatedTitle)output=output.replace('<title>','<title id="translated-document-title">').replace('<h1>','<h1 id="translated-page-title">').replace('<span aria-current="page">','<span id="translated-breadcrumb-title" aria-current="page">');
   save(file,polishPage(output,file));
@@ -173,7 +177,7 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  const fields=(obj,names)=>Object.fromEntries(names.map(n=>[n,String(obj[n]||'')]));
  const titleSearch=e=>strings([e.title,e.chinese,e.chineseLabel,Array.isArray(e.aliases)?e.aliases.join(' '):e.aliases,e.author,e.institution,e.topics,e.originalTitle]);
  function row(e,extra){return {id:e.id,title:e.title,subtitle:'',summary:'',meta:'',fields:{},search:titleSearch(e),...extra}}
- const libraryRows=books.map(e=>row({...e,id:stable('library',e.url.replace(/\/$/,''))},{subtitle:e.author,summary:brief(e.note),meta:strings([e.level,e.readingAccess,e.access]),readingUrl:e.url,fields:fields(e,['topic','level','readingAccess','kind','language','readingMode','access']),search:strings([titleSearch(e),e.topic,e.prerequisites,e.note])}));
+ const libraryRows=books.map(e=>row({...e,id:stable('library',e.url.replace(/\/$/,''))},{chinese:e.chinese||'',subtitle:e.author,summary:brief(e.note),meta:strings([e.level,e.readingAccess,e.access]),readingUrl:e.readUrl||e.url,fields:fields(e,['topic','level','readingAccess','kind','language','readingMode','access']),search:strings([titleSearch(e),e.topic,e.prerequisites,e.note])}));
  for(const row of libraryRows){const translated=libraryChinese.records[row.id];if(translated)row.search+=' · '+translated.note+' · '+translated.preparation;}
  for(const row of libraryRows){row.summary=brief(conciseText(books.find(b=>stable('library',b.url.replace(/\/$/,''))===row.id).note));row.meta=strings([row.fields.level,row.fields.readingAccess==='Free to read'?(row.fields.access==='Direct open PDF'?'PDF':'Free to read'):row.fields.readingAccess]);}
  const linksRows=links.map(e=>row({...e,id:stable('links',e.url)},{subtitle:strings([e.author,e.originalTitle||e.chineseLabel]),aliases:e.aliases,summary:e.section?e.note:brief(e.note),meta:strings([e.category,e.area,e.language]),readingUrl:e.url,fields:fields(e,['category','area','language']),search:strings([titleSearch(e),e.category,e.area,e.note,e.use])}));
@@ -218,7 +222,7 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
    r.hasDetails=hasDetailContent(full[i]);
    if(id==='library'){
     const original=books[i];r.readingUrl=original.readUrl||original.url;
-    r.readingLabel=original.readUrl?'Read full text':original.readingAccess==='Free to read'?(/\.pdf(?:[?#]|$)/i.test(r.readingUrl)?'Read PDF':'Read online'):'Access page';
+    r.readingLabel=original.readUrl?'Read full text':original.readingAccess==='Free to read'?(original.access==='Direct open PDF'?'Read PDF':'Read online'):'Access page';
     r.sourceUrl=original.readUrl?original.accessSource||original.url:original.source;
    } else if(id==='links'){
     const original=links[i];r.readingLabel='Visit website';r.sourceUrl=original.source;

@@ -19,6 +19,8 @@ import * as search from './assets/search-core.js';
 import * as catalogueCore from './assets/portal-catalogue-core.js';
 import {backgroundForm} from './data/background-form.mjs';
 import {protectedBytes,windowsSourceBlobs} from './protected-bytes.mjs';
+import {bananaWorks,priorLibraryFiles} from './banana-library.mjs';
+import './test-banana-library.mjs';
 import {titleDestination,entryActions,showsDetails,hasDetailContent} from './assets/entry-presentation.js';
 import {loadConceptReadings} from './study-content.mjs';
 import {loadAdviceReadings} from './advice-readings.mjs';
@@ -37,7 +39,7 @@ const archivedCourseSources={...priorCalculusSources,...legacyCourseSources,...p
 const json = file => JSON.parse(read(file));
 const sha = value => createHash('sha256').update(value).digest('hex');
 const bytes = file => fs.statSync(path.join(root, file)).size;
-const counts = {library:576, encyclopedia:150, terminology:513, links:80, programs:225, researchers:1939};
+const counts = {library:576+bananaWorks.length, encyclopedia:150, terminology:513, links:80, programs:225, researchers:1939};
 const applicationStatuses = ['Within reviewed window','Upcoming','Closed','Rolling','Deadline day — time unverified','Opening day — time unverified','Dates not verified'];
 const backgroundStates = ['Potential route — confirmation needed','Documented qualification gap','Documented route mismatch','Eligibility not established'];
 const routes = {
@@ -96,7 +98,7 @@ function walk(dir = '') {
     return e.isDirectory() ? walk(file) : e.isFile() ? [file] : [];
   });
 }
-function fingerprint(files, value = file => protectedBytes(fs.readFileSync(path.join(root, archivedCourseSources[file]||file)),file)) {
+function fingerprint(files, value = file => protectedBytes(fs.readFileSync(path.join(root, archivedCourseSources[file]||priorLibraryFiles[file]||file)),file)) {
   return {files:files.length, sha256:sha([...files].sort().map(file => file+'\0'+sha(value(file))).join('\n'))};
 }
 function articleBody(html) {

@@ -1,0 +1,1772 @@
+{
+  "checked": "2026-11-03",
+  "scope": "15 lecture series and their explicit first-hop bibliographies",
+  "lectures": [
+    {
+      "title": "代数拓扑基础",
+      "source": "https://bananaspace.org/books/%E4%BB%A3%E6%95%B0%E6%8B%93%E6%89%91%E5%9F%BA%E7%A1%80/",
+      "sourceFiles": 7,
+      "referenceEntries": 4
+    },
+    {
+      "title": "凝聚态数学",
+      "source": "https://bananaspace.org/books/%E5%87%9D%E8%81%9A%E6%80%81%E6%95%B0%E5%AD%A6/",
+      "sourceFiles": 15,
+      "referenceEntries": 13
+    },
+    {
+      "title": "同伦代数与同调代数",
+      "source": "https://bananaspace.org/books/%E5%90%8C%E4%BC%A6%E4%BB%A3%E6%95%B0%E4%B8%8E%E5%90%8C%E8%B0%83%E4%BB%A3%E6%95%B0/",
+      "sourceFiles": 12,
+      "referenceEntries": 9
+    },
+    {
+      "title": "抽象代数",
+      "source": "https://bananaspace.org/books/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/",
+      "sourceFiles": 44,
+      "referenceEntries": 0
+    },
+    {
+      "title": "拓扑学",
+      "source": "https://bananaspace.org/books/%E6%8B%93%E6%89%91%E5%AD%A6/",
+      "sourceFiles": 14,
+      "referenceEntries": 19
+    },
+    {
+      "title": "数学分析",
+      "source": "https://bananaspace.org/books/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/",
+      "sourceFiles": 138,
+      "referenceEntries": 12
+    },
+    {
+      "title": "有限群的经典表示理论",
+      "source": "https://bananaspace.org/books/%E6%9C%89%E9%99%90%E7%BE%A4%E7%9A%84%E7%BB%8F%E5%85%B8%E8%A1%A8%E7%A4%BA%E7%90%86%E8%AE%BA/",
+      "sourceFiles": 4,
+      "referenceEntries": 0
+    },
+    {
+      "title": "概率与数理统计",
+      "source": "https://bananaspace.org/books/%E6%A6%82%E7%8E%87%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/",
+      "sourceFiles": 83,
+      "referenceEntries": 34
+    },
+    {
+      "title": "示性类",
+      "source": "https://bananaspace.org/books/%E7%A4%BA%E6%80%A7%E7%B1%BB/",
+      "sourceFiles": 14,
+      "referenceEntries": 19
+    },
+    {
+      "title": "线性代数",
+      "source": "https://bananaspace.org/books/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/",
+      "sourceFiles": 36,
+      "referenceEntries": 0
+    },
+    {
+      "title": "给几何人的平展上同调",
+      "source": "https://bananaspace.org/books/%E7%BB%99%E5%87%A0%E4%BD%95%E4%BA%BA%E7%9A%84%E5%B9%B3%E5%B1%95%E4%B8%8A%E5%90%8C%E8%B0%83/",
+      "sourceFiles": 97,
+      "referenceEntries": 27
+    },
+    {
+      "title": "行列式入门",
+      "source": "https://bananaspace.org/books/%E8%A1%8C%E5%88%97%E5%BC%8F%E5%85%A5%E9%97%A8/",
+      "sourceFiles": 105,
+      "referenceEntries": 9
+    },
+    {
+      "title": "谱聚类",
+      "source": "https://bananaspace.org/books/%E8%B0%B1%E8%81%9A%E7%B1%BB/",
+      "sourceFiles": 11,
+      "referenceEntries": 8
+    },
+    {
+      "title": "集合论基础",
+      "source": "https://bananaspace.org/books/%E9%9B%86%E5%90%88%E8%AE%BA%E5%9F%BA%E7%A1%80/",
+      "sourceFiles": 49,
+      "referenceEntries": 0
+    },
+    {
+      "title": "集合论进阶 A：公理集合论基础",
+      "source": "https://bananaspace.org/books/%E9%9B%86%E5%90%88%E8%AE%BA%E8%BF%9B%E9%98%B6_A%EF%BC%9A%E5%85%AC%E7%90%86%E9%9B%86%E5%90%88%E8%AE%BA%E5%9F%BA%E7%A1%80/",
+      "sourceFiles": 36,
+      "referenceEntries": 0
+    }
+  ],
+  "newRecords": 33,
+  "supplementedRecords": 13,
+  "snapshots": {
+    "resources/data/library-additions.json": {
+      "archive": "resources/content/library-before-banana/library-additions.json.source",
+      "sha256": "bf3afd72a421ba3782405796299a3427bc9ce236931e9d04a163a701216e7a1c"
+    },
+    "notes/reading-notes/library/catalogue.json": {
+      "archive": "resources/content/library-before-banana/catalogue.json.source",
+      "sha256": "c41416f9db322ac75d04ffb4a77c9c0439c249dec788223f3ab3a6c94694a5a3"
+    }
+  },
+  "references": [
+    {
+      "title": "Algebraic Topology",
+      "author": "A. Hatcher",
+      "foundIn": [
+        "代数拓扑基础/附录/index.md",
+        "拓扑学/学习时可以参考的资料/index.md",
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "existing-full-text-reviewed",
+      "catalogueReference": "existing:https://pi.math.cornell.edu/~hatcher/AT/AT%2B.pdf",
+      "reason": null
+    },
+    {
+      "title": "同调论",
+      "author": "姜伯驹",
+      "foundIn": [
+        "代数拓扑基础/附录/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "The Topology of CW Complexes",
+      "author": [
+        "Lundell",
+        "Weingram"
+      ],
+      "foundIn": [
+        "代数拓扑基础/附录/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "An Introduction to Algebraic Topology",
+      "author": "J. J. Rotman",
+      "foundIn": [
+        "代数拓扑基础/附录/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Lectures on Condensed Mathematics",
+      "author": [
+        "D. Clausen",
+        "P. Scholze"
+      ],
+      "foundIn": [
+        "凝聚态数学/参考文献/index.md"
+      ],
+      "result": "existing-full-text-reviewed",
+      "catalogueReference": "existing:https://people.mpim-bonn.mpg.de/scholze/Condensed.pdf",
+      "reason": null
+    },
+    {
+      "title": "Lectures on Analytic Geometry",
+      "author": [
+        "D. Clausen",
+        "P. Scholze"
+      ],
+      "foundIn": [
+        "凝聚态数学/参考文献/index.md"
+      ],
+      "result": "existing-full-text-reviewed",
+      "catalogueReference": "existing:https://people.mpim-bonn.mpg.de/scholze/Analytic.pdf",
+      "reason": null
+    },
+    {
+      "title": "Masterclass in Condensed Mathematics",
+      "author": [
+        "D. Clausen",
+        "P. Scholze"
+      ],
+      "foundIn": [
+        "凝聚态数学/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Pyknoticity versus Cohesiveness",
+      "author": "D. Corfield",
+      "foundIn": [
+        "凝聚态数学/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "The Pro-Étale Topology for Schemes",
+      "author": [
+        "B. Bhatt",
+        "P. Scholze"
+      ],
+      "foundIn": [
+        "凝聚态数学/参考文献/index.md",
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "existing-full-text-reviewed",
+      "catalogueReference": "existing:https://people.mpim-bonn.mpg.de/scholze/proetale.pdf",
+      "reason": null
+    },
+    {
+      "title": "$K$-Theory and Topological Cyclic Homology of Henselian Pairs",
+      "author": [
+        "D. Clausen",
+        "A. Mathew",
+        "M. Morrow"
+      ],
+      "foundIn": [
+        "凝聚态数学/参考文献/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-9",
+      "reason": null
+    },
+    {
+      "title": "$K$-Theory of Henselian Local Rings and Henselian Pairs",
+      "author": "O. Gabber",
+      "foundIn": [
+        "凝聚态数学/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Higher Algebra",
+      "author": "J. Lurie",
+      "foundIn": [
+        "凝聚态数学/参考文献/index.md",
+        "同伦代数与同调代数/参考文献/index.md"
+      ],
+      "result": "existing-full-text-reviewed",
+      "catalogueReference": "existing:https://www.math.ias.edu/~lurie/papers/HA.pdf",
+      "reason": null
+    },
+    {
+      "title": "Spectral Algebraic Geometry",
+      "author": "J. Lurie",
+      "foundIn": [
+        "凝聚态数学/参考文献/index.md"
+      ],
+      "result": "existing-full-text-reviewed",
+      "catalogueReference": "existing:https://www.math.ias.edu/~lurie/papers/SAG-rootfile.pdf",
+      "reason": null
+    },
+    {
+      "title": "Fourier Analysis on Groups",
+      "author": "W. Rudin",
+      "foundIn": [
+        "凝聚态数学/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Pseudocoherent and Perfect Complexes and Vector Bundles on Analytic Adic Spaces",
+      "author": "G. Andreychev",
+      "foundIn": [
+        "凝聚态数学/参考文献/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-14",
+      "reason": null
+    },
+    {
+      "title": "Étale Cohomology of Diamonds",
+      "author": "P. Scholze",
+      "foundIn": [
+        "凝聚态数学/参考文献/index.md"
+      ],
+      "result": "existing-full-text-reviewed",
+      "catalogueReference": "existing:https://people.mpim-bonn.mpg.de/scholze/EtCohDiamonds.pdf",
+      "reason": null
+    },
+    {
+      "title": "A $p$-adic 6-Functor Formalism in Rigid Analytic Geometry",
+      "author": "L. Mann",
+      "foundIn": [
+        "凝聚态数学/参考文献/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-16",
+      "reason": null
+    },
+    {
+      "title": "Categories for the Working Mathematician",
+      "author": "S. Mac Lane",
+      "foundIn": [
+        "同伦代数与同调代数/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Simplicial Localizations of Categories",
+      "author": [
+        "W. G. Dwyer",
+        "D. M. Kan"
+      ],
+      "foundIn": [
+        "同伦代数与同调代数/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Calculating Simplicial Localizations",
+      "author": [
+        "W. G. Dwyer",
+        "D. M. Kan"
+      ],
+      "foundIn": [
+        "同伦代数与同调代数/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Dwyer–Kan Localization Revisited",
+      "author": "V. Hinich",
+      "foundIn": [
+        "同伦代数与同调代数/参考文献/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-20",
+      "reason": null
+    },
+    {
+      "title": "Lectures on Infinity Categories",
+      "author": "V. Hinich",
+      "foundIn": [
+        "同伦代数与同调代数/参考文献/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-21",
+      "reason": null
+    },
+    {
+      "title": "Homotopy Type Theory",
+      "author": {
+        "literal": "The Univalent Foundations Program"
+      },
+      "foundIn": [
+        "同伦代数与同调代数/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Model Categories",
+      "author": "M. Hovey",
+      "foundIn": [
+        "同伦代数与同调代数/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Higher Topos Theory",
+      "author": "J. Lurie",
+      "foundIn": [
+        "同伦代数与同调代数/参考文献/index.md"
+      ],
+      "result": "existing-full-text-reviewed",
+      "catalogueReference": "existing:https://www.math.ias.edu/~lurie/papers/HTT.pdf",
+      "reason": null
+    },
+    {
+      "title": "Basic Topology",
+      "author": "M. A. Armstrong",
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Topologie générale, Chapitres 1 à 4",
+      "author": {
+        "literal": "N. Bourbaki"
+      },
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Topologie générale, Chapitres 5 à 10",
+      "author": {
+        "literal": "N. Bourbaki"
+      },
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Topologie algébrique, Chapitres 1 à 4",
+      "author": {
+        "literal": "N. Bourbaki"
+      },
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Differential forms in algebraic topology",
+      "author": [
+        "Raoul Bott",
+        "Loring W. Tu"
+      ],
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md",
+        "示性类/参考文献/index.md",
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Theory of Lie groups I",
+      "author": "Claude Chevalley",
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Algebra and Galois theories",
+      "author": [
+        "Régine Douady",
+        "Adrien Douady"
+      ],
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Lectures on Riemann Surfaces",
+      "author": "Otto Forster",
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Topologie des surfaces",
+      "author": "André Gramain",
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Differential topology",
+      "author": [
+        "Victor Guillemin",
+        "Alan Pollack"
+      ],
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Topologie",
+      "author": "Klaus Jänich",
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Morse theory",
+      "author": "John Milnor",
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Topology from the differentiable viewpoint",
+      "author": "John Milnor",
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Topology",
+      "author": "James Munkres",
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md",
+        "示性类/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Lehrbuch der Topologie",
+      "author": [
+        "Herbert Seifert",
+        "William Threlfall"
+      ],
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Introduction to topology",
+      "author": "V. A. Vassiliev",
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Elementary topology: Problem textbook",
+      "author": [
+        "O. Ya. Viro",
+        "O. A. Ivanov",
+        "N. Yu. Netsvetaev",
+        "V. M. Kharlamov"
+      ],
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Analysis Situs – Topologie algébrique des variétés",
+      "author": {
+        "family": "de Saint-Gervais",
+        "given": "Henri Paul"
+      },
+      "foundIn": [
+        "拓扑学/学习时可以参考的资料/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Introduction to calculus and analysis. Vol. I",
+      "author": [
+        "Richard Courant",
+        "Fritz John"
+      ],
+      "foundIn": [
+        "数学分析/前言之一/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Introduction to calculus and analysis. Vol. II",
+      "author": [
+        "Richard Courant",
+        "Fritz John"
+      ],
+      "foundIn": [
+        "数学分析/前言之一/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Cours de mathématiques spéciales. 3. Topologie et éléments d'analyse",
+      "author": [
+        "Edmond Ramis",
+        "Claude Deschamps",
+        "Jacques Odoux"
+      ],
+      "foundIn": [
+        "数学分析/前言之一/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Cours de mathématiques spéciales. 4. Séries et équations différentielles",
+      "author": [
+        "Edmond Ramis",
+        "Claude Deschamps",
+        "Jacques Odoux"
+      ],
+      "foundIn": [
+        "数学分析/前言之一/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Principles of Mathematical Analysis",
+      "author": "Walter Rudin",
+      "foundIn": [
+        "数学分析/前言之一/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Mathematical Analysis. I",
+      "author": "Vladimir A. Zorich",
+      "foundIn": [
+        "数学分析/前言之一/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Mathematical Analysis. II",
+      "author": "Vladimir A. Zorich",
+      "foundIn": [
+        "数学分析/前言之一/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "数学分析讲义，第一册",
+      "author": "陈天权",
+      "foundIn": [
+        "数学分析/前言之一/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "数学分析讲义，第二册",
+      "author": "陈天权",
+      "foundIn": [
+        "数学分析/前言之一/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "数学分析教程，上册",
+      "author": [
+        "常庚哲",
+        "史济怀"
+      ],
+      "foundIn": [
+        "数学分析/前言之一/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Cours d'analyse: Théorie des distributions et analyse de Fourier",
+      "author": "Jean-Michel Bony",
+      "foundIn": [
+        "数学分析/前言之二/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Éléments de distributions et d'équations aux dérivées partielles - Cours et problèmes résolus",
+      "author": "Claude Zuily",
+      "foundIn": [
+        "数学分析/前言之二/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Grundbegriffe der Wahrscheinlichkeitsrechnung",
+      "author": "Kolmogoroff, A.",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Probability with martingales",
+      "author": "Williams, D.",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "A first course in probability",
+      "author": "Ross, S.",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Elementary probability theory",
+      "author": [
+        "Chung, K. L.",
+        "AitSahlia, F."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Introduction to probability",
+      "author": [
+        "Bertsekas, D. P.",
+        "Tsitsiklis, J. N."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Probability and random processes",
+      "author": [
+        "Grimmett, G. R.",
+        "Stirzaker, D. R."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "数学分析新讲：第三册",
+      "author": "张筑生",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Probability: An introduction",
+      "author": [
+        "Grimmett, G.",
+        "Welsh, D."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Various techniques used in connection with random digits",
+      "author": "von Neumann, J.",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "数学分析讲义：第二册",
+      "author": "陈天权",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "数学分析新讲：第二册",
+      "author": "张筑生",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Probability and measure",
+      "author": "Billingsley, P.",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "An introduction to probability theory and its applications: I",
+      "author": "Feller, W.",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Statistical inference",
+      "author": [
+        "Casella, G.",
+        "Berger, R."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Theory of statistics",
+      "author": "Schervish, M. J.",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Theoretical statistics",
+      "author": [
+        "Cox, D. R.",
+        "Hinkley, D. V."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Numerical optimization",
+      "author": [
+        "Nocedal, J.",
+        "Wright, S. J."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "The EM algorithm and extensions",
+      "author": [
+        "McLachlan, G. J.",
+        "Krishnan, T."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Probability and statistics for engineers and scientists",
+      "author": [
+        "Walpole, R. E.",
+        "Myers, R. H.",
+        "Myers, S. L.",
+        "Ye, K."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Probability and statistics",
+      "author": [
+        "DeGroot, M. H.",
+        "Schervish, M. J."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Univariate discrete distributions",
+      "author": [
+        "Johnson, N. L.",
+        "Kemp, A. W.",
+        "Kotz, S."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Continuous univariate distributions: Vol. 2",
+      "author": [
+        "Johnson, N. L.",
+        "Kotz, S.",
+        "Balakrishnan, N."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Statistical problems with nuisance parameters",
+      "author": "Linnik, J. V.",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "On solutions of the Behrens–Fisher problem, based on the $t$-distribution",
+      "author": "Scheffé, H.",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Modern mathematical statistics",
+      "author": [
+        "Dudewicz, E. J.",
+        "Mishra, S. N."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Contribution to the theory of “Student's” $t$-test as applied to the problem of two samples",
+      "author": "许宝𫘧",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Further note on Mrs. Aspin’s tables and on certain approximations to the tabled function",
+      "author": "Welch, B. L.",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Practical solutions of the Behrens–Fisher problem",
+      "author": "Scheffé, H.",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Application of methods for central statistical monitoring in clinical trials",
+      "author": [
+        "Kirkwood, A. A.",
+        "Cox, T.",
+        "Hackshaw, A."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Introduction to linear regression analysis",
+      "author": [
+        "Montgomery, D. C.",
+        "Peck, E. A.",
+        "Vining, G. G."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Analysis I",
+      "author": "Tao, T.",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "线性代数与解析几何",
+      "author": [
+        "郑广平",
+        "裘祖干",
+        "陆章基"
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Linear algebra and its applications",
+      "author": [
+        "Lay, D. C.",
+        "Lay, S. R.",
+        "McDonald, J. J."
+      ],
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Real and complex analysis",
+      "author": "Rudin, W.",
+      "foundIn": [
+        "概率与数理统计/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "The moment map and equivariant cohomology",
+      "author": [
+        "M. F. Atiyah",
+        "R. Bott"
+      ],
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Heat Kernels and Dirac Operators",
+      "author": [
+        "N. Berline",
+        "E. Getzler",
+        "M. Vergne"
+      ],
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "The Topology of Fiber Bundles",
+      "author": "R. L. Cohen",
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-91",
+      "reason": null
+    },
+    {
+      "title": "Riemannian Geometry",
+      "author": "do Carmo, M. P.",
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Principles of Algebraic Geometry",
+      "author": [
+        "P. Griffiths",
+        "J. Harris"
+      ],
+      "foundIn": [
+        "示性类/参考文献/index.md",
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Vector Bundles and K-Theory",
+      "author": "A. Hatcher",
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "existing-full-text-reviewed",
+      "catalogueReference": "existing:https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf",
+      "reason": null
+    },
+    {
+      "title": "K-Theory",
+      "author": "M. Karoubi",
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Almost Complex Structures on Spheres",
+      "author": [
+        "P. Konstantis",
+        "M. Parton"
+      ],
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-96",
+      "reason": null
+    },
+    {
+      "title": "Lecture Notes on Equivariant Cohomology",
+      "author": "M. Libine",
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-97",
+      "reason": null
+    },
+    {
+      "title": "Spin Geometry",
+      "author": [
+        "H. B. Lawson",
+        "M.-L. Michelsohn"
+      ],
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "A Concise Course in Algebraic Topology",
+      "author": "J. P. May",
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "existing-full-text-reviewed",
+      "catalogueReference": "existing:https://www.math.uchicago.edu/~may/CONCISE/ConciseRevised.pdf",
+      "reason": null
+    },
+    {
+      "title": "Construction of Universal Bundles, II",
+      "author": "J. Milnor",
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Superconnections, Thom classes and equivariant differential forms",
+      "author": [
+        "V. Mathai",
+        "D. Quillen"
+      ],
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Characteristic Classes",
+      "author": [
+        "J. W. Milnor",
+        "J. D. Stasheff"
+      ],
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Superconnections and the Chern character",
+      "author": "D. Quillen",
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Chern–Weil theory",
+      "author": "A. Rahman",
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-104",
+      "reason": null
+    },
+    {
+      "title": "Algebraic Topology – Homotopy and Homology",
+      "author": "R. M. Switzer",
+      "foundIn": [
+        "示性类/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Deligne’s notes on Nagata compactifications",
+      "author": "Brian Conrad",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-106",
+      "reason": null
+    },
+    {
+      "title": "Cohomologie Étale (SGA 4-1/2)",
+      "author": "Pierre Deligne",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "La conjecture de Weil. II",
+      "author": "Pierre Deligne",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-108",
+      "reason": null
+    },
+    {
+      "title": "Fundamental Algebraic Geometry, Grothendieck’s FGA Explained",
+      "author": [
+        "Barbara Fantechi",
+        "Lothar Göttsche",
+        "Luc Illusie",
+        "Steven L. Kleiman",
+        "Nitin Nitsure",
+        "Angelo Vistoli"
+      ],
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Étale Cohomology and the Weil Conjecture",
+      "author": [
+        "Eberhard Freitag",
+        "Reinhardt Kiehl"
+      ],
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Intersection Theory",
+      "author": "William Fulton",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "La théorie des classes de Chern",
+      "author": "Alexander Grothendieck",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-112",
+      "reason": null
+    },
+    {
+      "title": "Théorie des Topos et Cohomologie Etale des Schémas (SGA 4)",
+      "author": [
+        "Alexander Grothendieck",
+        "Michael Artin",
+        "J.-L. Verdier"
+      ],
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Revêtements étales et groupe fondamental (SGA 1)",
+      "author": [
+        "Alexander Grothendieck",
+        "Michèle Raynaud"
+      ],
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-114",
+      "reason": null
+    },
+    {
+      "title": "Algebraic Geometry",
+      "author": "Robin Hartshorne",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Complex Geometry, An Introduction",
+      "author": "Daniel Huybrechts",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Étale Cohomology Theory",
+      "author": "Fu, Lei",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Introduction to Smooth Manifolds",
+      "author": "John M. Lee",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Étale Cohomology",
+      "author": "James S. Milne",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Lectures on Étale Cohomology",
+      "author": "James S. Milne",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "existing-full-text-reviewed",
+      "catalogueReference": "existing:https://www.jmilne.org/math/CourseNotes/LEC.pdf",
+      "reason": null
+    },
+    {
+      "title": "Class Field Theory",
+      "author": "James S. Milne",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "existing-full-text-reviewed",
+      "catalogueReference": "existing:https://www.jmilne.org/math/CourseNotes/CFT.pdf",
+      "reason": null
+    },
+    {
+      "title": "Algebraic and Analytic Geometry",
+      "author": "Amnon Neeman",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Algebraic Spaces and Stacks",
+      "author": "Martin Olsson",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Lectures on the Theory of Pure Motives",
+      "author": [
+        "Jacob P. Murre",
+        "Jan Nagel",
+        "Chris A. M. Peters"
+      ],
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "The Stacks project",
+      "author": {
+        "literal": "Stacks project collaborators"
+      },
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Géométrie algébrique et géométrie analytique",
+      "author": "Jean-Pierre Serre",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-126",
+      "reason": null
+    },
+    {
+      "title": "Local Algebra",
+      "author": "Jean-Pierre Serre",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Hodge Theory and Complex Algebraic Geometry I",
+      "author": "Claire Voisin",
+      "foundIn": [
+        "给几何人的平展上同调/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "高等代数",
+      "author": null,
+      "foundIn": [
+        "行列式入门/附录 C/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "代数学讲义",
+      "author": "李文威",
+      "foundIn": [
+        "行列式入门/附录 C/参考文献/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-130",
+      "reason": null
+    },
+    {
+      "title": "仿 Kronecker 符号及其应用",
+      "author": [
+        "田代军",
+        "周泽华",
+        "杨奇"
+      ],
+      "foundIn": [
+        "行列式入门/附录 C/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "线性代数讲义",
+      "author": "王新茂",
+      "foundIn": [
+        "行列式入门/附录 C/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "基础代数学",
+      "author": "项武义",
+      "foundIn": [
+        "行列式入门/附录 C/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "高等代数学",
+      "author": [
+        "谢启鸿",
+        "姚慕生",
+        "吴泉水"
+      ],
+      "foundIn": [
+        "行列式入门/附录 C/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "线性代数与矩阵论",
+      "author": "许以超",
+      "foundIn": [
+        "行列式入门/附录 C/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Linear algebra done right",
+      "author": "Axler, Sheldon",
+      "foundIn": [
+        "行列式入门/附录 C/参考文献/index.md"
+      ],
+      "result": "existing-full-text-reviewed",
+      "catalogueReference": "existing:https://linear.axler.net/LADR4e.pdf",
+      "reason": null
+    },
+    {
+      "title": "A first course in linear algebra",
+      "author": "Beezer, Robert A",
+      "foundIn": [
+        "行列式入门/附录 C/参考文献/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "A Tutorial on Spectral Clustering",
+      "author": "von Luxburg, Ulrike",
+      "foundIn": [
+        "谱聚类/从图的分割出发/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-138",
+      "reason": null
+    },
+    {
+      "title": "Consistency of Spectral Clustering",
+      "author": [
+        "von Luxburg, Ulrike",
+        "Mikhail Belkin",
+        "Olivier Bousquet"
+      ],
+      "foundIn": [
+        "谱聚类/算法的相合性/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-139",
+      "reason": null
+    },
+    {
+      "title": "Matrix Analysis",
+      "author": "Rajendra Bhatia",
+      "foundIn": [
+        "谱聚类/算法的稳定性/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "The Elements of Statistical Learning: Data Mining, Inference, and Prediction",
+      "author": [
+        "Trevor Hastie",
+        "Robert Tibshirani",
+        "Jerome Friedman"
+      ],
+      "foundIn": [
+        "谱聚类/聚类简介/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Spectral Approximation of Linear Operators",
+      "author": "Françoise Chatelin",
+      "foundIn": [
+        "谱聚类/谱聚类算法/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "Random Walks on Graphs: A Survey",
+      "author": "László Lovász",
+      "foundIn": [
+        "谱聚类/随机游走观点/index.md"
+      ],
+      "result": "new-full-text",
+      "catalogueReference": "banana-ref-143",
+      "reason": null
+    },
+    {
+      "title": "Weak Convergence and Empirical Processes: With Applications to Statistics",
+      "author": [
+        "A. W. van der Vaart",
+        "Jon A. Wellner"
+      ],
+      "foundIn": [
+        "谱聚类/算法的相合性/规范方法的收敛性/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    },
+    {
+      "title": "The Numerical Solution of the Eigenvalue Problem for Compact Integral Operators",
+      "author": "Kendall E. Atkinson",
+      "foundIn": [
+        "谱聚类/算法的相合性/规范方法的收敛速度/index.md"
+      ],
+      "result": "deferred",
+      "catalogueReference": null,
+      "reason": "No complete primary-source full text verified in this first-hop review; not a claim that none exists."
+    }
+  ],
+  "policy": "External reading links only; no third-party PDF, chapter text or images published."
+}

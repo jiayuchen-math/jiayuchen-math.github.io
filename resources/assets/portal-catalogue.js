@@ -288,7 +288,9 @@ async function initialize(form) {
       // Defense in depth for same-origin generated HTML. Never execute scripts,
       // inline handlers or active embeds; retain the article's original wording.
       for (const unsafe of template.content.querySelectorAll('script, iframe, object, embed, base, meta, link, style, form')) unsafe.remove();
-      for (const hidden of template.content.querySelectorAll('[hidden]')) hidden.remove();
+      for (const hidden of template.content.querySelectorAll('[hidden]')) {
+        if (!hidden.closest('[data-language-content="en"],[data-language-content="zh"]')) hidden.remove();
+      }
       for (const node of template.content.querySelectorAll('*')) {
         if (node.id === String(row.id)) node.removeAttribute('id');
         for (const attribute of [...node.attributes]) {

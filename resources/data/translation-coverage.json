@@ -228,6 +228,11 @@
       "scope": "interface"
     },
     {
+      "file": "notes/reading-notes/library/catalogue-all-page-25.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
       "file": "notes/reading-notes/library/catalogue-all-page-3.html",
       "status": "interface-only",
       "scope": "interface"
@@ -294,6 +299,11 @@
     },
     {
       "file": "notes/reading-notes/library/catalogue-page-16.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
+      "file": "notes/reading-notes/library/catalogue-page-17.html",
       "status": "interface-only",
       "scope": "interface"
     },
@@ -1590,9 +1600,9 @@
       "file": "resources/index.html",
       "status": "body-translated",
       "scope": "page",
-      "sourceHash": "8e5f64652535d879a3662e338a8551bffb9e88e759206def0fcade83df18f611",
-      "approvedSourceHash": "8e5f64652535d879a3662e338a8551bffb9e88e759206def0fcade83df18f611",
-      "reviewed": "2026-10-19"
+      "sourceHash": "780d8f650a2acb06d14ebc96ec37b179cf09fb3923a394b4c4f910f86de1e87d",
+      "approvedSourceHash": "780d8f650a2acb06d14ebc96ec37b179cf09fb3923a394b4c4f910f86de1e87d",
+      "reviewed": "2026-11-03"
     },
     {
       "file": "resources/library-paths/abstract-algebra.html",

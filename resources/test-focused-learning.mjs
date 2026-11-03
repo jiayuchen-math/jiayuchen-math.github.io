@@ -47,7 +47,7 @@ for(const [file,,,scope]of focusedPages){
  assert(data.coverage.sourceHash);assert.equal(data.coverage.scope,scope);
  assert.equal(coverage.sourceHash,data.coverage.sourceHash);
  assert.equal(data.coverage.status,scope==='page'?'body-translated':'partly-translated','Reviewed translation: '+file);
- assert.equal(approvals[file].sourceHash,data.coverage.sourceHash);assert.equal(approvals[file].reviewed,'2026-10-19');
+ assert.equal(approvals[file].sourceHash,data.coverage.sourceHash);assert.equal(approvals[file].reviewed,file==='resources/index.html'?'2026-11-03':'2026-10-19');
  const own=live(html.match(/<!-- portal-content:start -->([\s\S]*?)<!-- portal-content:end -->/)[1]);
  for(const copy of [own,...Object.values(data.blocks)]){
   for(const m of copy.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>/g)){
@@ -81,7 +81,7 @@ const topic='resources/topics/algebraic-geometry/index.html',guide=json('resourc
 assert.equal(guide.length,1);assert(guide[0].aliases.includes('代数几何专题'));
 assert(json('resources/catalogue-data/learning-tools/entries.json').some(e=>e.id===guide[0].id),'Topic can be saved to the existing bookshelf');
 assert.equal(algebraicGeometryTopicData.sections.length,6);
-const report=json('resources/portal-report.json');assert.deepEqual(report.counts,{library:576,encyclopedia:150,terminology:513,links:110,programs:225,researchers:1939});
+const report=json('resources/portal-report.json');assert.deepEqual(report.counts,{library:576+json('resources/data/library-banana.json').length,encyclopedia:150,terminology:513,links:110,programs:225,researchers:1939});
 assert(report.indexBytes<2*1024*1024);assert(report.directories.every(d=>d.firstPageBytes<350*1024));
 assert(!inventory.pages.some(p=>p.status==='body-translated'&&/encyclopedia\/.+\/index/.test(p.file)),'No bulk claim that encyclopedia prose has been translated');
 console.log(JSON.stringify({focusedPages:10,scope:'7 page bodies and 3 learning sections; catalogue annotations unchanged',contextWhitelist:12,issueForms:6,originalCountsPreserved:true,translationDriftDetected:true}));
