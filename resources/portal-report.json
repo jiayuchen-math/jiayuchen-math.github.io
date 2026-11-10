@@ -42,7 +42,7 @@
       "url": "/en/resources/encyclopedia/index.html",
       "records": 210,
       "pages": 9,
-      "firstPageBytes": 29227
+      "firstPageBytes": 29368
     },
     {
       "id": "terminology",
@@ -1045,7 +1045,7 @@
   "translationCoverage": {
     "body-translated": 70,
     "partly-translated": 26,
-    "interface-only": 901,
+    "interface-only": 902,
     "needs-review": 0
   }
 }
