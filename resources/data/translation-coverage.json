@@ -1342,6 +1342,11 @@
       "scope": "interface"
     },
     {
+      "file": "resources/encyclopedia/reference-index.html",
+      "status": "interface-only",
+      "scope": "interface"
+    },
+    {
       "file": "resources/encyclopedia/rellich-kondrachov-compactness/index.html",
       "status": "interface-only",
       "scope": "interface"
