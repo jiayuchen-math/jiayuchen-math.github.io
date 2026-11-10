@@ -5,6 +5,7 @@ import {decodeHTML} from 'entities';
 import {shell} from './ui-shell.mjs';
 import {loadKnowledge,areas} from './build-knowledge.mjs';
 import {encyclopediaConnections,encyclopediaCoverage} from './encyclopedia-navigation.mjs';
+import {referenceIndexFile,referenceIndexBody} from './reference-index-page.mjs';
 import {cleanPageCopy} from './editorial-copy.mjs';
 import {backgroundForm} from './data/background-form.mjs';
 import {protectedBytes} from './protected-bytes.mjs';
@@ -155,7 +156,7 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
   if(extra.scripts)extra.scripts=extra.scripts.map(source=>{
    if(typeof source!=='string')return source;
    const src=source.startsWith('/en/resources/assets/')?source+'?v='+digest(read(source.slice(4))).slice(0,12):source;
-   return /\/(?:portal-catalogue|unified-search)\.js$/.test(source)?{src,type:'module'}:src;
+   return /\/(?:portal-catalogue|unified-search|reference-index)\.js$/.test(source)?{src,type:'module'}:src;
   });
   if(file.startsWith('resources/library-paths/'))extra.scripts=[...(extra.scripts||[]),'/en/resources/assets/paths.js'];
   body=body.replace(/<!-- banana-study:start -->[\s\S]*?<!-- banana-study:end -->/g,'')+bananaStudyReading(file);
@@ -260,7 +261,10 @@ export function buildPortal({root,books,links,programs,researchers,merged,resear
  directory({id:'links',title:'Web Resources',file:'resources/links/index.html',rows:linksRows,filterList:[['category','Category'],['area','Area'],['language','Language']],render:i=>renderers.links(links[i]),intro:`<p class="directory-intro">Reference tools, courses and communities. Selected articles: ${link('study-advice.html','Study advice')} · ${link('../study-careers/experiences.html','Application experiences')} · ${link('advice.html','All advice articles')}.</p>`});
  directory({id:'programs',title:'Study & Careers',file:'resources/study-careers/index.html',rows:programRows,filterList:[['country','Country / territory'],['degree','Degree / opportunity'],['applicationStatus','Application time'],['backgroundMatch','Background match'],['region','Region'],['programmeForm','Programme form'],['intakeYear','Intake year'],['orientation','Focus'],['language','Language'],['fees','Fee information'],['funding','Funding information']],applications:true,render:i=>renderers.programs(programs[i]),intro:`<p class="directory-intro">Mathematics study and research routes. ${link('guides.html','Application guides')} · ${link('fee-status.html','Fee-status rules')}</p>${cleanPageCopy(backgroundForm(E),'resources/study-careers/index.html')}`});
  directory({id:'researchers',title:'Researcher Directory',file:'resources/study-careers/researchers.html',rows:researcherRows,filterList:[['country','Country / territory'],['topic','Research topic'],['institution','Institution'],['area','Broad area'],['region','Region'],['availability','Student availability'],['recent','Public student records'],['contact','Public email'],['topicStatus','Research-topic evidence']],render:i=>{let html=renderers.researchers(researchers[i]);if(researchers[i].affiliationNote)html=html.replace('</h3>','</h3><p class="meta">'+E(researchers[i].affiliationNote)+'</p>');return html},intro:`<p class="directory-intro">Search current source-linked profiles and published research topics. ${link('guides.html#contact-researchers','Contact guidance')} · ${link('coverage.html','Country coverage')}</p>`});
- directory({id:'encyclopedia',title:'Mathematics Encyclopedia',file:'resources/encyclopedia/index.html',rows:articleRows,filterList:[['area','Area'],['level','Level'],['contentKind','Entry type'],['topic','Subject']],intro:`<p class="directory-intro">${knowledge.articles.length} original explanations and ${conceptReadings.length} external reading guides. ${link('/en/resources/library-paths/','Choose a learning direction')} · ${link('contributing.html','Contribute')}</p>`,firstPageIntro:encyclopediaCoverage(areas,knowledge.articles,conceptReadings,knowledge.terms)});
+ const referenceEntry='<p>'+link(href(referenceIndexFile),'Banana Space & Stacks Project index · 香蕉空间与 Stacks 索引')+'</p>';
+ directory({id:'encyclopedia',title:'Mathematics Encyclopedia',file:'resources/encyclopedia/index.html',rows:articleRows,filterList:[['area','Area'],['level','Level'],['contentKind','Entry type'],['topic','Subject']],intro:`<p class="directory-intro">${knowledge.articles.length} original explanations and ${conceptReadings.length} external reading guides. ${link('/en/resources/library-paths/','Choose a learning direction')} · ${link('contributing.html','Contribute')}</p>`,firstPageIntro:referenceEntry+encyclopediaCoverage(areas,knowledge.articles,conceptReadings,knowledge.terms)});
+ addPage(referenceIndexFile,'Banana Space & Stacks Project Index',referenceIndexBody,'directory',{scripts:['/en/resources/assets/reference-index.js']});
+ directoryFiles.add(referenceIndexFile);
  directory({id:'terminology',title:'Terminology & Translations',file:'resources/terminology/index.html',rows:termRows,filterList:[['area','Area'],['topic','Subject'],['level','Level'],['coverage','Explanation depth'],['translationStatus','Translation evidence']]});
  const essayRows=libraryRows.filter(r=>r.fields.readingAccess==='Free to read'&&r.fields.readingMode==='Popular / exposition').map(r=>({...r,fields:{...r.fields}}));
  directory({id:'exposition',title:'Essays & Popular Mathematics',file:'notes/reading-notes/library/exposition.html',rows:essayRows,filterList:[['topic','Subject'],['level','Level'],['language','Language']],collection:false,render:i=>renderers.library(books[libraryRows.findIndex(r=>r.id===essayRows[i].id)])});

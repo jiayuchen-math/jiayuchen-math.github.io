@@ -119,5 +119,16 @@ for(const [id,href] of [
  const aside=read('resources/encyclopedia/'+id+'/index.html').match(/<aside aria-label="Follow the example">([\s\S]*?)<\/aside>/)?.[1];
  assert(aside?.includes(href)&&aside.includes('lang="zh-Hans"'),'Missing bilingual example connection: '+id);
 }
+const {sourceRecords,findReferences,stackParts}=await import('./assets/reference-index.js');
+const sourcePath='resources/data/reference-index/';
+const refs=sourceRecords(read(sourcePath+'banana.txt'),stackParts.map(name=>read(sourcePath+name)));
+assert.equal(refs.filter(entry=>entry.source==='banana').length,1831);
+assert.equal(refs.filter(entry=>entry.source==='stacks').length,21446);
+assert.equal(new Set(refs.map(entry=>entry.url)).size,refs.length);
+assert.equal(findReferences(refs,'01i6','stacks')[0]?.url,'https://stacks.math.columbia.edu/tag/01I6');
+assert(findReferences(refs,'仿射概形','banana').some(entry=>entry.label==='仿射概形'));
+assert(findReferences(refs,'quasi coherent','stacks').length>0);
+assert(read('resources/encyclopedia/index.html').includes('/en/resources/encyclopedia/reference-index.html'));
+assert(read('resources/encyclopedia/reference-index.html').includes('/en/resources/assets/reference-index.js'));
 assert.deepEqual(json('resources/portal-report.json').contentBreakdown,{originalArticles:150,externalReadingGuides:60,terminologySenses:513,directionIntroductions:12,subjectStudyGuides:29});
 console.log(JSON.stringify({passed:true,directionIntroductions:12,subjectStudyGuides:29,externalReadingGuides:60,originalArticles:150,terminologySenses:513}));
