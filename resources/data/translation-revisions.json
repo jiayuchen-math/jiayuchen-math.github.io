@@ -28,8 +28,9 @@
       "reviewed": "2026-10-19"
     },
     "resources/library-paths/routes/algebraic-geometry.html": {
-      "sourceHash": "c06e73d676e33c16c81e550aaded76a63a7c9a9fbfadc95bac34c3315976541f",
-      "reviewed": "2026-10-19"
+      "sourceHash": "12bf7c6b93d3fdfc8c0df03126b55ebd6e244147294c08ecfbaf0c776d1490e7",
+      "reviewed": "2026-11-10",
+      "reviewNote": "Added the localization and gluing mini-lesson in both languages; checked formula parity and stable anchors."
     },
     "resources/library-paths/routes/analysis-pde.html": {
       "sourceHash": "20a7ba3659bbde6f99d006a4a92492ffc803115e5b80cf56425ae631efe8cf9c",

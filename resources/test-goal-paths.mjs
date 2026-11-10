@@ -32,7 +32,20 @@ for(const r of goalPaths){
  assert(html.includes('Route stages'));
  assert(html.includes('Preparation &amp; skip guidance'));
  assert(html.includes('Enter at the first unfamiliar stage'));
+ r.stages.forEach((_,i)=>{
+  assert(index.includes('routes/'+r.id+'.html#stage-'+(i+1)+'"'));
+  assert(html.includes('id="stage-'+(i+1)+'"'));
+ });
 }
+const lessonFile='resources/library-paths/routes/algebraic-geometry.html';
+const lessonAnchor='localization-in-practice';
+assert(index.includes('routes/algebraic-geometry.html#'+lessonAnchor));
+const lesson=read(lessonFile);
+assert(lesson.includes('id="'+lessonAnchor+'"'));
+assert(lesson.includes('<summary>Work through the solution</summary>'));
+const chineseLesson=goalPathPages({topics,nodes,locale:'zh'}).get(lessonFile).body;
+assert(chineseLesson.includes('id="'+lessonAnchor+'"'));
+assert(chineseLesson.includes('<summary>展开参考解</summary>'));
 const catalogue=read('notes/reading-notes/library/catalogue.html');
 assert(catalogue.includes('Browse subject cards'));
 const cards=read('notes/reading-notes/library.html');
