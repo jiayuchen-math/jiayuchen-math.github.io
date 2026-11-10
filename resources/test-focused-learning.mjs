@@ -47,7 +47,10 @@ for(const [file,,,scope]of focusedPages){
  assert(data.coverage.sourceHash);assert.equal(data.coverage.scope,scope);
  assert.equal(coverage.sourceHash,data.coverage.sourceHash);
  assert.equal(data.coverage.status,scope==='page'?'body-translated':'partly-translated','Reviewed translation: '+file);
- assert.equal(approvals[file].sourceHash,data.coverage.sourceHash);assert.equal(approvals[file].reviewed,file==='resources/index.html'?'2026-11-03':'2026-10-19');
+ assert.equal(approvals[file].sourceHash,data.coverage.sourceHash);
+ assert.match(approvals[file].reviewed,/^\d{4}-\d{2}-\d{2}$/);
+ assert.equal(coverage.reviewed,approvals[file].reviewed);
+ assert.equal(data.coverage.reviewed,approvals[file].reviewed);
  const own=live(html.match(/<!-- portal-content:start -->([\s\S]*?)<!-- portal-content:end -->/)[1]);
  for(const copy of [own,...Object.values(data.blocks)]){
   for(const m of copy.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>/g)){

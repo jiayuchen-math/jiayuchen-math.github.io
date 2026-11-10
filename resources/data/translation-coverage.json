@@ -1869,9 +1869,9 @@
       "file": "resources/library-paths/routes/algebraic-geometry.html",
       "status": "body-translated",
       "scope": "page",
-      "sourceHash": "c06e73d676e33c16c81e550aaded76a63a7c9a9fbfadc95bac34c3315976541f",
-      "approvedSourceHash": "c06e73d676e33c16c81e550aaded76a63a7c9a9fbfadc95bac34c3315976541f",
-      "reviewed": "2026-10-19"
+      "sourceHash": "12bf7c6b93d3fdfc8c0df03126b55ebd6e244147294c08ecfbaf0c776d1490e7",
+      "approvedSourceHash": "12bf7c6b93d3fdfc8c0df03126b55ebd6e244147294c08ecfbaf0c776d1490e7",
+      "reviewed": "2026-11-10"
     },
     {
       "file": "resources/library-paths/routes/analysis-pde.html",
