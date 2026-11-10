@@ -94,5 +94,30 @@ for(const guide of readings){
  assert(JSON.stringify(result).includes(guide.id),guide.id+' not searchable');
 }
 assert.equal(json('resources/catalogue-data/library/index.json').defaults.readingAccess,'Free to read');
+const subjectMap=read('resources/encyclopedia/index.html').match(/<details id="encyclopedia-coverage">([\s\S]*?)<\/details>/)?.[1];
+assert(subjectMap,'Encyclopedia subject map is missing');
+const explained=new Set([...knowledge.articles,...readings].map(e=>e.id));
+for(const [id,area] of Object.entries(areas)){
+ const row=subjectMap.match(new RegExp('<tr><th scope="row"><a href="/en/resources/encyclopedia/\\?area='+encodeURIComponent(area.title).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'"[\\s\\S]*?<\\/tr>'))?.[0];
+ assert(row,'Missing subject map row: '+id);
+ const expected=[
+  knowledge.articles.filter(a=>a.area===id).length,
+  readings.filter(a=>a.area===id).length,
+  knowledge.terms.filter(t=>t.area===id&&!explained.has(t.id)).length,
+ ];
+ assert(row.includes(expected.map(count=>'<td>'+count+'</td>').join('')),'Incorrect separate counts: '+id);
+}
+for(const [id,href] of [
+ ['localization-commutative-ring','/encyclopedia/algebraic-prime-spectrum/#examples-and-non-examples'],
+ ['algebraic-prime-spectrum','/encyclopedia/sheaf/#definition-and-conventions'],
+ ['sheaf','/library-paths/routes/algebraic-geometry.html#localization-in-practice'],
+ ['group','/terminology/normal-subgroup/'],
+ ['uniform-convergence','/terminology/pointwise-convergence/'],
+ ['finite-simple-graph','/terminology/connected-graph/'],
+ ['universal-quantifier','/terminology/existential-quantifier/'],
+]){
+ const aside=read('resources/encyclopedia/'+id+'/index.html').match(/<aside aria-label="Follow the example">([\s\S]*?)<\/aside>/)?.[1];
+ assert(aside?.includes(href)&&aside.includes('lang="zh-Hans"'),'Missing bilingual example connection: '+id);
+}
 assert.deepEqual(json('resources/portal-report.json').contentBreakdown,{originalArticles:150,externalReadingGuides:60,terminologySenses:513,directionIntroductions:12,subjectStudyGuides:29});
 console.log(JSON.stringify({passed:true,directionIntroductions:12,subjectStudyGuides:29,externalReadingGuides:60,originalArticles:150,terminologySenses:513}));
